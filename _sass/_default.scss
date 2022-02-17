@@ -25,50 +25,50 @@ html {
 .blog-bar .blog-button {
   padding: 16px;
 }
+
 .blog-icon {
-    float: left;
-    max-width: 6%;
-    border-radius: 50%;
-    margin: 5px 10px 5px 100px;
-    @include mobile {
-        float: none;
-        display: block;
-        margin: 0 auto;
-    }
+  float: left;
+  max-width: 5%;
+  border-radius: 50%;
+  margin: 5px 10px 5px 100px;
+  @include mobile {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .blog-info {
-    float: left;
-    @include mobile {
-        float: none;
-        display: block;
-        margin: 0 auto;
-    }
+  float: left;
+  @include mobile {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .blog-name {
-    margin: 0;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+  font-family: $helveticaNeue;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 1px;
+  a {
+    text-decoration: none;
     cursor: pointer;
-    font-family: $helveticaNeue;
-    font-weight: 600;
-    font-size: 28px;
-    letter-spacing: 1px;
-    a {
-        color: $white;
-        text-decoration: none;
-        cursor: pointer;
-        &:hover,
-        &:active {
-            text-decoration: underline;
-        }
+    &:hover,
+    &:active {
+        text-decoration: underline;
     }
+  }
 }
 
 .blog-description {
-    margin: -5px 0 0 0;
-    font-size: 16px;
-    font-weight: 500;
-    @include mobile {
-        margin: 3px 0;
-    }
+  margin: -5px 0 0 0;
+  font-size: 16px;
+  font-weight: 500;
+  @include mobile {
+    margin: 3px 0;
+  }
 }
