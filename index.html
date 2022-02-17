@@ -53,7 +53,13 @@
     <!-- Navbar (sit on top) -->
     <div class="blog-top">
         <div class="blog-bar blog-white blog-card" id="myNavbar">
-            <a href="#home" class="blog-bar-item blog-button blog-wide">Bhupendra Negi</a>
+            <a href="{{ site.baseurl }}/"><img class="blog-image" src="/images/bhupendra.png" /></a>
+            <div class="blog-info">
+                <h1><a href="{{ site.baseurl }}/" class="blog-name">site.name</a></h1>
+                <p class="blog-description">{{ site.description }}</p>
+            </div>
+
+
             <!-- Right-sided navbar links -->
             <div class="blog-right blog-hide-small">
                 <a href="#about" class="blog-bar-item blog-button">ABOUT</a>
@@ -83,7 +89,6 @@
     <!-- Header with full-height image -->
     <header class="homecover blog-display-container blog-grayscale-min" id="home">
         <div class="blog-display-left blog-text-white" style="padding:48px">
-            <a href="{{ site.baseurl }}/" class="blog-bar-item blog-button blog-wide"><img src="{{ site.baseurl }}/images/bhupendra.png" /></a>
             <span class="blog-jumbo blog-hide-small">Hi there, I'm Bhupendra</span><br>
             <span class="blog-xxlarge blog-hide-large blog-hide-medium">Hi there, I'm Bhupendra</span><br>
             <span class="blog-large">This is my Ruby on Rails Blogs</span>
@@ -136,7 +141,7 @@
                 <p><a href="#work" class="blog-button blog-black"><i class="fa fa-th"> </i> View Our Works</a></p>
             </div>
             <div class="blog-col m6">
-                <img class="blog-image blog-round-large" src="/blogimages/phone_buildings.jpg" alt="Buildings" width="700" height="394">
+<!--                 <img class="blog-image blog-round-large" src="/blogimages/phone_buildings.jpg" alt="Buildings" width="700" height="394"> -->
             </div>
         </div>
     </div>
@@ -148,8 +153,8 @@
         <div class="blog-row-padding blog-grayscale" style="margin-top:64px">
             <div class="blog-col l3 m6 blog-margin-bottom">
                 <div class="blog-card">
-                    <img src="/blogimages/team2.jpg" alt="John" style="width:100%">
-                    <div class="blog-container">
+<!--                     <img src="/blogimages/team2.jpg" alt="John" style="width:100%">
+ -->                    <div class="blog-container">
                         <h3>John Doe</h3>
                         <p class="blog-opacity">CEO & Founder</p>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
@@ -159,8 +164,8 @@
             </div>
             <div class="blog-col l3 m6 blog-margin-bottom">
                 <div class="blog-card">
-                    <img src="/blogimages/team1.jpg" alt="Jane" style="width:100%">
-                    <div class="blog-container">
+<!--                     <img src="/blogimages/team1.jpg" alt="Jane" style="width:100%">
+ -->                    <div class="blog-container">
                         <h3>Anja Doe</h3>
                         <p class="blog-opacity">Art Director</p>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
@@ -170,8 +175,8 @@
             </div>
             <div class="blog-col l3 m6 blog-margin-bottom">
                 <div class="blog-card">
-                    <img src="/blogimages/team3.jpg" alt="Mike" style="width:100%">
-                    <div class="blog-container">
+<!--                     <img src="/blogimages/team3.jpg" alt="Mike" style="width:100%">
+ -->                    <div class="blog-container">
                         <h3>Mike Ross</h3>
                         <p class="blog-opacity">Web Designer</p>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
@@ -181,8 +186,8 @@
             </div>
             <div class="blog-col l3 m6 blog-margin-bottom">
                 <div class="blog-card">
-                    <img src="/blogimages/team4.jpg" alt="Dan" style="width:100%">
-                    <div class="blog-container">
+<!--                     <img src="/blogimages/team4.jpg" alt="Dan" style="width:100%">
+ -->                    <div class="blog-container">
                         <h3>Dan Star</h3>
                         <p class="blog-opacity">Designer</p>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
@@ -220,32 +225,32 @@
 
         <div class="blog-row-padding" style="margin-top:64px">
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A microphone">
-            </div>
+<!--                 <img src="/blogimages/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A microphone">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A phone">
-            </div>
+<!--                 <img src="/blogimages/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A phone">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A drone">
-            </div>
+<!--                 <img src="/blogimages/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A drone">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="Soundbox">
-            </div>
+<!--                 <img src="/blogimages/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="Soundbox">
+ -->            </div>
         </div>
 
         <div class="blog-row-padding blog-section">
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A tablet">
-            </div>
+<!--                 <img src="/blogimages/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A tablet">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A camera">
-            </div>
+<!--                 <img src="/blogimages/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A camera">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A typewriter">
-            </div>
+<!--                 <img src="/blogimages/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A typewriter">
+ -->            </div>
             <div class="blog-col l3 m6">
-                <img src="/blogimages/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A tableturner">
-            </div>
+<!--                 <img src="/blogimages/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)" class="blog-hover-opacity" alt="A tableturner">
+ -->            </div>
         </div>
     </div>
 
@@ -360,8 +365,8 @@
                 </p>
             </form>
             <!-- Image of location/map -->
-            <img src="/blogimages/map.jpg" class="blog-image blog-greyscale" style="width:100%;margin-top:48px">
-        </div>
+<!--             <img src="/blogimages/map.jpg" class="blog-image blog-greyscale" style="width:100%;margin-top:48px">
+ -->        </div>
     </div>
 
     <!-- Footer -->
