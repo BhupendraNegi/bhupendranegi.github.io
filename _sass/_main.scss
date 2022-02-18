@@ -1095,16 +1095,6 @@ a {
     font-size: 110%
 }
 
-.blog-card,
-.blog-card-2 {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
-}
-
-.blog-card-4,
-.blog-hover-shadow:hover {
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
-}
-
 .blog-spin {
     animation: blog-spin 2s infinite linear
 }
@@ -1957,7 +1947,7 @@ a {
 }
 
 .blog-container-top {
-    padding: 140px 10px 50px 10px;
+    padding: 140px 10px 10px 10px;
     @include mobile {
         padding: 220px 10px 50px 10px;
     }
