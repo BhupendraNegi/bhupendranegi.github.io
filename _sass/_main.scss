@@ -1452,7 +1452,6 @@ a {
 }
 
 .blog-right {
-    margin: 20px 50px 0 0;
     float: right!important
 }
 
@@ -1955,4 +1954,11 @@ a {
 .blog-border-pale-blue,
 .blog-hover-border-pale-blue:hover {
     border-color: #e7ffff!important
+}
+
+.blog-container-top {
+    padding: 140px 10px 50px 10px;
+    @include mobile {
+        padding: 220px 10px 50px 10px;
+    }
 }
