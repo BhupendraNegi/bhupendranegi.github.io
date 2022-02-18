@@ -1,26 +1,4 @@
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Raleway", sans-serif
-}
-
-body,
-html {
-  height: 100%;
-  line-height: 1.8;
-}
 /* Full height image header */
-
-.homecover {
-  background-position: center;
-  background-size: cover;
-  background-image: linear-gradient(black, white);
-  min-height: 100%;
-}
 
 .blog-bar .blog-button {
   padding: 16px;
@@ -50,7 +28,6 @@ html {
 .blog-name {
   margin: 10px 0 0 0;
   cursor: pointer;
-  font-family: $helveticaNeue;
   font-weight: 600;
   font-size: 28px;
   letter-spacing: 1px;

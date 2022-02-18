@@ -8,21 +8,20 @@
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
   <div class="blog-top">
-    <div class="blog-bar blog-white blog-card" id="myNavbar">
+    <div class="blog-bar blog-black blog-card" id="myNavbar">
       <a href="{{ site.baseurl }}/"><img class="blog-icon" src="{{ site.baseurl }}/images/bhupendra.png" /></a>
       <div class="blog-info">
-        <h1 class="blog-name"><a href="{{ site.baseurl }}/" >{{ site.name }}</a></h1>
-        <p class="blog-description">{{ site.description }}</p>
+        <h1 class="blog-name text-white"><a class="text-white" href="{{ site.baseurl }}/" >{{ site.name }}</a></h1>
+        <p class="blog-description mt-1">{{ site.description }}</p>
       </div>
       <div class="blog-right blog-hide-small">
-        <a href="#about" class="blog-bar-item blog-button">ABOUT</a>
-        <a href="#team" class="blog-bar-item blog-button"><i class="fa fa-user"></i> TEAM</a>
-        <a href="#work" class="blog-bar-item blog-button"><i class="fa fa-th"></i> WORK</a>
-        <a href="#pricing" class="blog-bar-item blog-button"><i class="fa fa-usd"></i> PRICING</a>
-        <a href="#contact" class="blog-bar-item blog-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="#about" class="blog-bar-item blog-button"><i class="fa fa-user-circle"></i> ABOUT </a>
+        <a href="#work" class="blog-bar-item blog-button"><i class="fa fa-th"></i> BLOG </a>
+        <a href="#contact" class="blog-bar-item blog-button"><i class="fa fa-envelope"></i> CONTACT </a>
       </div>
       <a href="javascript:void(0)" class="blog-bar-item blog-button blog-right blog-hide-large blog-hide-medium" onclick="blog_open()">
         <i class="fa fa-bars"></i>
@@ -33,9 +32,7 @@
   <nav class="blog-sidebar blog-bar-block blog-black blog-card blog-animate-left blog-hide-medium blog-hide-large" style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="blog_close()" class="blog-bar-item blog-button blog-large blog-padding-16">Close ×</a>
     <a href="#about" onclick="blog_close()" class="blog-bar-item blog-button">ABOUT</a>
-    <a href="#team" onclick="blog_close()" class="blog-bar-item blog-button">TEAM</a>
-    <a href="#work" onclick="blog_close()" class="blog-bar-item blog-button">WORK</a>
-    <a href="#pricing" onclick="blog_close()" class="blog-bar-item blog-button">PRICING</a>
+    <a href="#work" onclick="blog_close()" class="blog-bar-item blog-button">BLOG</a>
     <a href="#contact" onclick="blog_close()" class="blog-bar-item blog-button">CONTACT</a>
   </nav>
 
@@ -44,9 +41,17 @@
   </div>
 
   <!-- Footer -->
-  <footer class="blog-center blog-black blog-padding-64">
-    <a href="#home" class="blog-button blog-light-grey"><i class="fa fa-arrow-up blog-margin-right"></i>To the top</a>
-    <div class="blog-xlarge blog-section">
+  <footer class="blog-black blog-padding-64">
+    <div class="blog-container" id="contact">
+      <h3 class="blog-center">CONTACT</h3>
+      <p class="blog-center blog-large">Lets get in touch. Send us a message:</p>
+      <div style="margin-top:48px">
+        <p><i class="fa fa-map-marker fa-fw blog-xxlarge blog-margin-right"></i> Chicago, US</p>
+        <p><i class="fa fa-phone fa-fw blog-xxlarge blog-margin-right"></i> Phone: +00 151515</p>
+        <p><i class="fa fa-envelope fa-fw blog-xxlarge blog-margin-right"> </i> Email: mail@mail.com</p>
+      </div>
+    </div>
+    <div class="blog-xlarge blog-center blog-section">
       <i class="fa fa-facebook-official blog-hover-opacity"></i>
       <i class="fa fa-instagram blog-hover-opacity"></i>
       <i class="fa fa-snapchat blog-hover-opacity"></i>
@@ -55,7 +60,7 @@
       <i class="fa fa-linkedin blog-hover-opacity"></i>
     </div>
   </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script>
     const mySidebar = document.getElementById("mySidebar");
     function blog_open() {

@@ -6,24 +6,21 @@
 /**************/
 
 // Colors
-$blue: #4183C4;
-$baseRed: #c8102E;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
-// Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
-$white: #fff;
-$offWhite: #eee;
-$shadowGray: #999;
-$slateGray: #708090;
-
-// Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia: Georgia, serif;
+body,
+html {
+  height: 100%;
+  line-height: 1.8;
+}
 
 @mixin mobile {
   @media screen and (max-width: 640px) {
