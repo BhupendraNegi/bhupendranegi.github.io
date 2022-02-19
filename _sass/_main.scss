@@ -1283,23 +1283,38 @@ a {
 }
 
 .blog-large {
-    font-size: 18px!important
+    font-size: 18px!important;
+    @include mobile {
+        font-size: 12px!important;
+    }
 }
 
 .blog-xlarge {
-    font-size: 24px!important
+    font-size: 24px!important;
+    @include mobile {
+        font-size: 18px!important;
+    }
 }
 
 .blog-xxlarge {
-    font-size: 36px!important
+    font-size: 36px!important;
+    @include mobile {
+        font-size: 24px!important;
+    }
 }
 
 .blog-xxxlarge {
-    font-size: 48px!important
+    font-size: 48px!important;
+    @include mobile {
+        font-size: 30px!important;
+    }
 }
 
 .blog-jumbo {
-    font-size: 64px!important
+    font-size: 64px!important;
+    @include mobile {
+        font-size: 48px!important;
+    }
 }
 
 .blog-left-align {
