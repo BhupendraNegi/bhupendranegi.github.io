@@ -32,7 +32,7 @@ google_analytics: G-4X8NFH01NY
 permalink: /:title/
 
 # Build settings
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
 sass:
