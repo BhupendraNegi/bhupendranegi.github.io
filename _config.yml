@@ -32,7 +32,7 @@ google_analytics: G-4X8NFH01NY
 permalink: /:title/
 
 # Build settings
-# theme: minima
+theme: minima
 plugins:
   - jekyll-feed
 sass:
@@ -46,6 +46,8 @@ sass:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
+gems:
+  - jekyll-feed
 exclude:
   - .sass-cache/
   - .jekyll-cache/
