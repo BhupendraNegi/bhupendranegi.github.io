@@ -34,16 +34,24 @@
   box-sizing: border-box; }
 
 .about__bkgrnd {
-  background-image: url("../images/about_me.jpg"); }
+  background-image: url("../images/about_me.png");
+  filter: contrast(250%);
+}
 
 .projects__bkgrnd {
-  background-image: url("../images/projects.jpg"); }
+  background-image: url("../images/project.png");
+  filter: contrast(300%);
+}
 
 .algorithms__bkgrnd {
-  background-image: url("../images/resume.jpg"); }
+  background-image: url("../images/resume.png");
+  filter: contrast(150%);
+}
 
 .contact__bkgrnd {
-  background-image: url("../images/contact.jpg"); }
+  background-image: url("../images/contact.png");
+  filter: contrast(100%);
+}
 
 .glitch__img:nth-child(n + 2) {
   opacity: 0; }
@@ -290,20 +298,21 @@
     box-sizing: border-box;
     padding: 0px; }
   #homepage .home_heading {
-    font-family: "Josefin Slab", serif;
-    font-size: 4rem; }
+    font-family: fantasy, serif;
+    font-size: 3.5rem;
+  }
   #homepage .row {
     margin: 0;
     z-index: 10; }
   #homepage .about {
-    background-image: url("/assets/images/about_me.jpg");
+    background-image: url("/assets/images/about_me.png");
     background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
     transition: box-shadow 0.5s linear; }
   #homepage .projects {
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
     transition: box-shadow 0.5s linear;
-    background-image: url("/assets/images/projects.jpg");
+    background-image: url("/assets/images/project.png");
     background-size: cover; }
   #homepage .projects:hover {
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6); }
@@ -314,13 +323,13 @@
   #homepage .algorithms {
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
     transition: box-shadow 0.5s linear;
-    background-image: url("/assets/images/resume.jpg");
+    background-image: url("/assets/images/resume.png");
     background-size: cover; }
   #homepage .algorithms:hover {
     background-color: #443c72;
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6); }
   #homepage .contact {
-    background-image: url("/assets/images/contact.jpg");
+    background-image: url("/assets/images/contact.png");
     box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
     transition: box-shadow 0.5s linear;
     background-size: cover; }
@@ -332,7 +341,9 @@
     font-size: 1.3rem;
     letter-spacing: +2px;
     font-family: "Raleway", sans-serif;
-    font-weight: 100; }
+    font-style: italic;
+    font-weight: 200;
+  }
   #homepage li {
     display: inline-block; }
   @media all and (max-height: 600px) {
