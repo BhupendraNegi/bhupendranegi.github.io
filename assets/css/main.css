@@ -35,7 +35,7 @@
 
 .about__bkgrnd {
   background-image: url("../images/about_me.png");
-  filter: contrast(250%);
+  filter: contrast(200%);
 }
 
 .projects__bkgrnd {
@@ -45,12 +45,12 @@
 
 .algorithms__bkgrnd {
   background-image: url("../images/resume.png");
-  filter: contrast(150%);
+  filter: contrast(100%);
 }
 
 .contact__bkgrnd {
   background-image: url("../images/contact.png");
-  filter: contrast(100%);
+  filter: contrast(120%);
 }
 
 .glitch__img:nth-child(n + 2) {
