@@ -553,7 +553,7 @@ i {
   margin-top: 50px; }
 
 body {
-  background-color: #fcf5c7;
+  background-color: #fff;
   min-height: 100%;
   min-width: 300px; }
 
@@ -670,7 +670,7 @@ nav ul li {
   transition: color 0.5s linear; }
 
 .footer_description_link:hover {
-  color: #fcf5c7; }
+  color: #fff; }
 
 .footer_link_text {
   font-family: "Raleway", sans-serif;
@@ -687,7 +687,7 @@ nav ul li {
 
 #email_modal {
   background-color: #292929;
-  color: #fcf5c7; }
+  color: #fff; }
 
 .project_list .modal,
 .project_list .modal-footer {
@@ -696,7 +696,7 @@ nav ul li {
   padding: 1%;
   padding-top: 20px; }
 .project_list .modal {
-  color: #fcf5c7; }
+  color: #fff; }
 .project_list .buttons .button_wrapper {
   box-sizing: border-box;
   display: inline-block;
@@ -772,8 +772,8 @@ button {
   -webkit-transition: 0.2s ease-in; }
 
 .buttons button {
-  color: #fcf5c7;
-  border: 1px #fcf5c7 solid !important; }
+  color: #fff;
+  border: 1px #fff solid !important; }
 
 button:focus {
   background-color: transparent; }
@@ -797,13 +797,13 @@ button.fill:before {
   color: #292929; }
 
 .buttons button.fill:before {
-  background: #fcf5c7; }
+  background: #fff; }
 
 button.fill:hover:before {
   top: -5px; }
 
 .description {
-  color: #fcf5c7;
+  color: #fff;
   letter-spacing: +1px;
   font-family: "Raleway", sans-serif;
   font-weight: 200;
@@ -818,7 +818,7 @@ button.fill:hover:before {
 
 .skills {
   margin-bottom: 40px;
-  color: #fcf5c7; }
+  color: #fff; }
 
 .project {
   width: 90%;
@@ -828,7 +828,7 @@ button.fill:hover:before {
   box-shadow: 0 0 1000px 10px black inset; }
 
 .skill_icon {
-  color: #fcf5c7;
+  color: #fff;
   font-size: 1.5rem; }
 
 .about_skill_icon {
@@ -844,7 +844,7 @@ button.fill:hover:before {
   height: 0px;
   width: 0px;
   position: absolute;
-  background-color: #fcf5c7; }
+  background-color: #fff; }
 
 .about-border {
   bottom: 0px;
