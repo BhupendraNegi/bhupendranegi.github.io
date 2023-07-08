@@ -35,8 +35,10 @@ permalink: /:title/
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-pdf-embed
 sass:
   style: :expanded # You might prefer to minify using :compressed
+  
 
 # Exclude from processing.
 # The following items will not be processed, by default.
