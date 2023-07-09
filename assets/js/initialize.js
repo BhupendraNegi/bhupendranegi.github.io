@@ -15,13 +15,14 @@ function initializeScripts(){
 
   $('.email_me').submit(function(e){
     e.preventDefault();
-    debugger
+    console.log("helo")
     $.ajax({
         url: $(e.target).attr('action'),
         method: "POST",
         data: $('.email_me').serialize(),
         dataType: "json"
     }).done(function(res) {
+      console.log(res);
       $('.email_input').val('');
       $('.email_input').removeClass('valid');
       $('#email_modal').modal('open');
@@ -52,9 +53,9 @@ function initializeScripts(){
   })
 
   $('#email_modal').modal({
-    opacity: .8, // Opacity of modal background
-    inDuration: 200, // Transition in duration
-    outDuration: 200, // Transition out duration
+    opacity: 1, // Opacity of modal background
+    inDuration: 500, // Transition in duration
+    outDuration: 500, // Transition out duration
     startingTop: '30%', // Starting top style attribute
     endingTop: '35%',
   })
