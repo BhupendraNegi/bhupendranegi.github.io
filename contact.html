@@ -7,27 +7,34 @@ author: Katie Hopkinst
 {% include quote.html quote=page.quote author=page.author %}
 
 <div class="container">
-  <form class="email_me" action="https://formspree.io/{{site.email}}" method="POST">
+  <form class="email_me" action="https://formsubmit.co/{{site.email}}" method="POST">
     <input type="text" name="_gotcha" style="display:none" />
     <div class="row">
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">account_circle</i>
-        <input id="icon_prefix" type="text" name="name" class="validate email_input">
+        <input id="icon_prefix" type="text" name="name" 
+          class="validate email_input" required
+          oninvalid="this.setCustomValidity('Please Enter Full Name')"
+        >
         <label for="icon_prefix">Full Name</label>
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">phone</i>
-        <input id="icon_telephone" name="phone" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" class="validate email_input">
-        <label for="icon_telephone" data-error="Make sure your number matches this format XXX-XXX-XXXX">Telephone</label>
+        <input id="icon_telephone" name="phone" type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="validate email_input"
+          required data-errormessage-value-missing="Please input something"
+        >
+        <label for="icon_telephone" data-error="Make sure you've entered a valid phone number">Phone Number</label>
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">email</i>
-        <input id="icon_prefix" name="_replyto" type="email" class="validate email_input">
+        <input id="icon_prefix" name="_replyto" type="email" class="validate email_input"
+          required oninvalid="this.setCustomValidity('Please Enter Email')"
+        >
         <label for="icon_prefix" data-error="Make sure you've entered a valid email">Email</label>
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">S</i>
-        <input id="icon_prefix" type="text" name="_subject" class="email_input"/>
+        <input id="icon_prefix" type="text" name="_subject" class="email_input" required oninvalid="this.setCustomValidity('Please Enter Subject')"/>
         <label for="icon_prefix">Subject</label>
       </div>
     </div>
@@ -35,7 +42,10 @@ author: Katie Hopkinst
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">mode_edit</i>
-        <textarea id="textarea1" aria-required="true" name="message" class="materialize-textarea email_input validate"></textarea>
+        <textarea id="textarea1" aria-required="true" name="message" 
+        class="materialize-textarea email_input validate" required oninvalid="this.setCustomValidity('Please Enter Message')">
+
+        </textarea>
 
         <label for="textarea1" data-error="Make sure you've entered a message">Message</label>
       </div>
