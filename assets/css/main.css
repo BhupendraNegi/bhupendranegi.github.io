@@ -357,7 +357,8 @@
 
 .brand-logo {
   margin-left: 5px;
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 .barba-old-container {
   position: absolute;
@@ -603,11 +604,11 @@ nav ul li {
   position: relative; }
 
 .quote_box {
-  padding: 0 5% 0 5%;
+  padding: 0 0 0 3%;
   margin-bottom: 50px; }
 
 .quote {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 300;
   text-indent: 15%;
   margin-bottom: 0;
@@ -869,9 +870,9 @@ button.fill:hover:before {
   filter: sepia(0.3); }
 
 .about_paragraph {
-  font-size: 1.8em;
+  font-size: 1.6em;
   letter-spacing: +0.5px;
-  font-weight: 200; }
+  font-weight: 250; }
 
 /* label color */
 .input-field label {

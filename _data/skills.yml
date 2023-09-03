@@ -1,4 +1,33 @@
-- name: web
+- name: Languages
+  skills:
+    - class: ruby-plain
+      skill_name: Ruby
+    - class: javascript-plain
+      skill_name: JavaScript
+    - class: python-plain
+      skill_name: Python
+    - class: java-plain
+      skill_name: Java
+
+- name: Backend Frameworks
+  skills:
+    - class: rails-plain
+      skill_name: Ruby-on-Rails
+    - class: nodejs-plain
+      skill_name: NodeJS
+    - class: django-plain
+      skill_name: Django
+
+- name: Frontend Frameworks
+  skills:
+    - class: react-plain
+      skill_name: React
+    - class: angularjs-plain
+      skill_name: Angular
+    - class: jekyll-plain
+      skill_name: Jekyll
+
+- name: Web
   skills:
     - class: html5-plain
       skill_name: HTML5
@@ -11,67 +40,44 @@
     - class: jquery-plain
       skill_name: jQuery
 
-- name: languages
-  skills:
-    - class: javascript-plain
-      skill_name: JavaScript
-    - class: python-plain
-      skill_name: Python
-    - class: ruby-plain
-      skill_name: Ruby
 
-- name: databases
+
+- name: Databases
   skills:
+    - class: mysql-plain
+      skill_name: MySQL
     - class: postgresql-plain
       skill_name: Postgresql
     - class: mongodb-plain
       skill_name: MongoDB
-    - class: mysql-plain
-      skill_name: MySQL
+    - class: oracle-original
+      skill_name: Oracle
+      
 
-- name: frontend frameworks
+- name: Devops
   skills:
-    - class: react-plain
-      skill_name: React
-    - class: angularjs-plain
-      skill_name: Angular
-    - class: vuejs-plain
-      skill_name: Vue
-    - class: jekyll-plain
-      skill_name: Jekyll
-
-- name: backend frameworks
-  skills:
-    - class: rails-plain
-      skill_name: Ruby-on-Rails
-    - class: express-original
-      skill_name: Express
-    - class: nodejs-plain
-      skill_name: NodeJS
-    - class: django-plain
-      skill_name: Django
-
-- name: devops
-  skills:
-    - class: git-plain
-      skill_name: Git
     - class: github-plain
       skill_name: GitHub
     - class: heroku-original
       skill_name: Heroku
     - class: docker-plain
       skill_name: Docker
+    - class: terraform-plain
+      skill_name: Terraform
+    - class: amazonwebservices-plain
+      skill_name: Amazon Web Services
+      
 
-- name: testing
+- name: Testing
   skills:
-    - class: mocha-plain
-      skill_name: Mocha
-    - class: jasmine-plain
-      skill_name: Jasmine
+    - class: cucumber-plain
+      skill_name: Cucumber
+    - class: selenium-plain
+      skill_name: Selenium
     - class: rspec-plain
       skill_name: RSpec
 
-- name: mobile
+- name: Mobile
   skills:
-    - class: react-original
-      skill_name: React Native
+    - class: androidstudio-plain
+      skill_name: Android Studio
