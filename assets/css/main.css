@@ -357,7 +357,20 @@
 
 .brand-logo {
   margin-left: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.brand-logo-mobile {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.side-bar {
+  margin-top: 20px;
+}
+
+.side-nav {
+  background-color: white;
 }
 
 .barba-old-container {
@@ -437,7 +450,8 @@
   margin: 0 10px 0 10px; }
 
 nav {
-  margin-bottom: 2%; }
+  margin-bottom: 2%; 
+}
 
 .about-me .bio {
   color: white;
@@ -558,13 +572,15 @@ body {
   min-height: 100%;
   min-width: 300px; }
 
-nav {
-  margin-top: 40px;
-  margin-bottom: 100px; }
+.my_navbar {
+  background-color: #292929;
+  padding: 15px 0 0 0;
+  min-height: 120px;
+}
 
 nav ul li a {
   font-weight: 600;
-  color: black; }
+  color: white; }
 
 .projects_container {
   padding: 20px 10px 0 10px;
@@ -583,7 +599,7 @@ nav ul li {
   margin: 0 25px 0 25px;
   width: 0%;
   height: 3px;
-  background-color: black;
+  background-color: white;
   transition: width 0.3s; }
 
 .nav-underlined,
@@ -662,7 +678,10 @@ nav ul li {
   font-size: 35px; }
 
 .footer_icons {
-  font-size: 30px !important; }
+  font-size: 30px !important;
+  margin-right: 10px;
+
+}
 
 .footer_description_link {
   color: #eff2ef;
@@ -781,7 +800,7 @@ button:focus {
 
 button.fill:hover {
   background-color: transparent;
-  color: #f9f0ae; }
+  color: #fff; }
 
 button.fill:before {
   content: "";
