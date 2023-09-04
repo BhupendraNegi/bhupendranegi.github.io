@@ -557,12 +557,14 @@ i {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between; }
-.about_section .skill_group {
+.skill_group {
   width: 30%; }
 
 .my_footer {
   background-color: #292929;
-  margin-top: 40px; }
+  padding-top: 20px;
+  color: #fff;
+  padding-bottom: 10px; }
 
 .resume-wrapper button {
   margin-top: 50px; }
@@ -675,7 +677,7 @@ nav ul li {
 
 .footer_titles {
   font-family: "Josefin Slab", serif;
-  font-size: 35px; }
+  font-size: 2.3rem; }
 
 .footer_icons {
   font-size: 30px !important;
@@ -885,13 +887,16 @@ button.fill:hover:before {
 .about_img {
   margin-top: 15px;
   margin-right: 15px;
+  max-width: 30%;
   -webkit-filter: sepia(0.3);
-  filter: sepia(0.3); }
+  filter: sepia(0.3);
+}
 
 .about_paragraph {
   font-size: 1.6em;
   letter-spacing: +0.5px;
-  font-weight: 250; }
+  font-weight: 250;
+}
 
 /* label color */
 .input-field label {
@@ -948,7 +953,34 @@ nav a.button-collapse i {
 
   .description {
     font-size: 0.9rem; }
-
+  .about_img {
+    max-width: 40%;
+  }
+  .quote {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-indent: 15%;
+    margin-bottom: 0;
+  }
+  .about_paragraph{
+    font-size: 1.3rem;
+    font-weight: 280;
+  }
+  .author {
+    font-size: 1.5rem;
+  }
+  .heading {
+    font-size: 2rem;
+  }
+  .skill_names{
+    font-size: 1.2rem;
+  }
+  .footer_titles{
+    font-size: 2rem;
+  }
+  .skill_group {
+    width: 50%;
+  }
   .project_list .modal {
     margin-top: 2vh !important;
     min-height: 550px !important;
@@ -959,8 +991,5 @@ nav a.button-collapse i {
     letter-spacing: normal !important;
     font-size: 0.9rem !important;
     font-family: "Josefin Slab", serif !important; }
-
-  .about_section .skill_group {
-    width: 50%; } }
-
 /*# sourceMappingURL=main.css.map */
+  }
