@@ -936,6 +936,12 @@ nav .nav-wrapper i,
 nav a.button-collapse,
 nav a.button-collapse i {
   font-size: 3rem; }
+.carousel .indicators .indicator-item.active {
+    background-color: black;
+}
+.carousel .indicators .indicator-item {
+  background-color: grey;
+}
 
 @media only screen and (max-width: 993px) {
   .nav-underlined,
