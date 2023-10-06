@@ -6,71 +6,23 @@ author: Katie Hopkinst
 
 {% include quote.html quote=page.quote author=page.author %}
 
-<div class="container">
-  <form class="email_me" action="https://formsubmit.co/{{site.email}}" method="POST">
-    <input type="text" name="_gotcha" style="display:none" />
-    <div class="row">
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="icon_prefix" type="text" name="name" 
-          class="validate email_input" required
-          oninvalid="this.setCustomValidity('Please Enter Full Name')"
-        >
-        <label for="icon_prefix">Full Name</label>
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">phone</i>
-        <input id="icon_telephone" name="phone" type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="validate email_input"
-          required data-errormessage-value-missing="Please input something"
-        >
-        <label for="icon_telephone" data-error="Make sure you've entered a valid phone number">Phone Number</label>
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">email</i>
-        <input id="icon_prefix" name="_replyto" type="email" class="validate email_input"
-          required oninvalid="this.setCustomValidity('Please Enter Email')"
-        >
-        <label for="icon_prefix" data-error="Make sure you've entered a valid email">Email</label>
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">S</i>
-        <input id="icon_prefix" type="text" name="_subject" class="email_input" required oninvalid="this.setCustomValidity('Please Enter Subject')"/>
-        <label for="icon_prefix">Subject</label>
-      </div>
-    </div>
+<div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/27ea058cd24fe56d0f94c9f71034ee9d?embedded=1"></div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">mode_edit</i>
-        <textarea id="textarea1" aria-required="true" name="message" 
-        class="materialize-textarea email_input validate" required oninvalid="this.setCustomValidity('Please Enter Message')">
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<script type="text/javascript" src="https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js"></script>
 
-        </textarea>
+<!-- Get notified when the form is submitted, add your own code below: -->
+<script>
+const formkeepEmbed = document.querySelector('#formkeep-embed')
 
-        <label for="textarea1" data-error="Make sure you've entered a message">Message</label>
-      </div>
-    </div>
+formkeepEmbed.addEventListener('formkeep-embed:submitting', _event => {
+  console.log('Submitting form...')
+})
 
-    <div class="row">
-      <button class="fill col s8 offset-s2 m4 offset-m4" type="submit" name="action">Submit
-      </button>
-    </div>
-  </form>
-  <br/>
-  <div id="email_modal" class="modal">
-    <div class="container">
-      <div class="modal-content row">
-        <h4 class="center-align">Your email is on the way!</h4>
-        <p class="center-align description">I usually reply fast</p>
-      </div>
-      <div class="row">
-        <div class="buttons col s8 offset-s2 m8 offset-m2 l8 offset-l2">
-          <a class="button_wrapper modal-action modal-close" ><button class="fill col s12">back to site</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+formkeepEmbed.addEventListener('formkeep-embed:submitted', _event => {
+  console.log('Submitted form...')
+})
+</script>
 <br>
 <br>
 <br>
