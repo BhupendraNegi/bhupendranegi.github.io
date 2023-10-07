@@ -615,6 +615,17 @@ nav ul li {
   font-size: 2.3rem;
   font-family: "Josefin Slab", serif; }
 
+.heading-projects {
+  color: #292929;
+  font-weight: bold;
+  font-size: 2.3rem;
+  font-family: "Josefin Slab", serif;
+}
+
+.center {
+  text-align: center;
+}
+
 .homepage-section {
   display: block;
   height: 50vh;
@@ -833,11 +844,13 @@ button.fill:hover:before {
   font-size: 1.1rem; }
 
 .cover {
-  background-color: #f9f0ae;
+  background-color: #aee2f9;
   width: 40%;
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+  border: solid 1px #2E294E;
+}
 
 .skills {
   margin-bottom: 40px;
@@ -845,7 +858,7 @@ button.fill:hover:before {
 
 .project {
   width: 90%;
-  height: 400px;
+  height: 350px;
   margin: auto;
   margin-top: 40px;
   box-shadow: 0 0 1000px 10px black inset; }
