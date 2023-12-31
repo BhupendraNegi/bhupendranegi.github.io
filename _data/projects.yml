@@ -1,0 +1,81 @@
+- id: 1
+  title: Tic Tac Toe
+  url: https://bhupendranegi.github.io/tic-tac-toe/
+  github_url: https://github.com/BhupendraNegi/tic-tac-toe
+  description: A Basic Javascript Game made for learning
+  technologies: [
+                  html5-plain,
+                  css3-plain-wordmark,
+                  javascript-plain,
+                ]
+  cover: https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true
+  size: 47% 100%
+  images: [
+    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tick-tack2.png?raw=true',
+    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true'
+  ]
+
+- id: 2
+  title: Database Bank
+  url: 
+  github_url: https://github.com/BhupendraNegi/databasebank
+  description: A standard Data management application build in ROR, for keeping track of the Army Personal Details
+  technologies: [
+                  ruby-plain,
+                  rails-plain,
+                  html5-plain,
+                  css3-plain-wordmark,
+                  javascript-plain,
+                  postgresql-plain,
+                  materialize-plain
+                ]
+  cover: https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true
+  size: 56% 100%
+  images: [
+    'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true',
+    'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/index.png?raw=true',
+    'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/entry.png?raw=true'
+
+  ]
+- id: 3
+  title: Health Tracker
+  url: https://sweetyhealthapp.herokuapp.com/
+  github_url: https://github.com/BhupendraNegi/health-tracker
+  description: A small Rails application to track your daily sugar levels.
+  technologies: [
+                  ruby-plain,
+                  rails-plain,
+                  html5-plain,
+                  css3-plain-wordmark,
+                  javascript-plain,
+                  postgresql-plain,
+                  heroku-original,
+                  materialize-plain
+                ]
+  cover: https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true
+  size: 100% 110%
+  images: [
+    'https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true',
+    'https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/report.png?raw=true'
+  ]
+- id: 4
+  title: Tenor Play
+  url: https://www.amazon.com/Bhupendra-Negi-Tenor-Play/dp/B07GKXS3XS/
+  github_url: https://github.com/BhupendraNegi/Tenor-play
+  description: A Basic Music Player Application made for Android Users. User can create playlist, add songs to the favourites and shake the phone to change the music.
+  technologies: [
+                  java-plain,
+                  kotlin-plain,
+                  mysql-plain,
+                  androidstudio-plain,
+                  materialize-plain
+                ]
+  cover: https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/tenorplay.png?raw=true
+  size: 56% 100%
+  images: [
+    'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Splash_Screen.gif?raw=true',
+    'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Song_Playing.gif?raw=true',
+    'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-29-32-668_com.example.darkknight.tenorplay.png?raw=true',
+    'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-34-09-467_com.example.darkknight.tenorplay.png?raw=true',
+    'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-29-48-053_com.example.darkknight.tenorplay.png?raw=true'
+  ]
