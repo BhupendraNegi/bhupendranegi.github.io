@@ -40,6 +40,8 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-pdf-embed
+  - jekyll-sass-converter
+
 sass:
   style: :expanded # You might prefer to minify using :compressed
   
@@ -52,8 +54,6 @@ sass:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-gems:
-  - jekyll-feed
 exclude:
   - .sass-cache/
   - .jekyll-cache/

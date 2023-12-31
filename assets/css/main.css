@@ -550,7 +550,11 @@ i {
   font-size: 1.2em; }
 
 .back-link:hover {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
+.about_section {
+  padding-top: 2%;
+}
 
 .about_section .skills_wrapper {
   display: flex;
@@ -578,7 +582,7 @@ body {
 .my_navbar {
   background-color: #292929;
   padding: 15px 0 0 0;
-  min-height: 100px;
+  min-height: 90px;
 }
 
 nav ul li a {
@@ -612,7 +616,7 @@ nav ul li {
 .heading {
   color: #292929;
   font-weight: 200px;
-  font-size: 2.3rem;
+  font-size: 2.1rem;
   font-family: "Josefin Slab", serif; }
 
 .heading-projects {
@@ -638,25 +642,31 @@ nav ul li {
   margin-bottom: 50px; }
 
 .quote {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-weight: 300;
-  text-indent: 15%;
   margin-bottom: 0;
+  padding-inline: 10%;
+  font-style: italic;
   font-family: "Raleway", sans-serif; }
 
 .author {
   padding-right: 5%;
   margin-top: 0;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-family: "Josefin Slab", serif;
   font-style: italic; }
 
 .skills_heading {
-  margin-top: 60px;
-  font-size: 3rem; }
+  margin-top: 10%;
+  font-size: 3.5rem !important; 
+}
+
+.big_heading {
+  font-size: 3.8rem !important; 
+}
 
 .skill_names {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #292929;
   font-style: "Raleway", sans-serif;
   font-weight: 200;
@@ -844,7 +854,8 @@ button.fill:hover:before {
   font-size: 1.1rem; }
 
 .cover {
-  background-color: #dadada;
+  background-color: #fec84e;
+  background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
   width: 40%;
   height: 100%;
   margin: 0;
@@ -899,17 +910,16 @@ button.fill:hover:before {
   left: 0; }
 
 .about_img {
-  margin-top: 15px;
-  margin-right: 15px;
-  max-width: 30%;
+  margin-top: 1%;
+  max-width: 25%;
   -webkit-filter: sepia(0.3);
   filter: sepia(0.3);
 }
 
 .about_paragraph {
-  font-size: 1.6em;
+  font-size: 1.4em;
   letter-spacing: +0.5px;
-  font-weight: 250;
+  font-weight: 290;
 }
 
 /* label color */
@@ -974,23 +984,29 @@ nav a.button-collapse i {
   .description {
     font-size: 0.9rem; }
   .about_img {
+    margin-top: 13%;
     max-width: 40%;
   }
+  .skills_heading {
+    margin-top: 10%;
+    font-size: 2.5rem !important; 
+  }
+  .big_heading {
+    font-size: 2.5rem !important; 
+  }
   .quote {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    text-indent: 15%;
     margin-bottom: 0;
   }
-  .about_paragraph{
-    font-size: 1.3rem;
-    font-weight: 280;
-  }
   .author {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .heading {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  nav .button-collapse {
+    margin: 0;
   }
   .skill_names{
     font-size: 1.2rem;
