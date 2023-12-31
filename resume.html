@@ -1,0 +1,15 @@
+---
+layout: not_homepage
+quote: The challenge of life, I have found, is to build a resume that doesn't simply tell a story about what you want to be, but it's a story about who you want to be.
+author: Oprah Winfrey
+---
+
+{% include quote.html quote=page.quote author=page.author %}
+
+{% pdf "{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" no_link width=100% %}
+
+<div class="row resume-wrapper">
+  <a href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="click to open in pdf viewer" target="_blank">
+    <button class="fill col s8 offset-s2 m4 offset-m4">View as pdf</button>
+  </a>
+</div>

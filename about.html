@@ -1,0 +1,50 @@
+---
+layout: not_homepage
+quote: There is joy a in work. There is no happiness except in the realization that we can accomplish something.
+author: Henry Ford
+---
+
+{% include quote.html quote=page.quote author=page.author %}
+
+<div class="container about_section">
+  <div class="row">
+    <img src="/assets/images/bhupendra.jpg" class="col responsive circle about_img" alt="me" style="background-color:white;">
+    <div class="about_paragraph">
+      <p>
+        👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.
+        <p>
+          🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding, problem-solving.
+        </p>
+        <p> 
+          📚 Fast forward to my college days, I decided to dive headfirst into the world of computer science and technology. With each line of code I wrote, I uncovered the intricate logic behind crafting applications. During this journey, I also explored the world of Android app development, building applications that included useful tools like calculators and music players.
+        </p>
+        <p>
+          💻 As the digital landscape continued to expand, I found my true calling as a Ruby on Rails developer, and I've honed my skills in this domain over the past 4 years, creating web applications that make a difference.
+        </p>
+        <p>
+          🌐 Today, I am a seasoned Software Engineer with a specialization in Ruby on Rails and React. I've had the privilege of bringing web applications to life, leveraging my 4 years of expertise.
+        </p>
+      </p>
+      <p>
+        😎  If you're interested in exploring my projects or discussing my web development work, please feel free to browse the <a class="about_me_links" href="/projects">projects</a> section to check out what I've built, 
+        <a class="about_me_links" href="/contact">shoot me an email</a> or connect on 
+        <a class="about_me_links" href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank">linkedIn</a>.
+      </p>
+    </div>
+  </div>
+  <h3 class="heading skills_heading center-align">Skills:</h3>
+  <div class="skills_wrapper">
+      {% for tech_group in site.data.skills %}
+        <div class="skill_group">
+          <div class="col m4 s6">
+            <h4 class="heading">{{tech_group.name}}:</h4>
+            <div class="skills">
+              {% for tech in tech_group.skills %}
+              <i class="about_skill_icon devicon-{{tech.class}}"></i><span class="skill_names">{{tech.skill_name}}</span><br/>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>

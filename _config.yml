@@ -24,6 +24,10 @@ title: My personal blog
 name: Bhupendra Negi
 email: bhupendranegi92@gmail.com
 url: https://bhupendranegi.github.io/
+stackoverflow_link: https://stackoverflow.com/users/13003793/bhupendra-singh-negi
+github_link: https://github.com/BhupendraNegi
+github_project_link: https://github.com/BhupendraNegi/bhupendranegi.github.io
+linked_in_link: https://www.linkedin.com/in/bhupendra-negi-667171167
 
 description: Software Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -35,8 +39,10 @@ permalink: /:title/
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-pdf-embed
 sass:
   style: :expanded # You might prefer to minify using :compressed
+  
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -46,6 +52,8 @@ sass:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
+gems:
+  - jekyll-feed
 exclude:
   - .sass-cache/
   - .jekyll-cache/
