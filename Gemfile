@@ -10,7 +10,7 @@ source "https://rubygems.org"
 
 gem "jekyll"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.5"
+gem 'minima', '~> 2.5', '>= 2.5.1'
 gem "sass"
 gem "public_suffix"
 gem "addressable"
@@ -27,7 +27,7 @@ gem "faraday-retry"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed"
-  gem "jekyll-sass-converter"
+  gem "jekyll-sass-converter", "~> 2.0"
   gem "jekyll-pdf-embed"
 end
 
