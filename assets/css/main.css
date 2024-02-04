@@ -582,7 +582,7 @@ body {
 .my_navbar {
   background-color: #292929;
   padding: 15px 0 0 0;
-  min-height: 100px;
+  min-height: 90px;
 }
 
 nav ul li a {
