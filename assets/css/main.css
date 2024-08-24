@@ -39,12 +39,12 @@
 
 .about__bkgrnd {
   background-image: url("../images/about_me.png");
-  filter: contrast(200%);
+  filter: contrast(100%);
 }
 
 .projects__bkgrnd {
   background-image: url("../images/project.png");
-  filter: contrast(300%);
+  filter: contrast(100%);
 }
 
 .algorithms__bkgrnd {
@@ -54,7 +54,7 @@
 
 .contact__bkgrnd {
   background-image: url("../images/contact.png");
-  filter: contrast(120%);
+  filter: contrast(100%);
 }
 
 .glitch__img:nth-child(n + 2) {
@@ -448,8 +448,16 @@ body {
 }
 
 #homepage .home_heading {
-  font-family: fantasy, serif;
-  font-size: 3.5rem;
+  font-size: 5rem;
+  font-family: "Josefin Slab", serif;
+}
+
+#homepage .words {
+  font-size: 1.3rem;
+  letter-spacing: +2px;
+  font-family: "Raleway", sans-serif;
+  color: white;
+  font-weight: 300;
 }
 
 #homepage .row {
@@ -508,14 +516,6 @@ body {
 
 #homepage .profile_picture {
   border-radius: 35%;
-}
-
-#homepage .words {
-  font-size: 1.3rem;
-  letter-spacing: +2px;
-  font-family: "Raleway", sans-serif;
-  font-style: italic;
-  font-weight: 200;
 }
 
 #homepage li {
