@@ -890,9 +890,9 @@ nav ul li {
 }
 
 .heading-projects {
-  color: #292929;
+  color: white;
   font-weight: bold;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-family: "Josefin Slab", serif;
 }
 
@@ -1178,8 +1178,7 @@ button.fill:hover:before {
 }
 
 .cover {
-  background-color: #fec84e;
-  background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
   width: 40%;
   height: 100%;
   margin: 0;
