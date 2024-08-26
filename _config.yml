@@ -43,7 +43,7 @@ plugins:
   - jekyll-sass-converter
 
 sass:
-  style: :expanded # You might prefer to minify using :compressed
+  style: :expanded
   
 
 # Exclude from processing.
