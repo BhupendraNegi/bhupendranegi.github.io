@@ -817,6 +817,7 @@ i {
 }
 
 .about_section {
+  margin-top: 5%;
   padding-top: 2%;
 }
 
@@ -1244,7 +1245,7 @@ button.fill:hover:before {
 
 .about_img {
   margin-top: 1%;
-  max-width: 25%;
+  max-width: 20%;
   -webkit-filter: sepia(0.3);
   filter: sepia(0.3);
 }
@@ -1337,8 +1338,14 @@ nav a.button-collapse i {
   }
 
   .about_img {
-    margin-top: 13%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     max-width: 40%;
+  }
+
+  .about_section {
+    margin: 3%;
+    padding: 3%;
   }
 
   .skills_heading {
