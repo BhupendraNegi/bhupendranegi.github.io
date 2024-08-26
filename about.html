@@ -28,12 +28,37 @@ author: Henry Ford
         </p>
       </p>
       <p>
-        😎  If you're interested in exploring my projects or discussing my web development work, please feel free to browse the <a class="about_me_links" href="/projects"><b> projects </b></a> to check out what I've built, 
-        <a class="about_me_links" href="/contact"><b>shoot me an email</b></a> or connect on 
-        <a class="about_me_links" href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank"><b>linkedIn</b></a>.
+        😎  If you're interested in exploring my projects or discussing my web development work, please feel free to:
+        
+        <div class="row">
+          <div class="col m6 offset-m3 s12">
+            <div class="row">
+              <div class="col s4">
+                <a href="/projects"><button type="button" class="fill col s12" name="button"> <i class="fa fa-folder-open" aria-hidden="true"></i> Visit My Projects</button></a>
+              </div>
+              <div class="col s4">
+                <a href="/contact"><button type="button" class="fill col s12" name="button"> <i class="fa fa-envelope"></i> Email Me </button></a>
+              </div>
+              <div class="col s4">
+                <a href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank"> <button type="button" class="fill col s12" name="button"> <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  Connect</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </p>
     </div>
   </div>
+
+  <div class="row resume-wrapper">
+    <a href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="click to open in pdf viewer" target="_blank">
+      <button class="fill col s8 offset-s2 m4 offset-m4">
+        View My Resume
+        <i class="fa fa-file" aria-hidden="true"></i>
+        </button>
+    </a>
+  </div>
+
   <h3 class="heading skills_heading center-align">Skills</h3>
   <div class="skills_wrapper">
       {% for tech_group in site.data.skills %}
