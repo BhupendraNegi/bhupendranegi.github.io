@@ -1,0 +1,15 @@
+{% assign joining_date = "2019-08-05" %}
+{% assign joining_year = joining_date | slice: 0, 4 | plus: 0 %}
+{% assign joining_month = joining_date | slice: 5, 2 | plus: 0 %}
+{% assign joining_day = joining_date | slice: 8, 2 | plus: 0 %}
+
+{% assign current_date = "2024-08-26" %}
+{% assign current_year = current_date | slice: 0, 4 | plus: 0 %} 
+{% assign current_month = current_date | slice: 5, 2 | plus: 0 %}
+{% assign current_day = current_date | slice: 8, 2 | plus: 0 %}
+
+{% assign years = current_year | minus: joining_year %}
+
+{% if current_month < joining_month or (current_month == joining_month and current_day < joining_day) %}
+  {% assign years = years | minus: 1 %}
+{% endif %}

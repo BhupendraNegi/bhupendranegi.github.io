@@ -885,16 +885,15 @@ nav ul li {
 
 .heading {
   color: #292929;
-  font-weight: 200px;
-  font-size: 2.1rem;
-  font-family: "Josefin Slab", serif;
+  font-size: 2rem;
+  margin-bottom: 5%;
+  font-family: "Raleway", sans-serif;
 }
 
 .heading-projects {
   color: white;
-  font-weight: bold;
   font-size: 2.5rem;
-  font-family: "Josefin Slab", serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .center {
@@ -916,7 +915,7 @@ nav ul li {
 
 .quote {
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 200;
   margin-bottom: 0;
   padding-inline: 10%;
   font-style: italic;
@@ -1253,7 +1252,7 @@ button.fill:hover:before {
 .about_paragraph {
   font-size: 1.4em;
   letter-spacing: +0.5px;
-  font-weight: 290;
+  font-weight: 300;
 }
 
 /* label color */
@@ -1359,7 +1358,7 @@ nav a.button-collapse i {
 
   .quote {
     font-size: 1.4rem;
-    font-weight: 300;
+    font-weight: 200;
     margin-bottom: 0;
   }
 
