@@ -1,0 +1,16 @@
+---
+layout: default
+comments: true
+---
+
+<article class="post">
+  <h2>{{ page.title }}</h2>
+  <div class="date">
+    {{ page.date | date: "%B %e, %Y" }}
+  </div>
+  <div class="entry">
+    {{ content }}
+    <p class="post-footer">Thanks for reading!! Do let me know if you have any comments and feedback.</p>
+  </div>
+  {% include disqus.html %}
+</article>
