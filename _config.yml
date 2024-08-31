@@ -39,6 +39,10 @@ google_analytics: G-4X8NFH01NY
 permalink: /:title/
 
 # Build settings
+
+markdown: kramdown
+highlighter: rouge
+
 theme: minima
 plugins:
   - jekyll-feed
