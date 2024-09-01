@@ -17,8 +17,7 @@ layout: site_layout
           {{ post.excerpt | strip_html | strip_newlines | truncatewords: 60 }}
         </p>
       </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more" onclick="window.location.href=this.href; return false;">Read More</a>
     </article>
   {% endfor %}
 </div>

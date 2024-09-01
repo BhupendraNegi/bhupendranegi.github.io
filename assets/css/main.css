@@ -1,4 +1,3 @@
-
 /* Glich Section Start */
 
 #homepage {
@@ -1179,7 +1178,7 @@ button.fill:hover:before {
 }
 
 .cover {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
   width: 40%;
   height: 100%;
   margin: 0;
@@ -1411,9 +1410,11 @@ nav a.button-collapse i {
   max-width: 60vw;
   margin: auto;
   font-family: "Raleway", sans-serif;
+
   .post {
     padding-bottom: 2em;
     border-bottom: 1px solid;
+
     .entry {
       margin-bottom: 0;
       border: 0;
@@ -1432,17 +1433,23 @@ nav a.button-collapse i {
   margin: auto;
   font-family: "Raleway", sans-serif;
   font-size: 1.1rem;
-  line-height: 1.8rem;
-  
-  h3 {
+  line-height: 1.7rem;
+
+  h1, h2, h3, h4 {
     font-family: 'Julius Sans One', sans-serif;
-    
     color: #039be5;
   }
 
   h5 {
     margin-top: 3rem;
+    color: #676262;
+    font-weight: bold;
   }
+
+  p {
+    font-size: 1.1rem;
+  }
+
   blockquote {
     margin: 1.8em .8em;
     border-left: 2px solid;
@@ -1469,7 +1476,5 @@ nav a.button-collapse i {
 .date {
   color: grey;
 }
-
-
 
 /* Post Section End */
