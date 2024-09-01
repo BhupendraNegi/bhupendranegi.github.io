@@ -1,3 +1,4 @@
+
 /* Glich Section Start */
 
 #homepage {
@@ -1409,6 +1410,7 @@ nav a.button-collapse i {
 .posts {
   max-width: 60vw;
   margin: auto;
+  font-family: "Raleway", sans-serif;
   .post {
     padding-bottom: 2em;
     border-bottom: 1px solid;
@@ -1428,11 +1430,23 @@ nav a.button-collapse i {
 .post {
   max-width: 60vw;
   margin: auto;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  
+  h3 {
+    font-family: 'Julius Sans One', sans-serif;
+    
+    color: #039be5;
+  }
+
+  h5 {
+    margin-top: 3rem;
+  }
   blockquote {
     margin: 1.8em .8em;
     border-left: 2px solid;
     padding: 0.1em 1em;
-    /* color: $gray; */
     font-size: 22px;
     font-style: italic;
   }
@@ -1448,22 +1462,13 @@ nav a.button-collapse i {
 
   .entry {
     margin-bottom: 4rem;
-    border-bottom: 2px solid;
   }
 
 }
 
-/* pre {
-  background: #2e2e2e;
-  color: #ccc;
-  padding: 1em;
-  border-radius: 5px;
-  overflow-x: auto;
+.date {
+  color: grey;
 }
-
-code {
-  color: #f8f8f2;
-} */
 
 
 

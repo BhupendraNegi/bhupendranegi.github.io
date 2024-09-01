@@ -1,7 +1,5 @@
 ---
 layout: site_layout
-quote: The challenge of life, I have found, is to build a resume that doesn't simply tell a story about what you want to be, but it's a story about who you want to be.
-author: Oprah Winfrey
 ---
 
 {% include quote.html quote=page.quote author=page.author %}
@@ -10,7 +8,7 @@ author: Oprah Winfrey
   {% for post in site.posts %}
     <article class="post">
 
-      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
       <div class="date">
         {{ post.date | date: "%B %e, %Y" }}
       </div>
