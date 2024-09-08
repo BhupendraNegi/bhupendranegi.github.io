@@ -891,8 +891,10 @@ nav ul li {
 }
 
 .heading-projects {
-  color: white;
+  color: rgb(13, 1, 1);
+  margin-bottom: 10%;
   font-size: 2.5rem;
+  font-weight: 200;
   font-family: "Raleway", sans-serif;
 }
 
@@ -1170,15 +1172,19 @@ button.fill:hover:before {
 }
 
 .description {
-  color: #fff;
+  color: #c0b7b7;
   letter-spacing: +1px;
   font-family: "Raleway", sans-serif;
-  font-weight: 200;
+  ≈
   font-size: 1.1rem;
 }
 
 .cover {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+background: linear-gradient(to bottom, 
+  rgb(45, 45, 39) 5%,  /* Black at the top */
+  rgb(249, 249, 249) 50%, /* White in the middle */
+  rgba(45, 45, 39) 100% /* Black at the bottom */
+);
   width: 40%;
   height: 100%;
   margin: 0;
@@ -1303,10 +1309,14 @@ nav a.button-collapse i {
 
 .carousel .indicators .indicator-item.active {
   background-color: black;
+  width: 15px;
+  height: 15px;
 }
 
 .carousel .indicators .indicator-item {
   background-color: grey;
+  width: 15px;
+  height: 15px;
 }
 
 /*  Pages End */
