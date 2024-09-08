@@ -1,22 +1,5 @@
 - id: 1
-  title: Tic Tac Toe
-  url: https://bhupendranegi.github.io/tic-tac-toe/
-  github_url: https://github.com/BhupendraNegi/tic-tac-toe
-  description: A Basic Javascript Game made for learning
-  technologies: [
-                  html5-plain,
-                  css3-plain-wordmark,
-                  javascript-plain,
-                ]
-  cover: https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true
-  size: 47% 100%
-  images: [
-    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tick-tack2.png?raw=true',
-    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true'
-  ]
-
-- id: 2
-  title: Database Bank
+  title: Data Management
   url: 
   github_url: https://github.com/BhupendraNegi/databasebank
   description: A standard Data management application build in ROR, for keeping track of the Army Personal Details
@@ -30,13 +13,31 @@
                   materialize-plain
                 ]
   cover: https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true
-  size: 56% 100%
+  size: 60% 100%
   images: [
     'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true',
     'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/index.png?raw=true',
     'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/entry.png?raw=true'
 
   ]
+
+- id: 2
+  title: Tic Tac Toe
+  url: https://bhupendranegi.github.io/tic-tac-toe/
+  github_url: https://github.com/BhupendraNegi/tic-tac-toe
+  description: A Basic Javascript Game made for learning
+  technologies: [
+                  html5-plain,
+                  css3-plain-wordmark,
+                  javascript-plain,
+                ]
+  cover: https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true
+  size: 56% 100% 
+  images: [
+    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tick-tack2.png?raw=true',
+    'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true'
+  ]
+
 - id: 3
   title: Health Tracker
   url: https://sweetyhealthapp.herokuapp.com/
