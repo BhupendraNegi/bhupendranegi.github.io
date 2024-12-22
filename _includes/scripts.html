@@ -14,7 +14,24 @@
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
+<!-- Highlight.js Initialization -->
+<script>
+  function reinitializeHighlighting() {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  }
 
+  // Reinitialize Highlight.js on content load or after DOM changes
+  document.addEventListener("DOMContentLoaded", reinitializeHighlighting);
 
+  // Optional: Reinitialize if dynamic content is loaded
+  document.addEventListener("transitionCompleted", reinitializeHighlighting);
+
+  // Ensure that transitionCompleted is fired after each new page load with Barba.js
+  Barba.Dispatcher.on('newPageReady', function() {
+    document.dispatchEvent(new Event('transitionCompleted'));
+  });
+
+</script>
