@@ -4,8 +4,6 @@ title: Getting Started With Jekyll
 ---
 
 -------
-##### Why Use Jekyll: A Beginner's Guide
-
 `Jekyll` is a static site generator that makes building simple websites fast and easy. Whether you're creating a blog, portfolio, or project site, Jekyll provides a flexible and efficient solution. Here's why you should consider Jekyll:
 
 ###### Why Choose Jekyll?

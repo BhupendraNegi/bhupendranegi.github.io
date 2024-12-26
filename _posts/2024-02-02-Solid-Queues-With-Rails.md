@@ -4,7 +4,6 @@ title: Solid Queue With Rails
 ---
 
 -------
-
 In a world where applications need to handle thousands of tasks efficiently, job queues are the unsung heroes. They help process background tasks, ensuring your application stays responsive while heavy lifting happens in the background. One such solution that stands out is Solid Queue.
 
 ##### Why Solid Queue is Fast
