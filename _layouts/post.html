@@ -2,19 +2,16 @@
 layout: site_layout
 comments: true
 ---
-<div class="row brand-logo">
-    <a href="{{ site.baseurl }}/blog">
-      <button class="fill col s2 offset-s2 m4 offset-m4">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        Back
-        </button>
-    </a>
-</div>
+
 
 <article class="post">
+  <div class="back-title-container">
+    <h3>{{ page.title }}</h3>
+    <a href="{{ '/blog/' | relative_url }}" class="back-button">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>  Back
+    </a>
+  </div>
 
-
-  <h3>{{ page.title }}</h3>
   <div class="date">
     {{ page.date | date: "%B %e, %Y" }}
   </div>
