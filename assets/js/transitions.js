@@ -20,31 +20,8 @@ var HideShowTransition = Barba.BaseTransition.extend({
 
     $(this.oldContainer).addClass("barba-old-container");
     var le =
-      $(".algorithms-border").position().left -
+      $(".blog-border").position().left -
       $(".about-border").position().left;
-
-    //fixes displaced borders due to glitch animation
-
-    // $(".algorithms-border").css({
-    //   right: le + 20 + "px",
-    //   top: "-11px"
-    // });
-
-    // $(".about-border").css({
-    //   right: "+20px"
-    // });
-
-    // $(".projects-border").css({
-    //   bottom: "+10px",
-    //   left: "-20px"
-    // });
-
-    // $(".contact-border").css({
-    //   top: "-10px",
-    //   left: "-20px"
-    // });
-
-    // endFix
 
     $(".my-borders").css({
       height: "1px",
@@ -74,7 +51,7 @@ var HideShowTransition = Barba.BaseTransition.extend({
     });
 
     var pro3 = new Promise((resolve, reject) => {
-      $(".algorithms-border").animate(
+      $(".blog-border").animate(
         {
           width: "100%"
         },
@@ -106,8 +83,8 @@ var HideShowTransition = Barba.BaseTransition.extend({
         contactHeight = $(".contact").height(),
         projectsWidth = $(".projects").width(),
         projectsHeight = $(".projects").height(),
-        algorithmsWidth = $(".algorithms").width(),
-        algorithmsHeight = $(".algorithms").height(),
+        blogWidth = $(".blog").width(),
+        blogHeight = $(".blog").height(),
         aboutWidth = $(".about").width(),
         aboutHeight = $(".about").height();
 
@@ -139,11 +116,11 @@ var HideShowTransition = Barba.BaseTransition.extend({
           400
         );
       $(this.oldContainer)
-        .find(".algorithms")
+        .find(".blog")
         .animate(
           {
-            left: "-=" + algorithmsWidth + "px",
-            top: "+=" + algorithmsHeight + "px"
+            left: "-=" + blogWidth + "px",
+            top: "+=" + blogHeight + "px"
           },
           400,
           function() {
@@ -157,7 +134,7 @@ var HideShowTransition = Barba.BaseTransition.extend({
               .find(".projects")
               .finish();
             $(this.oldContainer)
-              .find(".algorithms")
+              .find(".blog")
               .finish();
             $(this.oldContainer)
               .find(".contact")
@@ -188,21 +165,21 @@ var FadeTransition = Barba.BaseTransition.extend({
         $(".about-border").css({ height: "100%" });
         $(".contact-border").css({ height: "100%" });
         $(".projects-border").css({ width: "100%" });
-        $(".algorithms-border").css({ width: "100%" });
+        $(".blog-border").css({ width: "100%" });
         var contactXPos = $(".contact").position().left,
           contactYPos = $(".contact").position().top,
           projectsXPos = $(".projects").position().left,
           projectsYPos = $(".projects").position().top,
-          algorithmsXPos = $(".algorithms").position().left,
-          algorithmsYPos = $(".algorithms").position().top,
+          blogXPos = $(".blog").position().left,
+          blogYPos = $(".blog").position().top,
           aboutXPos = $(".about").position().left,
           aboutYPos = $(".about").position().top;
         (contactWidth = $(".contact").width()),
           (contactHeight = $(".contact").height()),
           (projectsWidth = $(".projects").width()),
           (projectsHeight = $(".projects").height()),
-          (algorithmsWidth = $(".algorithms").width()),
-          (algorithmsHeight = $(".algorithms").height()),
+          (blogWidth = $(".blog").width()),
+          (blogHeight = $(".blog").height()),
           (aboutWidth = $(".about").width()),
           (aboutHeight = $(".about").height());
 
@@ -225,10 +202,10 @@ var FadeTransition = Barba.BaseTransition.extend({
             top: "-=" + projectsHeight + "px"
           });
         $(this.newContainer)
-          .find(".algorithms")
+          .find(".blog")
           .css({
-            left: "-=" + algorithmsWidth + "px",
-            top: "+=" + algorithmsHeight + "px"
+            left: "-=" + blogWidth + "px",
+            top: "+=" + blogHeight + "px"
           });
 
         var _this = this;
@@ -276,11 +253,11 @@ var FadeTransition = Barba.BaseTransition.extend({
         });
         var pro4 = new Promise((resolve, reject) => {
           $(this.newContainer)
-            .find(".algorithms")
+            .find(".blog")
             .animate(
               {
-                left: "+=" + algorithmsWidth + "px",
-                top: "-=" + algorithmsHeight + "px"
+                left: "+=" + blogWidth + "px",
+                top: "-=" + blogHeight + "px"
               },
               400,
               function() {
@@ -294,30 +271,7 @@ var FadeTransition = Barba.BaseTransition.extend({
         Promise.all(pros).then(() => {
           $(this.newContainer).removeClass("barba-old-container");
 
-          $(".algorithms-border").css("top", "-1px");
-          //fixes displaced borders due to glitch animation
-
-          // $(".algorithms-border").css({
-          //   right: "+20px",
-          //   top: "-11px"
-          // });
-
-          // $(".about-border").css({
-          //   right: "+20px"
-          // });
-
-          // $(".projects-border").css({
-          //   bottom: "+10px",
-          //   left: "-20px"
-          // });
-
-          // $(".contact-border").css({
-          //   left: "-20px",
-          //   top: "-10px"
-          // });
-
-          // endFix
-
+          $(".blog-border").css("top", "-1px");
           _this.done();
           var proBorder1 = new Promise((resolve, reject) => {
             $(".about-border").animate(
@@ -344,7 +298,7 @@ var FadeTransition = Barba.BaseTransition.extend({
           });
 
           var proBorder3 = new Promise((resolve, reject) => {
-            $(".algorithms-border").animate(
+            $(".blog-border").animate(
               {
                 width: "0%"
               },

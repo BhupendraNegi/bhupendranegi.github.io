@@ -12,13 +12,13 @@ projects:
   class: m7 projects
   border: projects
   name: Projects
-resume:
-  url: /resume
-  heading: Resume
-  words: Check out or Download my resume
-  class: m6 algorithms
-  border: algorithms
-  name: Resume
+blog:
+  url: /blog
+  heading: Blog
+  words: Check out My Blog
+  class: m6 blog
+  border: blog
+  name: Blog
 contact:
   url: /contact
   heading: Contact

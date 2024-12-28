@@ -47,8 +47,8 @@
   filter: contrast(100%);
 }
 
-.algorithms__bkgrnd {
-  background-image: url("../images/resume.png");
+.blog__bkgrnd {
+  background-image: url("../images/blog.png");
   filter: contrast(100%);
 }
 
@@ -491,14 +491,14 @@ body {
   color: #f46036;
 }
 
-#homepage .algorithms {
+#homepage .blog {
   box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
   transition: box-shadow 0.5s linear;
-  background-image: url("/assets/images/resume.png");
+  background-image: url("/assets/images/blog.png");
   background-size: cover;
 }
 
-#homepage .algorithms:hover {
+#homepage .blog:hover {
   background-color: #443c72;
   box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6);
 }
@@ -595,7 +595,7 @@ body {
 
 #projects h3,
 .about-me h3,
-#algorithms h3 {
+#blog h3 {
   font-family: 'Abril Fatface', cursive;
   font-weight: 600;
   letter-spacing: 1.2;
@@ -603,7 +603,7 @@ body {
 
 #projects .card-title,
 .about-me .card-title,
-#algorithms .card-title {
+#blog .card-title {
   font-family: 'Abril Fatface', cursive;
   font-weight: 600;
   letter-spacing: 1.2;
@@ -611,26 +611,26 @@ body {
 
 #projects .hidden,
 .about-me .hidden,
-#algorithms .hidden {
+#blog .hidden {
   display: none;
 }
 
 #projects .project-img,
 .about-me .project-img,
-#algorithms .project-img {
+#blog .project-img {
   width: 500px;
   height: 300px;
 }
 
 #projects .project-wrapper,
 .about-me .project-wrapper,
-#algorithms .project-wrapper {
+#blog .project-wrapper {
   width: 100%;
 }
 
 #projects .card,
 .about-me .card,
-#algorithms .card {
+#blog .card {
   width: 31.3%;
   height: 520px;
   display: inline-block;
@@ -640,7 +640,7 @@ body {
 
 #projects .content,
 .about-me .content,
-#algorithms .content {
+#blog .content {
   min-height: 100vh;
 }
 
@@ -648,7 +648,7 @@ body {
 
   #projects .card,
   .about-me .card,
-  #algorithms .card {
+  #blog .card {
     width: 48%;
   }
 }
@@ -657,7 +657,7 @@ body {
 
   #projects .card,
   .about-me .card,
-  #algorithms .card {
+  #blog .card {
     width: 98%;
     min-width: 320px;
     margin: 5% 1% 5% 1%;
@@ -666,14 +666,14 @@ body {
 
 #projects .description,
 .about-me .description,
-#algorithms .description {
+#blog .description {
   font-family: "Raleway", sans-serif;
   font-size: 1.1em;
 }
 
 #projects .about-me p,
 .about-me .about-me p,
-#algorithms .about-me p {
+#blog .about-me p {
   color: white !important;
   margin: 4%;
   font-size: 25px;
@@ -758,8 +758,8 @@ i {
   background-color: darkgrey;
 }
 
-#algorithms p,
-.algorithm-content p {
+#blog p,
+.blog-content p {
   color: white !important;
   margin: 4%;
   font-size: 25px;
@@ -769,7 +769,7 @@ i {
   font-family: "Raleway", sans-serif;
 }
 
-#algorithms h3 {
+#blog h3 {
   color: white;
 }
 
@@ -780,11 +780,11 @@ i {
   letter-spacing: 1.2;
 }
 
-#algorithms a {
+#blog a {
   color: #2E294E;
 }
 
-#algorithms a:hover {
+#blog a:hover {
   opacity: 0.9;
 }
 
@@ -1233,7 +1233,7 @@ background: linear-gradient(to bottom,
   right: 0;
 }
 
-.algorithms-border {
+.blog-border {
   top: 0;
   right: 0;
 }
