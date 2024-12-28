@@ -1540,5 +1540,36 @@ nav a.button-collapse i {
   border-color: #007bff;
 }
 
+/* Container for Back Button and Title */
+.back-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Back Button Styling */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 15px;
+  font-size: 16px;
+  color: #039be5;
+  text-decoration: none;
+  border: 2px solid #039be5;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #039be5;
+  color: #fff;
+}
+
+.back-button i {
+  font-size: 16px;
+}
 /* Post Section End */
 
