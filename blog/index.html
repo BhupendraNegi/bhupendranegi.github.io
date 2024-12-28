@@ -1,0 +1,56 @@
+---
+layout: site_layout
+title: Blog
+pagination: true
+---
+
+{% include quote.html quote=page.quote author=page.author %}
+
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article class="post">
+
+      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+      <div class="date">
+        {{ post.date | date: "%B %e, %Y" }}
+      </div>
+      <div class="entry">
+        <p>
+          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 60 }}
+        </p>
+      </div>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more" onclick="window.location.href=this.href; return false;">Read More</a>
+    </article>
+  {% endfor %}
+
+  {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev-next">&laquo; Prev</a>
+      {% else %}
+        <span class="pagination-disabled prev-next">&laquo; Prev</span>
+      {% endif %}
+
+      <div class="pagination-pages">
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <span class="pagination-current">{{ page }}</span>
+          {% elsif page == 1 %}
+            <a href="{{ '/blog/' | relative_url }}" class="pagination-link">{{ page }}</a>
+          {% else %}
+            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-link">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link prev-next">Next &raquo;</a>
+      {% else %}
+        <span class="pagination-disabled prev-next">Next &raquo;</span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+</div>
+
+
