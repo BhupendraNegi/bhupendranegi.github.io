@@ -6,7 +6,15 @@ comments: true
 
 <article class="post">
   <br>
-  <h3 class="big_heading">{{ page.title }}</h3>
+  <div class="row">
+    <div class="col s11">
+      <h3 class="big_heading">{{ page.title }}</h3>
+    </div>
+    <div class="col s1 margin-top">
+      <a href="/blog"><button type="button" class="fill col" name="button"> << </button></a>
+    </div>
+  </div>
+
   <div class="date">
     {{ page.date | date: "%B %e, %Y" }}
   </div>

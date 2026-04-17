@@ -3,7 +3,7 @@
 {% assign joining_month = joining_date | slice: 5, 2 | plus: 0 %}
 {% assign joining_day = joining_date | slice: 8, 2 | plus: 0 %}
 
-{% assign current_date = "2024-08-26" %}
+{% assign current_date = site.time | date: "%Y-%m-%d" %}
 {% assign current_year = current_date | slice: 0, 4 | plus: 0 %} 
 {% assign current_month = current_date | slice: 5, 2 | plus: 0 %}
 {% assign current_day = current_date | slice: 8, 2 | plus: 0 %}
