@@ -442,6 +442,67 @@
 
 /*  Home Page Start */
 
+.hero {
+  background-color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-name {
+  color: #fff;
+  font-family: var(--font-josefin);
+  font-size: 3.8rem;
+  font-weight: 400;
+  margin: 0 0 12px 0;
+  letter-spacing: 3px;
+}
+
+.hero-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-raleway);
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0 0 32px 0;
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-links a {
+  color: #fff;
+  font-family: var(--font-raleway);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.hero-links a:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+@media all and (max-width: 600px) {
+  .hero { padding: 50px 20px; }
+  .hero-name { font-size: 2.6rem; }
+  .hero-tagline { font-size: 0.95rem; letter-spacing: 1px; }
+}
+
 body {
   background-color: #fff;
   min-height: 100%;
