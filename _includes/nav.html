@@ -10,16 +10,26 @@
           {% for my_section in site.data.sections %}
             <li><a href={{my_section[1].url}} class="">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
           {% endfor %}
+          <li>
+            <a href="#" id="dark-mode-btn" title="Toggle dark mode">
+              <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </a>
+          </li>
         </ul>
         <div class="side-nav" id="mobile-demo">
           <div class="brand-logo-mobile">
             <a href="/" ><img src="/assets/images/Bhupendra_black_logo.png" alt="website logo" height="40px" /></a>
           </div>
           <div class="side-bar">
-            <ul  >
+            <ul>
               {% for my_section in site.data.sections %}
                 <li class="z-depth-4"><a href={{my_section[1].url}}>{{my_section[1].name}}</a><div class="nav-underline"></div></li>
               {% endfor %}
+              <li class="z-depth-4">
+                <a href="#" id="dark-mode-btn-mobile" title="Toggle dark mode">
+                  <i class="fa fa-moon-o" aria-hidden="true"></i> Dark Mode
+                </a>
+              </li>
             </ul>
           </div>
 

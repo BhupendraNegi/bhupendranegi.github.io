@@ -1628,3 +1628,180 @@ nav a.button-collapse i {
   margin-top: 2%;
 }
 
+
+/* ── Dark Mode Toggle Button ──────────────────────────────────────── */
+
+#dark-mode-btn,
+#dark-mode-btn-mobile {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#dark-mode-btn:hover,
+#dark-mode-btn-mobile:hover {
+  opacity: 1;
+  background-color: transparent !important;
+}
+
+
+/* ── Dark Mode Overrides ──────────────────────────────────────────── */
+
+[data-theme="dark"] body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .my_navbar {
+  background-color: #111;
+}
+
+[data-theme="dark"] .side-nav {
+  background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .side-nav a,
+[data-theme="dark"] .side-nav li {
+  color: #e0e0e0 !important;
+  background-color: transparent !important;
+}
+
+/* About, Projects, Blog, Contact pages — content areas */
+[data-theme="dark"] .about_section,
+[data-theme="dark"] .project_list,
+[data-theme="dark"] .posts,
+[data-theme="dark"] .post,
+[data-theme="dark"] main {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .heading,
+[data-theme="dark"] .heading-projects,
+[data-theme="dark"] .big_heading {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .about_paragraph,
+[data-theme="dark"] .about-me p {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .skill_names {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .about_skill_icon {
+  color: #ccc;
+}
+
+[data-theme="dark"] .technologies {
+  background-color: #242424;
+  color: #e0e0e0;
+}
+
+/* Filter bar */
+[data-theme="dark"] .filter-bar {
+  background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .tag {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #555 !important;
+}
+
+[data-theme="dark"] .tag:hover {
+  background-color: #3a3a3a;
+}
+
+[data-theme="dark"] .active_tag {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] #filter {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #555 !important;
+}
+
+[data-theme="dark"] #filter:hover {
+  background-color: #3a3a3a;
+}
+
+/* Blog posts */
+[data-theme="dark"] .posts .post {
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .post h1,
+[data-theme="dark"] .post h2,
+[data-theme="dark"] .post h3,
+[data-theme="dark"] .post h4 {
+  color: #e05555;
+}
+
+[data-theme="dark"] .post a { color: #e05555; }
+[data-theme="dark"] #blog a { color: #9ba5d5; }
+
+[data-theme="dark"] .date,
+[data-theme="dark"] .time {
+  color: #888;
+}
+
+/* Contact form */
+[data-theme="dark"] .input-field label {
+  color: #aaa !important;
+}
+
+[data-theme="dark"] .input-field input,
+[data-theme="dark"] .input-field textarea {
+  color: #e0e0e0 !important;
+  border-bottom: 1px solid #555 !important;
+}
+
+[data-theme="dark"] .input-field input:focus,
+[data-theme="dark"] textarea:focus {
+  border-bottom: 1px solid #aaa !important;
+  box-shadow: 0 1px 0 0 #aaa !important;
+}
+
+[data-theme="dark"] .input-field .prefix.active {
+  color: #aaa !important;
+}
+
+/* Buttons (outside modals) */
+[data-theme="dark"] button {
+  color: #e0e0e0;
+  border-color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] button.fill:before {
+  background: #e0e0e0;
+}
+
+[data-theme="dark"] button.fill:hover {
+  color: #1a1a1a;
+}
+
+/* Modals */
+[data-theme="dark"] .project_list .modal,
+[data-theme="dark"] .project_list .modal-footer,
+[data-theme="dark"] #email_modal {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* Quote */
+[data-theme="dark"] .quote,
+[data-theme="dark"] .author {
+  color: #ccc;
+}
+
+/* Footer */
+[data-theme="dark"] .my_footer {
+  background-color: #111;
+}
+
