@@ -20,7 +20,7 @@
 
 
 # Site Details
-title: My personal blog
+title: Bhupendra Negi
 name: Bhupendra Negi
 email: bhupendranegi92@gmail.com
 url: https://bhupendranegi.github.io/
@@ -34,7 +34,7 @@ joining_date: "2019-08-05"
 disqus: https-bhupendranegi-github-io
 
 
-description: Software Engineer
+description: Software Engineer specialising in Ruby on Rails and React
 baseurl: "" # the subpath of your site, e.g. /blog
 
 google_analytics: G-4X8NFH01NY
