@@ -105,8 +105,8 @@ function initializeScripts(){
 
     var button = $(this),
         tag = $(this).attr('val'),
-        projects = $('.card'),
-        buttons = $('.btn'),
+        projects = $('.project'),
+        buttons = $('.tag'),
         active_tags = [],
         needToClearFilters = tag === "clear-filters";
 

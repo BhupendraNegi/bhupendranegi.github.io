@@ -1,8 +1,9 @@
 - id: 1
   title: Data Management
-  url: 
+  url:
   github_url: https://github.com/BhupendraNegi/databasebank
   description: A standard Data management application build in ROR, for keeping track of the Army Personal Details
+  tags: [ruby, rails, javascript, postgresql, web]
   technologies: [
                   ruby-plain,
                   rails-plain,
@@ -26,6 +27,7 @@
   url: https://bhupendranegi.github.io/tic-tac-toe/
   github_url: https://github.com/BhupendraNegi/tic-tac-toe
   description: A Basic Javascript Game made for learning
+  tags: [javascript, web, game]
   technologies: [
                   html5-plain,
                   css3-plain-wordmark,
@@ -43,6 +45,7 @@
   url: https://sweetyhealthapp.herokuapp.com/
   github_url: https://github.com/BhupendraNegi/health-tracker
   description: A small Rails application to track your daily sugar levels.
+  tags: [ruby, rails, javascript, postgresql, web]
   technologies: [
                   ruby-plain,
                   rails-plain,
@@ -64,6 +67,7 @@
   url: https://www.amazon.com/Bhupendra-Negi-Tenor-Play/dp/B07GKXS3XS/
   github_url: https://github.com/BhupendraNegi/Tenor-play
   description: A Basic Music Player Application made for Android Users. User can create playlist, add songs to the favourites and shake the phone to change the music.
+  tags: [java, kotlin, android, mobile]
   technologies: [
                   java-plain,
                   kotlin-plain,
