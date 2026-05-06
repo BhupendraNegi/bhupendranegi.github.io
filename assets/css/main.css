@@ -719,32 +719,66 @@ i {
   cursor: pointer;
 }
 
-.tag {
-  background-color: white;
-  color: black;
-  height: 1.5rem;
-  line-height: 1.5rem;
-  margin: 3px;
-  font-size: 1rem;
-  font-weight: 800px;
+.filter-bar {
+  padding: 10px 20px 20px;
 }
 
 #filter {
+  display: inline-block;
+  width: auto;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-family: var(--font-raleway);
+  font-weight: 600;
+  color: var(--color-dark);
+  border: 1px solid var(--color-dark) !important;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.tag {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  padding: 6px 14px;
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: var(--font-raleway);
+  font-weight: 500;
+  color: var(--color-dark);
   background-color: white;
-  color: black;
-  height: 2rem;
-  line-height: 2rem;
-  font-size: 1.2rem;
-  font-weight: 400px;
+  border: 1px solid var(--color-dark) !important;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .active_tag {
-  background-color: lightgrey;
+  background-color: var(--color-dark);
+  color: white;
 }
 
-.tag:hover,
+.tag:hover {
+  background-color: #e0e0e0;
+}
+
+.active_tag:hover {
+  background-color: #444;
+}
+
 #filter:hover {
-  background-color: darkgrey;
+  background-color: #e0e0e0;
 }
 
 
