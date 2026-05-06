@@ -1,3 +1,17 @@
+/* CSS Variables */
+
+:root {
+  --font-raleway: "Raleway", sans-serif;
+  --font-abril: 'Abril Fatface', cursive;
+  --font-josefin: "Josefin Slab", serif;
+  --font-julius: 'Julius Sans One', sans-serif;
+  --color-dark: #292929;
+  --color-accent: #880000;
+  --overlay-dark: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
+  --overlay-hover: inset 0 0 0 1000px rgba(41, 41, 41, 0.6);
+  --overlay-transition: box-shadow 0.5s linear;
+}
+
 /* Glich Section Start */
 
 #homepage {
@@ -39,22 +53,18 @@
 
 .about__bkgrnd {
   background-image: url("../images/about_me.png");
-  filter: contrast(100%);
 }
 
 .projects__bkgrnd {
   background-image: url("../images/project.png");
-  filter: contrast(100%);
 }
 
 .blog__bkgrnd {
   background-image: url("../images/blog.png");
-  filter: contrast(100%);
 }
 
 .contact__bkgrnd {
   background-image: url("../images/contact.png");
-  filter: contrast(100%);
 }
 
 .glitch__img:nth-child(n + 2) {
@@ -449,13 +459,13 @@ body {
 
 #homepage .home_heading {
   font-size: 5rem;
-  font-family: "Josefin Slab", serif;
+  font-family: var(--font-josefin);
 }
 
 #homepage .words {
   font-size: 1.3rem;
   letter-spacing: +2px;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   color: white;
   font-weight: 300;
 }
@@ -465,54 +475,32 @@ body {
   z-index: 10;
 }
 
-#homepage .about {
-  background-image: url("/assets/images/about_me.png");
+#homepage .about,
+#homepage .projects,
+#homepage .blog,
+#homepage .contact {
   background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
-  transition: box-shadow 0.5s linear;
+  box-shadow: var(--overlay-dark);
+  transition: var(--overlay-transition);
 }
 
-#homepage .projects {
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
-  transition: box-shadow 0.5s linear;
-  background-image: url("/assets/images/project.png");
-  background-size: cover;
-}
+#homepage .about    { background-image: url("/assets/images/about_me.png"); }
+#homepage .projects { background-image: url("/assets/images/project.png"); }
+#homepage .blog     { background-image: url("/assets/images/blog.png"); }
+#homepage .contact  { background-image: url("/assets/images/contact.png"); }
 
-#homepage .projects:hover {
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6);
-}
-
-#homepage .contact a {
-  margin-left: 10px;
-}
-
-#homepage .contact a:hover {
-  color: #f46036;
-}
-
-#homepage .blog {
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
-  transition: box-shadow 0.5s linear;
-  background-image: url("/assets/images/blog.png");
-  background-size: cover;
+#homepage .projects:hover,
+#homepage .contact:hover {
+  box-shadow: var(--overlay-hover);
 }
 
 #homepage .blog:hover {
   background-color: #443c72;
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6);
+  box-shadow: var(--overlay-hover);
 }
 
-#homepage .contact {
-  background-image: url("/assets/images/contact.png");
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.9);
-  transition: box-shadow 0.5s linear;
-  background-size: cover;
-}
-
-#homepage .contact:hover {
-  box-shadow: inset 0 0 0 1000px rgba(41, 41, 41, 0.6);
-}
+#homepage .contact a { margin-left: 10px; }
+#homepage .contact a:hover { color: #f46036; }
 
 #homepage .profile_picture {
   border-radius: 35%;
@@ -596,7 +584,7 @@ body {
 #projects h3,
 .about-me h3,
 #blog h3 {
-  font-family: 'Abril Fatface', cursive;
+  font-family: var(--font-abril);
   font-weight: 600;
   letter-spacing: 1.2;
 }
@@ -604,7 +592,7 @@ body {
 #projects .card-title,
 .about-me .card-title,
 #blog .card-title {
-  font-family: 'Abril Fatface', cursive;
+  font-family: var(--font-abril);
   font-weight: 600;
   letter-spacing: 1.2;
 }
@@ -667,7 +655,7 @@ body {
 #projects .description,
 .about-me .description,
 #blog .description {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-size: 1.1em;
 }
 
@@ -675,17 +663,11 @@ body {
 .about-me .about-me p,
 #blog .about-me p {
   color: white !important;
-  margin: 4%;
-  font-size: 25px;
-  font-weight: 400;
-  text-align: justify;
-  text-indent: 50px;
-  font-family: "Raleway", sans-serif;
 }
 
 #nav-mobile a,
 #mobile-demo a {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-size: 1.3rem;
   margin: 0 10px 0 10px;
 }
@@ -706,21 +688,28 @@ nav {
 }
 
 .about-me p,
-.projects-paragraph {
+.projects-paragraph,
+#blog p,
+.blog-content p,
+.small-info {
   margin: 4%;
   font-size: 25px;
   font-weight: 400;
   text-align: justify;
   text-indent: 50px;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 }
 
-.projects-paragraph {
-  color: white;
+.projects-paragraph,
+#blog p,
+.blog-content p {
+  color: white !important;
 }
+
+.small-info { color: darkgrey !important; }
 
 .about-me li {
-  font-family: 'Julius Sans One', sans-serif;
+  font-family: var(--font-julius);
   font-size: 1.5em !important;
   width: 30%;
   float: left;
@@ -758,16 +747,6 @@ i {
   background-color: darkgrey;
 }
 
-#blog p,
-.blog-content p {
-  color: white !important;
-  margin: 4%;
-  font-size: 25px;
-  font-weight: 400;
-  text-align: justify;
-  text-indent: 50px;
-  font-family: "Raleway", sans-serif;
-}
 
 #blog h3 {
   color: white;
@@ -775,7 +754,7 @@ i {
 
 .algorithm h3 {
   color: white;
-  font-family: 'Abril Fatface', cursive;
+  font-family: var(--font-abril);
   font-weight: 600;
   letter-spacing: 1.2;
 }
@@ -794,21 +773,12 @@ i {
 
 .time {
   font-style: italic;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 }
 
-.small-info {
-  color: darkgrey !important;
-  margin: 4%;
-  font-size: 25px;
-  font-weight: 400;
-  text-align: justify;
-  text-indent: 50px;
-  font-family: "Raleway", sans-serif;
-}
 
 .back-link {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-size: 1.2em;
 }
 
@@ -887,7 +857,7 @@ nav ul li {
   color: #292929;
   font-size: 2rem;
   margin-bottom: 5%;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 }
 
 .heading-projects {
@@ -895,7 +865,7 @@ nav ul li {
   margin-bottom: 10%;
   font-size: 2.5rem;
   font-weight: 200;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 }
 
 .center {
@@ -921,14 +891,14 @@ nav ul li {
   margin-bottom: 0;
   padding-inline: 10%;
   font-style: italic;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 }
 
 .author {
   padding-right: 5%;
   margin-top: 0;
   font-size: 1.6rem;
-  font-family: "Josefin Slab", serif;
+  font-family: var(--font-josefin);
   font-style: italic;
 }
 
@@ -945,7 +915,7 @@ nav ul li {
 .skill_names {
   font-size: 1.3rem;
   color: #292929;
-  font-style: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-weight: 200;
   margin-left: 10px;
 }
@@ -982,7 +952,7 @@ nav ul li {
 }
 
 .footer_titles {
-  font-family: "Josefin Slab", serif;
+  font-family: var(--font-josefin);
   font-size: 2.3rem;
 }
 
@@ -1004,7 +974,7 @@ nav ul li {
 }
 
 .footer_link_text {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-weight: 300;
   font-size: 20px;
 }
@@ -1071,7 +1041,7 @@ nav ul li {
 .project_list .info_type {
   font-style: italic;
   color: darkgrey;
-  font-family: "Josefin Slab", serif;
+  font-family: var(--font-josefin);
   font-size: 1.5em;
   letter-spacing: +1px;
   text-transform: capitalize;
@@ -1112,7 +1082,7 @@ main {
 
 button {
   position: relative;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   display: block;
   height: 45px;
   line-height: 45px;
@@ -1175,8 +1145,7 @@ button.fill:hover:before {
 .description {
   color: #c0b7b7;
   letter-spacing: +1px;
-  font-family: "Raleway", sans-serif;
-  ≈
+  font-family: var(--font-raleway);
   font-size: 1.1rem;
 }
 
@@ -1419,7 +1388,7 @@ nav a.button-collapse i {
     font-weight: 400 !important;
     letter-spacing: normal !important;
     font-size: 0.9rem !important;
-    font-family: "Josefin Slab", serif !important;
+    font-family: var(--font-josefin) !important;
   }
 }
 
@@ -1432,7 +1401,7 @@ nav a.button-collapse i {
 .posts {
   max-width: 80vw;
   margin: auto;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
 
   .post {
     padding-bottom: 2em;
@@ -1456,12 +1425,12 @@ nav a.button-collapse i {
 .post {
   max-width: 80vw;
   margin: auto;
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-raleway);
   font-size: 1.1rem;
   line-height: 1.7rem;
 
   h1, h2, h3, h4 {
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: var(--font-julius);
     color: #880000;
   }
 
