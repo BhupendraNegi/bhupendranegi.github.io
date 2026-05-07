@@ -10,7 +10,7 @@ function toggleTags(button, tag){
     button.removeClass("active_tag");
     button.html(tag);
   } else {
-    button.html(tag + '<i class="material-icons left closing-icon">close</i>');
+    button.html(tag + '<i class="material-icons right closing-icon">close</i>');
     button.addClass("active_tag");
   }
 }

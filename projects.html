@@ -6,25 +6,27 @@ author: Pele
 
 {% include quote.html quote=page.quote author=page.author %}
 
+
+
 <div class="filter-bar center-align">
+  <h2 class="heading big_heading">Projects</h2>
   <button id="filter" class="fill">Filter by Technology</button>
   <div id="tags" style="display: none;">
-    <button class="tag" val="ruby">Ruby</button>
-    <button class="tag" val="rails">Rails</button>
-    <button class="tag" val="javascript">JavaScript</button>
-    <button class="tag" val="postgresql">PostgreSQL</button>
-    <button class="tag" val="web">Web</button>
-    <button class="tag" val="java">Java</button>
-    <button class="tag" val="kotlin">Kotlin</button>
-    <button class="tag" val="android">Android</button>
-    <button class="tag" val="mobile">Mobile</button>
-    <button class="tag" val="game">Game</button>
-    <button class="tag" val="clear-filters">✕ Clear</button>
+    <button class="tag fill" val="ruby">Ruby</button>
+    <button class="tag fill" val="rails">Rails</button>
+    <button class="tag fill" val="javascript">JavaScript</button>
+    <button class="tag fill" val="postgresql">PostgreSQL</button>
+    <button class="tag fill" val="web">Web</button>
+    <button class="tag fill" val="java">Java</button>
+    <button class="tag fill" val="kotlin">Kotlin</button>
+    <button class="tag fill" val="android">Android</button>
+    <button class="tag fill" val="mobile">Mobile</button>
+    <button class="tag fill" val="game">Game</button>
+    <button class="tag fill" val="clear-filters">✕ Clear</button>
   </div>
 </div>
 
 <div class="project_list">
-  <h2 class="heading big_heading center">Projects</h2>
   {% for project in site.data.projects %}
     {% include project.html %}
   {% endfor %}

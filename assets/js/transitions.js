@@ -343,7 +343,7 @@ var FadeTransition = Barba.BaseTransition.extend({
             this.done();
             $("html, body").animate({ scrollTop: 0 }, 500);
             $(".button-collapse").sideNav({
-              menuWidth: 200,
+              menuWidth: 260,
               edge: "left",
               closeOnClick: true,
               draggable: true
