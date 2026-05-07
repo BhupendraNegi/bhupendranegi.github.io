@@ -12,6 +12,12 @@ function initializeScripts(){
   // re-apply theme on every Barba page transition (CSS handles appearance)
   applyTheme(localStorage.getItem('theme') || 'light');
 
+  // Re-trigger Google Translate on new page content after Barba transition
+  var select = document.querySelector('.goog-te-combo');
+  if (select && select.value && select.value !== 'en') {
+    select.dispatchEvent(new Event('change'));
+  }
+
   $('#theme-toggle, #theme-toggle-mobile').click(function(e) {
     e.preventDefault();
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

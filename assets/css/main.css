@@ -921,6 +921,52 @@ i {
   padding-bottom: 10px;
 }
 
+/* Google Translate Widget */
+#google_translate_element {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1100;
+  background-color: #111118;
+  border: 1px solid #22d3ee;
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  pointer-events: all !important;
+}
+
+#google_translate_element * {
+  pointer-events: all !important;
+}
+
+#google_translate_element .goog-te-gadget {
+  font-size: 0 !important;
+}
+
+#google_translate_element .goog-te-gadget select {
+  background-color: #111118 !important;
+  color: #22d3ee !important;
+  border: none !important;
+  font-size: 0.8rem !important;
+  cursor: pointer !important;
+  outline: none !important;
+  padding: 2px 4px;
+}
+
+#google_translate_element .goog-te-gadget select option {
+  background-color: #111118;
+  color: #f1f5f9;
+}
+
+.goog-te-banner-frame,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
 .resume-wrapper button {
   margin-top: 50px;
 }
@@ -1360,10 +1406,7 @@ button.fill:hover:before {
 .about_img {
   margin-top: 1%;
   margin-right: 2%;
-  max-width: 22%;
-  border-radius: 6px;
-  border: 2px solid var(--color-accent);
-  box-shadow: 0 0 24px rgba(34, 211, 238, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
+  max-width: 20%;
   object-fit: cover;
 }
 
