@@ -3,8 +3,14 @@ function applyTheme(theme) {
 }
 
 function initializeScripts(){
+  // Remove Materialize overlays/targets that get stuck on Barba page transitions
+  $('#sidenav-overlay').remove();
+  $('.lean-overlay').remove();
+  $('.drag-target').remove();
+  $('body').css({ overflow: '', width: '' });
+
   // re-apply theme on every Barba page transition (CSS handles appearance)
-  applyTheme(localStorage.getItem('theme') || 'dark');
+  applyTheme(localStorage.getItem('theme') || 'light');
 
   $('#theme-toggle, #theme-toggle-mobile').click(function(e) {
     e.preventDefault();
@@ -20,7 +26,7 @@ function initializeScripts(){
     menuWidth: 260,
     edge: 'left',
     closeOnClick: true,
-    draggable: true
+    draggable: false
   });
   // $('.carousel-arrows').click(function(e){
   //   var arrow = e.target;
