@@ -1,14 +1,12 @@
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  var icon = theme === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
-  $('#dark-mode-btn i, #dark-mode-btn-mobile i').attr('class', icon);
 }
 
 function initializeScripts(){
-  // restore theme icon after every Barba page transition
-  applyTheme(localStorage.getItem('theme') || 'light');
+  // re-apply theme on every Barba page transition (CSS handles appearance)
+  applyTheme(localStorage.getItem('theme') || 'dark');
 
-  $('#dark-mode-btn, #dark-mode-btn-mobile').click(function(e) {
+  $('#theme-toggle, #theme-toggle-mobile').click(function(e) {
     e.preventDefault();
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme', next);
@@ -19,7 +17,7 @@ function initializeScripts(){
 
   $('.materialboxed').materialbox();
   $(".button-collapse").sideNav({
-    menuWidth: 200,
+    menuWidth: 260,
     edge: 'left',
     closeOnClick: true,
     draggable: true
