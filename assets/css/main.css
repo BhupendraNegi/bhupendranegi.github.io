@@ -940,20 +940,27 @@ i {
 }
 
 #google_translate_element .goog-te-gadget {
-  font-size: 0 !important;
+  font-size: 11px !important;
 }
 
-#google_translate_element .goog-te-gadget select {
+#google_translate_element .goog-te-gadget > span,
+#google_translate_element .goog-te-gadget > br {
+  display: none !important;
+}
+
+#google_translate_element .goog-te-combo {
   background-color: #111118 !important;
   color: #22d3ee !important;
   border: none !important;
   font-size: 0.8rem !important;
   cursor: pointer !important;
   outline: none !important;
-  padding: 2px 4px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: block !important;
 }
 
-#google_translate_element .goog-te-gadget select option {
+#google_translate_element .goog-te-combo option {
   background-color: #111118;
   color: #f1f5f9;
 }
