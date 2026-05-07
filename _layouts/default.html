@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' ; script-src 'self' https://fonts.googleapis.com https://ajax.googleapis.com  https://td.doubleclick.net'; style-src 'self' https://fonts.googleapis.com  https://td.doubleclick.net; img-src 'self' ; font-src 'self' https://fonts.googleapis.com; connect-src 'self' https://ajax.googleapis.com; media-src 'self' ; object-src 'self' ; child-src 'self' ; frame-ancestors 'self' https://help.disqus.com/ ; form-action 'none' ; sandbox allow-same-origin allow-scripts allow-pointer-lock;" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' ; script-src 'self' https://fonts.googleapis.com https://ajax.googleapis.com https://td.doubleclick.net https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://td.doubleclick.net https://translate.googleapis.com https://translate.google.com; img-src 'self' https://www.gstatic.com https://translate.google.com data: ; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self' https://ajax.googleapis.com https://translate.googleapis.com; media-src 'self' ; object-src 'self' ; child-src 'self' https://translate.google.com https://translate.googleapis.com ; frame-ancestors 'self' https://help.disqus.com/ ; form-action 'none' ; sandbox allow-same-origin allow-scripts allow-pointer-lock allow-popups;" />
 
 
 {% include head.html %}
@@ -11,11 +11,24 @@
   })();
 </script>
 <body>
+  <div id="google_translate_element"></div>
+
   <div id="barba-wrapper">
     <div class="barba-container">
       {{ content }}
     </div>
   </div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'hi,es,fr,de,ja,zh-CN,ar,pt',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
