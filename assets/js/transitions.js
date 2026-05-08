@@ -1,358 +1,124 @@
+// Transition used when leaving the home page.
+// Animates the four section boxes off-screen while borders expand.
 var HideShowTransition = Barba.BaseTransition.extend({
   start: function() {
     this.newContainerLoading.then(this.finish.bind(this));
   },
 
   finish: function() {
-    initializeScripts();
+    var _this = this;
     document.body.scrollTop = 0;
     $("html").css("overflow-y", "hidden");
 
-    $(this.newContainer).addClass("barba-new-container");
+    $(this.newContainer).css({ visibility: "visible", opacity: 1 });
     $(this.newContainer).show();
 
-    $(this.newContainer).css({
-      visibility: "visible",
-      opacity: 1
+    $(".my-borders").css({ height: "1px", width: "1px" });
+
+    var pro1 = new Promise(function(resolve) {
+      $(".about-border").animate({ height: "100%" }, 400, resolve);
+    });
+    var pro2 = new Promise(function(resolve) {
+      $(".projects-border").animate({ width: "100%" }, 400, resolve);
+    });
+    var pro3 = new Promise(function(resolve) {
+      $(".blog-border").animate({ width: "100%" }, 400, resolve);
+    });
+    var pro4 = new Promise(function(resolve) {
+      $(".contact-border").animate({ height: "100%" }, 400, resolve);
     });
 
-    var _this = this;
-
-    $(this.oldContainer).addClass("barba-old-container");
-    var le =
-      $(".blog-border").position().left -
-      $(".about-border").position().left;
-
-    $(".my-borders").css({
-      height: "1px",
-      width: "1px"
-    });
-    var pro1 = new Promise((resolve, reject) => {
-      $(".about-border").animate(
-        {
-          height: "100%"
-        },
-        400,
-        function() {
-          resolve();
-        }
-      );
-    });
-    var pro2 = new Promise((resolve, reject) => {
-      $(".projects-border").animate(
-        {
-          width: "100%"
-        },
-        400,
-        function() {
-          resolve();
-        }
-      );
-    });
-
-    var pro3 = new Promise((resolve, reject) => {
-      $(".blog-border").animate(
-        {
-          width: "100%"
-        },
-        400,
-        function() {
-          resolve();
-        }
-      );
-    });
-
-    var pro4 = new Promise((resolve, reject) => {
-      $(".contact-border").animate(
-        {
-          height: "100%"
-        },
-        400,
-        function() {
-          resolve();
-        }
-      );
-    });
-
-    Promise.all([pro1, pro2, pro3, pro4]).then(values => {
-      // debugger
-      // This line below fixes a weird bug that only happens on one page ...
+    Promise.all([pro1, pro2, pro3, pro4]).then(function() {
       $(".top-row").css("background-color", "transparent");
 
-      var contactWidth = $(".contact").width(),
-        contactHeight = $(".contact").height(),
-        projectsWidth = $(".projects").width(),
-        projectsHeight = $(".projects").height(),
-        blogWidth = $(".blog").width(),
-        blogHeight = $(".blog").height(),
-        aboutWidth = $(".about").width(),
-        aboutHeight = $(".about").height();
+      var aboutW   = $(".about").width(),    aboutH   = $(".about").height();
+      var contactW = $(".contact").width(),  contactH = $(".contact").height();
+      var projW    = $(".projects").width(), projH    = $(".projects").height();
+      var blogW    = $(".blog").width(),     blogH    = $(".blog").height();
 
-      $(this.oldContainer)
-        .find(".about")
-        .animate(
-          {
-            left: "-=" + aboutWidth + "px",
-            top: "-=" + aboutHeight + "px"
-          },
-          400
-        );
-      $(this.oldContainer)
-        .find(".contact")
-        .animate(
-          {
-            left: "+=" + contactWidth + "px",
-            top: "+=" + contactHeight + "px"
-          },
-          400
-        );
-      $(this.oldContainer)
-        .find(".projects")
-        .animate(
-          {
-            left: "+=" + projectsWidth + "px",
-            top: "-=" + projectsHeight + "px"
-          },
-          400
-        );
-      $(this.oldContainer)
-        .find(".blog")
-        .animate(
-          {
-            left: "-=" + blogWidth + "px",
-            top: "+=" + blogHeight + "px"
-          },
-          400,
-          function() {
-            $(".barba-old-container").removeClass("barba-old-container");
-            $(".barba-new-container").removeClass("barba-new-container");
+      $(_this.oldContainer).find(".about").animate({ left: "-=" + aboutW, top: "-=" + aboutH }, 400);
+      $(_this.oldContainer).find(".contact").animate({ left: "+=" + contactW, top: "+=" + contactH }, 400);
+      $(_this.oldContainer).find(".projects").animate({ left: "+=" + projW, top: "-=" + projH }, 400);
 
-            $(this.oldContainer)
-              .find(".about")
-              .finish();
-            $(this.oldContainer)
-              .find(".projects")
-              .finish();
-            $(this.oldContainer)
-              .find(".blog")
-              .finish();
-            $(this.oldContainer)
-              .find(".contact")
-              .finish();
-            $(".my-borders").finish();
-            $("html").css("overflow-y", "visible");
-            _this.done();
-          }.bind(this)
-        );
+      var $blog = $(_this.oldContainer).find(".blog");
+      var cleanup = function() {
+        $("html").css("overflow-y", "visible");
+        _this.done();
+      };
+
+      if ($blog.length) {
+        $blog.animate({ left: "-=" + blogW, top: "+=" + blogH }, 400, cleanup);
+      } else {
+        cleanup();
+      }
     });
   }
 });
 
+// Transition used when entering any non-home page, and also when returning to home.
+// Uses a simple fade between inner pages, or a reverse fly-in animation for the home page.
 var FadeTransition = Barba.BaseTransition.extend({
   start: function() {
-    Promise.all([this.newContainerLoading, this.fadeIn()]);
+    this.newContainerLoading.then(this.fadeIn.bind(this));
   },
 
   fadeIn: function() {
-    Promise.all([this._newContainerPromise]).then(() => {
-      initializeScripts();
-      if (this.newContainer.baseURI === window.location.origin + '/') {
-        $(this.newContainer).addClass("barba-new-container-back");
-        $(".my-borders").css({
-          height: "1px",
-          width: "1px"
-        });
-        $(".about-border").css({ height: "100%" });
-        $(".contact-border").css({ height: "100%" });
-        $(".projects-border").css({ width: "100%" });
-        $(".blog-border").css({ width: "100%" });
-        var contactXPos = $(".contact").position().left,
-          contactYPos = $(".contact").position().top,
-          projectsXPos = $(".projects").position().left,
-          projectsYPos = $(".projects").position().top,
-          blogXPos = $(".blog").position().left,
-          blogYPos = $(".blog").position().top,
-          aboutXPos = $(".about").position().left,
-          aboutYPos = $(".about").position().top;
-        (contactWidth = $(".contact").width()),
-          (contactHeight = $(".contact").height()),
-          (projectsWidth = $(".projects").width()),
-          (projectsHeight = $(".projects").height()),
-          (blogWidth = $(".blog").width()),
-          (blogHeight = $(".blog").height()),
-          (aboutWidth = $(".about").width()),
-          (aboutHeight = $(".about").height());
+    var _this = this;
+    var $new  = $(this.newContainer);
+    var $old  = $(this.oldContainer);
 
-        $(this.newContainer)
-          .find(".about")
-          .css({
-            left: "-=" + aboutWidth + "px",
-            top: "-=" + aboutHeight + "px"
-          });
-        $(this.newContainer)
-          .find(".contact")
-          .css({
-            left: "+=" + contactWidth + "px",
-            top: "+=" + contactHeight + "px"
-          });
-        $(this.newContainer)
-          .find(".projects")
-          .css({
-            left: "+=" + projectsWidth + "px",
-            top: "-=" + projectsHeight + "px"
-          });
-        $(this.newContainer)
-          .find(".blog")
-          .css({
-            left: "-=" + blogWidth + "px",
-            top: "+=" + blogHeight + "px"
-          });
+    // Returning to home page — reverse the box fly-in animation.
+    if (window.location.pathname === '/') {
+      $(".my-borders").css({ height: "1px", width: "1px" });
+      $(".about-border").css({ height: "100%" });
+      $(".contact-border").css({ height: "100%" });
+      $(".projects-border").css({ width: "100%" });
+      $(".blog-border").css({ width: "100%" });
 
-        var _this = this;
-        var pro1 = new Promise((resolve, reject) => {
-          $(this.newContainer)
-            .find(".about")
-            .animate(
-              {
-                left: "+=" + aboutWidth + "px",
-                top: "+=" + aboutHeight + "px"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-        });
-        var pro2 = new Promise((resolve, reject) => {
-          $(this.newContainer)
-            .find(".contact")
-            .animate(
-              {
-                left: "-=" + contactWidth + "px",
-                top: "-=" + contactHeight + "px"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-        });
-        var pro3 = new Promise((resolve, reject) => {
-          $(this.newContainer)
-            .find(".projects")
-            .animate(
-              {
-                left: "-=" + projectsWidth + "px",
-                top: "+=" + projectsHeight + "px"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-        });
-        var pro4 = new Promise((resolve, reject) => {
-          $(this.newContainer)
-            .find(".blog")
-            .animate(
-              {
-                left: "+=" + blogWidth + "px",
-                top: "-=" + blogHeight + "px"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-        });
-        var _this = this;
-        var pros = [pro1, pro2, pro3, pro4];
+      var aboutW   = $(".about").width(),    aboutH   = $(".about").height();
+      var contactW = $(".contact").width(),  contactH = $(".contact").height();
+      var projW    = $(".projects").width(), projH    = $(".projects").height();
+      var blogW    = $(".blog").width(),     blogH    = $(".blog").height();
 
-        Promise.all(pros).then(() => {
-          $(this.newContainer).removeClass("barba-old-container");
+      $new.find(".about").css({ left: "-=" + aboutW, top: "-=" + aboutH });
+      $new.find(".contact").css({ left: "+=" + contactW, top: "+=" + contactH });
+      $new.find(".projects").css({ left: "+=" + projW, top: "-=" + projH });
+      $new.find(".blog").css({ left: "-=" + blogW, top: "+=" + blogH });
 
-          $(".blog-border").css("top", "-1px");
+      var pro1 = new Promise(function(resolve) {
+        $new.find(".about").animate({ left: "+=" + aboutW, top: "+=" + aboutH }, 400, resolve);
+      });
+      var pro2 = new Promise(function(resolve) {
+        $new.find(".contact").animate({ left: "-=" + contactW, top: "-=" + contactH }, 400, resolve);
+      });
+      var pro3 = new Promise(function(resolve) {
+        $new.find(".projects").animate({ left: "-=" + projW, top: "+=" + projH }, 400, resolve);
+      });
+      var pro4 = new Promise(function(resolve) {
+        $new.find(".blog").animate({ left: "+=" + blogW, top: "-=" + blogH }, 400, resolve);
+      });
+
+      Promise.all([pro1, pro2, pro3, pro4]).then(function() {
+        $(".blog-border").css("top", "-1px");
+        _this.done();
+
+        // Collapse borders after Barba is done
+        $(".about-border").animate({ height: "0%" }, 400);
+        $(".projects-border").animate({ width: "0%" }, 400);
+        $(".blog-border").animate({ width: "0%" }, 400);
+        $(".contact-border").animate({ height: "0%" }, 400);
+      });
+
+    } else {
+      // Standard fade between inner pages
+      $new.css({ visibility: "visible", opacity: 0 });
+      $old.animate({ opacity: 0 }, 300, function() {
+        $old.hide();
+        $new.animate({ opacity: 1 }, 300, function() {
+          $("html, body").animate({ scrollTop: 0 }, 250);
           _this.done();
-          var proBorder1 = new Promise((resolve, reject) => {
-            $(".about-border").animate(
-              {
-                height: "0%"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-          });
-
-          var proBorder2 = new Promise((resolve, reject) => {
-            $(".projects-border").animate(
-              {
-                width: "0%"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-          });
-
-          var proBorder3 = new Promise((resolve, reject) => {
-            $(".blog-border").animate(
-              {
-                width: "0%"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-          });
-
-          var proBorder4 = new Promise((resolve, reject) => {
-            $(".contact-border").animate(
-              {
-                height: "0%"
-              },
-              400,
-              function() {
-                resolve();
-              }
-            );
-          });
-          var borderPromises = [proBorder1, proBorder2, proBorder3, proBorder4];
-
-          Promise.all(borderPromises).then(() => {
-            $(this.newContainer).removeClass("barba-old-container");
-          });
         });
-      } else {
-        $(".barba-old-container").removeClass("barba-old-container");
-        $(".barba-new-container").removeClass("barba-new-container");
-
-        var $el = $(this.newContainer);
-
-        $el.css({
-          visibility: "visible",
-          opacity: 0
-        });
-        // debugger
-        $(this.oldContainer).animate({ opacity: 0 }, 300, () => {
-          $(this.oldContainer).hide();
-          $el.animate({ opacity: 1 }, 300, () => {
-            this.done();
-            $("html, body").animate({ scrollTop: 0 }, 500);
-            $('.drag-target').remove();
-            $('#sidenav-overlay').remove();
-            $(".button-collapse").sideNav({
-              menuWidth: 260,
-              edge: "left",
-              closeOnClick: true,
-              draggable: false
-            });
-          });
-        });
-      }
-    });
+      });
+    }
   }
 });
