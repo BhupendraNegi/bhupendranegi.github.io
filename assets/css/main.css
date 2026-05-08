@@ -965,13 +965,24 @@ i {
   color: #f1f5f9;
 }
 
+/* Hide Google Translate top banner — target both old and new class names */
 .goog-te-banner-frame,
-.goog-te-balloon-frame {
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.goog-te-balloon-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+body > .skiptranslate {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
 }
 
-body {
+body,
+body.translated-ltr,
+body.translated-rtl {
   top: 0 !important;
+  margin-top: 0 !important;
 }
 
 .resume-wrapper button {
