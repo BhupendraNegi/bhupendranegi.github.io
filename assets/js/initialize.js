@@ -114,12 +114,6 @@ function initializeScripts(){
     window.ga('send', 'pageview');
   }
   
-  if(pagename === ''){
-    Barba.Pjax.getTransition = () => HideShowTransition;
-  } else {
-    Barba.Pjax.getTransition = () => FadeTransition;
-  }
-
   if(pagename){
     $('nav a[href="/' + pagename + '"]').parent().find('div').addClass('nav-underlined');
   }
