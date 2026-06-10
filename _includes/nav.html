@@ -1,14 +1,14 @@
-<div class="my_navbar">
-  <nav class="z-depth-0 transparent">
+<header class="my_navbar">
+  <nav class="z-depth-0 transparent" aria-label="Primary navigation">
     <div class="container">
       <div class="nav-wrapper transparent s12">
-        <a href="/" class="brand-logo"><img src="/assets/images/Bhupendra_light.png" alt="website logo" height="50px" /></a>
-        <a href="#!" data-activates="mobile-demo" class="button-collapse large">
+        <a href="/" class="brand-logo" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="50px" /></a>
+        <a href="#!" data-activates="mobile-demo" class="button-collapse large" aria-label="Open navigation menu" aria-controls="mobile-demo">
           <i class="material-icons sandwich">menu</i>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% for my_section in site.data.sections %}
-            <li><a href={{my_section[1].url}} class="">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
+            <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
           {% endfor %}
           <li class="theme-toggle-li">
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
@@ -18,9 +18,9 @@
             </button>
           </li>
         </ul>
-        <ul class="side-nav" id="mobile-demo">
+        <ul class="side-nav" id="mobile-demo" aria-label="Mobile navigation">
           <li class="side-nav-logo">
-            <a href="/"><img src="/assets/images/Bhupendra_light.png" alt="website logo" height="36px" /></a>
+            <a href="/" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="36px" /></a>
           </li>
           {% for my_section in site.data.sections %}
             <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a></li>
@@ -37,4 +37,4 @@
       </div>
     </div>
   </nav>
-</div>
+</header>

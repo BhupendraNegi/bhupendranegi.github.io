@@ -1,28 +1,37 @@
 {% capture meta_title %}{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }} — Software Engineer{% endif %}{% endcapture %}
 {% capture meta_description %}{% if page.description %}{{ page.description }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
+{% assign meta_url = page.url | absolute_url %}
+{% assign meta_image = '/assets/images/bhupendra.png' | absolute_url %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta http-equiv="Expires" content="600" />
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{ site.name }}" />
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:url" content="{{ meta_url }}" />
   <meta property="og:title" content="{{ meta_title }}" />
   <meta property="og:description" content="{{ meta_description }}" />
-  <meta property="og:image" content="{{ site.url }}/assets/images/bhupendra.png" />
+  <meta property="og:image" content="{{ meta_image }}" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@BhupendraNegi21" />
   <meta name="twitter:title" content="{{ meta_title }}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/bhupendra.png" />
+  <meta name="twitter:image" content="{{ meta_image }}" />
 
   <link rel="shortcut icon" type="image/jpg" href="/assets/images/Bhupendra_B_dark.png">
   {% include scripts.html %}
+  <link rel="stylesheet" href="/assets/css/version-3.css" media="screen">
   {% include analytics.html %}
 </head>
