@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if [ "${1:-}" = "--setup" ]; then
+  ./bin/setup
+fi
+
+JEKYLL_HOST="${HOST:-127.0.0.1}"
+JEKYLL_PORT="${PORT:-4000}"
+JEKYLL_LIVERELOAD_PORT="${LIVERELOAD_PORT:-35729}"
+JEKYLL_ARGS=(serve --host "$JEKYLL_HOST" --port "$JEKYLL_PORT")
+
+if [ "${LIVERELOAD:-0}" = "1" ]; then
+  JEKYLL_ARGS+=(--livereload --livereload-port "$JEKYLL_LIVERELOAD_PORT")
+fi
+
+case "${PROC_MANAGER:-}" in
+  foreman)
+    exec foreman start -f Procfile
+    ;;
+  overmind)
+    exec overmind start -f Procfile
+    ;;
+  "")
+    exec bundle exec jekyll "${JEKYLL_ARGS[@]}"
+    ;;
+  *)
+    echo "Unsupported PROC_MANAGER='${PROC_MANAGER}'. Use 'foreman', 'overmind', or leave it unset."
+    exit 1
+    ;;
+esac
