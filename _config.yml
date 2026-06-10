@@ -67,11 +67,15 @@ paginate_path: "/blog/page:num"
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - AGENT.md
+  - Procfile
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
   - Gemfile
   - Gemfile.lock
+  - bin/
+  - doc/
   - node_modules/
   - vendor/bundle/
   - vendor/cache/

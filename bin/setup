@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "== Checking Ruby =="
+if ! command -v ruby >/dev/null 2>&1; then
+  echo "Ruby is required. Install Ruby first, then run ./bin/setup again."
+  exit 1
+fi
+ruby -v
+
+echo "== Checking Bundler =="
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "Bundler is required. Installing Bundler..."
+  gem install bundler
+fi
+bundle -v
+
+echo "== Installing Ruby gems =="
+bundle check || bundle install
+
+if [ -f package.json ]; then
+  echo "== Installing Node packages =="
+  if ! command -v npm >/dev/null 2>&1; then
+    echo "package.json exists, but npm is not installed. Install Node.js/npm, then run ./bin/setup again."
+    exit 1
+  fi
+  npm install
+fi
+
+echo "== Verifying Jekyll build =="
+bundle exec jekyll build
+
+echo "== Setup complete =="
+echo "Run ./bin/dev to start the local site."
