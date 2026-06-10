@@ -15,7 +15,13 @@ if ! command -v bundle >/dev/null 2>&1; then
   echo "Bundler is required. Installing Bundler..."
   gem install bundler
 fi
-bundle -v
+BUNDLER_VERSION_OUTPUT="$(bundle -v)"
+echo "$BUNDLER_VERSION_OUTPUT"
+LOCKED_BUNDLER_VERSION="$(awk '/BUNDLED WITH/{getline; gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print}' Gemfile.lock)"
+if [ -n "$LOCKED_BUNDLER_VERSION" ] && ! echo "$BUNDLER_VERSION_OUTPUT" | grep -q "$LOCKED_BUNDLER_VERSION"; then
+  echo "Installing Bundler $LOCKED_BUNDLER_VERSION..."
+  gem install bundler -v "$LOCKED_BUNDLER_VERSION"
+fi
 
 echo "== Installing Ruby gems =="
 bundle check || bundle install
@@ -26,7 +32,16 @@ if [ -f package.json ]; then
     echo "package.json exists, but npm is not installed. Install Node.js/npm, then run ./bin/setup again."
     exit 1
   fi
-  npm install
+  if [ -f package-lock.json ]; then
+    npm ci
+  else
+    npm install
+  fi
+fi
+
+if [ -f package.json ]; then
+  echo "== Building CSS =="
+  npm run css:build
 fi
 
 echo "== Verifying Jekyll build =="

@@ -76,6 +76,9 @@ exclude:
   - Gemfile.lock
   - bin/
   - doc/
+  - assets/css/tailwind.css
+  - package.json
+  - package-lock.json
   - node_modules/
   - vendor/bundle/
   - vendor/cache/

@@ -1,0 +1,15 @@
+{
+  "name": "bhupendranegi.github.io",
+  "private": true,
+  "scripts": {
+    "build": "npm run css:build && bundle exec jekyll build",
+    "css:build": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --minify",
+    "css:watch": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --watch",
+    "dev": "./bin/dev",
+    "setup": "./bin/setup"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

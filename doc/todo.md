@@ -26,15 +26,25 @@ This checklist is the working plan for the `version-3` branch. Keep it updated a
 
 ## Phase 1: Foundation
 
-- [ ] Add `.ruby-version`.
-- [ ] Decide Ruby target version after verifying Jekyll/plugin compatibility.
-- [ ] Clean up direct gem dependencies in `Gemfile`.
-- [ ] Update Bundler and gems carefully.
-- [ ] Add GitHub Actions workflow only if needed for the new build pipeline.
-- [ ] Confirm GitHub Pages deployment remains compatible with the chosen setup.
-- [ ] Add Tailwind CSS tooling.
-- [ ] Add initial design tokens for colors, spacing, typography, radius, and shadows.
-- [ ] Keep the current website working during foundation changes.
+- [x] Add `.ruby-version`.
+- [x] Add `.node-version`.
+- [x] Decide Ruby target version after verifying Jekyll/plugin compatibility.
+- [x] Clean up direct gem dependencies in `Gemfile`.
+- [x] Update Bundler and gems carefully.
+- [x] Confirm GitHub Pages deployment remains compatible with the chosen setup.
+- [x] Add Tailwind CSS tooling.
+- [x] Add initial design tokens for colors, spacing, typography, radius, and shadows.
+- [x] Keep the current website working during foundation changes.
+- [ ] Add GitHub Actions workflow only if needed for a future build pipeline.
+
+Phase 1 notes:
+
+- Ruby is pinned to `4.0.3` because this environment already verifies Jekyll on that version.
+- Bundler is locked at `4.0.14`.
+- Node is pinned to `22.22.3` for Tailwind CLI tooling.
+- The Gemfile now lists direct project dependencies only, with `bigdecimal` kept explicit for Ruby 4 compatibility.
+- Tailwind source CSS is excluded from Jekyll output; the compiled `assets/css/version-3.css` can be committed so branch-based GitHub Pages deployment remains possible.
+- GitHub Actions is deferred until the site depends on an uncommitted build artifact or needs a custom deployment pipeline.
 
 ## Phase 2: Layout and CSS Migration
 

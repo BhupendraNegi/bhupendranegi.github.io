@@ -5,7 +5,9 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 ## Project Snapshot
 
 - Static site generator: Jekyll 4.x, managed with Bundler.
+- Runtime pins: Ruby `4.0.3`, Bundler `4.0.14`, and Node.js `22.22.3`.
 - Front end: Liquid templates, Materialize CSS 0.100.2, jQuery, Barba.js page transitions, custom CSS and JavaScript.
+- Version 3 styling groundwork: Tailwind CLI source lives at `assets/css/tailwind.css` and compiles to `assets/css/version-3.css`.
 - Content model: pages live at the repo root and in `blog/`; posts live in `_posts/`; portfolio and profile data live in `_data/`.
 - Generated output: `_site/`, `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` are build artifacts and should not be committed.
 
@@ -46,7 +48,7 @@ bundle exec jekyll serve
 Build the site:
 
 ```sh
-bundle exec jekyll build
+npm run build
 ```
 
 Build with drafts, if drafts are added later:
