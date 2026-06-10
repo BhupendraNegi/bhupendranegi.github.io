@@ -16,6 +16,10 @@ if [ "${LIVERELOAD:-0}" = "1" ]; then
   JEKYLL_ARGS+=(--livereload --livereload-port "$JEKYLL_LIVERELOAD_PORT")
 fi
 
+if [ -f package.json ]; then
+  npm run css:build
+fi
+
 case "${PROC_MANAGER:-}" in
   foreman)
     exec foreman start -f Procfile

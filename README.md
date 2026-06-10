@@ -54,6 +54,14 @@ This repository contains a static portfolio site with:
 
 ## Getting Started
 
+Recommended runtimes:
+
+- Ruby `4.0.3`
+- Bundler `4.0.14`
+- Node.js `22.22.3`
+
+These are pinned in `.ruby-version` and `.node-version`.
+
 Install dependencies:
 
 ```sh
@@ -89,7 +97,7 @@ http://127.0.0.1:4000/
 Build the static site:
 
 ```sh
-bundle exec jekyll build
+npm run build
 ```
 
 The generated site is written to `_site/`.
@@ -115,6 +123,7 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 ## Development Notes
 
 - Use `bundle exec` when running Jekyll so the locked dependencies are used.
+- Tailwind source styles live in `assets/css/tailwind.css` and compile to `assets/css/version-3.css`.
 - Do not edit `_site/` directly; it is generated output.
 - Keep generated caches such as `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` out of commits.
 - JavaScript behavior is split across `assets/js/functions.js`, `initialize.js`, `script.js`, and `transitions.js`.

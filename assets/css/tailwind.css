@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink-950: #08090d;
+  --color-ink-900: #11131a;
+  --color-ink-800: #1b1f2a;
+  --color-ink-700: #2b3140;
+  --color-paper-50: #f8fafc;
+  --color-paper-100: #eef2f7;
+  --color-paper-200: #dbe3ee;
+  --color-cyan-400: #22d3ee;
+  --color-teal-500: #14b8a6;
+  --color-amber-400: #fbbf24;
+  --color-rose-500: #f43f5e;
+
+  --radius-card: 0.5rem;
+  --radius-control: 0.375rem;
+  --shadow-soft: 0 18px 50px rgb(8 9 13 / 0.16);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --site-bg: var(--color-paper-50);
+    --site-surface: #ffffff;
+    --site-text: var(--color-ink-950);
+    --site-muted: var(--color-ink-700);
+    --site-border: rgb(17 19 26 / 0.12);
+    --site-accent: var(--color-teal-500);
+    --site-accent-strong: var(--color-cyan-400);
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --site-bg: var(--color-ink-950);
+    --site-surface: var(--color-ink-900);
+    --site-text: var(--color-paper-50);
+    --site-muted: var(--color-paper-200);
+    --site-border: rgb(248 250 252 / 0.12);
+    --site-accent: var(--color-cyan-400);
+    --site-accent-strong: var(--color-amber-400);
+  }
+}
