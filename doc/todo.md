@@ -49,6 +49,10 @@ Phase 1 notes:
 ## Phase 2: Layout and CSS Migration
 
 - [ ] Create the new base layout structure.
+- [x] Add safe Version 3 stylesheet without global Tailwind Preflight.
+- [x] Add shared skip-link and stable `main` targets.
+- [x] Move theme bootstrap into the document head.
+- [x] Clean up generated metadata URLs.
 - [ ] Replace Materialize grid/layout classes.
 - [ ] Build responsive navigation without Materialize.
 - [ ] Add shared button, link, card, badge, form, and prose styles.
@@ -96,7 +100,7 @@ Phase 1 notes:
 - [ ] Verify 768px tablet layout.
 - [ ] Verify 1024px laptop layout.
 - [ ] Verify 1440px desktop layout.
-- [ ] Add skip link.
+- [x] Add skip link.
 - [ ] Ensure semantic landmarks.
 - [ ] Ensure visible focus states.
 - [ ] Ensure strong color contrast in both themes.
