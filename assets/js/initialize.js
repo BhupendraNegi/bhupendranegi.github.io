@@ -28,12 +28,6 @@ function initializeScripts(){
   // $( document ).tooltip();
 
   $('.materialboxed').materialbox();
-  $(".button-collapse").sideNav({
-    menuWidth: 260,
-    edge: 'left',
-    closeOnClick: true,
-    draggable: false
-  });
   // $('.carousel-arrows').click(function(e){
   //   var arrow = e.target;
   //   debugger

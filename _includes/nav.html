@@ -3,9 +3,9 @@
     <div class="container">
       <div class="nav-wrapper transparent s12">
         <a href="/" class="brand-logo" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="50px" /></a>
-        <a href="#!" data-activates="mobile-demo" class="button-collapse large" aria-label="Open navigation menu" aria-controls="mobile-demo">
+        <button id="mobile-nav-toggle" type="button" class="button-collapse large mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
           <i class="material-icons sandwich">menu</i>
-        </a>
+        </button>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% for my_section in site.data.sections %}
             <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
@@ -18,7 +18,12 @@
             </button>
           </li>
         </ul>
-        <ul class="side-nav" id="mobile-demo" aria-label="Mobile navigation">
+        <ul class="side-nav site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
+          <li class="mobile-nav-close-row">
+            <button type="button" class="mobile-nav-close" aria-label="Close navigation menu" data-mobile-nav-close>
+              <i class="material-icons" aria-hidden="true">close</i>
+            </button>
+          </li>
           <li class="side-nav-logo">
             <a href="/" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="36px" /></a>
           </li>
@@ -33,6 +38,7 @@
             </button>
           </li>
         </ul>
+        <div class="mobile-nav-backdrop" data-mobile-nav-close hidden></div>
 
       </div>
     </div>
