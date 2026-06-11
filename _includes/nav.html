@@ -1,46 +1,44 @@
-<header class="my_navbar">
-  <nav class="z-depth-0 transparent" aria-label="Primary navigation">
-    <div class="container">
-      <div class="nav-wrapper transparent s12">
-        <a href="/" class="brand-logo" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="50px" /></a>
-        <button id="mobile-nav-toggle" type="button" class="button-collapse large mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
-          <i class="material-icons sandwich">menu</i>
-        </button>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          {% for my_section in site.data.sections %}
-            <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
-          {% endfor %}
-          <li class="theme-toggle-li">
-            <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
-              <i class="fa fa-sun-o" aria-hidden="true"></i>
-              <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-              <i class="fa fa-moon-o" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
-        <ul class="side-nav site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
-          <li class="mobile-nav-close-row">
-            <button type="button" class="mobile-nav-close" aria-label="Close navigation menu" data-mobile-nav-close>
-              <i class="material-icons" aria-hidden="true">close</i>
-            </button>
-          </li>
-          <li class="side-nav-logo">
-            <a href="/" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="36px" /></a>
-          </li>
-          {% for my_section in site.data.sections %}
-            <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a></li>
-          {% endfor %}
-          <li class="side-nav-toggle-li">
-            <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
-              <i class="fa fa-sun-o top-mragin" aria-hidden="true"></i>
-              <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-              <i class="fa fa-moon-o top-mragin" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
-        <div class="mobile-nav-backdrop" data-mobile-nav-close hidden></div>
+<header class="my_navbar site-header">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="site-nav-inner">
+      <a href="/" class="site-brand" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" width="50" height="50" /></a>
+      <button id="mobile-nav-toggle" type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
+        <i class="material-icons sandwich">menu</i>
+      </button>
+      <ul id="nav-mobile" class="site-nav-list">
+        {% for my_section in site.data.sections %}
+          <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
+        {% endfor %}
+        <li class="theme-toggle-li">
+          <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+            <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+      <ul class="site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
+        <li class="mobile-nav-close-row">
+          <button type="button" class="mobile-nav-close" aria-label="Close navigation menu" data-mobile-nav-close>
+            <i class="material-icons" aria-hidden="true">close</i>
+          </button>
+        </li>
+        <li class="mobile-nav-logo">
+          <a href="/" aria-label="{{ site.name }} home"><img src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" width="36" height="36" /></a>
+        </li>
+        {% for my_section in site.data.sections %}
+          <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a></li>
+        {% endfor %}
+        <li class="mobile-nav-theme-row">
+          <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
+            <i class="fa fa-sun-o top-mragin" aria-hidden="true"></i>
+            <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+            <i class="fa fa-moon-o top-mragin" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+      <div class="mobile-nav-backdrop" data-mobile-nav-close hidden></div>
 
-      </div>
     </div>
   </nav>
 </header>

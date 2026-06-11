@@ -611,49 +611,6 @@ body {
 
 /*  Pages Start */
 
-.brand-logo {
-  margin-left: 5px;
-  margin-top: 10px;
-}
-
-.side-nav {
-  background-color: #0a0a0f !important;
-  height: 100vh !important;
-  z-index: 1001 !important;
-}
-
-.side-nav li {
-  background-color: #0a0a0f !important;
-}
-
-.side-nav-logo {
-  padding: 16px 20px 12px !important;
-  height: auto !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  line-height: 1 !important;
-}
-
-.side-nav li > a {
-  color: #e2e8f0 !important;
-  font-family: var(--font-raleway) !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-  background-color: transparent !important;
-}
-
-.side-nav li > a:hover {
-  background-color: rgba(34, 211, 238, 0.12) !important;
-  color: #22d3ee !important;
-}
-
-.side-nav-toggle-li {
-  padding: 14px 20px !important;
-  height: auto !important;
-  line-height: 1 !important;
-  border-bottom: none !important;
-}
-
 .barba-old-container {
   position: absolute;
   z-index: 5;
@@ -916,20 +873,6 @@ i {
 
 .resume-wrapper button {
   margin-top: 50px;
-}
-
-.my_navbar {
-  background-color: var(--color-nav);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--color-accent-dim);
-  padding: 10px 0 0 0;
-  min-height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
 }
 
 nav ul li a {
@@ -1396,13 +1339,6 @@ textarea:focus {
   box-shadow: 0 1px 0 0 #292929 !important;
 }
 
-nav,
-nav .nav-wrapper i,
-nav a.button-collapse,
-nav a.button-collapse i {
-  font-size: 3rem;
-}
-
 .carousel .indicators .indicator-item.active {
   background-color: black;
   width: 15px;
@@ -1440,13 +1376,6 @@ nav a.button-collapse i {
   .nav-underlined,
   .nav-hover-underlined {
     width: 15%;
-  }
-
-  nav,
-  nav .nav-wrapper i,
-  nav a.button-collapse,
-  nav a.button-collapse i {
-    font-size: 2.5rem;
   }
 
   .description {
@@ -1489,10 +1418,6 @@ nav a.button-collapse i {
 
   .heading {
     font-size: 1.8rem;
-  }
-
-  nav .button-collapse {
-    margin: 0;
   }
 
   .skill_names {
