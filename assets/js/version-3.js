@@ -214,6 +214,87 @@
     }
   }
 
+  function openContactSuccessModal() {
+    var modal = document.getElementById('email_modal');
+
+    if (!modal) {
+      return;
+    }
+
+    if (window.jQuery && window.jQuery.fn && window.jQuery.fn.modal) {
+      window.jQuery(modal).modal('open');
+      return;
+    }
+
+    modal.style.display = 'block';
+    modal.classList.add('open');
+  }
+
+  function initializeContactForm() {
+    var form = document.querySelector('[data-contact-form]');
+
+    if (!form || form.dataset.version3ContactBound === 'true') {
+      return;
+    }
+
+    var submitButton = form.querySelector('[data-contact-submit]');
+    var status = form.querySelector('[data-contact-status]');
+
+    function setStatus(message, isError) {
+      if (!status) {
+        return;
+      }
+
+      status.textContent = message;
+      status.classList.toggle('contact-status-error', Boolean(isError));
+    }
+
+    function setSubmitting(isSubmitting) {
+      if (!submitButton) {
+        return;
+      }
+
+      submitButton.disabled = isSubmitting;
+      submitButton.textContent = isSubmitting ? 'Sending...' : 'Submit';
+    }
+
+    form.dataset.version3ContactBound = 'true';
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      setSubmitting(true);
+      setStatus('Sending your message...', false);
+
+      fetch(form.action, {
+        method: form.method || 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json'
+        }
+      }).then(function(response) {
+        if (!response.ok) {
+          throw new Error('Contact form submission failed.');
+        }
+
+        form.reset();
+        form.querySelectorAll('.email_input').forEach(function(input) {
+          input.classList.remove('valid', 'invalid');
+        });
+        setStatus('', false);
+        openContactSuccessModal();
+      }).catch(function() {
+        setStatus('Something went wrong. Please try again or email me directly.', true);
+      }).finally(function() {
+        setSubmitting(false);
+      });
+    });
+  }
+
   function initializeGlobalEvents() {
     if (document.documentElement.dataset.version3GlobalEvents === 'true') {
       return;
@@ -234,6 +315,7 @@
     initializeThemeToggles();
     initializeMobileNavigation();
     initializeProjectFilters();
+    initializeContactForm();
   }
 
   document.addEventListener('DOMContentLoaded', initializeVersion3Scripts);
