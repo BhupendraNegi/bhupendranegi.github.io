@@ -295,6 +295,87 @@
     });
   }
 
+  function normalizePath(path) {
+    var normalizedPath = (path || '/').split('?')[0].replace(/\/+$/, '');
+    return normalizedPath || '/';
+  }
+
+  function initializeNavigationState() {
+    var currentPath = normalizePath(window.location.pathname);
+
+    document.querySelectorAll('nav .nav-underline').forEach(function(underline) {
+      underline.classList.remove('nav-underlined');
+    });
+
+    document.querySelectorAll('nav ul li a').forEach(function(link) {
+      var linkPath = normalizePath(link.getAttribute('href'));
+      var underline = link.parentElement ? link.parentElement.querySelector('.nav-underline') : null;
+      var isActive = linkPath !== '/' && (currentPath === linkPath || currentPath.indexOf(linkPath + '/') === 0);
+
+      if (underline && isActive) {
+        underline.classList.add('nav-underlined');
+      }
+
+      if (!underline || link.dataset.version3NavHoverBound === 'true') {
+        return;
+      }
+
+      link.dataset.version3NavHoverBound = 'true';
+      link.addEventListener('mouseenter', function() {
+        underline.classList.add('nav-hover-underlined');
+      });
+      link.addEventListener('mouseleave', function() {
+        underline.classList.remove('nav-hover-underlined');
+      });
+    });
+  }
+
+  function syncScrollTopVisibility() {
+    var scrollButton = document.getElementById('scroll-top');
+
+    if (!scrollButton) {
+      return;
+    }
+
+    var documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+    var scrollRatio = documentHeight > 0 ? window.pageYOffset / documentHeight : 0;
+
+    scrollButton.style.display = scrollRatio > 0.1 ? 'block' : 'none';
+  }
+
+  function initializeScrollTopControl() {
+    var scrollButton = document.getElementById('scroll-top');
+
+    if (document.documentElement.dataset.version3ScrollBound !== 'true') {
+      document.documentElement.dataset.version3ScrollBound = 'true';
+      window.addEventListener('scroll', syncScrollTopVisibility, { passive: true });
+    }
+
+    if (!scrollButton) {
+      return;
+    }
+
+    syncScrollTopVisibility();
+
+    if (scrollButton.dataset.version3ScrollBound === 'true') {
+      return;
+    }
+
+    scrollButton.dataset.version3ScrollBound = 'true';
+    scrollButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    });
+  }
+
   function initializeGlobalEvents() {
     if (document.documentElement.dataset.version3GlobalEvents === 'true') {
       return;
@@ -316,6 +397,8 @@
     initializeMobileNavigation();
     initializeProjectFilters();
     initializeContactForm();
+    initializeNavigationState();
+    initializeScrollTopControl();
   }
 
   document.addEventListener('DOMContentLoaded', initializeVersion3Scripts);

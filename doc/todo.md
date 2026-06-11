@@ -67,6 +67,7 @@ Phase 1 notes:
 - [x] Rewrite mobile navigation in vanilla JavaScript.
 - [x] Rewrite project filters in vanilla JavaScript.
 - [x] Rewrite contact form behavior with `fetch`.
+- [x] Move nav highlight and scroll-to-top behavior to vanilla JavaScript.
 - [ ] Add faster branded page transitions.
 - [ ] Replace Barba.js.
 - [ ] Remove jQuery.
