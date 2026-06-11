@@ -7,71 +7,36 @@ author: Henry Ford
 {% include quote.html quote=page.quote author=page.author %}
 {% include joining_date.html %}
 
-
-<div class="about_section">
-  <div class="row">
-    <img src="/assets/images/bhupendra.png" class="col responsive circle about_img" alt="me">
-    <div class="about_paragraph">
-      <p>
-        👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.
-        <p>
-          🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding, problem-solving.
-        </p>
-        <p> 
-          📚 Fast forward to my college days, I decided to dive headfirst into the world of computer science and technology. With each line of code I wrote, I uncovered the intricate logic behind crafting applications. During this journey, I also explored the world of Android app development, building applications that included useful tools like calculators and music players.
-        </p>
-        <p>
-          💻 As the digital landscape continued to expand, I found my true calling as a Ruby on Rails developer, and I've honed my skills in this domain over the past {{ years }} years, creating web applications that make a difference.
-        </p>
-        <p>
-          🌐 Today, I am a seasoned Software Engineer with a specialization in Ruby on Rails and React. I've had the privilege of bringing web applications to life, leveraging my {{ years }} years of expertise.
-        </p>
-      </p>
-      <p>
-        😎  If you're interested in exploring my projects or discussing my web development work, please feel free to:
-        
-        <div class="row">
-          <div class="col m6 offset-m3 s12">
-            <div class="row">
-              <div class="col s4">
-                <a href="/projects"><button type="button" class="fill col s12" name="button"> <i class="fa fa-folder-open" aria-hidden="true"></i> Visit My Projects</button></a>
-              </div>
-              <div class="col s4">
-                <a href="/contact"><button type="button" class="fill col s12" name="button"> <i class="fa fa-envelope"></i> Email Me </button></a>
-              </div>
-              <div class="col s4">
-                <a href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank"> <button type="button" class="fill col s12" name="button"> <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  Connect</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </p>
+<section class="about_section about-page" aria-labelledby="about-heading">
+  <div class="about-intro">
+    <img src="/assets/images/bhupendra.png" class="about_img" alt="Bhupendra Negi">
+    <div class="about_paragraph site-prose">
+      <h2 id="about-heading" class="heading big_heading">About</h2>
+      <p>👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.</p>
+      <p>🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding, problem-solving.</p>
+      <p>📚 Fast forward to my college days, I decided to dive headfirst into the world of computer science and technology. With each line of code I wrote, I uncovered the intricate logic behind crafting applications. During this journey, I also explored the world of Android app development, building applications that included useful tools like calculators and music players.</p>
+      <p>💻 As the digital landscape continued to expand, I found my true calling as a Ruby on Rails developer, and I've honed my skills in this domain over the past {{ years }} years, creating web applications that make a difference.</p>
+      <p>🌐 Today, I am a seasoned Software Engineer with a specialization in Ruby on Rails and React. I've had the privilege of bringing web applications to life, leveraging my {{ years }} years of expertise.</p>
+      <p>😎 If you're interested in exploring my projects or discussing my web development work, please feel free to:</p>
+      <div class="about-actions">
+        <a class="site-button" href="/projects"><i class="fa fa-folder-open" aria-hidden="true"></i> Visit My Projects</a>
+        <a class="site-button" href="/contact"><i class="fa fa-envelope" aria-hidden="true"></i> Email Me</a>
+        <a class="site-button" href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank" rel="noopener"><i class="fa fa-linkedin" aria-hidden="true"></i> Connect</a>
+      </div>
     </div>
   </div>
 
-  <!-- <div class="row resume-wrapper">
-    <a href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="click to open in pdf viewer" target="_blank">
-      <button class="fill col s8 offset-s2 m4 offset-m4">
-        View My Resume
-        <i class="fa fa-file" aria-hidden="true"></i>
-        </button>
-    </a>
-  </div> -->
-
-  <h3 class="heading skills_heading center-align">Skills</h3>
+  <h3 class="heading skills_heading text-center">Skills</h3>
   <div class="skills_wrapper">
-      {% for tech_group in site.data.skills %}
-        <div class="skill_group">
-          <div class="col m4 s6">
-            <h4 class="heading">{{tech_group.name}}</h4>
-            <div class="skills">
-              {% for tech in tech_group.skills %}
-              <i class="about_skill_icon devicon-{{tech.class}}"></i><span class="skill_names">{{tech.skill_name}}</span><br/>
-              {% endfor %}
-            </div>
-          </div>
+    {% for tech_group in site.data.skills %}
+      <section class="skill_group site-card">
+        <h4 class="heading">{{tech_group.name}}</h4>
+        <div class="skills">
+          {% for tech in tech_group.skills %}
+            <span class="skill-chip"><i class="about_skill_icon devicon-{{tech.class}}" aria-hidden="true"></i><span class="skill_names">{{tech.skill_name}}</span></span>
+          {% endfor %}
         </div>
-      {% endfor %}
+      </section>
+    {% endfor %}
   </div>
-</div>
+</section>

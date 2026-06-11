@@ -1,12 +1,9 @@
-<div class="project row modal-trigger" tags="{{ project.tags | join: ',' }}" style="background-image: url({{project.cover}}); background-size: {{ project.size }};">
-  <div class="cover {% cycle 'left', 'right'%} col m5 s12" href="#{{project.id}}">
-    <div class="valign-wrapper">
-      <div class="col s8 offset-s2">
-        <h3>{{project.title}}</h3>
-        <!-- Trigger -->
-        <button class="fill col s12 modal-trigger" href="#{{project.id}}">learn more</button>
-      </div>
+<article class="project project-card" tags="{{ project.tags | join: ',' }}" style="background-image: url({{project.cover}}); background-size: {{ project.size }};">
+  <div class="cover project-cover {% cycle 'left', 'right'%}">
+    <div class="project-cover-content">
+      <h3>{{project.title}}</h3>
+      <a class="site-button project-open-button modal-trigger" href="#{{project.id}}">Learn more</a>
     </div>
-    <!-- Structure -->
-    {% include project_card.html %}
-</div>
+  </div>
+  {% include project_card.html %}
+</article>

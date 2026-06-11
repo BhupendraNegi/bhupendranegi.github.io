@@ -53,16 +53,17 @@ Phase 1 notes:
 - [x] Add shared skip-link and stable `main` targets.
 - [x] Move theme bootstrap into the document head.
 - [x] Clean up generated metadata URLs.
-- [ ] Replace Materialize grid/layout classes.
+- [x] Replace Materialize grid/layout classes.
   - [x] Replace footer Materialize grid/layout classes.
   - [x] Replace navigation Materialize wrapper/layout classes.
   - [x] Replace contact page Materialize grid/layout classes.
+  - [x] Replace homepage, about, projects, blog/post, resume, and 404 layout classes.
 - [x] Build responsive navigation without Materialize.
 - [x] Add shared button, link, card, badge, form, and prose styles.
-- [ ] Improve light theme.
-- [ ] Improve dark theme.
+- [x] Improve light theme.
+- [x] Improve dark theme.
 - [x] Improve Google Translate placement and styling.
-- [ ] Remove unused legacy CSS as sections are migrated.
+- [x] Remove unused legacy CSS as sections are migrated.
 
 ## Phase 3: JavaScript Migration
 
@@ -71,10 +72,10 @@ Phase 1 notes:
 - [x] Rewrite project filters in vanilla JavaScript.
 - [x] Rewrite contact form behavior with `fetch`.
 - [x] Move nav highlight and scroll-to-top behavior to vanilla JavaScript.
-- [ ] Add faster branded page transitions.
-- [ ] Replace Barba.js.
-- [ ] Remove jQuery.
-- [ ] Remove old transition and initialization code after replacements are stable.
+- [x] Add faster branded page transitions.
+- [x] Replace Barba.js.
+- [x] Remove jQuery.
+- [x] Remove old transition and initialization code after replacements are stable.
 
 ## Phase 4: Icons
 

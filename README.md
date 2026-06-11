@@ -16,7 +16,7 @@ This repository contains a static portfolio site with:
 - Markdown blog posts in `_posts/`.
 - A resume page linking to `assets/images/bhupendra_resume.pdf`.
 - A contact form that submits through Formspree.
-- Light/dark theme support, Barba.js transitions, Disqus comments, Google Translate, and Google Analytics.
+- Light/dark theme support, lightweight Version 3 page transitions, Disqus comments, Google Translate, and Google Analytics.
 
 ## Tech Stack
 
@@ -25,9 +25,9 @@ This repository contains a static portfolio site with:
 - Liquid templates
 - Markdown with Kramdown
 - Rouge and Highlight.js for code highlighting
-- Materialize CSS 0.100.2
-- jQuery
-- Barba.js
+- Tailwind CSS CLI for Version 3 styles
+- Materialize CSS 0.100.2 as temporary legacy CSS during migration
+- Vanilla JavaScript in `assets/js/version-3.js`
 - Devicon and Font Awesome icons
 
 ## Repository Structure
@@ -126,16 +126,16 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 - Tailwind source styles live in `assets/css/tailwind.css` and compile to `assets/css/version-3.css`.
 - Do not edit `_site/` directly; it is generated output.
 - Keep generated caches such as `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` out of commits.
-- JavaScript behavior is split across `assets/js/functions.js`, `initialize.js`, `script.js`, and `transitions.js`.
-- Barba.js page transitions require initialization code to run again after transitions.
-- External services include Formspree, Disqus, Google Analytics, Google Translate, CDN-hosted Materialize, Highlight.js, Font Awesome, and Devicon.
+- JavaScript behavior lives in `assets/js/version-3.js`.
+- Page transitions use a small vanilla JavaScript layer instead of Barba.js.
+- External services include Formspree, Disqus, Google Analytics, Google Translate, CDN-hosted Materialize CSS, Highlight.js, Font Awesome, and Devicon.
 
 ## Verification
 
 Before publishing changes, run:
 
 ```sh
-bundle exec jekyll build
+npm run build
 ```
 
 For UI changes, also check the site locally with `bundle exec jekyll serve` and verify the home page, navigation, project filters/modals, blog pages, theme toggle, contact form, and resume link.

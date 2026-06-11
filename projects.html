@@ -8,8 +8,9 @@ author: Pele
 
 
 
-<div class="filter-bar center-align">
-  <h2 class="heading big_heading">Projects</h2>
+<section class="projects-page" aria-labelledby="projects-heading">
+<div class="filter-bar text-center">
+  <h2 id="projects-heading" class="heading big_heading">Projects</h2>
   <button id="filter" class="fill" type="button" aria-controls="tags" aria-expanded="false" data-project-filter-toggle>Filter by Technology</button>
   <div id="tags" class="project-filter-tags" hidden>
     <button class="tag fill" type="button" data-project-tag="ruby" aria-pressed="false">Ruby</button>
@@ -22,28 +23,20 @@ author: Pele
     <button class="tag fill" type="button" data-project-tag="android" aria-pressed="false">Android</button>
     <button class="tag fill" type="button" data-project-tag="mobile" aria-pressed="false">Mobile</button>
     <button class="tag fill" type="button" data-project-tag="game" aria-pressed="false">Game</button>
-    <button class="tag fill" type="button" data-project-clear-filters>✕ Clear</button>
+    <button class="tag fill" type="button" data-project-clear-filters>Clear</button>
   </div>
 </div>
 
-<div class="project_list">
+<div class="project_list project-list">
   {% for project in site.data.projects %}
     {% include project.html %}
   {% endfor %}
 </div>
-<br>
-<div class="projects-bottom center-align">
+<div class="projects-bottom text-center">
   <h4 class="heading">Have questions, comments, feedback? Feel free to reach out!</h4>
-  <div class="row">
-    <div class="col m6 offset-m3 s12">
-      <div class="row">
-        <div class="col s6">
-          <a href="/contact"><button type="button" class="fill col s12" name="button">Contact</button></a>
-        </div>
-        <div class="col s6">
-          <button type="button" class="fill col s12" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
-        </div>
-      </div>
-    </div>
+  <div class="page-actions">
+    <a class="site-button" href="/contact">Contact</a>
+    <button type="button" class="fill" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
   </div>
 </div>
+</section>

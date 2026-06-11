@@ -7,7 +7,7 @@ author: Katie Hopkinst
 {% include quote.html quote=page.quote author=page.author %}
 
 <section class="contact-page" aria-labelledby="contact-heading">
-  <h2 id="contact-heading" class="heading big_heading center">Contact</h2>
+  <h2 id="contact-heading" class="heading big_heading text-center">Contact</h2>
   <form class="email_me contact-form site-card" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form>
     <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" />
 
@@ -34,11 +34,11 @@ author: Katie Hopkinst
 
       <label class="contact-field contact-field-full" for="contact-message">
         <span class="contact-label"><i class="material-icons" aria-hidden="true">mode_edit</i>Message</span>
-        <textarea id="contact-message" aria-required="true" name="message" class="materialize-textarea email_input validate" required></textarea>
+        <textarea id="contact-message" aria-required="true" name="message" class="email_input validate" required></textarea>
       </label>
     </div>
 
-    <p class="contact-status center-align" aria-live="polite" data-contact-status></p>
+    <p class="contact-status text-center" aria-live="polite" data-contact-status></p>
     <div class="contact-actions">
       <button class="fill contact-submit" type="submit" name="action" data-contact-submit>Submit</button>
     </div>
@@ -46,11 +46,11 @@ author: Katie Hopkinst
 
   <div id="email_modal" class="modal contact-success-modal" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
     <div class="modal-content">
-      <h4 id="contact-success-title" class="center-align">Your email is on the way!</h4>
-      <p class="center-align description">I usually reply fast</p>
+      <h4 id="contact-success-title" class="text-center">Your email is on the way!</h4>
+      <p class="text-center description">I usually reply fast</p>
     </div>
     <div class="contact-actions">
-      <a class="button_wrapper modal-action modal-close site-button" href="#main-content">Back to site</a>
+      <a class="button_wrapper modal-close site-button" href="#main-content">Back to site</a>
     </div>
   </div>
 </section>

@@ -3,7 +3,7 @@ layout: default
 ---
 
 <main id="main-content" class="site-main site-page site-page--home homepage-main" tabindex="-1">
-<div id="homepage">
+<div id="homepage" class="homepage-grid-wrap">
   <!-- <div class="hero">
     <div class="hero-content">
       <h1 class="hero-name">Bhupendra Negi</h1>
@@ -15,11 +15,11 @@ layout: default
       </div>
     </div>
   </div> -->
-  <div class="row top-row">
+  <div class="homepage-grid top-row">
     {% include box.html section=site.data.sections.about %}
     {% include box.html section=site.data.sections.projects %}
   </div>
-  <div class="row">
+  <div class="homepage-grid">
     {% include box.html section=site.data.sections.blog %}
     {% include box.html section=site.data.sections.contact %}
   </div>
