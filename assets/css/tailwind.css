@@ -105,6 +105,23 @@
     margin-left: auto;
   }
 
+  .mobile-nav-toggle:focus-visible,
+  .mobile-nav-close:focus-visible,
+  .theme-toggle:focus-visible {
+    outline: 3px solid var(--site-accent-strong);
+    outline-offset: 4px;
+  }
+
+  .theme-toggle {
+    border-radius: 999px;
+    min-height: 34px;
+    padding: 4px;
+  }
+
+  .theme-toggle[aria-pressed="true"] .theme-toggle-track {
+    border-color: rgb(34 211 238 / 0.48) !important;
+  }
+
   .mobile-nav-close-row {
     display: flex !important;
     justify-content: flex-end;
@@ -144,6 +161,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .skip-link,
+    .theme-toggle-track,
+    .theme-toggle-thumb,
     .site-mobile-nav {
       transition: none;
     }

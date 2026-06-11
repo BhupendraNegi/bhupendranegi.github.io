@@ -1,7 +1,3 @@
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-}
-
 function initializeScripts(){
   // Remove Materialize overlays/targets that get stuck on Barba page transitions
   $('#sidenav-overlay').remove();
@@ -9,21 +5,11 @@ function initializeScripts(){
   $('.drag-target').remove();
   $('body').css({ overflow: '', width: '' });
 
-  // re-apply theme on every Barba page transition (CSS handles appearance)
-  applyTheme(localStorage.getItem('theme') || 'light');
-
   // Re-trigger Google Translate on new page content after Barba transition
   var select = document.querySelector('.goog-te-combo');
   if (select && select.value && select.value !== 'en') {
     select.dispatchEvent(new Event('change'));
   }
-
-  $('#theme-toggle, #theme-toggle-mobile').click(function(e) {
-    e.preventDefault();
-    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-  });
 
   // $( document ).tooltip();
 

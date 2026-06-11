@@ -11,7 +11,7 @@
             <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
           {% endfor %}
           <li class="theme-toggle-li">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
+            <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
               <i class="fa fa-sun-o" aria-hidden="true"></i>
               <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
               <i class="fa fa-moon-o" aria-hidden="true"></i>
@@ -31,7 +31,7 @@
             <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a></li>
           {% endfor %}
           <li class="side-nav-toggle-li">
-            <button id="theme-toggle-mobile" class="theme-toggle theme-toggle-mobile" aria-label="Toggle theme">
+            <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch to dark theme" aria-pressed="false" data-theme-toggle>
               <i class="fa fa-sun-o top-mragin" aria-hidden="true"></i>
               <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
               <i class="fa fa-moon-o top-mragin" aria-hidden="true"></i>
