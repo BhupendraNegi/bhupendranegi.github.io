@@ -58,7 +58,7 @@ Phase 1 notes:
 - [ ] Add shared button, link, card, badge, form, and prose styles.
 - [ ] Improve light theme.
 - [ ] Improve dark theme.
-- [ ] Improve Google Translate placement and styling.
+- [x] Improve Google Translate placement and styling.
 - [ ] Remove unused legacy CSS as sections are migrated.
 
 ## Phase 3: JavaScript Migration
