@@ -137,7 +137,7 @@
   }
 
   function getProjectTags(project) {
-    return (project.getAttribute('tags') || '')
+    return (project.dataset.tags || '')
       .split(',')
       .map(function(tag) {
         return tag.trim();
