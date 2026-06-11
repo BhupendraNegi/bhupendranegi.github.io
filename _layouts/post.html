@@ -5,15 +5,10 @@ comments: true
 
 
 <article class="post">
-  <br>
-  <div class="row">
-    <div class="col s11">
-      <h3 class="big_heading">{{ page.title }}</h3>
-    </div>
-    <div class="col s1 margin-top">
-      <a href="/blog"><button type="button" class="fill col" name="button"> << </button></a>
-    </div>
-  </div>
+  <header class="post-header">
+    <h3 class="big_heading">{{ page.title }}</h3>
+    <a href="/blog" class="site-button post-back-link" aria-label="Back to blog">Back</a>
+  </header>
 
   <div class="date">
     {{ page.date | date: "%B %e, %Y" }}
@@ -23,17 +18,10 @@ comments: true
     <p class="post-footer">Thanks for reading!! Do let me know if you have any comments and feedback.</p>
   </div>
   {% include disqus.html %}
-  <div class="projects-bottom center-align">
-    <div class="row">
-      <div class="col m6 offset-m3 s12">
-        <div class="row">
-          <div class="col s6">
-            <a href="/blog"><button type="button" class="fill col s12" name="button">More Blogs</button></a>
-          </div>
-          <div class="col s6">
-            <button type="button" class="fill col s12" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
-          </div>
-        </div>
-      </div>
+  <div class="projects-bottom text-center">
+    <div class="page-actions">
+      <a href="/blog" class="site-button">More Blogs</a>
+      <button type="button" class="fill" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
     </div>
+  </div>
 </article>
