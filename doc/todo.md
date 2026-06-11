@@ -55,7 +55,7 @@ Phase 1 notes:
 - [x] Clean up generated metadata URLs.
 - [ ] Replace Materialize grid/layout classes.
 - [x] Build responsive navigation without Materialize.
-- [ ] Add shared button, link, card, badge, form, and prose styles.
+- [x] Add shared button, link, card, badge, form, and prose styles.
 - [ ] Improve light theme.
 - [ ] Improve dark theme.
 - [x] Improve Google Translate placement and styling.
