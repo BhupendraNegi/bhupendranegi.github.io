@@ -72,8 +72,30 @@
     min-height: 100vh;
   }
 
+  .site-content {
+    min-height: 100vh;
+  }
+
   .site-main {
     outline: none;
+  }
+
+  .site-page {
+    background: var(--site-bg);
+    color: var(--site-text);
+    min-height: 100vh;
+  }
+
+  .site-page-inner {
+    margin-inline: auto;
+    max-width: 1300px;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+    width: min(100%, 1300px);
+  }
+
+  .site-page--home {
+    background: #08090d;
+    color: #f8fafc;
   }
 
   .homepage-main {

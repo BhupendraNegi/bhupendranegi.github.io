@@ -48,7 +48,7 @@ Phase 1 notes:
 
 ## Phase 2: Layout and CSS Migration
 
-- [ ] Create the new base layout structure.
+- [x] Create the new base layout structure.
 - [x] Add safe Version 3 stylesheet without global Tailwind Preflight.
 - [x] Add shared skip-link and stable `main` targets.
 - [x] Move theme bootstrap into the document head.
