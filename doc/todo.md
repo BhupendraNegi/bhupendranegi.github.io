@@ -79,12 +79,12 @@ Phase 1 notes:
 
 ## Phase 4: Icons
 
-- [ ] Choose Lucide loading method.
-- [ ] Replace Material Icons usage with Lucide.
-- [ ] Replace Font Awesome UI icons with Lucide.
-- [ ] Keep Devicon for technology logos only.
-- [ ] Normalize icon sizing and alignment.
-- [ ] Remove unused icon libraries after migration.
+- [x] Choose Lucide loading method.
+- [x] Replace Material Icons usage with Lucide.
+- [x] Replace Font Awesome UI icons with Lucide.
+- [x] Keep Devicon for technology logos only.
+- [x] Normalize icon sizing and alignment.
+- [x] Remove unused icon libraries after migration.
 
 ## Phase 5: Page Redesigns
 

@@ -28,7 +28,7 @@ This repository contains a static portfolio site with:
 - Tailwind CSS CLI for Version 3 styles
 - Materialize CSS 0.100.2 as temporary legacy CSS during migration
 - Vanilla JavaScript in `assets/js/version-3.js`
-- Devicon and Font Awesome icons
+- Lucide UI icons and Devicon technology logos
 
 ## Repository Structure
 
@@ -128,7 +128,7 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 - Keep generated caches such as `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` out of commits.
 - JavaScript behavior lives in `assets/js/version-3.js`.
 - Page transitions use a small vanilla JavaScript layer instead of Barba.js.
-- External services include Formspree, Disqus, Google Analytics, Google Translate, CDN-hosted Materialize CSS, Highlight.js, Font Awesome, and Devicon.
+- External services include Formspree, Disqus, Google Analytics, Google Translate, CDN-hosted Materialize CSS, Highlight.js, Lucide, and Devicon.
 
 ## Verification
 

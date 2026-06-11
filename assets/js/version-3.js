@@ -4,6 +4,16 @@
   var modalOverlay = null;
   var isNavigating = false;
 
+  function initializeLucideIcons(root) {
+    if (!window.lucide || typeof window.lucide.createIcons !== 'function') {
+      return;
+    }
+
+    window.lucide.createIcons({
+      root: root || document
+    });
+  }
+
   function getStoredTheme() {
     try {
       return localStorage.getItem('theme');
@@ -271,8 +281,8 @@
           next.type = 'button';
           previous.setAttribute('aria-label', 'Previous image');
           next.setAttribute('aria-label', 'Next image');
-          previous.textContent = '<';
-          next.textContent = '>';
+          previous.innerHTML = '<i data-lucide="chevron-left" class="site-icon" aria-hidden="true"></i>';
+          next.innerHTML = '<i data-lucide="chevron-right" class="site-icon" aria-hidden="true"></i>';
 
           previous.addEventListener('click', function(event) {
             event.preventDefault();
@@ -327,7 +337,7 @@
     closeButton.className = 'modal-close modal-close-button';
     closeButton.type = 'button';
     closeButton.setAttribute('aria-label', 'Close dialog');
-    closeButton.textContent = 'x';
+    closeButton.innerHTML = '<i data-lucide="x" class="site-icon" aria-hidden="true"></i>';
     modal.insertBefore(closeButton, modal.firstChild);
   }
 
@@ -750,6 +760,7 @@
     initializeAutoResizeTextareas();
     initializeNavigationState();
     initializeScrollTopControl();
+    initializeLucideIcons(document);
 
     document.dispatchEvent(new Event('version3:page-ready'));
   }
