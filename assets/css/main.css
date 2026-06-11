@@ -914,13 +914,6 @@ i {
   width: 30%;
 }
 
-.my_footer {
-  background-color: var(--color-footer);
-  border-top: 1px solid var(--color-accent-dim);
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
 .resume-wrapper button {
   margin-top: 50px;
 }

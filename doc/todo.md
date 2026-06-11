@@ -54,6 +54,7 @@ Phase 1 notes:
 - [x] Move theme bootstrap into the document head.
 - [x] Clean up generated metadata URLs.
 - [ ] Replace Materialize grid/layout classes.
+  - [x] Replace footer Materialize grid/layout classes.
 - [x] Build responsive navigation without Materialize.
 - [x] Add shared button, link, card, badge, form, and prose styles.
 - [ ] Improve light theme.

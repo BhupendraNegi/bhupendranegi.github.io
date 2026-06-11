@@ -98,6 +98,107 @@
     color: #f8fafc;
   }
 
+  .site-footer {
+    background: #06070a;
+    border-top: 1px solid var(--site-border);
+    color: #dbe3ee;
+  }
+
+  .site-footer-inner {
+    margin-inline: auto;
+    max-width: 1300px;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 1.25rem;
+  }
+
+  .site-footer-grid {
+    align-items: start;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .site-footer-about {
+    max-width: 62ch;
+  }
+
+  .site-footer .description {
+    color: #dbe3ee;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .site-footer .footer_titles {
+    color: var(--site-accent-strong);
+    font: 700 clamp(1.25rem, 2vw, 1.7rem)/1.1 var(--font-sans);
+    margin: 0 0 0.75rem;
+  }
+
+  .site-footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .site-footer-icon-link {
+    align-items: center;
+    border: 1px solid rgb(248 250 252 / 0.14);
+    border-radius: 999px;
+    color: #dbe3ee;
+    display: inline-flex;
+    height: 42px;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    width: 42px;
+  }
+
+  .site-footer-icon-link:hover,
+  .site-footer-icon-link:focus-visible {
+    background: var(--site-accent);
+    border-color: var(--site-accent);
+    color: #08090d;
+    transform: translateY(-1px);
+  }
+
+  .site-footer-icon-link:focus-visible {
+    outline: 3px solid var(--site-accent-strong);
+    outline-offset: 3px;
+  }
+
+  .site-footer .footer_icons {
+    font-size: 1.25rem !important;
+    margin: 0;
+  }
+
+  .site-footer .footer_description_link {
+    color: var(--site-accent-strong);
+    text-decoration-color: rgb(251 191 36 / 0.35);
+    text-underline-offset: 0.18em;
+  }
+
+  .site-footer .footer_description_link:hover {
+    color: #ffffff;
+    text-decoration-color: currentColor;
+  }
+
+  .site-footer-bottom {
+    border-top: 1px solid rgb(248 250 252 / 0.1);
+    margin-top: 2rem;
+    padding-top: 1rem;
+  }
+
+  .site-footer-bottom p {
+    color: #dbe3ee;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .site-footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .homepage-main {
     padding-top: 0;
   }
