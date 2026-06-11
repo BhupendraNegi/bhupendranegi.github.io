@@ -1300,39 +1300,6 @@ button.fill:hover:before {
   font-weight: 300;
 }
 
-/* label color */
-.input-field label {
-  color: #292929 !important;
-}
-
-/* label focus color */
-.input-field input:focus+label {
-  color: #292929 !important;
-}
-
-/* label underline focus color */
-.input-field input:focus {
-  border-bottom: 1px solid #292929 !important;
-  box-shadow: 0 1px 0 0 #292929 !important;
-}
-
-/* valid color */
-.input-field input.valid {
-  border-bottom: 1px solid darkgreen !important;
-  box-shadow: 0 1px 0 0 darkgreen !important;
-}
-
-/* invalid color */
-.input-field input.invalid {
-  border-bottom: 1px solid red !important;
-  box-shadow: 0 1px 0 0 red !important;
-}
-
-/* icon prefix focus color */
-.input-field .prefix.active {
-  color: #292929 !important;
-}
-
 textarea:focus {
   outline: none !important;
   border-bottom: 1px solid #292929 !important;
@@ -1706,14 +1673,6 @@ textarea:focus {
 /* Dates */
 .date, .time { color: var(--color-text-2); }
 
-/* Contact form */
-.input-field label      { color: var(--color-text-2) !important; }
-.input-field input,
-.input-field textarea   { color: var(--color-text) !important; border-bottom: 1px solid var(--color-border) !important; }
-.input-field input:focus,
-textarea:focus          { border-bottom: 1px solid var(--color-accent) !important; box-shadow: 0 1px 0 0 var(--color-accent) !important; }
-.input-field .prefix.active { color: var(--color-accent) !important; }
-
 /* Buttons */
 button {
   color: var(--color-accent);
@@ -1789,8 +1748,5 @@ button.fill:hover  { color: var(--color-dark); }
 }
 
 [data-theme="light"] .project_list .modal { color: #1a1c21; }
-
-[data-theme="light"] .input-field input,
-[data-theme="light"] .input-field textarea { color: #1a1c21 !important; }
 
 [data-theme="light"] .big_heading { color: var(--color-accent); }

@@ -6,62 +6,51 @@ author: Katie Hopkinst
 
 {% include quote.html quote=page.quote author=page.author %}
 
-<div class="container">
-  <h2 class="heading big_heading center">Contact</h2>
-  <form class="email_me" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form>
-    <input type="text" name="_gotcha" style="display:none" />
-    <div class="row">
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">account_circle</i>
+<section class="contact-page" aria-labelledby="contact-heading">
+  <h2 id="contact-heading" class="heading big_heading center">Contact</h2>
+  <form class="email_me contact-form site-card" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form>
+    <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" />
+
+    <div class="contact-grid">
+      <label class="contact-field" for="contact-name">
+        <span class="contact-label"><i class="material-icons" aria-hidden="true">account_circle</i>Full Name</span>
         <input id="contact-name" type="text" name="name" class="validate email_input" autocomplete="name">
-        <label for="contact-name">Full Name</label>
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">phone</i>
+      </label>
+
+      <label class="contact-field" for="contact-phone">
+        <span class="contact-label"><i class="material-icons" aria-hidden="true">phone</i>Phone Number</span>
         <input id="contact-phone" name="phone" type="tel" pattern="^(?:\+91[- ]?)?[789]\d{9}$" class="validate email_input" autocomplete="tel">
-        <label for="contact-phone" data-error="Please enter a valid phone number. Format: +91XXXXXXXXXX or XXXXXXXXXX">Phone Number</label>
+      </label>
 
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">email</i>
-        <input id="contact-email" name="_replyto" type="email" class="validate email_input" autocomplete="email">
-        <label for="contact-email" data-error="Make sure you've entered a valid email">Email</label>
-      </div>
-      <div class="input-field col m6 s12">
-        <i class="material-icons prefix">S</i>
-        <input id="contact-subject" type="text" name="_subject" class="email_input"/>
-        <label for="contact-subject">Subject</label>
-      </div>
-    </div>
+      <label class="contact-field" for="contact-email">
+        <span class="contact-label"><i class="material-icons" aria-hidden="true">email</i>Email</span>
+        <input id="contact-email" name="_replyto" type="email" class="validate email_input" autocomplete="email" required>
+      </label>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">mode_edit</i>
-        <textarea id="contact-message" aria-required="true" name="message" class="materialize-textarea email_input validate"></textarea>
+      <label class="contact-field" for="contact-subject">
+        <span class="contact-label"><i class="material-icons" aria-hidden="true">subject</i>Subject</span>
+        <input id="contact-subject" type="text" name="_subject" class="email_input">
+      </label>
 
-        <label for="contact-message" data-error="Make sure you've entered a message">Message</label>
-      </div>
+      <label class="contact-field contact-field-full" for="contact-message">
+        <span class="contact-label"><i class="material-icons" aria-hidden="true">mode_edit</i>Message</span>
+        <textarea id="contact-message" aria-required="true" name="message" class="materialize-textarea email_input validate" required></textarea>
+      </label>
     </div>
 
     <p class="contact-status center-align" aria-live="polite" data-contact-status></p>
-    <div class="row">
-      <button class="fill col s8 offset-s2 m4 offset-m4" type="submit" name="action" data-contact-submit>Submit
-      </button>
+    <div class="contact-actions">
+      <button class="fill contact-submit" type="submit" name="action" data-contact-submit>Submit</button>
     </div>
   </form>
-  <br/>
-  <div id="email_modal" class="modal">
-    <div class="container">
-      <div class="modal-content row">
-        <h4 class="center-align">Your email is on the way!</h4>
-        <p class="center-align description">I usually reply fast</p>
-      </div>
-      <div class="row">
-        <div class="buttons col s8 offset-s2 m8 offset-m2 l8 offset-l2">
-          <a class="button_wrapper modal-action modal-close" ><button class="fill col s12">back to site</button></a>
-        </div>
-      </div>
+
+  <div id="email_modal" class="modal contact-success-modal" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
+    <div class="modal-content">
+      <h4 id="contact-success-title" class="center-align">Your email is on the way!</h4>
+      <p class="center-align description">I usually reply fast</p>
+    </div>
+    <div class="contact-actions">
+      <a class="button_wrapper modal-action modal-close site-button" href="#main-content">Back to site</a>
     </div>
   </div>
-</div>
-<br>
+</section>
