@@ -68,7 +68,7 @@ bundle exec jekyll build --drafts
 - The project cards depend on numeric `id` values in `_data/projects.yml`; the "Next" modal behavior increments these IDs.
 - Project filter buttons in `projects.html` must match tags used in `_data/projects.yml`.
 - The skills page uses Devicon class names from `_data/skills.yml`; check that new icon classes exist in the loaded Devicon version.
-- Contact form submission is handled client-side through Formspree and jQuery AJAX.
+- Contact form submission is handled client-side through Formspree and `fetch`.
 - Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
 
 ## Verification Checklist

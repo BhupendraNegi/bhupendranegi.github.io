@@ -8,43 +8,44 @@ author: Katie Hopkinst
 
 <div class="container">
   <h2 class="heading big_heading center">Contact</h2>
-  <form class="email_me" action="https://formspree.io/f/xyzgbrae" method="POST">
+  <form class="email_me" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form>
     <input type="text" name="_gotcha" style="display:none" />
     <div class="row">
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">account_circle</i>
-        <input id="icon_prefix" type="text" name="name" class="validate email_input">
-        <label for="icon_prefix">Full Name</label>
+        <input id="contact-name" type="text" name="name" class="validate email_input" autocomplete="name">
+        <label for="contact-name">Full Name</label>
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">phone</i>
-        <input id="icon_telephone" name="phone" type="tel" pattern="^[789]\d{9}$" class="validate email_input">
-        <label for="icon_telephone" data-error="Please enter a valid phone number. Format: +91XXXXXXXXXX or XXXXXXXXXX">Phone Number</label>
+        <input id="contact-phone" name="phone" type="tel" pattern="^(?:\+91[- ]?)?[789]\d{9}$" class="validate email_input" autocomplete="tel">
+        <label for="contact-phone" data-error="Please enter a valid phone number. Format: +91XXXXXXXXXX or XXXXXXXXXX">Phone Number</label>
 
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">email</i>
-        <input id="icon_prefix" name="_replyto" type="email" class="validate email_input">
-        <label for="icon_prefix" data-error="Make sure you've entered a valid email">Email</label>
+        <input id="contact-email" name="_replyto" type="email" class="validate email_input" autocomplete="email">
+        <label for="contact-email" data-error="Make sure you've entered a valid email">Email</label>
       </div>
       <div class="input-field col m6 s12">
         <i class="material-icons prefix">S</i>
-        <input id="icon_prefix" type="text" name="_subject" class="email_input"/>
-        <label for="icon_prefix">Subject</label>
+        <input id="contact-subject" type="text" name="_subject" class="email_input"/>
+        <label for="contact-subject">Subject</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">mode_edit</i>
-        <textarea id="textarea1" aria-required="true" name="message" class="materialize-textarea email_input validate"></textarea>
+        <textarea id="contact-message" aria-required="true" name="message" class="materialize-textarea email_input validate"></textarea>
 
-        <label for="textarea1" data-error="Make sure you've entered a message">Message</label>
+        <label for="contact-message" data-error="Make sure you've entered a message">Message</label>
       </div>
     </div>
 
+    <p class="contact-status center-align" aria-live="polite" data-contact-status></p>
     <div class="row">
-      <button class="fill col s8 offset-s2 m4 offset-m4" type="submit" name="action">Submit
+      <button class="fill col s8 offset-s2 m4 offset-m4" type="submit" name="action" data-contact-submit>Submit
       </button>
     </div>
   </form>

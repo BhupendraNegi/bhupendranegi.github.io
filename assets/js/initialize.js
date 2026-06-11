@@ -19,22 +19,6 @@ function initializeScripts(){
   //   debugger
   // })
 
-  $('.email_me').submit(function(e){
-    e.preventDefault();
-    console.log("helo")
-    $.ajax({
-        url: $(e.target).attr('action'),
-        method: "POST",
-        data: $('.email_me').serialize(),
-        dataType: "json"
-    }).done(function(res) {
-      console.log(res);
-      $('.email_input').val('');
-      $('.email_input').removeClass('valid');
-      $('#email_modal').modal('open');
-    })
-  })
-
   $('.my-borders').css({
     height: '0px',
     width: '0px'
@@ -42,7 +26,7 @@ function initializeScripts(){
   // $('.carousel.carousel-slider').carousel({fullWidth: true});
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
 
-  $('#textarea1').trigger('autoresize');
+  $('#contact-message').trigger('autoresize');
 
   $('.project_list').on('click', '.next', function(e){
     e.preventDefault();

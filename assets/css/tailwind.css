@@ -131,6 +131,15 @@
     border-color: var(--site-accent-strong) !important;
   }
 
+  .contact-status {
+    color: var(--site-muted);
+    min-height: 1.5rem;
+  }
+
+  .contact-status-error {
+    color: #f43f5e;
+  }
+
   .mobile-nav-close-row {
     display: flex !important;
     justify-content: flex-end;
