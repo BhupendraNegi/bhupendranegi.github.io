@@ -98,44 +98,12 @@ function initializeScripts(){
     $('nav a[href="/' + pagename + '"]').parent().find('div').addClass('nav-underlined');
   }
 
-  $('.tag').click(function(event){
-    event.preventDefault();
-
-    hideCloseIcons($(this));
-
-    var button = $(this),
-        tag = $(this).attr('val'),
-        projects = $('.project'),
-        buttons = $('.tag'),
-        active_tags = [],
-        needToClearFilters = tag === "clear-filters";
-
-    if(needToClearFilters){
-      clearFilters();
-    } else{
-      toggleTags(button, tag);
-      active_tags = addActiveTags(buttons);
-      showProjects(projects, active_tags);
-    }
-  })
-
   $("nav ul li a").hover(function(e){
     $(e.target).parent().find('div').addClass('nav-hover-underlined');
   }, function(e){
     $(e.target).parent().find('div').removeClass('nav-hover-underlined');
   });
 
-  $("#filter").click(function(event){
-    event.preventDefault();
-    var text = $('#filter').text(),
-        options = {
-          "filter": "hide filters",
-          "hide filters": "filter"
-        };
-
-    $("#filter").text(options[text]);
-    $("#tags").toggle(400);
-  })
   // debugger
   $(window).scroll(() => {
     var scrollPos = $(document).scrollTop();

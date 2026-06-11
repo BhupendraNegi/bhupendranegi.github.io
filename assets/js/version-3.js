@@ -121,6 +121,99 @@
     });
   }
 
+  function getProjectTags(project) {
+    return (project.getAttribute('tags') || '')
+      .split(',')
+      .map(function(tag) {
+        return tag.trim();
+      })
+      .filter(Boolean);
+  }
+
+  function initializeProjectFilters() {
+    var toggle = document.querySelector('[data-project-filter-toggle]');
+    var tagsContainer = document.getElementById('tags');
+    var tagButtons = document.querySelectorAll('[data-project-tag]');
+    var clearButton = document.querySelector('[data-project-clear-filters]');
+    var projects = document.querySelectorAll('.project');
+
+    if (!toggle || !tagsContainer || !tagButtons.length || !projects.length) {
+      return;
+    }
+
+    function setFilterListOpen(open) {
+      tagsContainer.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? 'Hide filters' : 'Filter by Technology';
+    }
+
+    function getActiveTags() {
+      return Array.prototype.slice.call(tagButtons)
+        .filter(function(button) {
+          return button.getAttribute('aria-pressed') === 'true';
+        })
+        .map(function(button) {
+          return button.dataset.projectTag;
+        });
+    }
+
+    function updateProjects() {
+      var activeTags = getActiveTags();
+
+      projects.forEach(function(project) {
+        var projectTags = getProjectTags(project);
+        var shouldShow = activeTags.length === 0 || activeTags.some(function(tag) {
+          return projectTags.indexOf(tag) !== -1;
+        });
+
+        project.hidden = !shouldShow;
+      });
+    }
+
+    function clearFilters() {
+      tagButtons.forEach(function(button) {
+        button.classList.remove('active_tag');
+        button.setAttribute('aria-pressed', 'false');
+      });
+      updateProjects();
+    }
+
+    setFilterListOpen(toggle.getAttribute('aria-expanded') === 'true');
+    updateProjects();
+
+    if (toggle.dataset.version3FilterBound !== 'true') {
+      toggle.dataset.version3FilterBound = 'true';
+      toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        setFilterListOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+    }
+
+    tagButtons.forEach(function(button) {
+      if (button.dataset.version3FilterBound === 'true') {
+        return;
+      }
+
+      button.dataset.version3FilterBound = 'true';
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var isActive = button.getAttribute('aria-pressed') === 'true';
+        button.classList.toggle('active_tag', !isActive);
+        button.setAttribute('aria-pressed', isActive ? 'false' : 'true');
+        updateProjects();
+      });
+    });
+
+    if (clearButton && clearButton.dataset.version3FilterBound !== 'true') {
+      clearButton.dataset.version3FilterBound = 'true';
+      clearButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        clearFilters();
+      });
+    }
+  }
+
   function initializeGlobalEvents() {
     if (document.documentElement.dataset.version3GlobalEvents === 'true') {
       return;
@@ -140,6 +233,7 @@
     initializeGlobalEvents();
     initializeThemeToggles();
     initializeMobileNavigation();
+    initializeProjectFilters();
   }
 
   document.addEventListener('DOMContentLoaded', initializeVersion3Scripts);
