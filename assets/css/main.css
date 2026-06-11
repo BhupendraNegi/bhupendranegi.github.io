@@ -668,16 +668,6 @@ textarea:focus {
   border-color: #94a3b8 !important;
 }
 
-/* Sun/moon icons — must override nav's 3rem base font-size */
-.theme-toggle .fa-sun-o,
-.theme-toggle .fa-moon-o {
-  font-size: 1rem;
-  opacity: 0.4;
-}
-
-[data-theme="light"] .theme-toggle .fa-sun-o  { opacity: 1; font-size: 0.65rem; color: var(--color-accent); }
-[data-theme="dark"]  .theme-toggle .fa-moon-o { opacity: 1; font-size: 0.65rem; color: var(--color-accent); }
-
 /* Mobile toggle row */
 .theme-toggle-mobile {
   padding: 8px 16px;

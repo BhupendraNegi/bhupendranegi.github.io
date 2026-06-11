@@ -86,6 +86,16 @@
     justify-content: center;
   }
 
+  .site-icon {
+    color: currentColor;
+    display: inline-block;
+    flex: 0 0 auto;
+    height: 1.1rem;
+    stroke-width: 2;
+    vertical-align: -0.15em;
+    width: 1.1rem;
+  }
+
   .heading {
     color: var(--site-text);
     font-family: var(--font-sans);
@@ -248,8 +258,9 @@
   }
 
   .site-footer .footer_icons {
-    font-size: 1.25rem !important;
+    height: 1.25rem !important;
     margin: 0;
+    width: 1.25rem !important;
   }
 
   .site-footer .footer_description_link {
@@ -470,10 +481,10 @@
     margin-left: auto;
   }
 
-  .mobile-nav-toggle i,
-  .mobile-nav-close i {
-    font-size: 2rem;
-    line-height: 1;
+  .mobile-nav-toggle .site-icon,
+  .mobile-nav-close .site-icon {
+    height: 1.75rem;
+    width: 1.75rem;
   }
 
   .mobile-nav-toggle:focus-visible,
@@ -491,6 +502,18 @@
 
   .theme-toggle[aria-pressed="true"] .theme-toggle-track {
     border-color: rgb(34 211 238 / 0.48) !important;
+  }
+
+  .theme-toggle-icon {
+    height: 1rem;
+    opacity: 0.42;
+    width: 1rem;
+  }
+
+  [data-theme="light"] .theme-toggle [data-lucide="sun"],
+  [data-theme="dark"] .theme-toggle [data-lucide="moon"] {
+    color: var(--site-accent);
+    opacity: 1;
   }
 
   #tags[hidden],
@@ -761,9 +784,10 @@
     gap: 0.45rem;
   }
 
-  .contact-label .material-icons {
+  .contact-label .site-icon {
     color: var(--site-accent);
-    font-size: 1.2rem;
+    height: 1.1rem;
+    width: 1.1rem;
   }
 
   .contact-field input,
@@ -1028,6 +1052,11 @@
     color: #08090d;
   }
 
+  .modal-close-button .site-icon {
+    height: 1.1rem;
+    width: 1.1rem;
+  }
+
   .v3-modal-overlay {
     background: rgb(8 9 13 / 0.72);
     inset: 0;
@@ -1111,6 +1140,11 @@
 
   .v3-carousel-control {
     cursor: pointer;
+  }
+
+  .v3-carousel-control .site-icon {
+    height: 1rem;
+    width: 1rem;
   }
 
   .v3-carousel-control:hover,
