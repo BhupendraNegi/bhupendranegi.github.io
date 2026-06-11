@@ -14,7 +14,6 @@
                   materialize-plain
                 ]
   cover: https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true
-  size: 60% 100%
   images: [
     'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true',
     'https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/index.png?raw=true',
@@ -34,7 +33,6 @@
                   javascript-plain,
                 ]
   cover: https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true
-  size: 56% 100% 
   images: [
     'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tick-tack2.png?raw=true',
     'https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true'
@@ -57,7 +55,6 @@
                   materialize-plain
                 ]
   cover: https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true
-  size: 100% 110%
   images: [
     'https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true',
     'https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/report.png?raw=true'
@@ -76,7 +73,6 @@
                   materialize-plain
                 ]
   cover: https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/tenorplay.png?raw=true
-  size: 56% 100%
   images: [
     'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Splash_Screen.gif?raw=true',
     'https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Song_Playing.gif?raw=true',

@@ -634,11 +634,20 @@
   }
 
   .project-card {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     min-height: 350px;
+    overflow: hidden;
     position: relative;
+  }
+
+  .project-card-media {
+    display: block;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
   }
 
   .project-cover {
@@ -648,7 +657,9 @@
     height: 100%;
     min-height: 350px;
     padding: clamp(1.25rem, 4vw, 2rem);
+    position: relative;
     width: min(100%, 430px);
+    z-index: 1;
   }
 
   .project-cover.right {

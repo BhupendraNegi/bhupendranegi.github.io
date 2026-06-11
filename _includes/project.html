@@ -1,4 +1,5 @@
-<article class="project project-card" tags="{{ project.tags | join: ',' }}" style="background-image: url({{project.cover}}); background-size: {{ project.size }};">
+<article class="project project-card" data-tags="{{ project.tags | join: ',' }}">
+  <img class="project-card-media" src="{{ project.cover }}" alt="" loading="lazy">
   <div class="cover project-cover {% cycle 'left', 'right'%}">
     <div class="project-cover-content">
       <h3>{{project.title}}</h3>
