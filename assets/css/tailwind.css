@@ -162,6 +162,167 @@
     color: #f43f5e;
   }
 
+  .site-card,
+  .project,
+  #email_modal,
+  .project_list .modal,
+  .posts .post {
+    border: 1px solid var(--site-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 18px 50px rgb(8 9 13 / 0.12);
+  }
+
+  .site-card,
+  #email_modal,
+  .project_list .modal {
+    background: var(--site-surface);
+    color: var(--site-text);
+  }
+
+  .project {
+    overflow: hidden;
+  }
+
+  .site-button,
+  button.fill,
+  .pagination-link,
+  .pagination-current,
+  .pagination-disabled {
+    align-items: center;
+    border: 1px solid var(--site-border) !important;
+    border-radius: 0.375rem;
+    display: inline-flex;
+    font: 700 0.9rem/1.2 var(--font-sans);
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  .site-button,
+  button.fill,
+  .pagination-link {
+    color: var(--site-accent);
+  }
+
+  .site-button:hover,
+  button.fill:hover,
+  .pagination-link:hover {
+    background: var(--site-accent);
+    border-color: var(--site-accent) !important;
+    color: #08090d !important;
+    transform: translateY(-1px);
+  }
+
+  button.fill::before {
+    display: none;
+  }
+
+  .site-button:focus-visible,
+  button.fill:focus-visible,
+  .pagination-link:focus-visible,
+  .tag:focus-visible,
+  .input-field input:focus-visible,
+  .input-field textarea:focus-visible {
+    outline: 3px solid var(--site-accent-strong);
+    outline-offset: 3px;
+  }
+
+  .site-badge,
+  .tag {
+    align-items: center;
+    border: 1px solid var(--site-border) !important;
+    border-radius: 999px;
+    color: var(--site-muted);
+    display: inline-flex;
+    font: 700 0.82rem/1 var(--font-sans);
+    justify-content: center;
+    min-height: 36px;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .tag:hover,
+  .tag[aria-pressed="true"],
+  .active_tag {
+    background: rgb(20 184 166 / 0.12);
+    border-color: var(--site-accent) !important;
+    color: var(--site-text);
+  }
+
+  .site-link,
+  .post a,
+  .blog-content a,
+  .entry a,
+  .back-link {
+    color: var(--site-accent);
+    text-decoration-color: rgb(20 184 166 / 0.35);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  .site-link:hover,
+  .post a:hover,
+  .blog-content a:hover,
+  .entry a:hover,
+  .back-link:hover {
+    color: var(--site-accent-strong);
+    text-decoration-color: currentColor;
+  }
+
+  .site-prose,
+  .post,
+  .blog-content,
+  .entry {
+    color: var(--site-text);
+    line-height: 1.75;
+  }
+
+  .site-prose p,
+  .post p,
+  .blog-content p,
+  .entry p {
+    margin-block: 1rem;
+  }
+
+  .site-prose :is(h1, h2, h3, h4),
+  .post :is(h1, h2, h3, h4),
+  .blog-content :is(h1, h2, h3, h4),
+  .entry :is(h1, h2, h3, h4) {
+    color: var(--site-accent);
+    line-height: 1.15;
+  }
+
+  .input-field input,
+  .input-field textarea {
+    color: var(--site-text) !important;
+    border-bottom-color: var(--site-border) !important;
+  }
+
+  .input-field label {
+    color: var(--site-muted) !important;
+  }
+
+  .input-field input:focus,
+  .input-field textarea:focus,
+  textarea:focus {
+    border-bottom-color: var(--site-accent) !important;
+    box-shadow: 0 1px 0 0 var(--site-accent) !important;
+  }
+
+  .pagination-current {
+    background: var(--site-accent);
+    border-color: var(--site-accent) !important;
+    color: #08090d;
+  }
+
+  .pagination-disabled {
+    color: var(--site-muted);
+    cursor: not-allowed;
+    opacity: 0.62;
+  }
+
   .translate-widget {
     background: rgb(255 255 255 / 0.94);
     border: 1px solid var(--site-border);
@@ -283,10 +444,19 @@
 
   @media (prefers-reduced-motion: reduce) {
     .skip-link,
+    .site-button,
+    button.fill,
+    .pagination-link,
     .theme-toggle-track,
     .theme-toggle-thumb,
     .site-mobile-nav {
       transition: none;
+    }
+
+    .site-button:hover,
+    button.fill:hover,
+    .pagination-link:hover {
+      transform: none;
     }
   }
 }
