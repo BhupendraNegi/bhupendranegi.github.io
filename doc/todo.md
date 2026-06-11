@@ -65,7 +65,7 @@ Phase 1 notes:
 
 - [x] Rewrite theme toggle in vanilla JavaScript.
 - [x] Rewrite mobile navigation in vanilla JavaScript.
-- [ ] Rewrite project filters in vanilla JavaScript.
+- [x] Rewrite project filters in vanilla JavaScript.
 - [ ] Rewrite contact form behavior with `fetch`.
 - [ ] Add faster branded page transitions.
 - [ ] Replace Barba.js.

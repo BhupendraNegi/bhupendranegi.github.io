@@ -122,6 +122,15 @@
     border-color: rgb(34 211 238 / 0.48) !important;
   }
 
+  #tags[hidden],
+  .project[hidden] {
+    display: none !important;
+  }
+
+  .tag[aria-pressed="true"] {
+    border-color: var(--site-accent-strong) !important;
+  }
+
   .mobile-nav-close-row {
     display: flex !important;
     justify-content: flex-end;
