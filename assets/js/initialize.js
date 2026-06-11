@@ -67,41 +67,8 @@ function initializeScripts(){
       } // Callback for Modal close
     });
 
-  var urlString = window.location.href;
-  
-  $(document).scrollTop();
-
-  var pagename = window.location.pathname.replace('/', '')
-  
   if(window.ga) {
     window.ga('set', 'page', window.location.pathname);
     window.ga('send', 'pageview');
   }
-  
-  if(pagename){
-    $('nav a[href="/' + pagename + '"]').parent().find('div').addClass('nav-underlined');
-  }
-
-  $("nav ul li a").hover(function(e){
-    $(e.target).parent().find('div').addClass('nav-hover-underlined');
-  }, function(e){
-    $(e.target).parent().find('div').removeClass('nav-hover-underlined');
-  });
-
-  // debugger
-  $(window).scroll(() => {
-    var scrollPos = $(document).scrollTop();
-        documentHeight = $(document).height();
-    if(scrollPos/documentHeight > 0.1){
-      $('#scroll-top').css('display', 'block');
-    }else {
-      $('#scroll-top').css('display', 'none');
-    }
-  })
-
-  $('#scroll-top').click((e)=>{
-    e.preventDefault();
-    $("html, body").animate({ scrollTop: 0 }, 250);
-    return false;
-  })
 }
