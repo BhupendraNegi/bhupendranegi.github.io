@@ -15,7 +15,11 @@ series of consistency fixes from review feedback.
   Contact, Blog, Post, Resume, 404.
 - About: profile-card layout (portrait with gradient ring + "Open to work"
   status badge, name, role, quick facts, social) beside an emphasized bio.
-  Skills shown as gradient-accent cards with pill chips.
+  Skills shown as gradient-accent cards with pill chips. The old emoji bio
+  paragraphs became a distinct **"journey" timeline** (emoji nodes on a
+  gradient line) rendered in an editorial **serif** font (`--font-serif`,
+  Newsreader) to read as its own section; content enriched from the résumé
+  into real roles/companies/dates with measurable highlights.
 - Projects: card grid reusing the home `.proj-card` shell with image tiles +
   hover "Learn more" overlay; modal/carousel/filter behaviour preserved.
 - Blog index + Post: reuse the home post-card component / prose styling.
