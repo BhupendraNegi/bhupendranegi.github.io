@@ -89,9 +89,22 @@ Phase 1 notes:
 - [x] Fix missing brand icons. (2026-06-13: `lucide@latest` no longer ships `github`/`linkedin`/`twitter`, so the hero and footer social icons were rendering blank. Replaced with inline brand SVGs via `_includes/social-icon.html`.)
 - [ ] Pin the Lucide version instead of `@latest` in `_includes/scripts.html` so icons do not silently break when Lucide drops more glyphs.
 
-## Phase 5: Page Redesigns
+## Phase 5b: "Aurora" theme overhaul (current direction — see doc/redesign-plan.md)
 
-- [x] Lock the site-wide theme / design language. (2026-06-13: chosen direction is **full-screen + clean minimal-dark, transition-forward**, with [pmportfolio.ca](https://pmportfolio.ca/) as the north star. Signature motion = a curtain/wipe intro on first load + Swup-driven curtain/crossfade page transitions. Animate only `transform`/`opacity`, short durations, honor `prefers-reduced-motion`. Recorded in `doc/design.md`.)
+Supersedes the full-screen/dark/curtain direction below. Brand-new light-first
+theme matching https://wassim.dev/ + richer motion like https://koysor.me/.
+Decided 2026-06-13. Full plan in `doc/redesign-plan.md`.
+
+- [ ] Phase 1 — Tokens + fonts: replace teal/ink palette with wassim tokens (light default + dark toggle), load Inter + mono, default the Rouge syntax theme to its light variant. Verify existing pages stay readable.
+- [ ] Phase 2 — New navbar + restyled footer (theme toggle + mobile overlay); make the Home page use them.
+- [ ] Phase 3 — Rebuild Home wassim-style: hero with abstract blue→violet gradient graphic, featured projects cards, recent writing, about/contact. Drop full-screen panels and section images.
+- [ ] Phase 4 — Motion: add GSAP + Lenis; intro text-reveal via SplitText (NO "BN" logo), scroll-triggered staggered reveals, smooth scroll, with a `prefers-reduced-motion` bail-out and no-JS fallback.
+- [ ] Phase 5 — Re-skin remaining pages to the new theme: About, Projects, Blog index, Post, Contact, Resume, 404.
+- [ ] Phase 6 — Cleanup (remove panels/section images/curtain "BN" logo/legacy CSS), verify build, eyeball motion locally, document.
+
+## Phase 5: Page Redesigns (earlier full-screen/dark attempt — SUPERSEDED by Phase 5b)
+
+- [x] Lock the site-wide theme / design language. (SUPERSEDED 2026-06-13 — replaced by the Aurora theme in `doc/redesign-plan.md`. The earlier pick was full-screen + minimal-dark + curtain transitions referencing pmportfolio.ca.)
 - [x] Build the transition system — curtain intro + curtain page transitions. (2026-06-13: full-screen accent curtain that covers before first paint and wipes away on load — armed pre-paint in `_includes/head.html`, wiped by `initializeIntroCurtain` in `version-3.js`, with a 2s safety timeout and `prefers-reduced-motion` opt-out. Page-to-page navigation lowers the same curtain then navigates (the next page wipes it away on arrival). Scroll-reveal primitives via IntersectionObserver, made progressive-enhancement (`html.reveals`) so content stays visible without JS. Markup in `_layouts/default.html`. See `doc/changelog.md`.)
 - [ ] (Optional) Upgrade page transitions to Swup for true no-reload SPA swaps. The current curtain transition uses a full reload masked by the curtain (visually identical, zero re-init risk). True Swup would remove the reload but requires re-initializing every interactive component (filters, modals, carousels, contact form) and verifying analytics/Disqus/Translate lifecycles after each swap — needs live cross-page testing.
 - [x] Redesign Home full-screen in the new theme. (2026-06-13: full-viewport intro panel — eyebrow, name, role+stack, blurb, CTAs, social, scroll cue — followed by four full-screen image-backed section panels (About/Projects/Blog/Contact) with index numbers, headings, descriptions, and Explore CTAs. Reveal-on-scroll + intro curtain. Replaces the rejected card-grid attempt. Desktop verified visually; mobile overflow verified via probe.)

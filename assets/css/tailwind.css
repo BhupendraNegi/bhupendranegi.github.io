@@ -18,32 +18,49 @@
   --color-amber-400: #fbbf24;
   --color-rose-500: #f43f5e;
 
-  --radius-card: 0.5rem;
-  --radius-control: 0.375rem;
-  --shadow-soft: 0 18px 50px rgb(8 9 13 / 0.16);
+  --radius-card: 0.75rem;
+  --radius-control: 0.5rem;
+  --shadow-soft: 0 10px 30px rgb(15 23 42 / 0.08);
 }
 
 @layer base {
+  /* Aurora theme (ref: wassim.dev). Light is the default; dark via toggle.
+     Token names kept as --site-* so all existing component CSS inherits the
+     new palette automatically. */
   :root {
     color-scheme: light;
-    --site-bg: #f3f7fb;
+    --site-bg: #ffffff;
+    --site-bg-secondary: #f8f9fa;
     --site-surface: #ffffff;
-    --site-text: #08090d;
-    --site-muted: #3c4658;
-    --site-border: rgb(17 19 26 / 0.14);
-    --site-accent: #14b8a6;
-    --site-accent-strong: #0e7490;
+    --site-text: #1a1a2e;
+    --site-muted: #64748b;
+    --site-border: #e2e8f0;
+    --site-border-hover: #cbd5e1;
+    --site-accent: #3b82f6;
+    --site-accent-strong: #2563eb;
+    --site-tag-bg: #f1f5f9;
+    --site-tag-text: #475569;
+    --site-gradient-start: #3b82f6;
+    --site-gradient-end: #8b5cf6;
+    --site-gradient: linear-gradient(120deg, var(--site-gradient-start), var(--site-gradient-end));
   }
 
   [data-theme="dark"] {
     color-scheme: dark;
-    --site-bg: #08090d;
-    --site-surface: #11131a;
-    --site-text: #f8fafc;
-    --site-muted: #dbe3ee;
-    --site-border: rgb(248 250 252 / 0.14);
-    --site-accent: #22d3ee;
-    --site-accent-strong: #fbbf24;
+    --site-bg: #0a0a0f;
+    --site-bg-secondary: #111118;
+    --site-surface: #16161d;
+    --site-text: #f0f0f5;
+    --site-muted: #8b8b9e;
+    --site-border: #1e1e2a;
+    --site-border-hover: #2a2a3a;
+    --site-accent: #60a5fa;
+    --site-accent-strong: #93c5fd;
+    --site-tag-bg: #1e1e2a;
+    --site-tag-text: #a0a0b8;
+    --site-gradient-start: #60a5fa;
+    --site-gradient-end: #a78bfa;
+    --site-gradient: linear-gradient(120deg, var(--site-gradient-start), var(--site-gradient-end));
   }
 
   html,

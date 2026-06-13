@@ -772,7 +772,12 @@ Version 3 will move forward with this direction:
 - Keep deployment compatible with GitHub Pages.
 - Create `doc/todo.md` from the phases above and start implementation one item at a time.
 
-## Locked Visual Direction (2026-06-13 revision)
+## Locked Visual Direction (2026-06-13 revision) — SUPERSEDED
+
+> SUPERSEDED on 2026-06-13 by `doc/redesign-plan.md` ("Aurora" theme). The
+> full-screen + dark + curtain direction below was rejected: the user wants a
+> brand-new light-first theme matching https://wassim.dev/ with richer motion
+> like https://koysor.me/. See `doc/redesign-plan.md` for the current plan.
 
 After an initial Home redesign attempt (hero + image-card grid) was rejected for
 losing the full-screen feel, the site-wide design language was locked:
