@@ -40,7 +40,10 @@
   <meta name="twitter:description" content="{{ meta_description }}" />
   <meta name="twitter:image" content="{{ meta_image }}" />
 
-  <link rel="shortcut icon" type="image/jpg" href="/assets/images/Bhupendra_B_dark.png">
+  <!-- Theme-aware favicon: black mark on light, white mark on dark -->
+  <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_light.png" media="(prefers-color-scheme: dark)">
+  <link rel="shortcut icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png">
   {% include scripts.html %}
   <link rel="stylesheet" href="/assets/css/version-3.css" media="screen">
   {% include analytics.html %}
