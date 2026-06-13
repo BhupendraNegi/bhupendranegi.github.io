@@ -4,6 +4,71 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-13 — Phase 5: Home page redesign
+
+First page redesign of Phase 5. Goal (from `doc/design.md`): make the first
+viewport clearly identify Bhupendra Negi, add role text and CTAs, keep four
+primary destinations but make them scannable and mobile-first, and keep a nod to
+the original visual tile concept.
+
+### Hero
+
+- Added a hero to `_layouts/homepage.html`: eyebrow, name, role + tech stack,
+  a one-line blurb, three CTAs (View Projects / Read Blog / Contact), and social
+  links.
+- Hero copy is data-driven from a new `hero` block in `_data/sections.yml`, so it
+  stays editable without touching markup.
+
+### Section cards
+
+- Replaced the full-bleed 2x2 "glitch"-animated tiles with a responsive grid of
+  image-backed cards (`_includes/box.html`): a refined overlay, a heading, a
+  short description, and an "Explore" affordance, with a subtle hover (image zoom
+  + lift). This keeps the image-tile nod while dropping the heavy multi-layer
+  glitch animation, in line with the "subtle motion, mobile-first" direction.
+- Cards are a 2-column grid on desktop and stack to a single column at <=680px.
+- Section card copy in `_data/sections.yml` was rewritten to be descriptive.
+- The old `.homepage-*` and `#homepage .home_heading/.words` rules in the Tailwind
+  source were replaced with the new `.home-hero-*` and `.home-card-*` styles. The
+  now-orphaned glitch rules still live in legacy `assets/css/main.css` and should
+  be removed in the pending `main.css` audit (Phase 7).
+
+### Fixed: missing brand icons (affected hero AND footer)
+
+- Discovered that `lucide@latest` no longer ships brand icons (`github`,
+  `linkedin`, `twitter`) — verified they resolve to nothing. The footer social
+  icons were therefore already rendering blank in production, and the new hero
+  icons would have too.
+- Added `_includes/social-icon.html` with inline brand SVGs (GitHub, LinkedIn,
+  X, Stack Overflow) and used it in both the hero and `_includes/footer.html`.
+  This is CDN- and Lucide-version-independent.
+
+### Fixed: mobile horizontal overflow
+
+- With Tailwind Preflight intentionally off, there is no global
+  `box-sizing: border-box`. `.home-wrap` used `width: min(100%, 1180px)` plus
+  horizontal padding, so under the default `content-box` it overflowed the
+  viewport by ~24px on narrow screens (confirmed a horizontal scrollbar at
+  360px). Added `box-sizing: border-box` to the home containers and switched the
+  mobile grid track to `minmax(0, 1fr)`. Re-measured: zero overflowing elements,
+  `scrollWidth == clientWidth` at 360px.
+- This same content-box pattern likely affects other page containers
+  (`.site-page-inner`) on mobile; logged a Phase 6 task to add a global
+  border-box base rule rather than per-page workarounds.
+
+### Verification
+
+- `npm run css:build` and `bundle exec jekyll build` succeed.
+- Visually checked the rendered home at 360px, 390px, and 1440px (headless
+  Chrome): hero and cards render correctly, social/CTA icons show, text wraps
+  within the viewport, no horizontal scroll.
+
+### Follow-ups logged in todo.md
+
+- Pin the Lucide version instead of `@latest` (Phase 4) so icons do not silently
+  break when Lucide drops more glyphs.
+- Add a global `box-sizing: border-box` base rule (Phase 6).
+
 ## 2026-06-13 — Deployment hardening + legacy dependency removal
 
 Context: a review of `doc/design.md` and `doc/todo.md` against the actual repo
