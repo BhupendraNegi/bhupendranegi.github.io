@@ -96,6 +96,20 @@
     intro.from(heroReveals, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0);
   }
 
+  // --- Inner-page hero intro -------------------------------------------------
+  // Inner pages have a .page-hero header instead of the home .hero. Give its
+  // [data-reveal] children the same quick staggered entrance on load.
+  var pageHeroReveals = gsap.utils.toArray(".page-hero[data-reveal], .page-hero [data-reveal]");
+  if (pageHeroReveals.length) {
+    gsap.from(pageHeroReveals, {
+      opacity: 0,
+      y: 26,
+      stagger: 0.1,
+      duration: 0.7,
+      ease: ease
+    });
+  }
+
   // --- Scroll-triggered reveals for the rest --------------------------------
   if (window.ScrollTrigger) {
     var ScrollTrigger = window.ScrollTrigger;
@@ -122,6 +136,7 @@
     gsap.utils.toArray("[data-reveal]").forEach(function (el) {
       if (el.closest(".hero")) return;
       if (el.closest(".home-section")) return;
+      if (el.closest(".page-hero") || el.matches(".page-hero")) return;
       gsap.set(el, { opacity: 0, y: 48 });
       gsap.to(el, {
         opacity: 1,

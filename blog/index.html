@@ -4,27 +4,32 @@ title: Blog
 pagination: true
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
+<section class="blog-page" aria-labelledby="blog-heading">
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Writing</p>
+    <h1 id="blog-heading" class="page-hero-title">Notes &amp; <span class="grad">articles</span></h1>
+    <p class="page-hero-lead">Thoughts on Ruby, Rails, React, and the craft of building software.</p>
+  </header>
 
-<div class="posts">
-  {% for post in paginator.posts %}
-    <article class="post">
-
-      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
-      <div class="date">
-        {{ post.date | date: "%B %e, %Y" }}
-      </div>
-      <div class="entry">
-        <p>
-          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 60 }}
-        </p>
-      </div>
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more" onclick="window.location.href=this.href; return false;">Read More</a>
-    </article>
-  {% endfor %}
+  <div class="home-writing-grid">
+    {% for post in paginator.posts %}
+      {% assign words = post.content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 | plus: 1 %}
+      <a href="{{ site.baseurl }}{{ post.url }}" class="post-card" data-reveal>
+        <span class="post-card-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ minutes }} min read</span>
+        </span>
+        <span class="post-card-title">{{ post.title }}</span>
+        <span class="post-card-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 28 }}</span>
+        <span class="post-card-read">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></span>
+      </a>
+    {% endfor %}
+  </div>
 
   {% if paginator.total_pages > 1 %}
-    <div class="pagination">
+    <div class="pagination" data-reveal>
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev-next">&laquo; Prev</a>
       {% else %}
@@ -50,7 +55,4 @@ pagination: true
       {% endif %}
     </div>
   {% endif %}
-
-</div>
-
-
+</section>

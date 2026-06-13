@@ -4,11 +4,14 @@ quote: It is not the email you send which matters, but how people feel when they
 author: Katie Hopkinst
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
-
 <section class="contact-page" aria-labelledby="contact-heading">
-  <h2 id="contact-heading" class="heading big_heading text-center">Contact</h2>
-  <form class="email_me contact-form site-card" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form>
+  <header class="page-hero page-hero--center" data-reveal>
+    <p class="page-hero-eyebrow">Contact</p>
+    <h1 id="contact-heading" class="page-hero-title">Let's <span class="grad">talk</span></h1>
+    <p class="page-hero-lead">Have a question, an idea, or just want to say hi? Drop me a message and I'll get back to you fast.</p>
+  </header>
+
+  <form class="email_me contact-form site-card" action="https://formspree.io/f/xyzgbrae" method="POST" data-contact-form data-reveal>
     <input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" />
 
     <div class="contact-grid">

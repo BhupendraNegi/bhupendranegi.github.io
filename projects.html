@@ -4,39 +4,46 @@ quote: Success is no accident. It is hard work, perseverance, learning, studying
 author: Pele
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
-
-
-
 <section class="projects-page" aria-labelledby="projects-heading">
-<div class="filter-bar text-center">
-  <h2 id="projects-heading" class="heading big_heading">Projects</h2>
-  <button id="filter" class="fill" type="button" aria-controls="tags" aria-expanded="false" data-project-filter-toggle>Filter by Technology</button>
-  <div id="tags" class="project-filter-tags" hidden>
-    <button class="tag fill" type="button" data-project-tag="ruby" aria-pressed="false">Ruby</button>
-    <button class="tag fill" type="button" data-project-tag="rails" aria-pressed="false">Rails</button>
-    <button class="tag fill" type="button" data-project-tag="javascript" aria-pressed="false">JavaScript</button>
-    <button class="tag fill" type="button" data-project-tag="postgresql" aria-pressed="false">PostgreSQL</button>
-    <button class="tag fill" type="button" data-project-tag="web" aria-pressed="false">Web</button>
-    <button class="tag fill" type="button" data-project-tag="java" aria-pressed="false">Java</button>
-    <button class="tag fill" type="button" data-project-tag="kotlin" aria-pressed="false">Kotlin</button>
-    <button class="tag fill" type="button" data-project-tag="android" aria-pressed="false">Android</button>
-    <button class="tag fill" type="button" data-project-tag="mobile" aria-pressed="false">Mobile</button>
-    <button class="tag fill" type="button" data-project-tag="game" aria-pressed="false">Game</button>
-    <button class="tag fill" type="button" data-project-clear-filters>Clear</button>
-  </div>
-</div>
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Portfolio</p>
+    <h1 id="projects-heading" class="page-hero-title">Things I've <span class="grad">built</span></h1>
+    <p class="page-hero-lead">Experiments, side projects, and work I'm proud of. Filter by technology, or open any card for screenshots and details.</p>
+  </header>
 
-<div class="project_list project-list">
-  {% for project in site.data.projects %}
-    {% include project.html %}
-  {% endfor %}
-</div>
-<div class="projects-bottom text-center">
-  <h4 class="heading">Have questions, comments, feedback? Feel free to reach out!</h4>
-  <div class="page-actions">
-    <a class="site-button" href="/contact">Contact</a>
-    <button type="button" class="fill" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
+  <div class="filter-bar" data-reveal>
+    <button id="filter" class="btn-ghost" type="button" aria-controls="tags" aria-expanded="false" data-project-filter-toggle>
+      <i data-lucide="sliders-horizontal" class="site-icon" aria-hidden="true"></i> Filter by Technology
+    </button>
+    <div id="tags" class="project-filter-tags" hidden>
+      <button class="tag fill" type="button" data-project-tag="ruby" aria-pressed="false">Ruby</button>
+      <button class="tag fill" type="button" data-project-tag="rails" aria-pressed="false">Rails</button>
+      <button class="tag fill" type="button" data-project-tag="javascript" aria-pressed="false">JavaScript</button>
+      <button class="tag fill" type="button" data-project-tag="postgresql" aria-pressed="false">PostgreSQL</button>
+      <button class="tag fill" type="button" data-project-tag="web" aria-pressed="false">Web</button>
+      <button class="tag fill" type="button" data-project-tag="java" aria-pressed="false">Java</button>
+      <button class="tag fill" type="button" data-project-tag="kotlin" aria-pressed="false">Kotlin</button>
+      <button class="tag fill" type="button" data-project-tag="android" aria-pressed="false">Android</button>
+      <button class="tag fill" type="button" data-project-tag="mobile" aria-pressed="false">Mobile</button>
+      <button class="tag fill" type="button" data-project-tag="game" aria-pressed="false">Game</button>
+      <button class="tag fill" type="button" data-project-clear-filters>Clear</button>
+    </div>
   </div>
-</div>
+
+  <div class="project_list project-list">
+    {% for project in site.data.projects %}
+      {% include project.html %}
+    {% endfor %}
+  </div>
+
+  <div class="home-cta projects-bottom" data-reveal>
+    <div class="home-cta-inner">
+      <h2 class="section-title">Have a question or <span class="grad">feedback?</span></h2>
+      <p class="home-cta-text">I'd love to hear what you think &mdash; feel free to reach out.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/contact"><i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch</a>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i class="site-icon" data-lucide="arrow-up" aria-hidden="true"></i> Back to top</button>
+      </div>
+    </div>
+  </div>
 </section>
