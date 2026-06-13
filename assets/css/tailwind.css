@@ -199,21 +199,22 @@
   }
 
   .site-page {
-    background: var(--site-bg);
+    background: transparent;
     color: var(--site-text);
     min-height: 100vh;
   }
 
-  .site-page-inner {
-    margin-inline: auto;
-    max-width: 1300px;
-    padding-inline: clamp(1rem, 4vw, 2rem);
-    width: min(100%, 1300px);
+  .site-page,
+  .site-page * {
+    box-sizing: border-box;
   }
 
-  .site-page--home {
-    background: #08090d;
-    color: #f8fafc;
+  /* Match the home page content rail exactly (.hero / .home-section). */
+  .site-page-inner {
+    margin-inline: auto;
+    max-width: 1240px;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+    width: min(100%, 1240px);
   }
 
   .site-footer {
@@ -992,7 +993,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.3rem 0.35rem 0.3rem 1rem;
+    padding: 0.35rem 0.75rem 0.35rem 1.15rem;
     border-radius: 999px;
     background: var(--site-bg);
     border: 1px solid var(--site-border);
@@ -1069,7 +1070,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: 0.85rem;
+    margin-left: 1.15rem;
     flex: 0 0 auto;
   }
 
