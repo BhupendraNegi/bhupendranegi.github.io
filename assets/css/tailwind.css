@@ -1263,23 +1263,22 @@
   }
 
   .about-intro {
-    align-items: start;
+    align-items: stretch;
     display: grid;
     gap: clamp(1.5rem, 4vw, 3rem);
     grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
     margin-block: clamp(1rem, 3vw, 1.5rem) clamp(2rem, 5vw, 3rem);
   }
 
-  /* Profile card (sticky on desktop) */
+  /* Profile card — matches the bio column height; content centered. */
   .about-card {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
+    justify-content: center;
     padding: clamp(1.5rem, 3vw, 2rem);
-    position: sticky;
     text-align: center;
-    top: 96px;
   }
 
   .about-portrait {
@@ -1301,6 +1300,7 @@
     display: block;
     height: 100%;
     object-fit: cover;
+    object-position: 50% 18%;
     width: 100%;
   }
 
@@ -1510,22 +1510,12 @@
     text-wrap: pretty;
   }
 
+  /* Tech badges reuse the toolkit .skill-chip look (devicon + label). */
   .journey-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
-    list-style: none;
-    margin: 0.9rem 0 0;
-    padding: 0;
-  }
-
-  .journey-tech li {
-    background: var(--site-tag-bg);
-    border: 1px solid var(--site-border);
-    border-radius: 999px;
-    color: var(--site-tag-text);
-    font: 600 0.76rem/1 var(--font-sans);
-    padding: 0.4rem 0.75rem;
+    gap: 0.5rem;
+    margin: 0.95rem 0 0;
   }
 
   @media (max-width: 560px) {

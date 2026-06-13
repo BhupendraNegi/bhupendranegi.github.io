@@ -21,7 +21,6 @@ layout: site_layout
       <ul class="about-card-facts">
         <li><i data-lucide="map-pin" class="site-icon" aria-hidden="true"></i> Bangalore, India</li>
         <li><i data-lucide="briefcase" class="site-icon" aria-hidden="true"></i> {{ years }}+ years experience</li>
-        <li><i data-lucide="code-2" class="site-icon" aria-hidden="true"></i> Ruby on Rails · React · Node.js</li>
       </ul>
       <ul class="hero-social about-card-social">
         <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
@@ -73,9 +72,13 @@ layout: site_layout
             <span class="journey-date">Mar 2022 &ndash; Present</span>
           </div>
           <p class="journey-text">Gnarly backend and data work on Electronic Billing Administration, with a focus on performance and clean deployment.</p>
-          <ul class="journey-tech">
-            <li>Ruby on Rails</li><li>Elasticsearch</li><li>Sidekiq</li><li>Docker</li><li>PostgreSQL</li>
-          </ul>
+          <div class="journey-tech">
+            <span class="skill-chip"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Ruby on Rails</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-elasticsearch-plain" aria-hidden="true"></i> Elasticsearch</span>
+            <span class="skill-chip">Sidekiq</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-docker-plain" aria-hidden="true"></i> Docker</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-postgresql-plain" aria-hidden="true"></i> PostgreSQL</span>
+          </div>
         </div>
       </li>
       <li class="journey-item" data-reveal>
@@ -88,9 +91,13 @@ layout: site_layout
             <span class="journey-date">Aug 2019 &ndash; Feb 2022</span>
           </div>
           <p class="journey-text">My first taste of shipping products people rely on &mdash; payments, auth, and dashboards, built end to end.</p>
-          <ul class="journey-tech">
-            <li>Ruby on Rails</li><li>React</li><li>JavaScript</li><li>MySQL</li><li>Razorpay</li>
-          </ul>
+          <div class="journey-tech">
+            <span class="skill-chip"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Ruby on Rails</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-react-plain" aria-hidden="true"></i> React</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-javascript-plain" aria-hidden="true"></i> JavaScript</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-mysql-plain" aria-hidden="true"></i> MySQL</span>
+            <span class="skill-chip">Razorpay</span>
+          </div>
         </div>
       </li>
       <li class="journey-item" data-reveal>
@@ -103,9 +110,11 @@ layout: site_layout
             <span class="journey-date">2015 &ndash; 2019</span>
           </div>
           <p class="journey-text">Dove headfirst into computer science &mdash; the logic behind real applications &mdash; with Android side-projects along the way.</p>
-          <ul class="journey-tech">
-            <li>Java</li><li>C++</li><li>Android</li>
-          </ul>
+          <div class="journey-tech">
+            <span class="skill-chip"><i class="about_skill_icon devicon-java-plain" aria-hidden="true"></i> Java</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-cplusplus-plain" aria-hidden="true"></i> C++</span>
+            <span class="skill-chip"><i class="about_skill_icon devicon-android-plain" aria-hidden="true"></i> Android</span>
+          </div>
         </div>
       </li>
       <li class="journey-item" data-reveal>
@@ -118,9 +127,9 @@ layout: site_layout
             <span class="journey-date">till 2014</span>
           </div>
           <p class="journey-text">Where the spark began &mdash; a school management system built in Java set me on the path to coding.</p>
-          <ul class="journey-tech">
-            <li>Java</li>
-          </ul>
+          <div class="journey-tech">
+            <span class="skill-chip"><i class="about_skill_icon devicon-java-plain" aria-hidden="true"></i> Java</span>
+          </div>
         </div>
       </li>
     </ol>
