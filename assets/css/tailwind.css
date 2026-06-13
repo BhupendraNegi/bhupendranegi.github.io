@@ -1304,32 +1304,6 @@
     width: 100%;
   }
 
-  .about-status {
-    align-items: center;
-    background: var(--site-surface);
-    border: 1px solid var(--site-border);
-    border-radius: 999px;
-    bottom: 4px;
-    box-shadow: var(--shadow-soft);
-    color: var(--site-text);
-    display: inline-flex;
-    font: 600 0.72rem/1 var(--font-sans);
-    gap: 0.4rem;
-    left: 50%;
-    padding: 0.4rem 0.7rem;
-    position: absolute;
-    transform: translateX(-50%);
-    white-space: nowrap;
-  }
-
-  .about-status-dot {
-    background: #22c55e;
-    border-radius: 999px;
-    box-shadow: 0 0 0 3px rgb(34 197 94 / 0.2);
-    height: 0.5rem;
-    width: 0.5rem;
-  }
-
   .about-card-name {
     color: var(--site-text);
     font: 800 1.45rem/1.1 var(--font-sans);
@@ -1391,6 +1365,54 @@
     color: var(--site-muted);
     font: 400 1.05rem/1.7 var(--font-sans);
     margin: 1rem 0 0;
+  }
+
+  /* Value cards beside the profile card */
+  .about-values {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 1.5rem;
+  }
+
+  .about-value {
+    padding: 1.25rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .about-value:hover {
+    border-color: color-mix(in srgb, var(--site-accent) 45%, var(--site-border));
+    box-shadow: 0 14px 34px rgb(59 130 246 / 0.12);
+    transform: translateY(-4px);
+  }
+
+  .about-value-icon {
+    align-items: center;
+    background: var(--site-gradient);
+    border-radius: 12px;
+    color: #ffffff;
+    display: inline-flex;
+    height: 40px;
+    justify-content: center;
+    margin-bottom: 0.85rem;
+    width: 40px;
+  }
+
+  .about-value-icon .site-icon {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  .about-value-title {
+    color: var(--site-text);
+    font: 700 1.02rem/1.2 var(--font-sans);
+    margin: 0 0 0.3rem;
+  }
+
+  .about-value-text {
+    color: var(--site-muted);
+    font: 400 0.9rem/1.55 var(--font-sans);
+    margin: 0;
   }
 
   .about-actions {
@@ -1488,30 +1510,22 @@
     text-wrap: pretty;
   }
 
-  .journey-highlights {
-    display: grid;
+  .journey-tech {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.45rem;
     list-style: none;
     margin: 0.9rem 0 0;
     padding: 0;
   }
 
-  .journey-highlights li {
-    color: var(--site-muted);
-    font: 500 0.92rem/1.55 var(--font-sans);
-    padding-left: 1.3rem;
-    position: relative;
-  }
-
-  .journey-highlights li::before {
-    background: var(--site-gradient);
+  .journey-tech li {
+    background: var(--site-tag-bg);
+    border: 1px solid var(--site-border);
     border-radius: 999px;
-    content: "";
-    height: 6px;
-    left: 0;
-    position: absolute;
-    top: 0.55em;
-    width: 6px;
+    color: var(--site-tag-text);
+    font: 600 0.76rem/1 var(--font-sans);
+    padding: 0.4rem 0.75rem;
   }
 
   @media (max-width: 560px) {

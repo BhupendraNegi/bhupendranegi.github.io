@@ -15,14 +15,13 @@ layout: site_layout
     <aside class="about-card site-card" data-reveal>
       <div class="about-portrait" aria-hidden="true">
         <img src="/assets/images/bhupendra.png" class="about_img" alt="Bhupendra Negi">
-        <span class="about-status"><span class="about-status-dot"></span> Open to work</span>
       </div>
       <h2 class="about-card-name">Bhupendra Negi</h2>
       <p class="about-card-role">Senior Software Developer <span class="about-card-at">@ ClearStack</span></p>
       <ul class="about-card-facts">
         <li><i data-lucide="map-pin" class="site-icon" aria-hidden="true"></i> Bangalore, India</li>
         <li><i data-lucide="briefcase" class="site-icon" aria-hidden="true"></i> {{ years }}+ years experience</li>
-        <li><i data-lucide="award" class="site-icon" aria-hidden="true"></i> IEEE Xtreme AIR 12</li>
+        <li><i data-lucide="code-2" class="site-icon" aria-hidden="true"></i> Ruby on Rails · React · Node.js</li>
       </ul>
       <ul class="hero-social about-card-social">
         <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
@@ -34,7 +33,24 @@ layout: site_layout
 
     <div class="about-bio" data-reveal>
       <p class="about-bio-lead">👋 Hey there! I'm Bhupendra &mdash; a developer who likes to think of himself as a digital wizard weaving magic through lines of code.</p>
-      <p class="about-bio-text">I care about clean, maintainable code, solving gnarly problems, and shipping products that feel great to use. Over the past {{ years }} years I've specialized in Ruby on Rails and React, building things end to end.</p>
+      <p class="about-bio-text">A full-stack developer with {{ years }} years building scalable web apps, end to end. Here's what I care about most:</p>
+      <div class="about-values">
+        <div class="about-value site-card">
+          <span class="about-value-icon"><i data-lucide="code-2" class="site-icon" aria-hidden="true"></i></span>
+          <h3 class="about-value-title">Clean code</h3>
+          <p class="about-value-text">Readable, maintainable code that's a pleasure to work in.</p>
+        </div>
+        <div class="about-value site-card">
+          <span class="about-value-icon"><i data-lucide="puzzle" class="site-icon" aria-hidden="true"></i></span>
+          <h3 class="about-value-title">Problem solving</h3>
+          <p class="about-value-text">Untangling gnarly backend and data problems.</p>
+        </div>
+        <div class="about-value site-card">
+          <span class="about-value-icon"><i data-lucide="sparkles" class="site-icon" aria-hidden="true"></i></span>
+          <h3 class="about-value-title">Great UX</h3>
+          <p class="about-value-text">Shipping products that feel great to use.</p>
+        </div>
+      </div>
       <div class="about-actions">
         <a class="btn-primary" href="/projects"><i data-lucide="folder-open" class="site-icon" aria-hidden="true"></i> View Projects</a>
         <a class="btn-ghost" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
@@ -48,15 +64,18 @@ layout: site_layout
     </div>
     <ol class="journey">
       <li class="journey-item" data-reveal>
-        <span class="journey-marker" aria-hidden="true">🎓</span>
+        <span class="journey-marker" aria-hidden="true">🚀</span>
         <div class="journey-body">
           <div class="journey-meta">
-            <span class="journey-role">B.Tech, Computer Science</span>
+            <span class="journey-role">Sr. Software Developer</span>
             <span class="journey-dot" aria-hidden="true">·</span>
-            <span class="journey-org">BTKIT, Dwarahat</span>
-            <span class="journey-date">2015 &ndash; 2019</span>
+            <span class="journey-org">ClearStack</span>
+            <span class="journey-date">Mar 2022 &ndash; Present</span>
           </div>
-          <p class="journey-text">Where it started. The spark came earlier &mdash; a school management system built in Java &mdash; but college is where I dove headfirst into computer science, the logic behind real applications, and even some Android side-projects like calculators and music players.</p>
+          <p class="journey-text">Gnarly backend and data work on Electronic Billing Administration, with a focus on performance and clean deployment.</p>
+          <ul class="journey-tech">
+            <li>Ruby on Rails</li><li>Elasticsearch</li><li>Sidekiq</li><li>Docker</li><li>PostgreSQL</li>
+          </ul>
         </div>
       </li>
       <li class="journey-item" data-reveal>
@@ -68,29 +87,39 @@ layout: site_layout
             <span class="journey-org">eLitmus</span>
             <span class="journey-date">Aug 2019 &ndash; Feb 2022</span>
           </div>
-          <p class="journey-text">My first taste of building products people actually rely on &mdash; from revamping the site's UX to shipping payment-backed features end to end.</p>
-          <ul class="journey-highlights">
-            <li>Built a gift-cards e-commerce platform with an admin module, lifting sales by ~10%.</li>
-            <li>Added mobile-OTP login via Gupshup, improving retention by ~25%.</li>
-            <li>Integrated Razorpay for secure payments, and led a campus candidate tracking dashboard.</li>
+          <p class="journey-text">My first taste of shipping products people rely on &mdash; payments, auth, and dashboards, built end to end.</p>
+          <ul class="journey-tech">
+            <li>Ruby on Rails</li><li>React</li><li>JavaScript</li><li>MySQL</li><li>Razorpay</li>
           </ul>
         </div>
       </li>
       <li class="journey-item" data-reveal>
-        <span class="journey-marker" aria-hidden="true">🚀</span>
+        <span class="journey-marker" aria-hidden="true">🎓</span>
         <div class="journey-body">
           <div class="journey-meta">
-            <span class="journey-role">Sr. Software Developer</span>
+            <span class="journey-role">B.Tech, Computer Science</span>
             <span class="journey-dot" aria-hidden="true">·</span>
-            <span class="journey-org">ClearStack</span>
-            <span class="journey-date">Mar 2022 &ndash; Present</span>
+            <span class="journey-org">BTKIT, Dwarahat</span>
+            <span class="journey-date">2015 &ndash; 2019</span>
           </div>
-          <p class="journey-text">Working on Electronic Billing Administration &mdash; the kind of gnarly backend and data problems I love, with a real focus on performance and clean deployment.</p>
-          <ul class="journey-highlights">
-            <li>Template-driven CSV / XLSX / TXT / XML upload system that cut processing time by 50%.</li>
-            <li>Automated file staging with a Samba client &mdash; 90% less manual effort.</li>
-            <li>Migrated search from Solr to Elasticsearch (+30% relevance) and jobs from Resque to Sidekiq (+40% throughput).</li>
-            <li>Dockerized deployments with Kamal 2 for faster, more scalable releases.</li>
+          <p class="journey-text">Dove headfirst into computer science &mdash; the logic behind real applications &mdash; with Android side-projects along the way.</p>
+          <ul class="journey-tech">
+            <li>Java</li><li>C++</li><li>Android</li>
+          </ul>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="journey-marker" aria-hidden="true">🏫</span>
+        <div class="journey-body">
+          <div class="journey-meta">
+            <span class="journey-role">Schooling</span>
+            <span class="journey-dot" aria-hidden="true">·</span>
+            <span class="journey-org">K.V. Upper Camp, Dehradun</span>
+            <span class="journey-date">till 2014</span>
+          </div>
+          <p class="journey-text">Where the spark began &mdash; a school management system built in Java set me on the path to coding.</p>
+          <ul class="journey-tech">
+            <li>Java</li>
           </ul>
         </div>
       </li>
