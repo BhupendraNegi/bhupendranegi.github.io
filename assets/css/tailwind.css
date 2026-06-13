@@ -984,7 +984,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.35rem 0.75rem 0.35rem 1.15rem;
+    padding: 0.35rem 2rem 0.35rem 2rem;
     border-radius: 999px;
     background: var(--site-bg);
     border: 1px solid var(--site-border);
@@ -1001,7 +1001,7 @@
 
   .site-brand-logo {
     display: block;
-    height: 30px;
+    height: 38px;
     width: auto;
   }
 
@@ -1360,7 +1360,6 @@
   .about-bio-lead {
     color: var(--site-text);
     font: 600 clamp(1.2rem, 2.6vw, 1.5rem)/1.45 var(--font-sans);
-    margin: 0;
     letter-spacing: -0.01em;
   }
 
