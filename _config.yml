@@ -48,7 +48,6 @@ highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-pdf-embed
   - jekyll-sass-converter
   - jekyll-paginate
 
@@ -68,6 +67,7 @@ paginate_path: "/blog/page:num"
 #
 exclude:
   - AGENT.md
+  - CLAUDE.md
   - Procfile
   - .sass-cache/
   - .jekyll-cache/
@@ -77,6 +77,7 @@ exclude:
   - bin/
   - doc/
   - assets/css/tailwind.css
+  - assets/css/syntax.css
   - package.json
   - package-lock.json
   - node_modules/
