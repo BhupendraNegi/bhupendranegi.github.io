@@ -156,3 +156,35 @@ tokens. Order after Home:
 5. Re-skin remaining pages (About, Projects, Blog, Post, Contact, Resume, 404).
 6. Cleanup (remove panels/images/curtain-logo/legacy CSS), verify build, eyeball
    motion locally, document.
+
+## Home refinement ideas (proposed 2026-06-13, pending user pick)
+
+Feedback: content too narrow; navbar disliked; project + writing sections too
+basic. Ideas below; chosen options to be recorded once the user picks.
+
+1. Content width — widen `.hero`/`.home-section` from 920px to at least the
+   navbar width (1180px), optionally 1240px. Keep text blocks readable with an
+   inner max-width on paragraphs.
+2. Navbar — options: (A) floating rounded "pill" bar detached from the top with
+   blur; (B) refined minimal (logo left, links right) with larger Inter type, a
+   gradient active indicator, and a Resume pill CTA; (C) logo left + centered
+   links + actions right. Plus larger tap targets and a smoother mobile menu.
+3. Project cards — give each a generated, on-brand cover (animated blue→violet
+   gradient/mesh with the project's primary tech devicon, or a tech-icon
+   collage). Hover: lift + gradient border glow + cover zoom/parallax + links
+   slide in. (Real photos optional if the user supplies them; stock imagery is
+   avoided for licensing on a static site.)
+4. Recent Writing — options: (A) cards matching projects (date, reading time,
+   tags, arrow); (B) rich list rows with an index number, hover gradient fill,
+   and arrow slide; (C) one featured post + a compact list. Add tags/reading time
+   and a clear hover transition.
+
+### Home refinement — chosen options (user, 2026-06-13)
+
+- Content width: 1240px (`.hero`/`.home-section`).
+- Navbar: floating rounded "pill" bar (detached from top, blurred) + Resume CTA.
+- Project cards: cover = blue→violet gradient/mesh with the project's primary
+  Devicon logo large + faded; hover = lift + gradient glow + glyph shift; tags +
+  Code/Live links.
+- Recent Writing: post cards matching the project cards (date, reading time,
+  title, Read →).

@@ -115,7 +115,7 @@ Home refinements requested 2026-06-13 (in progress):
 
 ## Per-page work under Aurora (one page at a time; see workflow rule above)
 
-- [ ] Home — IN PROGRESS (iterating on layout/nav/cards/motion per user feedback).
+- [ ] Home — IN PROGRESS (iterating per user feedback). Done so far: light Aurora theme, GSAP/Lenis motion, continuous site-wide gradient backdrop, wider 1240px content, floating-pill navbar + Resume CTA, project cards with gradient/tech-logo covers + hover, writing cards. Awaiting user eyeball/feedback before moving on.
 - [ ] About
 - [ ] Projects (remove modals in favour of cards/detail pages; redesign)
 - [ ] Blog index
