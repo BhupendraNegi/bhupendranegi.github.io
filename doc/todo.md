@@ -113,20 +113,17 @@ Home refinements requested 2026-06-13 (in progress):
 - [ ] Phase 5 — Re-skin remaining pages. Spot-check 2026-06-13: About, Contact, and Blog index already adopt the theme well. **Projects needs work** (project cards/covers + modal/carousel are still hardcoded dark). Also check Post layout, Resume, 404, and blog pagination glyph.
 - [ ] Phase 6 — Cleanup: remove dead legacy `main.css` (glitch/old-home/theme-pill rules), the orphaned curtain/panel CSS, pin the Lucide version, verify build, eyeball motion locally, document.
 
-## Phase 5: Page Redesigns (earlier full-screen/dark attempt — SUPERSEDED by Phase 5b)
+## Per-page work under Aurora (one page at a time; see workflow rule above)
 
-- [x] Lock the site-wide theme / design language. (SUPERSEDED 2026-06-13 — replaced by the Aurora theme in `doc/redesign-plan.md`. The earlier pick was full-screen + minimal-dark + curtain transitions referencing pmportfolio.ca.)
-- [x] Build the transition system — curtain intro + curtain page transitions. (2026-06-13: full-screen accent curtain that covers before first paint and wipes away on load — armed pre-paint in `_includes/head.html`, wiped by `initializeIntroCurtain` in `version-3.js`, with a 2s safety timeout and `prefers-reduced-motion` opt-out. Page-to-page navigation lowers the same curtain then navigates (the next page wipes it away on arrival). Scroll-reveal primitives via IntersectionObserver, made progressive-enhancement (`html.reveals`) so content stays visible without JS. Markup in `_layouts/default.html`. See `doc/changelog.md`.)
-- [ ] (Optional) Upgrade page transitions to Swup for true no-reload SPA swaps. The current curtain transition uses a full reload masked by the curtain (visually identical, zero re-init risk). True Swup would remove the reload but requires re-initializing every interactive component (filters, modals, carousels, contact form) and verifying analytics/Disqus/Translate lifecycles after each swap — needs live cross-page testing.
-- [x] Redesign Home full-screen in the new theme. (2026-06-13: full-viewport intro panel — eyebrow, name, role+stack, blurb, CTAs, social, scroll cue — followed by four full-screen image-backed section panels (About/Projects/Blog/Contact) with index numbers, headings, descriptions, and Explore CTAs. Reveal-on-scroll + intro curtain. Replaces the rejected card-grid attempt. Desktop verified visually; mobile overflow verified via probe.)
-- [ ] Redesign About.
-- [ ] Redesign Projects so all projects are featured without feeling crowded.
-- [ ] Remove project modals in favor of cards, sections, or detail pages.
-- [ ] Redesign Blog index.
-- [ ] Redesign Blog post layout.
-- [ ] Keep Disqus only if comments remain valuable after review.
-- [ ] Redesign Contact.
-- [ ] Redesign Resume using current PDF/content, with placeholders for future updates.
+- [ ] Home — IN PROGRESS (iterating on layout/nav/cards/motion per user feedback).
+- [ ] About
+- [ ] Projects (remove modals in favour of cards/detail pages; redesign)
+- [ ] Blog index
+- [ ] Blog post layout
+- [ ] Contact
+- [ ] Resume
+- [ ] 404
+- [ ] Decide whether to keep Disqus after review.
 
 ## Phase 6: Mobile and Accessibility
 
