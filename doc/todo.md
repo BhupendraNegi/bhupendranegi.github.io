@@ -95,6 +95,17 @@ Supersedes the full-screen/dark/curtain direction below. Brand-new light-first
 theme matching https://wassim.dev/ + richer motion like https://koysor.me/.
 Decided 2026-06-13. Full plan in `doc/redesign-plan.md`.
 
+WORKFLOW RULE (user, 2026-06-13): work on ONE page at a time. Keep iterating on
+the Home page until the user explicitly says it's good; only then move to the
+next page. Do not jump ahead to other pages. Currently iterating on: Home.
+
+Home refinements requested 2026-06-13 (in progress):
+- The gradient background should span the whole site as one continuous backdrop
+  (not just the hero) so there is no visible vertical division between sections —
+  it should feel smooth/seamless.
+- Scroll motion is not noticeable; make section reveals clearly visible as you
+  scroll from one section to the next.
+
 - [x] Phase 1 — Tokens + fonts. (2026-06-13: wassim light-first palette + dark toggle; loaded Inter + JetBrains Mono; theme-aware favicon; fixed a latent bug where var(--font-sans/mono) was undefined. Rouge already defaults to its light variant.)
 - [x] Phase 2 — New navbar + restyled footer. (2026-06-13: light blurred navbar, theme-aware wordmark logo, gradient active-underline, sun/moon toggle, mobile overlay; footer + mobile nav now token-based.)
 - [x] Phase 3 — Rebuild Home wassim-style. (2026-06-13: hero with animated blue→violet gradient graphic, featured project cards, recent writing, gradient CTA; uses shared navbar/footer; dropped full-screen panels + section images + the curtain "BN" intro.)

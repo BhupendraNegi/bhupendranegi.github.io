@@ -104,16 +104,59 @@
 
   // --- Scroll-triggered reveals for the rest --------------------------------
   if (window.ScrollTrigger) {
+    var ScrollTrigger = window.ScrollTrigger;
+
+    // Reveal each section's items together with a stagger so moving from one
+    // section to the next reads as a clear entrance.
+    gsap.utils.toArray(".home-section, .hero ~ *").forEach(function (section) {
+      var items = section.matches("[data-reveal]")
+        ? [section]
+        : gsap.utils.toArray("[data-reveal]", section);
+      if (!items.length) return;
+      gsap.set(items, { opacity: 0, y: 48 });
+      gsap.to(items, {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: ease,
+        stagger: 0.12,
+        scrollTrigger: { trigger: section, start: "top 82%", once: true }
+      });
+    });
+
+    // Catch any stray [data-reveal] not inside a section.
     gsap.utils.toArray("[data-reveal]").forEach(function (el) {
       if (el.closest(".hero")) return;
-      gsap.set(el, { opacity: 0, y: 28 });
+      if (el.closest(".home-section")) return;
+      gsap.set(el, { opacity: 0, y: 48 });
       gsap.to(el, {
         opacity: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.85,
         ease: ease,
         scrollTrigger: { trigger: el, start: "top 86%", once: true }
       });
+    });
+
+    // Gentle scroll parallax on the whole ambient layer (orbs keep their own
+    // CSS drift; this just adds depth as you move between sections).
+    var auroraBg = document.querySelector(".aurora-bg");
+    if (auroraBg) {
+      gsap.to(auroraBg, {
+        y: 140,
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1
+        }
+      });
+    }
+
+    // Recalculate once everything (fonts, images) has settled.
+    window.addEventListener("load", function () {
+      ScrollTrigger.refresh();
     });
   } else {
     // No ScrollTrigger: just show the non-hero content.
