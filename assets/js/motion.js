@@ -69,37 +69,31 @@
   }
 
   // --- Hero intro ------------------------------------------------------------
+  // Use gsap.from() so every element finishes at its natural (visible) state —
+  // even if a tween is interrupted, content is never left hidden.
   var heroReveals = gsap.utils.toArray(".hero [data-reveal]");
   var name = document.querySelector(".hero-name[data-split]");
   var intro = gsap.timeline({ defaults: { ease: ease } });
 
-  if (heroReveals.length) {
-    gsap.set(heroReveals, { opacity: 0, y: 22 });
-  }
-
   var splitChars = null;
   if (name && window.SplitText) {
     try {
+      gsap.registerPlugin(window.SplitText);
       var split = new window.SplitText(name, { type: "chars" });
-      splitChars = split.chars;
+      splitChars = split.chars && split.chars.length ? split.chars : null;
     } catch (e) {
       splitChars = null;
     }
   }
 
   if (splitChars) {
-    gsap.set(name, { opacity: 1, y: 0 });
-    intro.from(
-      splitChars,
-      { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 },
-      0
-    );
-    var nonName = heroReveals.filter(function (el) {
+    intro.from(splitChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0);
+    var rest = heroReveals.filter(function (el) {
       return el !== name;
     });
-    intro.to(nonName, { opacity: 1, y: 0, stagger: 0.08, duration: 0.6 }, 0.25);
+    intro.from(rest, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0.2);
   } else {
-    intro.to(heroReveals, { opacity: 1, y: 0, stagger: 0.08, duration: 0.6 }, 0);
+    intro.from(heroReveals, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0);
   }
 
   // --- Scroll-triggered reveals for the rest --------------------------------

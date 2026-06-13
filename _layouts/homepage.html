@@ -9,24 +9,43 @@ layout: default
 
   <section class="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow" data-reveal data-reveal-order="1">{{ hero.role | default: "Software Engineer" }}</p>
-      <h1 class="hero-name" data-reveal data-reveal-order="2" data-split>{{ hero.name | default: site.name }}</h1>
-      {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
-      {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb }}</p>{% endif %}
-      <div class="hero-actions" data-reveal data-reveal-order="5">
-        <a class="btn-primary" href="{{ site.data.sections.projects.url }}">
-          <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
-        </a>
-        <a class="btn-ghost" href="{{ site.data.sections.contact.url }}">
-          <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch
-        </a>
+      <div class="hero-text">
+        {% if hero.eyebrow %}<p class="hero-eyebrow" data-reveal data-reveal-order="1">{{ hero.eyebrow }}</p>{% endif %}
+        <h1 class="hero-name" data-reveal data-reveal-order="2" data-split>{{ hero.name | default: site.name }}</h1>
+        <p class="hero-role" data-reveal data-reveal-order="3">
+          <span class="hero-role-main">{{ hero.role }}</span>
+          {% if hero.current %}<span class="hero-role-at">@ {{ hero.current }}</span>{% endif %}
+        </p>
+        {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
+        {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb }}</p>{% endif %}
+        <ul class="hero-meta" data-reveal data-reveal-order="5">
+          {% if hero.experience %}<li><i class="site-icon" data-lucide="briefcase" aria-hidden="true"></i>{{ hero.experience }}</li>{% endif %}
+          {% if hero.location %}<li><i class="site-icon" data-lucide="map-pin" aria-hidden="true"></i>{{ hero.location }}</li>{% endif %}
+          <li><i class="site-icon" data-lucide="award" aria-hidden="true"></i>IEEE Xtreme AIR 12</li>
+        </ul>
+        <div class="hero-actions" data-reveal data-reveal-order="6">
+          <a class="btn-primary" href="{{ site.data.sections.projects.url }}">
+            <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
+          </a>
+          <a class="btn-ghost" href="{{ site.data.sections.contact.url }}">
+            <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch
+          </a>
+        </div>
+        <ul class="hero-social" data-reveal data-reveal-order="6">
+          <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
+          <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
+          <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
+          <li><a href="{{ site.stackoverflow_link }}" target="_blank" rel="noopener" aria-label="Stack Overflow">{% include social-icon.html name="stackoverflow" %}</a></li>
+        </ul>
       </div>
-      <ul class="hero-social" data-reveal data-reveal-order="6">
-        <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
-        <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
-        <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
-        <li><a href="{{ site.stackoverflow_link }}" target="_blank" rel="noopener" aria-label="Stack Overflow">{% include social-icon.html name="stackoverflow" %}</a></li>
-      </ul>
+
+      <div class="hero-media" data-reveal data-reveal-order="4" aria-hidden="true">
+        <div class="hero-portrait">
+          <div class="hero-portrait-inner">
+            <img src="/assets/images/bhupendra_1.png" alt="Bhupendra Negi" width="320" height="320" />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
