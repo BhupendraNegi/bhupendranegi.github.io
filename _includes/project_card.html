@@ -4,39 +4,32 @@
       {% for image in project.images %}
       <div class="black-text carousel-item">
         <div class="image_wrapper">
-          <img class="project_img" src="{{image}}" alt="">
+          <img class="project_img" src="{{image}}" alt="{{project.title}} screenshot">
         </div>
       </div>
       {% endfor %}
     </div>
     <div class="project_info">
-      <div class="project-info-row">
-        <div class="info_type">title:</div>
-        <h4>{{project.title}}</h4>
-      </div>
-      <div class="project-info-row">
-        <div class="info_type">description:</div>
-        <p class="description">{{project.description}}</p>
-      </div>
-      <div class="project-info-row">
-        <div class="info_type">skills:</div>
-        <div class="project-tech-list">
+      <h4 class="project-modal-title">{{project.title}}</h4>
+      <p class="project-modal-desc">{{project.description}}</p>
+      {% if project.technologies %}
+        <div class="project-tech">
           {% for tech in project.technologies %}
-            <i class="devicon-{{tech}} project_icons"></i>
+            <span class="skill-chip"><i class="about_skill_icon devicon-{{ tech }}" aria-hidden="true"></i> {{ tech | split: '-' | first | capitalize }}</span>
           {% endfor %}
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
   <div class="modal-footer project-modal-footer">
-      <div class="buttons">
-        {% if project.url %}
-          <a class="button_wrapper site-button" target="_blank" rel="noopener" href="{{project.url}}">Live</a>
-        {% else %}
-          <span class="button_wrapper site-button is-disabled" aria-disabled="true">Live</span>
-        {% endif %}
-        <a class="button_wrapper site-button" target="_blank" rel="noopener" href="{{project.github_url}}">Github</a>
-        <button id="{{project.id}}" class="next fill">Next</button>
-      </div>
+    <div class="buttons">
+      {% if project.url %}
+        <a class="button_wrapper btn-primary" target="_blank" rel="noopener" href="{{project.url}}"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>
+      {% endif %}
+      {% if project.github_url %}
+        <a class="button_wrapper btn-ghost" target="_blank" rel="noopener" href="{{project.github_url}}"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>
+      {% endif %}
+      <button type="button" class="next btn-ghost">Next <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
+    </div>
   </div>
 </div>
