@@ -4,11 +4,24 @@ quote: The challenge of life, I have found, is to build a resume that doesn't si
 author: Oprah Winfrey
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
-
 <section class="resume-page" aria-labelledby="resume-heading">
-  <h2 id="resume-heading" class="heading big_heading text-center">Resume</h2>
-  <a class="site-button resume-button" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="click to open in pdf viewer" target="_blank" rel="noopener">
-    View as PDF
-  </a>
+  <header class="page-hero page-hero--center" data-reveal>
+    <p class="page-hero-eyebrow">Resume</p>
+    <h1 id="resume-heading" class="page-hero-title">My <span class="grad">resume</span></h1>
+    <p class="page-hero-lead">A snapshot of my experience, skills, and the work I've shipped over the years.</p>
+  </header>
+
+  <div class="resume-card site-card" data-reveal>
+    <span class="resume-card-icon" aria-hidden="true"><i data-lucide="file-text" class="site-icon"></i></span>
+    <h3>Bhupendra Negi &mdash; Resume</h3>
+    <p>View or download the full PDF.</p>
+    <div class="resume-card-actions">
+      <a class="btn-primary resume-button" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="Open the resume PDF" target="_blank" rel="noopener">
+        <i data-lucide="external-link" class="site-icon" aria-hidden="true"></i> View as PDF
+      </a>
+      <a class="btn-ghost" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" download>
+        <i data-lucide="download" class="site-icon" aria-hidden="true"></i> Download
+      </a>
+    </div>
+  </div>
 </section>
