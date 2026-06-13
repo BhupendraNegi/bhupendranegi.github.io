@@ -1,9 +1,12 @@
 hero:
   eyebrow: "Hi, I'm"
   name: Bhupendra Negi
-  role: Software Engineer
-  stack: Ruby on Rails · React · Full-stack
-  blurb: I design and ship full-stack web applications — backend systems, clean APIs, and interfaces people enjoy using.
+  role: Senior Software Developer
+  stack: Ruby on Rails · React · Node.js
+  blurb: Full-stack developer with 6 years building scalable web applications. I care about clean, maintainable code, solving gnarly problems, and shipping products that feel great to use.
+  location: Bangalore, India
+  experience: 6+ years experience
+  current: ClearStack
 about:
   url: /about
   heading: About
