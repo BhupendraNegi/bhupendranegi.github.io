@@ -32,18 +32,70 @@ layout: site_layout
       </ul>
     </aside>
 
-    <div class="about-bio site-prose" data-reveal>
-      <p class="about-bio-lead">👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.</p>
-      <p>🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding and problem-solving.</p>
-      <p>📚 In college I dove headfirst into computer science. With each line of code I uncovered the intricate logic behind crafting applications, and explored Android development along the way &mdash; building handy tools like calculators and music players.</p>
-      <p>💻 As the digital landscape kept expanding, I found my calling as a Ruby on Rails developer, and I've honed that craft over the past {{ years }} years, building web applications that make a difference.</p>
-      <p>🌐 Today I'm a Software Engineer specializing in Ruby on Rails and React, bringing products to life end to end &mdash; from gnarly backend problems to interfaces that feel great to use.</p>
+    <div class="about-bio" data-reveal>
+      <p class="about-bio-lead">👋 Hey there! I'm Bhupendra &mdash; a developer who likes to think of himself as a digital wizard weaving magic through lines of code.</p>
+      <p class="about-bio-text">I care about clean, maintainable code, solving gnarly problems, and shipping products that feel great to use. Over the past {{ years }} years I've specialized in Ruby on Rails and React, building things end to end.</p>
       <div class="about-actions">
         <a class="btn-primary" href="/projects"><i data-lucide="folder-open" class="site-icon" aria-hidden="true"></i> View Projects</a>
         <a class="btn-ghost" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
       </div>
     </div>
   </div>
+
+  <section class="about-journey" aria-labelledby="journey-heading">
+    <div class="section-head" data-reveal>
+      <h2 id="journey-heading" class="section-title">The journey <span class="grad">so far</span></h2>
+    </div>
+    <ol class="journey">
+      <li class="journey-item" data-reveal>
+        <span class="journey-marker" aria-hidden="true">🎓</span>
+        <div class="journey-body">
+          <div class="journey-meta">
+            <span class="journey-role">B.Tech, Computer Science</span>
+            <span class="journey-dot" aria-hidden="true">·</span>
+            <span class="journey-org">BTKIT, Dwarahat</span>
+            <span class="journey-date">2015 &ndash; 2019</span>
+          </div>
+          <p class="journey-text">Where it started. The spark came earlier &mdash; a school management system built in Java &mdash; but college is where I dove headfirst into computer science, the logic behind real applications, and even some Android side-projects like calculators and music players.</p>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="journey-marker" aria-hidden="true">💼</span>
+        <div class="journey-body">
+          <div class="journey-meta">
+            <span class="journey-role">Full Stack Developer</span>
+            <span class="journey-dot" aria-hidden="true">·</span>
+            <span class="journey-org">eLitmus</span>
+            <span class="journey-date">Aug 2019 &ndash; Feb 2022</span>
+          </div>
+          <p class="journey-text">My first taste of building products people actually rely on &mdash; from revamping the site's UX to shipping payment-backed features end to end.</p>
+          <ul class="journey-highlights">
+            <li>Built a gift-cards e-commerce platform with an admin module, lifting sales by ~10%.</li>
+            <li>Added mobile-OTP login via Gupshup, improving retention by ~25%.</li>
+            <li>Integrated Razorpay for secure payments, and led a campus candidate tracking dashboard.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="journey-marker" aria-hidden="true">🚀</span>
+        <div class="journey-body">
+          <div class="journey-meta">
+            <span class="journey-role">Sr. Software Developer</span>
+            <span class="journey-dot" aria-hidden="true">·</span>
+            <span class="journey-org">ClearStack</span>
+            <span class="journey-date">Mar 2022 &ndash; Present</span>
+          </div>
+          <p class="journey-text">Working on Electronic Billing Administration &mdash; the kind of gnarly backend and data problems I love, with a real focus on performance and clean deployment.</p>
+          <ul class="journey-highlights">
+            <li>Template-driven CSV / XLSX / TXT / XML upload system that cut processing time by 50%.</li>
+            <li>Automated file staging with a Samba client &mdash; 90% less manual effort.</li>
+            <li>Migrated search from Solr to Elasticsearch (+30% relevance) and jobs from Resque to Sidekiq (+40% throughput).</li>
+            <li>Dockerized deployments with Kamal 2 for faster, more scalable releases.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
 
   <div class="section-head" data-reveal>
     <h2 class="section-title">My <span class="grad">toolkit</span></h2>

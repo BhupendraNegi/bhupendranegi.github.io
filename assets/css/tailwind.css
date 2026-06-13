@@ -33,6 +33,7 @@
        everywhere (the @theme prefix block does not emit them unprefixed). */
     --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
     --site-bg: #ffffff;
     --site-bg-secondary: #f8f9fa;
     --site-surface: #ffffff;
@@ -1381,8 +1382,15 @@
 
   .about-bio-lead {
     color: var(--site-text);
-    font: 600 clamp(1.15rem, 2.4vw, 1.4rem)/1.5 var(--font-sans);
-    margin-top: 0 !important;
+    font: 600 clamp(1.2rem, 2.6vw, 1.5rem)/1.45 var(--font-sans);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .about-bio-text {
+    color: var(--site-muted);
+    font: 400 1.05rem/1.7 var(--font-sans);
+    margin: 1rem 0 0;
   }
 
   .about-actions {
@@ -1390,6 +1398,127 @@
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.5rem;
+  }
+
+  /* Journey timeline */
+  .about-journey {
+    margin-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .journey {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  /* Connecting line running through the markers */
+  .journey::before {
+    background: linear-gradient(
+      var(--site-accent),
+      color-mix(in srgb, var(--site-accent) 25%, transparent)
+    );
+    content: "";
+    inset: 26px auto 26px 25px;
+    position: absolute;
+    width: 2px;
+  }
+
+  .journey-item {
+    align-items: start;
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.6rem);
+    grid-template-columns: 52px minmax(0, 1fr);
+    position: relative;
+  }
+
+  .journey-marker {
+    align-items: center;
+    background: var(--site-surface);
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
+    box-shadow: 0 8px 22px rgb(15 23 42 / 0.1);
+    display: flex;
+    font-size: 1.45rem;
+    height: 52px;
+    justify-content: center;
+    width: 52px;
+    z-index: 1;
+  }
+
+  .journey-body {
+    padding-top: 0.2rem;
+  }
+
+  .journey-meta {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .journey-role {
+    color: var(--site-text);
+    font: 700 1.08rem/1.2 var(--font-sans);
+  }
+
+  .journey-org {
+    color: var(--site-accent);
+    font: 600 1.08rem/1.2 var(--font-sans);
+  }
+
+  .journey-dot {
+    color: var(--site-muted);
+  }
+
+  .journey-date {
+    color: var(--site-muted);
+    font: 500 0.78rem/1.2 var(--font-mono);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .journey-text {
+    color: var(--site-text);
+    font: 400 clamp(1.08rem, 2vw, 1.22rem)/1.6 var(--font-serif);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .journey-highlights {
+    display: grid;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+  }
+
+  .journey-highlights li {
+    color: var(--site-muted);
+    font: 500 0.92rem/1.55 var(--font-sans);
+    padding-left: 1.3rem;
+    position: relative;
+  }
+
+  .journey-highlights li::before {
+    background: var(--site-gradient);
+    border-radius: 999px;
+    content: "";
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 0.55em;
+    width: 6px;
+  }
+
+  @media (max-width: 560px) {
+    .journey-date {
+      margin-left: 0;
+      width: 100%;
+    }
   }
 
   .skills_heading {
