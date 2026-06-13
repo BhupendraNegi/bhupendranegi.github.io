@@ -1,37 +1,49 @@
 ---
 layout: site_layout
-quote: There is joy a in work. There is no happiness except in the realization that we can accomplish something.
-author: Henry Ford
 ---
 
 {% include joining_date.html %}
 
-<section class="about_section about-page" aria-labelledby="about-heading">
+<section class="about-page" aria-labelledby="about-heading">
   <header class="page-hero" data-reveal>
     <p class="page-hero-eyebrow">About me</p>
-    <h1 id="about-heading" class="page-hero-title">A developer who loves <span class="grad">building things</span></h1>
+    <h1 id="about-heading" class="page-hero-title" data-split>A developer who loves <span class="tx-accent">building things</span></h1>
     <p class="page-hero-lead">{{ years }} years turning ideas into clean, maintainable web applications &mdash; mostly with Ruby on Rails and React.</p>
   </header>
 
   <div class="about-intro">
-    <div class="about-portrait" data-reveal aria-hidden="true">
-      <img src="/assets/images/bhupendra.png" class="about_img" alt="Bhupendra Negi">
-    </div>
-    <div class="about_paragraph site-prose" data-reveal>
-      <p>👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.</p>
-      <p>🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding, problem-solving.</p>
-      <p>📚 Fast forward to my college days, I decided to dive headfirst into the world of computer science and technology. With each line of code I wrote, I uncovered the intricate logic behind crafting applications. During this journey, I also explored the world of Android app development, building applications that included useful tools like calculators and music players.</p>
-      <p>💻 As the digital landscape continued to expand, I found my true calling as a Ruby on Rails developer, and I've honed my skills in this domain over the past {{ years }} years, creating web applications that make a difference.</p>
-      <p>🌐 Today, I am a seasoned Software Engineer with a specialization in Ruby on Rails and React. I've had the privilege of bringing web applications to life, leveraging my {{ years }} years of expertise.</p>
+    <aside class="about-card site-card" data-reveal>
+      <div class="about-portrait" aria-hidden="true">
+        <img src="/assets/images/bhupendra.png" class="about_img" alt="Bhupendra Negi">
+        <span class="about-status"><span class="about-status-dot"></span> Open to work</span>
+      </div>
+      <h2 class="about-card-name">Bhupendra Negi</h2>
+      <p class="about-card-role">Senior Software Developer <span class="about-card-at">@ ClearStack</span></p>
+      <ul class="about-card-facts">
+        <li><i data-lucide="map-pin" class="site-icon" aria-hidden="true"></i> Bangalore, India</li>
+        <li><i data-lucide="briefcase" class="site-icon" aria-hidden="true"></i> {{ years }}+ years experience</li>
+        <li><i data-lucide="award" class="site-icon" aria-hidden="true"></i> IEEE Xtreme AIR 12</li>
+      </ul>
+      <ul class="hero-social about-card-social">
+        <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
+        <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
+        <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
+        <li><a href="{{ site.stackoverflow_link }}" target="_blank" rel="noopener" aria-label="Stack Overflow">{% include social-icon.html name="stackoverflow" %}</a></li>
+      </ul>
+    </aside>
+
+    <div class="about-bio site-prose" data-reveal>
+      <p class="about-bio-lead">👋 Hey there! I'm Bhupendra Negi, and I like to think of myself as a digital wizard weaving magic through lines of code.</p>
+      <p>🚀 My journey into the world of software engineering began during my school days when I embarked on a quest to create a school management system using Java. Little did I know that this initial spark would ignite a lifelong passion for coding and problem-solving.</p>
+      <p>📚 In college I dove headfirst into computer science. With each line of code I uncovered the intricate logic behind crafting applications, and explored Android development along the way &mdash; building handy tools like calculators and music players.</p>
+      <p>💻 As the digital landscape kept expanding, I found my calling as a Ruby on Rails developer, and I've honed that craft over the past {{ years }} years, building web applications that make a difference.</p>
+      <p>🌐 Today I'm a Software Engineer specializing in Ruby on Rails and React, bringing products to life end to end &mdash; from gnarly backend problems to interfaces that feel great to use.</p>
       <div class="about-actions">
         <a class="btn-primary" href="/projects"><i data-lucide="folder-open" class="site-icon" aria-hidden="true"></i> View Projects</a>
-        <a class="btn-ghost" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Email Me</a>
-        <a class="btn-ghost" href="https://www.linkedin.com/in/bhupendra-negi-667171167/" target="_blank" rel="noopener"><i data-lucide="linkedin" class="site-icon" aria-hidden="true"></i> Connect</a>
+        <a class="btn-ghost" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
       </div>
     </div>
   </div>
-
-  {% include quote.html quote=page.quote author=page.author %}
 
   <div class="section-head" data-reveal>
     <h2 class="section-title">My <span class="grad">toolkit</span></h2>

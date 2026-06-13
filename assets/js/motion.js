@@ -61,46 +61,73 @@
     window.scrollTo({ top: top, behavior: "smooth" });
   });
 
-  // --- Hero intro ------------------------------------------------------------
+  // --- Intro animations ------------------------------------------------------
   // Use gsap.from() so every element finishes at its natural (visible) state —
   // even if a tween is interrupted, content is never left hidden.
-  var heroReveals = gsap.utils.toArray(".hero [data-reveal]");
-  var name = document.querySelector(".hero-name[data-split]");
-  var intro = gsap.timeline({ defaults: { ease: ease } });
-
-  var splitChars = null;
-  if (name && window.SplitText) {
+  if (window.SplitText) {
     try {
       gsap.registerPlugin(window.SplitText);
-      var split = new window.SplitText(name, { type: "chars" });
-      splitChars = split.chars && split.chars.length ? split.chars : null;
+    } catch (e) {}
+  }
+
+  // Split a heading into characters; returns the char array, or null.
+  // "words,chars" keeps each word in an inline-block wrapper so lines never
+  // break mid-word, while still animating individual characters.
+  function splitChars(el) {
+    if (!el || !window.SplitText) return null;
+    try {
+      var s = new window.SplitText(el, { type: "words,chars" });
+      return s.chars && s.chars.length ? s.chars : null;
     } catch (e) {
-      splitChars = null;
+      return null;
     }
   }
 
-  if (splitChars) {
-    intro.from(splitChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0);
-    var rest = heroReveals.filter(function (el) {
-      return el !== name;
-    });
-    intro.from(rest, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0.2);
-  } else {
-    intro.from(heroReveals, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0);
+  // Home hero: split the name, stagger the rest.
+  var hero = document.querySelector(".hero");
+  if (hero) {
+    var heroReveals = gsap.utils.toArray(".hero [data-reveal]");
+    var heroName = hero.querySelector(".hero-name[data-split]");
+    var heroChars = splitChars(heroName);
+    var intro = gsap.timeline({ defaults: { ease: ease } });
+    if (heroChars) {
+      intro.from(heroChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0);
+      intro.from(
+        heroReveals.filter(function (el) { return el !== heroName; }),
+        { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 },
+        0.2
+      );
+    } else {
+      intro.from(heroReveals, { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 }, 0);
+    }
   }
 
-  // --- Inner-page hero intro -------------------------------------------------
-  // Inner pages have a .page-hero header instead of the home .hero. Give its
-  // [data-reveal] children the same quick staggered entrance on load.
-  var pageHeroReveals = gsap.utils.toArray(".page-hero[data-reveal], .page-hero [data-reveal]");
-  if (pageHeroReveals.length) {
-    gsap.from(pageHeroReveals, {
-      opacity: 0,
-      y: 26,
-      stagger: 0.1,
-      duration: 0.7,
-      ease: ease
+  // Inner pages: the .page-hero / .post-hero header gets the SAME treatment —
+  // split the title into characters, with whatever sits before it (eyebrow,
+  // back link) and after it (lead, meta) easing in around the characters.
+  var innerHero = document.querySelector(".page-hero, .post-hero");
+  if (innerHero) {
+    var ihTitle = innerHero.querySelector(".page-hero-title, .post-hero-title");
+    var ihChars = splitChars(ihTitle);
+    var before = [];
+    var after = [];
+    var seenTitle = false;
+    Array.prototype.forEach.call(innerHero.children, function (child) {
+      if (child === ihTitle) { seenTitle = true; return; }
+      (seenTitle ? after : before).push(child);
     });
+    var ihIntro = gsap.timeline({ defaults: { ease: ease } });
+    if (ihChars) {
+      if (before.length) ihIntro.from(before, { opacity: 0, y: 18, stagger: 0.08, duration: 0.5 }, 0);
+      ihIntro.from(ihChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0.1);
+      if (after.length) ihIntro.from(after, { opacity: 0, y: 18, stagger: 0.08, duration: 0.6 }, 0.4);
+    } else {
+      ihIntro.from(
+        Array.prototype.slice.call(innerHero.children),
+        { opacity: 0, y: 22, stagger: 0.1, duration: 0.7 },
+        0
+      );
+    }
   }
 
   // --- Scroll-triggered reveals for the rest --------------------------------

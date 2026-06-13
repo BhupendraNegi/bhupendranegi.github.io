@@ -77,6 +77,8 @@
   body {
     background: transparent;
     color: var(--site-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
     margin: 0;
   }
 }
@@ -141,28 +143,6 @@
     font-family: var(--font-sans);
     letter-spacing: 0;
     line-height: 1.65;
-  }
-
-  .quote_box {
-    margin: 0 auto clamp(2rem, 5vw, 3rem);
-    max-width: 980px;
-    padding-inline: clamp(0.5rem, 3vw, 2rem);
-  }
-
-  .quote {
-    color: var(--site-muted);
-    font: italic 300 clamp(1.15rem, 3vw, 1.55rem)/1.55 var(--font-sans);
-    margin: 0;
-  }
-
-  .author {
-    color: var(--site-muted);
-    font: italic 600 clamp(1rem, 2vw, 1.2rem)/1.3 var(--font-sans);
-    margin: 0.5rem 0 0;
-  }
-
-  .quote-author {
-    text-align: right;
   }
 
   .skip-link {
@@ -628,6 +608,13 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Accent word for animated headings. A solid accent color (unlike the
+     gradient .grad, which background-clip:text cannot keep through a
+     SplitText character split) so each character still shows colour. */
+  .tx-accent {
+    color: var(--site-accent);
   }
 
   /* Sections */
@@ -1278,7 +1265,20 @@
     align-items: start;
     display: grid;
     gap: clamp(1.5rem, 4vw, 3rem);
-    grid-template-columns: minmax(180px, 290px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    margin-block: clamp(1rem, 3vw, 1.5rem) clamp(2rem, 5vw, 3rem);
+  }
+
+  /* Profile card (sticky on desktop) */
+  .about-card {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    position: sticky;
+    text-align: center;
+    top: 96px;
   }
 
   .about-portrait {
@@ -1286,7 +1286,8 @@
     background: var(--site-gradient);
     border-radius: 999px;
     box-shadow: 0 22px 60px rgb(59 130 246 / 0.22);
-    max-width: 290px;
+    margin-bottom: 0.5rem;
+    max-width: 200px;
     padding: 5px;
     position: relative;
     width: 100%;
@@ -1294,7 +1295,7 @@
 
   .about_img {
     aspect-ratio: 1;
-    border: 3px solid var(--site-bg);
+    border: 3px solid var(--site-surface);
     border-radius: 999px;
     display: block;
     height: 100%;
@@ -1302,19 +1303,93 @@
     width: 100%;
   }
 
-  .about_paragraph {
-    font-size: 1.05rem;
+  .about-status {
+    align-items: center;
+    background: var(--site-surface);
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
+    bottom: 4px;
+    box-shadow: var(--shadow-soft);
+    color: var(--site-text);
+    display: inline-flex;
+    font: 600 0.72rem/1 var(--font-sans);
+    gap: 0.4rem;
+    left: 50%;
+    padding: 0.4rem 0.7rem;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .about-status-dot {
+    background: #22c55e;
+    border-radius: 999px;
+    box-shadow: 0 0 0 3px rgb(34 197 94 / 0.2);
+    height: 0.5rem;
+    width: 0.5rem;
+  }
+
+  .about-card-name {
+    color: var(--site-text);
+    font: 800 1.45rem/1.1 var(--font-sans);
+    letter-spacing: -0.01em;
+    margin: 0.5rem 0 0;
+  }
+
+  .about-card-role {
+    color: var(--site-muted);
+    font: 500 0.95rem/1.4 var(--font-sans);
+    margin: 0;
+  }
+
+  .about-card-at {
+    color: var(--site-accent);
+    font-weight: 600;
+  }
+
+  .about-card-facts {
+    align-self: stretch;
+    border-top: 1px solid var(--site-border);
+    display: grid;
+    gap: 0.6rem;
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0.85rem 0 0;
+  }
+
+  .about-card-facts li {
+    align-items: center;
+    color: var(--site-text);
+    display: flex;
+    font: 500 0.9rem/1.3 var(--font-sans);
+    gap: 0.6rem;
+    text-align: left;
+  }
+
+  .about-card-facts .site-icon {
+    color: var(--site-accent);
+    flex: 0 0 auto;
+  }
+
+  .about-card-social {
+    margin-top: 0.35rem;
+  }
+
+  .about-bio {
+    font-size: 1.02rem;
+  }
+
+  .about-bio-lead {
+    color: var(--site-text);
+    font: 600 clamp(1.15rem, 2.4vw, 1.4rem)/1.5 var(--font-sans);
+    margin-top: 0 !important;
   }
 
   .about-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 1.25rem;
-  }
-
-  .about-actions .site-button {
-    gap: 0.45rem;
+    margin-top: 1.5rem;
   }
 
   .skills_heading {
@@ -1387,6 +1462,12 @@
     .about-intro,
     .skills_wrapper {
       grid-template-columns: 1fr;
+    }
+
+    .about-card {
+      max-width: 420px;
+      margin-inline: auto;
+      position: static;
     }
   }
 
