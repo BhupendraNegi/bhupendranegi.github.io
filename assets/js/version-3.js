@@ -355,6 +355,13 @@
     ensureModalCloseButton(modal);
     initializeCarousels(modal);
 
+    // Clear any residual overscroll-bounce transform on the modal's scroll
+    // container so the fixed modal centers on the viewport, not the container.
+    var bounceContainer = modal.closest('.site-content');
+    if (bounceContainer) {
+      bounceContainer.style.transform = '';
+    }
+
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     modal.setAttribute('aria-modal', 'true');
@@ -441,7 +448,7 @@
       }
 
       if (modalTrigger) {
-        var rawHref = modalTrigger.getAttribute('href') || '';
+        var rawHref = modalTrigger.getAttribute('data-modal-target') || modalTrigger.getAttribute('href') || '';
         var modalId = rawHref.charAt(0) === '#' ? rawHref.slice(1) : '';
         var modal = modalId ? document.getElementById(modalId) : null;
 
