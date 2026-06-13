@@ -3,6 +3,7 @@ layout: default
 ---
 
 {% assign hero = site.data.sections.hero %}
+{% include joining_date.html %}
 
 <main id="main-content" class="site-main home-aurora" tabindex="-1">
 
@@ -16,9 +17,9 @@ layout: default
           {% if hero.current %}<span class="hero-role-at">@ {{ hero.current }}</span>{% endif %}
         </p>
         {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
-        {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb }}</p>{% endif %}
+        {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb | replace: "YEARS", years }}</p>{% endif %}
         <ul class="hero-meta" data-reveal data-reveal-order="5">
-          {% if hero.experience %}<li><i class="site-icon" data-lucide="briefcase" aria-hidden="true"></i>{{ hero.experience }}</li>{% endif %}
+          {% if hero.experience %}<li><i class="site-icon" data-lucide="briefcase" aria-hidden="true"></i>{{ hero.experience | replace: "YEARS", years }}</li>{% endif %}
           {% if hero.location %}<li><i class="site-icon" data-lucide="map-pin" aria-hidden="true"></i>{{ hero.location }}</li>{% endif %}
           <li><i class="site-icon" data-lucide="award" aria-hidden="true"></i>IEEE Xtreme AIR 12</li>
         </ul>
