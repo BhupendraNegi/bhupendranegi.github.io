@@ -95,12 +95,12 @@ Supersedes the full-screen/dark/curtain direction below. Brand-new light-first
 theme matching https://wassim.dev/ + richer motion like https://koysor.me/.
 Decided 2026-06-13. Full plan in `doc/redesign-plan.md`.
 
-- [ ] Phase 1 — Tokens + fonts: replace teal/ink palette with wassim tokens (light default + dark toggle), load Inter + mono, default the Rouge syntax theme to its light variant. Verify existing pages stay readable.
-- [ ] Phase 2 — New navbar + restyled footer (theme toggle + mobile overlay); make the Home page use them.
-- [ ] Phase 3 — Rebuild Home wassim-style: hero with abstract blue→violet gradient graphic, featured projects cards, recent writing, about/contact. Drop full-screen panels and section images.
-- [ ] Phase 4 — Motion: add GSAP + Lenis; intro text-reveal via SplitText (NO "BN" logo), scroll-triggered staggered reveals, smooth scroll, with a `prefers-reduced-motion` bail-out and no-JS fallback.
-- [ ] Phase 5 — Re-skin remaining pages to the new theme: About, Projects, Blog index, Post, Contact, Resume, 404.
-- [ ] Phase 6 — Cleanup (remove panels/section images/curtain "BN" logo/legacy CSS), verify build, eyeball motion locally, document.
+- [x] Phase 1 — Tokens + fonts. (2026-06-13: wassim light-first palette + dark toggle; loaded Inter + JetBrains Mono; theme-aware favicon; fixed a latent bug where var(--font-sans/mono) was undefined. Rouge already defaults to its light variant.)
+- [x] Phase 2 — New navbar + restyled footer. (2026-06-13: light blurred navbar, theme-aware wordmark logo, gradient active-underline, sun/moon toggle, mobile overlay; footer + mobile nav now token-based.)
+- [x] Phase 3 — Rebuild Home wassim-style. (2026-06-13: hero with animated blue→violet gradient graphic, featured project cards, recent writing, gradient CTA; uses shared navbar/footer; dropped full-screen panels + section images + the curtain "BN" intro.)
+- [x] Phase 4 — Motion: GSAP + Lenis. (2026-06-13: assets/js/motion.js — Lenis smooth scroll, SplitText hero intro, ScrollTrigger staggered reveals, custom ease; progressive-enhancement with reduced-motion + no-GSAP fallbacks. Verified libs load and content ends visible; live feel still to be eyeballed.)
+- [ ] Phase 5 — Re-skin remaining pages. Spot-check 2026-06-13: About, Contact, and Blog index already adopt the theme well. **Projects needs work** (project cards/covers + modal/carousel are still hardcoded dark). Also check Post layout, Resume, 404, and blog pagination glyph.
+- [ ] Phase 6 — Cleanup: remove dead legacy `main.css` (glitch/old-home/theme-pill rules), the orphaned curtain/panel CSS, pin the Lucide version, verify build, eyeball motion locally, document.
 
 ## Phase 5: Page Redesigns (earlier full-screen/dark attempt — SUPERSEDED by Phase 5b)
 
