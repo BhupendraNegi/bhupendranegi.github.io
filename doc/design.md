@@ -772,31 +772,11 @@ Version 3 will move forward with this direction:
 - Keep deployment compatible with GitHub Pages.
 - Create `doc/todo.md` from the phases above and start implementation one item at a time.
 
-## Locked Visual Direction (2026-06-13 revision) — SUPERSEDED
+## Current visual direction → see doc/redesign-plan.md
 
-> SUPERSEDED on 2026-06-13 by `doc/redesign-plan.md` ("Aurora" theme). The
-> full-screen + dark + curtain direction below was rejected: the user wants a
-> brand-new light-first theme matching https://wassim.dev/ with richer motion
-> like https://koysor.me/. See `doc/redesign-plan.md` for the current plan.
-
-After an initial Home redesign attempt (hero + image-card grid) was rejected for
-losing the full-screen feel, the site-wide design language was locked:
-
-- Direction: full-screen, clean, minimal-dark, and transition-forward.
-- North star reference: https://pmportfolio.ca/ (full-screen sections, light/dark,
-  motion as the signature).
-- Reference galleries reviewed: Awwwards Portfolio and Fullscreen galleries,
-  Muzli top 100, Colorlib 21 best; individual reference brittanychiang.com for
-  restraint and typography.
-- Signature motion:
-  - Intro: a curtain / wipe reveal on first load (full-screen accent panel that
-    wipes away, optional logo/initials flash).
-  - Page-to-page: Swup-driven in-place transitions using the same curtain /
-    crossfade, replacing the prior fade-then-full-reload custom layer.
-- Performance rules for all motion: animate only `transform` and `opacity`,
-  keep durations short (~200-700ms), no WebGL/GSAP, honor
-  `prefers-reduced-motion`, and keep the transition JS small (target < 10KB) so
-  it stays fast on GitHub Pages.
-- Palette/type: continue the existing dark-first tokens with a single primary
-  accent; carry the same language across Home, About, Projects, Blog, Contact,
-  Resume, and 404.
+The active design direction is the light-first **"Aurora" theme** (ref
+https://wassim.dev/ + motion like https://koysor.me/), documented in
+`doc/redesign-plan.md`. Earlier explorations (a hero/image-card grid, then a
+full-screen + dark + curtain direction referencing pmportfolio.ca) were rejected;
+their details are omitted here to avoid confusion. The sections above remain
+accurate as the general Jekyll/Tailwind modernization plan.
