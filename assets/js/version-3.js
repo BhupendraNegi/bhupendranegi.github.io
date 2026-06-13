@@ -672,6 +672,11 @@
   }
 
   function initializeScrollReveals(root) {
+    // The GSAP motion layer (motion.js) owns reveals when present.
+    if (window.__auroraMotion) {
+      return;
+    }
+
     var scope = root || document;
     var elements = scope.querySelectorAll('[data-reveal]:not(.is-revealed)');
 
