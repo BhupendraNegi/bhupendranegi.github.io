@@ -8,7 +8,10 @@
 
       <ul id="nav-mobile" class="site-nav-list">
         {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
-          <li><a href="{{ my_section[1].url }}">{{ my_section[1].name }}</a></li>
+          {% assign is_active = false %}
+          {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
+          {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
+          <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ my_section[1].name }}</a></li>
         {% endunless %}{% endfor %}
       </ul>
 
@@ -30,7 +33,10 @@
           </button>
         </li>
         {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
-          <li><a href="{{ my_section[1].url }}">{{ my_section[1].name }}</a></li>
+          {% assign is_active = false %}
+          {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
+          {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
+          <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ my_section[1].name }}</a></li>
         {% endunless %}{% endfor %}
         <li class="mobile-nav-theme-row">
           <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
