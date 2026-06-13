@@ -1613,10 +1613,16 @@
 
   .filter-bar {
     align-items: center;
+    background: var(--site-bg-secondary);
+    border: 1px solid var(--site-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    padding-block: clamp(1rem, 3vw, 1.75rem);
+    margin: clamp(1rem, 3vw, 1.75rem) auto clamp(1.75rem, 4vw, 2.75rem);
+    max-width: 760px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
   }
 
   .project-filter-tags {
@@ -1627,21 +1633,40 @@
     max-width: 720px;
   }
 
-  /* Blog-style list: one card per row, full-width image on top */
+  /* List of horizontal cards (image left, text right) divided by a rule */
   .project-list {
     display: flex;
     flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 3.75rem);
     margin-inline: auto;
-    max-width: 860px;
+    max-width: 920px;
+  }
+
+  .project {
+    border-bottom: 1px solid var(--site-border);
+    padding-block: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .project:first-child {
+    padding-top: 0;
+  }
+
+  .project:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .project[hidden] {
+    display: none;
   }
 
   .project-tile {
+    align-items: center;
     background: transparent;
     border: 0;
     box-shadow: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
   }
 
   .project-tile:hover {
@@ -1650,15 +1675,12 @@
     transform: none;
   }
 
-  .project[hidden] {
-    display: none;
-  }
-
   .project-tile-media {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     border: 1px solid var(--site-border);
     border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
     display: block;
     overflow: hidden;
     position: relative;
@@ -1683,7 +1705,7 @@
 
   .project-tile-media:hover img,
   .project-tile-media:focus-visible img {
-    transform: scale(1.03);
+    transform: scale(1.04);
   }
 
   .project-tile-media:focus-visible {
@@ -1692,7 +1714,13 @@
   }
 
   .project-tile .proj-card-body {
-    padding: 1.25rem 0 0;
+    padding: 0;
+  }
+
+  @media (max-width: 680px) {
+    .project-tile {
+      grid-template-columns: 1fr;
+    }
   }
 
   .project-tile .proj-card-title {
@@ -1723,11 +1751,6 @@
 
   .project-open-button {
     width: 100%;
-  }
-
-  .project-tile .proj-card-body {
-    justify-content: center;
-    padding: clamp(1.5rem, 3vw, 2rem);
   }
 
   .project_img {
