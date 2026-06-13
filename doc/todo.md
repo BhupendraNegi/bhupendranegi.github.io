@@ -86,10 +86,12 @@ Phase 1 notes:
 - [x] Keep Devicon for technology logos only.
 - [x] Normalize icon sizing and alignment.
 - [x] Remove unused icon libraries after migration.
+- [x] Fix missing brand icons. (2026-06-13: `lucide@latest` no longer ships `github`/`linkedin`/`twitter`, so the hero and footer social icons were rendering blank. Replaced with inline brand SVGs via `_includes/social-icon.html`.)
+- [ ] Pin the Lucide version instead of `@latest` in `_includes/scripts.html` so icons do not silently break when Lucide drops more glyphs.
 
 ## Phase 5: Page Redesigns
 
-- [ ] Redesign Home.
+- [x] Redesign Home. (2026-06-13: added a hero — eyebrow, name, role + stack, blurb, CTAs, social links — driven by a `hero` block in `_data/sections.yml`; replaced the full-bleed glitch tiles with a responsive image-backed card grid (`_includes/box.html`) that stacks on mobile; verified no horizontal overflow at 360/390px and `prefers-reduced-motion` support. See `doc/changelog.md`.)
 - [ ] Redesign About.
 - [ ] Redesign Projects so all projects are featured without feeling crowded.
 - [ ] Remove project modals in favor of cards, sections, or detail pages.
@@ -113,6 +115,7 @@ Phase 1 notes:
 - [ ] Respect `prefers-reduced-motion`.
 - [ ] Ensure project filters expose selected state accessibly.
 - [ ] Ensure forms have clear labels and validation states.
+- [ ] Add a global `box-sizing: border-box` base rule. Tailwind Preflight is intentionally off, so containers using `width: min(100%, Npx)` plus padding (e.g. `.site-page-inner`) can overflow horizontally on mobile under the default `content-box`. The Home redesign worked around this locally on `.home-wrap`; a single base rule would fix it everywhere and let the local workaround be removed. Verify it does not disturb remaining legacy `main.css` layout before applying.
 
 ## Phase 7: Performance, SEO, and Content
 
@@ -134,6 +137,7 @@ Phase 1 notes:
 - [ ] Run production build.
 - [ ] Verify generated `_site`.
 - [ ] Verify GitHub Pages deployment path.
+- [ ] **Switch the Pages source to GitHub Actions** (repo Settings -> Pages -> Build and deployment -> Source -> "GitHub Actions"). The `.github/workflows/pages.yml` workflow only becomes the live deploy after this manual switch; until then the native branch build stays live.
 - [ ] Smoke test Home, About, Projects, Blog, Contact, Resume, and 404.
 - [ ] Review on mobile and desktop.
 - [ ] Update `README.md` with final Version 3 commands and architecture.

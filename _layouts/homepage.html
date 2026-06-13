@@ -2,26 +2,42 @@
 layout: default
 ---
 
+{% assign hero = site.data.sections.hero %}
 <main id="main-content" class="site-main site-page site-page--home homepage-main" tabindex="-1">
-<div id="homepage" class="homepage-grid-wrap">
-  <!-- <div class="hero">
-    <div class="hero-content">
-      <h1 class="hero-name">Bhupendra Negi</h1>
-      <p class="hero-tagline">Software Engineer &nbsp;·&nbsp; Ruby on Rails &nbsp;·&nbsp; React</p>
-      <div class="hero-links">
-        <a href="{{ site.github_link }}" target="_blank" rel="noopener">GitHub</a>
-        <a href="{{ site.linked_in_link }}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="/contact">Get in touch</a>
+  <div id="homepage" class="home-wrap">
+    <section class="home-hero" aria-labelledby="home-hero-name">
+      <div class="home-hero-inner">
+        {% if hero.eyebrow %}<p class="home-hero-eyebrow">{{ hero.eyebrow }}</p>{% endif %}
+        <h1 id="home-hero-name" class="home-hero-name">{{ hero.name | default: site.name }}</h1>
+        <p class="home-hero-role">
+          <span class="home-hero-role-main">{{ hero.role }}</span>
+          {% if hero.stack %}<span class="home-hero-stack">{{ hero.stack }}</span>{% endif %}
+        </p>
+        {% if hero.blurb %}<p class="home-hero-blurb">{{ hero.blurb }}</p>{% endif %}
+        <div class="home-hero-actions">
+          <a class="site-button" href="{{ site.data.sections.projects.url }}">
+            <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
+          </a>
+          <a class="site-button" href="{{ site.data.sections.blog.url }}">
+            <i class="site-icon" data-lucide="book-open" aria-hidden="true"></i> Read Blog
+          </a>
+          <a class="site-button" href="{{ site.data.sections.contact.url }}">
+            <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Contact
+          </a>
+        </div>
+        <ul class="home-hero-social">
+          <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
+          <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
+          <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
+        </ul>
       </div>
-    </div>
-  </div> -->
-  <div class="homepage-grid top-row">
-    {% include box.html section=site.data.sections.about %}
-    {% include box.html section=site.data.sections.projects %}
+    </section>
+
+    <nav class="home-nav-grid" aria-label="Primary sections">
+      {% include box.html section=site.data.sections.about %}
+      {% include box.html section=site.data.sections.projects %}
+      {% include box.html section=site.data.sections.blog %}
+      {% include box.html section=site.data.sections.contact %}
+    </nav>
   </div>
-  <div class="homepage-grid">
-    {% include box.html section=site.data.sections.blog %}
-    {% include box.html section=site.data.sections.contact %}
-  </div>
-</div>
 </main>

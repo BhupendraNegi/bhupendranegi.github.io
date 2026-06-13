@@ -1,28 +1,34 @@
+hero:
+  eyebrow: "Hi, I'm"
+  name: Bhupendra Negi
+  role: Software Engineer
+  stack: Ruby on Rails · React · Full-stack
+  blurb: I design and ship full-stack web applications — backend systems, clean APIs, and interfaces people enjoy using.
 about:
   url: /about
-  heading: Me
-  words: Hi, I'm Bhupendra Negi </br> Software Engineer, who loves to code and build applications
+  heading: About
+  words: Who I am and what I like to build.
   class: about
   border: about
   name: About
 projects:
   url: /projects
   heading: Projects
-  words: List of Experiments and Projects
+  words: Experiments, side projects, and work I'm proud of.
   class: projects
   border: projects
   name: Projects
 blog:
   url: /blog
   heading: Blog
-  words: Check out My Blog
+  words: Notes on Ruby, Rails, React, and engineering.
   class: blog
   border: blog
   name: Blog
 contact:
   url: /contact
   heading: Contact
-  words: Feel free to shoot me an email
+  words: Have a question or an idea? Get in touch.
   class: contact
   border: contact
   name: Contact
