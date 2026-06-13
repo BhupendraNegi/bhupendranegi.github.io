@@ -35,7 +35,7 @@ This checklist is the working plan for the `version-3` branch. Keep it updated a
 - [x] Add Tailwind CSS tooling.
 - [x] Add initial design tokens for colors, spacing, typography, radius, and shadows.
 - [x] Keep the current website working during foundation changes.
-- [ ] Add GitHub Actions workflow only if needed for a future build pipeline.
+- [x] Add GitHub Actions workflow only if needed for a future build pipeline. (Added `.github/workflows/pages.yml` on 2026-06-13 — see Phase 1 notes and `doc/changelog.md`.)
 
 Phase 1 notes:
 
@@ -45,6 +45,7 @@ Phase 1 notes:
 - The Gemfile now lists direct project dependencies only, with `bigdecimal` kept explicit for Ruby 4 compatibility.
 - Tailwind source CSS is excluded from Jekyll output; the compiled `assets/css/version-3.css` can be committed so branch-based GitHub Pages deployment remains possible.
 - GitHub Actions is deferred until the site depends on an uncommitted build artifact or needs a custom deployment pipeline.
+- Update (2026-06-13): GitHub Actions was added. The native branch-based Pages build uses GitHub's own Jekyll 3.x in safe mode and ignores non-whitelisted plugins, so it did not match the local Jekyll 4.4 toolchain. `.github/workflows/pages.yml` now builds with the repo's pinned Ruby/Node and deploys on push to `main`. Requires switching Settings -> Pages -> Source to "GitHub Actions" (manual, one-time).
 
 ## Phase 2: Layout and CSS Migration
 
@@ -115,8 +116,10 @@ Phase 1 notes:
 
 ## Phase 7: Performance, SEO, and Content
 
-- [ ] Remove Materialize.
-- [ ] Remove Highlight.js if Rouge handles code styling.
+- [x] Remove Materialize. (CDN `<link>` removed from `_includes/scripts.html` on 2026-06-13; no template used Materialize JS or bare grid classes. Legacy `assets/css/main.css` reduction continues separately.)
+- [x] Remove Highlight.js if Rouge handles code styling. (Removed on 2026-06-13; added a Rouge-generated theme in `assets/css/syntax.css`, imported into the Tailwind source, so syntax colors are now build-time with zero runtime JS.)
+- [ ] Resolve the font mismatch: the head loads only the old Google Fonts (Raleway, Open Sans, Josefin Slab, Lobster Two), but the Tailwind theme references Inter / Manrope (`--font-sans`) and JetBrains Mono / Fira Code (`--font-mono`), which are never loaded. Either load the new fonts or update the tokens to match what is loaded.
+- [ ] Audit and remove legacy `assets/css/main.css` (~683 lines): determine what is still referenced, fold the rest into the Tailwind source, then drop the file.
 - [ ] Optimize images where possible.
 - [ ] Reduce external scripts where possible without removing required features.
 - [ ] Review Google Analytics behavior after navigation changes.

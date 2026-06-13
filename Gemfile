@@ -10,7 +10,6 @@ gem "bigdecimal", "~> 4.1"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
-  gem "jekyll-pdf-embed", "~> 1.1"
   gem "jekyll-sass-converter", "~> 2.2"
 end
 
