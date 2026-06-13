@@ -37,17 +37,24 @@ layout: default
     </div>
     <div class="home-project-grid">
       {% for project in site.data.projects limit: 4 %}
-        <article class="home-project-card" data-reveal>
-          <h3 class="home-project-title">{{ project.title }}</h3>
-          <p class="home-project-desc">{{ project.description }}</p>
-          {% if project.tags %}
-            <ul class="home-project-tags">
-              {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
-            </ul>
-          {% endif %}
-          <div class="home-project-links">
-            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
-            {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+        {% assign primary_tech = project.technologies[0] | default: "code-plain" %}
+        <article class="proj-card proj-card--{{ forloop.index }}" data-reveal>
+          <div class="proj-card-cover" aria-hidden="true">
+            <i class="devicon-{{ primary_tech }} proj-card-glyph"></i>
+            <span class="proj-card-cover-tint"></span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">{{ project.title }}</h3>
+            <p class="proj-card-desc">{{ project.description }}</p>
+            {% if project.tags %}
+              <ul class="proj-card-tags">
+                {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
+              </ul>
+            {% endif %}
+            <div class="proj-card-links">
+              {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+              {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+            </div>
           </div>
         </article>
       {% endfor %}
@@ -59,22 +66,22 @@ layout: default
       <h2 id="home-writing-heading" class="section-title">Recent <span class="grad">Writing</span></h2>
       <a class="section-link" href="{{ site.data.sections.blog.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
     </div>
-    <ul class="home-writing-list">
+    <div class="home-writing-grid">
       {% for post in site.posts limit: 4 %}
         {% assign words = post.content | number_of_words %}
         {% assign minutes = words | divided_by: 200 | plus: 1 %}
-        <li class="home-writing-item" data-reveal>
-          <a href="{{ post.url }}" class="home-writing-link">
-            <span class="home-writing-title">{{ post.title }}</span>
-            <span class="home-writing-meta">
-              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-              <span aria-hidden="true">·</span>
-              <span>{{ minutes }} min read</span>
-            </span>
-          </a>
-        </li>
+        <a href="{{ post.url }}" class="post-card" data-reveal>
+          <span class="post-card-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ minutes }} min read</span>
+          </span>
+          <span class="post-card-title">{{ post.title }}</span>
+          {% if post.excerpt %}<span class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</span>{% endif %}
+          <span class="post-card-read">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></span>
+        </a>
       {% endfor %}
-    </ul>
+    </div>
   </section>
 
   <section class="home-section home-cta" aria-labelledby="home-cta-heading">
