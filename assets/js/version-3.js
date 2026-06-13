@@ -3,6 +3,9 @@
   var previousFocus = null;
   var modalOverlay = null;
   var isNavigating = false;
+  // Project modals in document order, captured before any get portalled to
+  // <body> on open (so the "Next" button can still cycle through them).
+  var projectModals = [];
 
   function initializeLucideIcons(root) {
     if (!window.lucide || typeof window.lucide.createIcons !== 'function') {
@@ -355,11 +358,13 @@
     ensureModalCloseButton(modal);
     initializeCarousels(modal);
 
-    // Clear any residual overscroll-bounce transform on the modal's scroll
-    // container so the fixed modal centers on the viewport, not the container.
-    var bounceContainer = modal.closest('.site-content');
-    if (bounceContainer) {
-      bounceContainer.style.transform = '';
+    // Portal the modal up to <body>. The page content lives in a flex child
+    // of <body> (.site-shell), so a body-level overlay would otherwise paint
+    // over the modal no matter its z-index. As a direct child of <body> the
+    // modal shares the overlay's stacking context and sits above it.
+    ensureModalOverlay();
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
     }
 
     modal.classList.add('is-open');
@@ -402,7 +407,9 @@
   }
 
   function getNextProjectModal(currentModal) {
-    var modals = Array.prototype.slice.call(document.querySelectorAll('.project_list .modal'));
+    var modals = projectModals.length
+      ? projectModals
+      : Array.prototype.slice.call(document.querySelectorAll('.project_list .modal'));
     var currentIndex = modals.indexOf(currentModal);
 
     if (!modals.length) {
@@ -417,6 +424,11 @@
   }
 
   function initializeModals() {
+    // Capture project modals in document order before any are portalled.
+    if (!projectModals.length) {
+      projectModals = Array.prototype.slice.call(document.querySelectorAll('.project_list .modal'));
+    }
+
     document.querySelectorAll('.modal').forEach(function(modal) {
       modal.setAttribute('aria-hidden', modal.classList.contains('is-open') ? 'false' : 'true');
       ensureModalCloseButton(modal);
@@ -432,7 +444,7 @@
 
     document.addEventListener('click', function(event) {
       var closeTarget = event.target.closest('.modal-close');
-      var nextProjectTarget = event.target.closest('.project_list .next');
+      var nextProjectTarget = event.target.closest('.modal .next');
       var modalTrigger = event.target.closest('.modal-trigger');
 
       if (nextProjectTarget) {

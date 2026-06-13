@@ -4,6 +4,24 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-13 — Projects page rework
+
+- **Layout:** project grid → one **horizontal feature card per row**, media and
+  body alternating sides on even rows (stacks on mobile). Multiple-per-row was
+  rejected.
+- **Filters:** themed to the Aurora palette — active tag is now accent-filled
+  (was an off-theme teal); pills get hover lift; filter bar centered.
+- **Modal not clickable — fixed.** `<body>` is a flex container (legacy
+  `main.css`), and the modal overlay is appended to `<body>` as a flex item with
+  `z-index:1300`. The page content sits in a sibling flex item (`.site-shell`),
+  so its whole subtree — including the modal — painted *below* that overlay no
+  matter the modal's z-index (verified: even `z-index:99999` stayed under it).
+  Fix: `openModal` now **portals the modal up to `<body>`** so it shares the
+  overlay's stacking context (modal `z-index:1301` > overlay `1300`). Because
+  modals leave `.project_list` when portalled, the "Next" cycle uses a list of
+  project modals captured at init, and the CSS that targeted `.project_list
+  .modal` now targets `.modal-fixed-footer` (a class unique to project modals).
+
 ## 2026-06-13 — Inner-page polish + sitewide consistency
 
 Applied the home "Aurora" design language across every inner page, then a
