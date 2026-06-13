@@ -6,9 +6,16 @@ Newest entries first. This complements `doc/design.md` (the plan) and
 
 ## 2026-06-13 — Projects page rework
 
-- **Layout:** project grid → one **horizontal feature card per row**, media and
-  body alternating sides on even rows (stacks on mobile). Multiple-per-row was
-  rejected.
+- **Layout (v2):** reworked again to a **blog-style single column** (ref:
+  sandeepbhaisora.com/blog) — full-width 16/9 cover image on top, then title,
+  description, and **devicon tech chips** (the same `.skill-chip` icon+label
+  style used on /about, generated from each project's `technologies`). Replaces
+  the earlier horizontal feature-card attempt.
+- **Modal gallery:** carousel slides were different sizes (object-fit:contain on
+  varied images). Now a fixed **16/9 gallery frame** with `object-fit:cover`, so
+  every screenshot is the same size. Modal info simplified to title +
+  description + the same devicon chips; footer buttons use btn-primary/btn-ghost.
+  (Also removed a duplicate `id` on the "Next" button.)
 - **Filters:** themed to the Aurora palette — active tag is now accent-filled
   (was an off-theme teal); pills get hover lift; filter bar centered.
 - **Modal not clickable — fixed.** `<body>` is a flex container (legacy
