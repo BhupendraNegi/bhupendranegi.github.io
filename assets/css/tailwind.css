@@ -67,13 +67,16 @@
     --site-gradient: linear-gradient(120deg, var(--site-gradient-start), var(--site-gradient-end));
   }
 
-  html,
-  body {
+  html {
     background: var(--site-bg);
     color: var(--site-text);
   }
 
+  /* Body is transparent so the fixed .aurora-bg (z-index:-1) shows over the
+     html canvas instead of being hidden behind the body background. */
   body {
+    background: transparent;
+    color: var(--site-text);
     margin: 0;
   }
 }
@@ -341,6 +344,68 @@
   }
 
   /* Hero */
+  /* Site-wide ambient gradient backdrop — one continuous layer behind every
+     page so sections never show a hard vertical division. Fixed so it does not
+     scroll-divide; sits behind content via negative z-index over the page bg. */
+  .aurora-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    will-change: transform;
+  }
+
+  .aurora-orb--1 {
+    width: 48vw;
+    height: 48vw;
+    background: var(--site-gradient-start);
+    top: -14vw;
+    right: -6vw;
+    opacity: 0.42;
+    animation: aurora-drift-a 26s ease-in-out infinite alternate;
+  }
+
+  .aurora-orb--2 {
+    width: 42vw;
+    height: 42vw;
+    background: var(--site-gradient-end);
+    top: 38vh;
+    left: -12vw;
+    opacity: 0.34;
+    animation: aurora-drift-b 32s ease-in-out infinite alternate;
+  }
+
+  .aurora-orb--3 {
+    width: 38vw;
+    height: 38vw;
+    background: var(--site-gradient-start);
+    top: 92vh;
+    right: 4vw;
+    opacity: 0.26;
+    animation: aurora-drift-a 38s ease-in-out infinite alternate;
+  }
+
+  [data-theme="dark"] .aurora-orb--1 { opacity: 0.3; }
+  [data-theme="dark"] .aurora-orb--2 { opacity: 0.24; }
+  [data-theme="dark"] .aurora-orb--3 { opacity: 0.2; }
+
+  @keyframes aurora-drift-a {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-50px, 40px) scale(1.08); }
+  }
+
+  @keyframes aurora-drift-b {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(40px, -30px) scale(1.1); }
+  }
+
   .hero {
     position: relative;
     min-height: 88vh;
@@ -348,56 +413,6 @@
     display: flex;
     align-items: center;
     padding-top: 68px;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .hero-bg::before,
-  .hero-bg::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-  }
-
-  .hero-bg::before {
-    width: 460px;
-    height: 460px;
-    background: var(--site-gradient-start);
-    top: -100px;
-    right: -60px;
-    animation: hero-drift-a 20s ease-in-out infinite alternate;
-  }
-
-  .hero-bg::after {
-    width: 380px;
-    height: 380px;
-    background: var(--site-gradient-end);
-    top: 60px;
-    right: 160px;
-    animation: hero-drift-b 24s ease-in-out infinite alternate;
-  }
-
-  [data-theme="dark"] .hero-bg::before,
-  [data-theme="dark"] .hero-bg::after {
-    opacity: 0.32;
-  }
-
-  @keyframes hero-drift-a {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-40px, 30px); }
-  }
-
-  @keyframes hero-drift-b {
-    from { transform: translate(0, 0); }
-    to { transform: translate(30px, -20px); }
   }
 
   .hero-inner {
@@ -1992,6 +2007,10 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .aurora-orb {
+      animation: none !important;
+    }
+
     .skip-link,
     .site-button,
     button.fill,
