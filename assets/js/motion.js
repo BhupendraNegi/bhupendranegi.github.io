@@ -1,5 +1,5 @@
 /*
- * Aurora motion layer (GSAP + Lenis).
+ * Aurora motion layer (GSAP). Uses native browser scrolling.
  * Progressive enhancement: if GSAP is unavailable or the user prefers reduced
  * motion, all [data-reveal] content is shown immediately and version-3.js is
  * told not to run its IntersectionObserver fallback.
@@ -43,96 +43,23 @@
     ease = "aurora";
   }
 
-  // --- Lenis smooth scroll ---------------------------------------------------
-  var lenis = null;
-  if (window.Lenis) {
-    lenis = new window.Lenis({
-      lerp: 0.09,
-      wheelMultiplier: 1.05,
-      smoothWheel: true,
-      syncTouch: true
-    });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    if (window.ScrollTrigger) {
-      lenis.on("scroll", window.ScrollTrigger.update);
-    }
-
-    // --- Rubber-band overscroll bounce at the very top / bottom ------------
-    // Pulls the whole page a little past the edge, then springs back, so you
-    // get a clear "you've hit the end" feel (à la wassim.dev). Transform is
-    // cleared after each spring so it never traps fixed children (modals).
-    var bounceEl = document.querySelector(".site-content");
-    if (bounceEl) {
-      var bounce = 0;
-      var bounceTween = null;
-      var releaseTimer = null;
-      var MAX_BOUNCE = 110;
-
-      var springBack = function () {
-        bounce = 0;
-        if (bounceTween) bounceTween.kill();
-        bounceTween = gsap.to(bounceEl, {
-          y: 0,
-          duration: 0.9,
-          ease: "elastic.out(1, 0.4)",
-          onComplete: function () {
-            gsap.set(bounceEl, { clearProps: "transform" });
-          }
-        });
-      };
-
-      window.addEventListener(
-        "wheel",
-        function (e) {
-          // Never fight a fixed-position modal; it's a child of .site-content.
-          if (document.body.classList.contains("modal-open")) return;
-
-          var atTop = lenis.scroll <= 0.5;
-          var atBottom = lenis.scroll >= lenis.limit - 0.5;
-          var pushingUp = atTop && e.deltaY < 0;
-          var pushingDown = atBottom && e.deltaY > 0;
-
-          if (!pushingUp && !pushingDown) {
-            if (bounce !== 0 && !releaseTimer) springBack();
-            return;
-          }
-
-          // Diminishing return: the further it stretches, the less it gives.
-          var resistance = 1 - Math.min(Math.abs(bounce) / MAX_BOUNCE, 0.9);
-          bounce += -e.deltaY * 0.18 * resistance;
-          bounce = Math.max(-MAX_BOUNCE, Math.min(MAX_BOUNCE, bounce));
-
-          if (bounceTween) bounceTween.kill();
-          gsap.set(bounceEl, { y: bounce });
-
-          clearTimeout(releaseTimer);
-          releaseTimer = setTimeout(function () {
-            releaseTimer = null;
-            springBack();
-          }, 90);
-        },
-        { passive: true }
-      );
-    }
-    // Route same-page anchor links through Lenis for smooth jumps.
-    document.addEventListener("click", function (event) {
-      var link = event.target.closest('a[href^="#"]');
-      if (!link) return;
-      // Modal triggers own their clicks; don't hijack or smooth-scroll them.
-      if (link.classList.contains("modal-trigger")) return;
-      var id = link.getAttribute("href");
-      if (id.length < 2) return;
-      // getElementById avoids invalid-selector errors for numeric ids (#1).
-      var target = document.getElementById(id.slice(1));
-      if (!target) return;
-      event.preventDefault();
-      lenis.scrollTo(target, { offset: -80 });
-    });
-  }
+  // --- Anchor links (native scroll) ------------------------------------------
+  // Native browser scrolling is used (no smooth-scroll library) — it felt best
+  // and matches the original site. In-page anchor links get a gentle native
+  // smooth scroll, skipping modal triggers which own their own clicks.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    if (link.classList.contains("modal-trigger")) return;
+    var id = link.getAttribute("href");
+    if (id.length < 2) return;
+    // getElementById avoids invalid-selector errors for numeric ids (#1).
+    var target = document.getElementById(id.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top: top, behavior: "smooth" });
+  });
 
   // --- Hero intro ------------------------------------------------------------
   // Use gsap.from() so every element finishes at its natural (visible) state —
