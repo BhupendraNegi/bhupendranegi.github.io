@@ -667,6 +667,55 @@
     return true;
   }
 
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function initializeIntroCurtain() {
+    // The head script adds `is-loading` before first paint so the curtain
+    // covers the page. Wipe it away once the document is ready and painted.
+    var root = document.documentElement;
+
+    function reveal() {
+      window.requestAnimationFrame(function() {
+        window.requestAnimationFrame(function() {
+          root.classList.remove('is-loading');
+        });
+      });
+    }
+
+    reveal();
+  }
+
+  function initializeScrollReveals(root) {
+    var scope = root || document;
+    var elements = scope.querySelectorAll('[data-reveal]:not(.is-revealed)');
+
+    if (!elements.length) {
+      return;
+    }
+
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+      elements.forEach(function(element) {
+        element.classList.add('is-revealed');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    elements.forEach(function(element) {
+      observer.observe(element);
+    });
+  }
+
   function initializePageTransitions() {
     document.documentElement.classList.add('v3-page-ready');
 
@@ -677,8 +726,9 @@
     document.documentElement.dataset.version3TransitionsBound = 'true';
 
     window.addEventListener('pageshow', function() {
+      // Restore from the bfcache with the curtain open.
       isNavigating = false;
-      document.documentElement.classList.remove('v3-page-leaving');
+      document.documentElement.classList.remove('v3-page-leaving', 'is-leaving', 'is-loading');
       document.documentElement.classList.add('v3-page-ready');
     });
 
@@ -693,11 +743,19 @@
       isNavigating = true;
       closeCurrentMobileNav();
       closeModal();
-      document.documentElement.classList.add('v3-page-leaving');
+
+      if (prefersReducedMotion()) {
+        window.location.href = link.href;
+        return;
+      }
+
+      // Lower the curtain to cover the page, then navigate. The next page
+      // loads with `is-loading` set, so the curtain wipes away on arrival.
+      document.documentElement.classList.add('is-leaving');
 
       window.setTimeout(function() {
         window.location.href = link.href;
-      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 140);
+      }, 420);
     });
   }
 
@@ -752,6 +810,8 @@
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
+    initializeIntroCurtain();
+    initializeScrollReveals(document);
     initializeThemeToggles();
     initializeMobileNavigation();
     initializeProjectFilters();

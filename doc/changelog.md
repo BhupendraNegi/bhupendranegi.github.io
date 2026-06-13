@@ -4,7 +4,65 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
-## 2026-06-13 — Phase 5: Home page redesign
+## 2026-06-13 — Locked theme + full-screen Home (v2) with curtain transitions
+
+The first Home redesign (hero + image-card grid) was rejected for losing the
+full-screen feel. After reviewing design references (pmportfolio.ca as the north
+star; Awwwards fullscreen/portfolio galleries; brittanychiang.com), the site-wide
+direction was locked: full-screen, clean, minimal-dark, transition-forward.
+Recorded in `doc/design.md` ("Locked Visual Direction").
+
+### Transition system (curtain)
+
+- Intro curtain: a full-screen accent panel covers the page before first paint
+  (armed in `_includes/head.html` so there is no flash) and wipes away on load
+  (`initializeIntroCurtain` in `assets/js/version-3.js`). A 2s safety timeout
+  guarantees the page is never left covered if JS fails, and reduced-motion users
+  skip it entirely. Markup added to `_layouts/default.html`.
+- Page-to-page transition: navigating lowers the same curtain to cover the page,
+  then performs the navigation; the next page arrives with the curtain covering
+  and wipes it away. This is a full reload masked by the curtain — visually the
+  curtain transition the design calls for, with zero re-initialization risk.
+  (True Swup no-reload SPA swaps are logged as an optional follow-up since they
+  require re-initializing every interactive component and live testing.)
+- Scroll reveals: `[data-reveal]` elements fade/translate in via
+  IntersectionObserver. Made progressive-enhancement — only armed when JS adds
+  `html.reveals` (set pre-paint, skipped under reduced motion) — so content stays
+  visible without JS.
+- All motion animates only `transform`/`opacity`, short durations, with
+  `prefers-reduced-motion` handling throughout.
+
+### Full-screen Home (v2)
+
+- `_layouts/homepage.html` rebuilt as full-viewport panels: an intro panel
+  (eyebrow, name, role + stack, blurb, CTAs, social links, scroll cue) followed by
+  four full-screen image-backed section panels (About/Projects/Blog/Contact) via
+  `_includes/box.html`, each with an index number, heading, description, and an
+  Explore CTA. The original section illustrations return as panel backgrounds
+  under a left-dark→right-light gradient, keeping the visual nod while staying
+  readable.
+
+### Fixes found during this work
+
+- Added `body { margin: 0 }` to the base layer. With Tailwind Preflight off there
+  was no reset, so the default 8px body margin showed as a light frame around the
+  dark home.
+- Dropped the experimental scroll-snap on the home. Making `<html>` a snap
+  container caused a stray ~80px initial scroll and let the light scroll-container
+  background show as a frame. Replaced with a dark scroll-container background and
+  smooth anchor scrolling; full-screen feel is preserved by the 100vh panels.
+
+### Verification
+
+- `npm run css:build` and `bundle exec jekyll build` succeed.
+- Desktop (1440px) verified visually: intro and all four section panels render
+  with images, content, and CTAs. Mobile overflow verified via an injected probe
+  (`scrollWidth == clientWidth`, no real overflowers). Note: this Chrome build
+  enforces a ~500px minimum headless viewport, so a true 360/390px screenshot
+  could not be captured; the name's clamp sizing ensures it wraps rather than
+  overflows.
+
+## 2026-06-13 — Phase 5: Home page redesign (v1, superseded)
 
 First page redesign of Phase 5. Goal (from `doc/design.md`): make the first
 viewport clearly identify Bhupendra Negi, add role text and CTAs, keep four

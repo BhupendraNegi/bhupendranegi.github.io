@@ -1,11 +1,12 @@
-<a href="{{ include.section.url }}" class="home-card home-card--{{ include.section.class }}">
-  <span class="home-card-bg" aria-hidden="true"></span>
-  <span class="home-card-overlay" aria-hidden="true"></span>
-  <span class="home-card-content">
-    <span class="home-card-heading">{{ include.section.heading }}</span>
-    <span class="home-card-words">{{ include.section.words }}</span>
-    <span class="home-card-cta">
-      Explore <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i>
+<a id="panel-{{ include.section.class }}" href="{{ include.section.url }}" class="home-panel home-panel--link home-panel--{{ include.section.class }}">
+  <span class="home-panel-bg" aria-hidden="true"></span>
+  <span class="home-panel-overlay" aria-hidden="true"></span>
+  <span class="home-panel-content">
+    {% if include.index %}<span class="home-panel-index" data-reveal aria-hidden="true">{{ include.index }}</span>{% endif %}
+    <span class="home-panel-heading" data-reveal>{{ include.section.heading }}</span>
+    <span class="home-panel-words" data-reveal>{{ include.section.words }}</span>
+    <span class="home-panel-cta" data-reveal>
+      Explore {{ include.section.name }} <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i>
     </span>
   </span>
 </a>

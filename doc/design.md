@@ -771,3 +771,27 @@ Version 3 will move forward with this direction:
 - Remove project modals and redesign project browsing.
 - Keep deployment compatible with GitHub Pages.
 - Create `doc/todo.md` from the phases above and start implementation one item at a time.
+
+## Locked Visual Direction (2026-06-13 revision)
+
+After an initial Home redesign attempt (hero + image-card grid) was rejected for
+losing the full-screen feel, the site-wide design language was locked:
+
+- Direction: full-screen, clean, minimal-dark, and transition-forward.
+- North star reference: https://pmportfolio.ca/ (full-screen sections, light/dark,
+  motion as the signature).
+- Reference galleries reviewed: Awwwards Portfolio and Fullscreen galleries,
+  Muzli top 100, Colorlib 21 best; individual reference brittanychiang.com for
+  restraint and typography.
+- Signature motion:
+  - Intro: a curtain / wipe reveal on first load (full-screen accent panel that
+    wipes away, optional logo/initials flash).
+  - Page-to-page: Swup-driven in-place transitions using the same curtain /
+    crossfade, replacing the prior fade-then-full-reload custom layer.
+- Performance rules for all motion: animate only `transform` and `opacity`,
+  keep durations short (~200-700ms), no WebGL/GSAP, honor
+  `prefers-reduced-motion`, and keep the transition JS small (target < 10KB) so
+  it stays fast on GitHub Pages.
+- Palette/type: continue the existing dark-first tokens with a single primary
+  accent; carry the same language across Home, About, Projects, Blog, Contact,
+  Resume, and 404.
