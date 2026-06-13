@@ -4,6 +4,60 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-13 — Inner-page polish + sitewide consistency
+
+Applied the home "Aurora" design language across every inner page, then a
+series of consistency fixes from review feedback.
+
+### Inner pages reskinned
+
+- Shared `.page-hero` header (eyebrow + title + lead) on About, Projects,
+  Contact, Blog, Post, Resume, 404.
+- About: profile-card layout (portrait with gradient ring + "Open to work"
+  status badge, name, role, quick facts, social) beside an emphasized bio.
+  Skills shown as gradient-accent cards with pill chips.
+- Projects: card grid reusing the home `.proj-card` shell with image tiles +
+  hover "Learn more" overlay; modal/carousel/filter behaviour preserved.
+- Blog index + Post: reuse the home post-card component / prose styling.
+
+### Consistency fixes
+
+- **Background:** inner pages were solid white over the fixed `.aurora-bg`.
+  `.site-page` is now transparent so the same ambient gradient shows sitewide.
+- **Content width:** `.site-page-inner` matches the home rail exactly (1240px +
+  same padding) with `box-sizing: border-box` to avoid mobile overflow.
+- **Nav:** solid pill (was translucent); current section highlighted via
+  build-time `is-active` + `aria-current` (Blog stays active on posts); more
+  padding around the logo / right-side actions.
+- **Footer:** trimmed to a single row (copyright + social icons).
+- **Nav moved** out of `.site-content` into `default.html` so the content
+  wrapper is never an ancestor of the fixed nav (prevents transform-trap bugs).
+
+### Animation, fonts, quotes
+
+- **Headings:** all page/post titles now use the hero's SplitText character-rise
+  intro (`motion.js`). Split type is `words,chars` so lines never break
+  mid-word. The accent word uses a solid colour (`.tx-accent`), not the gradient
+  `.grad` — `background-clip:text` does not survive a SplitText char split
+  (the characters render transparent), whereas a solid colour is inherited fine.
+- **Fonts:** `body` had no `font-family`, so prose fell back to the browser's
+  serif. Set `font-family: var(--font-sans)` on `body` so all text is Inter.
+- **Quotes removed** sitewide: deleted `_includes/quote.html`, the per-page
+  `quote`/`author` front matter, and the `.quote*` CSS.
+
+### Scroll
+
+- Tried Lenis smooth-scroll + a rubber-band overscroll bounce, but it felt worse
+  than native scrolling. Reverted to native scroll; in-page anchor links use
+  `window.scrollTo({ behavior: "smooth" })`. Lenis removed from the page.
+
+### Project modals
+
+- Fixed modals not opening: the fixed-position modal had been nested inside the
+  reveal-animated `.proj-card`, whose leftover GSAP transform trapped it.
+  Restructured so the modal is a sibling of the card, and stopped the anchor
+  handler from hijacking `.modal-trigger` clicks (and crashing on numeric ids).
+
 ## 2026-06-13 — "Aurora" theme overhaul (phases 1–4)
 
 Brand-new light-first theme matching https://wassim.dev/ with richer motion like

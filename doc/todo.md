@@ -115,14 +115,24 @@ Home refinements requested 2026-06-13 (in progress):
 
 ## Per-page work under Aurora (one page at a time; see workflow rule above)
 
-- [ ] Home — IN PROGRESS (iterating per user feedback). Done so far: light Aurora theme, GSAP/Lenis motion, continuous site-wide gradient backdrop, wider 1240px content, floating-pill navbar + Resume CTA, project cards with gradient/tech-logo covers + hover, writing cards. Awaiting user eyeball/feedback before moving on.
-- [ ] About
-- [ ] Projects (remove modals in favour of cards/detail pages; redesign)
-- [ ] Blog index
-- [ ] Blog post layout
-- [ ] Contact
-- [ ] Resume
-- [ ] 404
+- [x] Home — Aurora theme, GSAP motion, site-wide gradient backdrop, 1240px
+  content, solid floating-pill navbar, project cards, writing cards. (Scroll:
+  reverted Lenis smooth-scroll/bounce back to native per feedback.)
+- [x] About (2026-06-13: profile-card layout — portrait + status badge + facts +
+  social beside an emphasized bio; skills as gradient-accent cards). Detailed
+  review pending.
+- [x] Projects (2026-06-13: kept modals; restyled grid to home `.proj-card`
+  image tiles with hover overlay + filter). Modal internals (Live/Github/Next,
+  carousel) still use old button styles — revisit in detailed review.
+- [x] Blog index (2026-06-13: home post-card grid + page-hero).
+- [x] Blog post layout (2026-06-13: page-hero-style header, meta, prose).
+- [x] Contact (2026-06-13: centered page-hero over the form).
+- [x] Resume (2026-06-13: gradient-icon card + View/Download).
+- [x] 404 (2026-06-13: gradient heading + home/blog actions).
+- [x] All page/post headings use the hero SplitText char-rise intro; accent word
+  is solid (`.tx-accent`) because gradient `background-clip:text` can't survive a
+  char split.
+- [x] Removed quotes sitewide (include, front matter, CSS).
 - [ ] Decide whether to keep Disqus after review.
 
 ## Phase 6: Mobile and Accessibility
@@ -145,7 +155,7 @@ Home refinements requested 2026-06-13 (in progress):
 
 - [x] Remove Materialize. (CDN `<link>` removed from `_includes/scripts.html` on 2026-06-13; no template used Materialize JS or bare grid classes. Legacy `assets/css/main.css` reduction continues separately.)
 - [x] Remove Highlight.js if Rouge handles code styling. (Removed on 2026-06-13; added a Rouge-generated theme in `assets/css/syntax.css`, imported into the Tailwind source, so syntax colors are now build-time with zero runtime JS.)
-- [ ] Resolve the font mismatch: the head loads only the old Google Fonts (Raleway, Open Sans, Josefin Slab, Lobster Two), but the Tailwind theme references Inter / Manrope (`--font-sans`) and JetBrains Mono / Fira Code (`--font-mono`), which are never loaded. Either load the new fonts or update the tokens to match what is loaded.
+- [x] Resolve the font mismatch. (2026-06-13: Inter + JetBrains Mono are loaded in `scripts.html`; also set `font-family: var(--font-sans)` on `body` so prose no longer falls back to the browser serif.)
 - [ ] Audit and remove legacy `assets/css/main.css` (~683 lines): determine what is still referenced, fold the rest into the Tailwind source, then drop the file.
 - [ ] Optimize images where possible.
 - [ ] Reduce external scripts where possible without removing required features.
