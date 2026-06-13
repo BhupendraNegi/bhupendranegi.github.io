@@ -13,14 +13,12 @@
       var t = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', t);
 
-      // Intro curtain + scroll reveals are progressive enhancements: only arm
-      // them when JS runs and motion is allowed, so content stays visible if
-      // JS fails or the user prefers reduced motion.
+      // Scroll reveals are a progressive enhancement: only arm them when JS runs
+      // and motion is allowed, so content stays visible if JS fails or the user
+      // prefers reduced motion.
       var root = document.documentElement;
       if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         root.classList.add('reveals');
-        root.classList.add('is-loading');
-        window.setTimeout(function() { root.classList.remove('is-loading'); }, 2000);
       }
     })();
   </script>
