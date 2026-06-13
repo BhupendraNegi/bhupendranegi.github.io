@@ -66,6 +66,7 @@ bundle exec jekyll build --drafts
 - Prefer `_data/sections.yml`, `_data/projects.yml`, and `_data/skills.yml` for content that is already data-driven.
 - Add blog posts under `_posts/` with YAML front matter and Markdown content.
 - Use existing Liquid includes and layouts before creating new page-specific markup.
+- **Content width is consistent site-wide:** every page's main content uses the same 1240px rail (the home `.hero`/`.home-section` and inner pages' `.site-page-inner`, both `width: min(100%, 1240px)` with `padding-inline: clamp(1.25rem, 5vw, 2rem)`). Do not give a page its own narrower `max-width`; if a block must be narrower (e.g. a form or reading column), nest it inside the rail rather than shrinking the page container.
 - Keep asset paths root-relative where the current code already does so, for example `/assets/images/...`.
 - Keep interactive behavior in `assets/js/version-3.js`; avoid adding jQuery or Barba.js back into the runtime.
 - The project cards depend on numeric `id` values in `_data/projects.yml`; the "Next" modal behavior increments these IDs.

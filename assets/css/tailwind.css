@@ -273,7 +273,10 @@
     box-sizing: border-box;
   }
 
-  /* Shared content shell */
+  /* CANONICAL CONTENT RAIL — keep this consistent site-wide.
+     Every page's main content uses this 1240px width + padding: the home
+     hero/sections here, and inner pages via .site-page-inner. Do NOT give a
+     page its own narrower max-width; if content must be narrower, nest it. */
   .hero,
   .home-section {
     width: min(100%, 1240px);
@@ -1633,12 +1636,12 @@
     max-width: 720px;
   }
 
-  /* List of horizontal cards (image left, text right) divided by a rule */
+  /* List of horizontal cards (image left, text right) divided by a rule.
+     Spans the full content rail (1240px via .site-page-inner) to stay
+     consistent with the home and about pages. */
   .project-list {
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
-    max-width: 920px;
   }
 
   .project {
