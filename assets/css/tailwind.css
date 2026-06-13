@@ -223,38 +223,26 @@
   }
 
   .site-footer-inner {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
     margin-inline: auto;
-    max-width: 1300px;
-    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 1.25rem;
+    max-width: 1240px;
+    padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 5vw, 2rem);
   }
 
-  .site-footer-grid {
-    align-items: start;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .site-footer-about {
-    max-width: 62ch;
-  }
-
-  .site-footer .description {
+  .site-footer-copy {
     color: var(--site-muted);
-    line-height: 1.7;
+    font: 500 0.92rem/1.4 var(--font-sans);
     margin: 0;
-  }
-
-  .site-footer .footer_titles {
-    color: var(--site-text);
-    font: 700 clamp(1.25rem, 2vw, 1.7rem)/1.1 var(--font-sans);
-    margin: 0 0 0.75rem;
   }
 
   .site-footer-social {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.65rem;
+    gap: 0.5rem;
   }
 
   .site-footer-icon-link {
@@ -287,35 +275,6 @@
     height: 1.25rem !important;
     margin: 0;
     width: 1.25rem !important;
-  }
-
-  .site-footer .footer_description_link {
-    color: var(--site-accent);
-    text-decoration-color: color-mix(in srgb, var(--site-accent) 35%, transparent);
-    text-underline-offset: 0.18em;
-  }
-
-  .site-footer .footer_description_link:hover {
-    color: var(--site-accent-strong);
-    text-decoration-color: currentColor;
-  }
-
-  .site-footer-bottom {
-    border-top: 1px solid var(--site-border);
-    margin-top: 2rem;
-    padding-top: 1rem;
-  }
-
-  .site-footer-bottom p {
-    color: var(--site-muted);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
-  @media (max-width: 700px) {
-    .site-footer-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   .homepage-main {
@@ -817,7 +776,8 @@
     padding-top: 0.9rem;
   }
 
-  .proj-card-links a {
+  .proj-card-links a,
+  .proj-card-links .proj-card-detail {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -826,7 +786,15 @@
     text-decoration: none;
   }
 
-  .proj-card-links a:hover {
+  .proj-card-detail {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .proj-card-links a:hover,
+  .proj-card-links .proj-card-detail:hover {
     color: var(--site-accent-strong);
   }
 
@@ -1026,11 +994,9 @@
     gap: 0.75rem;
     padding: 0.3rem 0.35rem 0.3rem 1rem;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--site-bg) 72%, transparent);
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    background: var(--site-bg);
     border: 1px solid var(--site-border);
-    box-shadow: 0 10px 34px rgb(15 23 42 / 0.1);
+    box-shadow: 0 10px 34px rgb(15 23 42 / 0.12);
   }
 
   .site-brand {
@@ -1694,7 +1660,6 @@
   }
 
   .site-card,
-  .project,
   #email_modal,
   .project_list .modal,
   .posts .post {
@@ -1710,8 +1675,15 @@
     color: var(--site-text);
   }
 
+  /* Grid cell: a plain wrapper holding the visible card + its (fixed) modal.
+     The modal must NOT live inside the reveal-animated .proj-card, or the
+     transform GSAP leaves on it would trap the fixed modal. */
   .project {
-    overflow: hidden;
+    display: flex;
+  }
+
+  .project > .proj-card {
+    flex: 1;
   }
 
   .site-button,

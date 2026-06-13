@@ -1,22 +1,24 @@
-<article class="project proj-card project-tile" data-tags="{{ project.tags | join: ',' }}" data-reveal>
-  <a class="project-tile-media modal-trigger" href="#{{ project.id }}" aria-label="Open details for {{ project.title }}">
-    <img src="{{ project.cover }}" alt="" loading="lazy">
-    <span class="project-tile-overlay" aria-hidden="true">
-      <span class="project-tile-cta">Learn more <i class="site-icon" data-lucide="arrow-up-right"></i></span>
-    </span>
-  </a>
-  <div class="proj-card-body">
-    <h3 class="proj-card-title">{{ project.title }}</h3>
-    <p class="proj-card-desc">{{ project.description }}</p>
-    {% if project.tags %}
-      <ul class="proj-card-tags">
-        {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
-      </ul>
-    {% endif %}
-    <div class="proj-card-links">
-      <a href="#{{ project.id }}" class="modal-trigger" aria-label="Open details for {{ project.title }}"><i class="site-icon" data-lucide="image" aria-hidden="true"></i> Details</a>
-      {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
-      {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+<article class="project" data-tags="{{ project.tags | join: ',' }}">
+  <div class="proj-card project-tile" data-reveal>
+    <a class="project-tile-media modal-trigger" href="#{{ project.id }}" aria-label="Open details for {{ project.title }}">
+      <img src="{{ project.cover }}" alt="" loading="lazy">
+      <span class="project-tile-overlay" aria-hidden="true">
+        <span class="project-tile-cta">Learn more <i class="site-icon" data-lucide="arrow-up-right"></i></span>
+      </span>
+    </a>
+    <div class="proj-card-body">
+      <h3 class="proj-card-title">{{ project.title }}</h3>
+      <p class="proj-card-desc">{{ project.description }}</p>
+      {% if project.tags %}
+        <ul class="proj-card-tags">
+          {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+      <div class="proj-card-links">
+        <button type="button" class="proj-card-detail modal-trigger" data-modal-target="#{{ project.id }}" aria-label="Open details for {{ project.title }}"><i class="site-icon" data-lucide="image" aria-hidden="true"></i> Details</button>
+        {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+        {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+      </div>
     </div>
   </div>
   {% include project_card.html %}
