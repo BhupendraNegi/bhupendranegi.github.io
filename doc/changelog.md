@@ -4,7 +4,46 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
-## 2026-06-13 — Locked theme + full-screen Home (v2) with curtain transitions
+## 2026-06-13 — "Aurora" theme overhaul (phases 1–4)
+
+Brand-new light-first theme matching https://wassim.dev/ with richer motion like
+https://koysor.me/. Full plan in `doc/redesign-plan.md`. Replaces the rejected
+full-screen/dark direction. Committed as four phases:
+
+1. Tokens + fonts — swapped the teal/ink palette for wassim's light-first tokens
+   (white bg, navy text, blue accent, blue→violet gradient), kept the `--site-*`
+   names so components inherit them; dark mode restyled to wassim's dark palette;
+   loaded Inter + JetBrains Mono; theme-aware favicon. Fixed a latent bug:
+   `--font-sans`/`--font-mono` were declared only in `@theme prefix(v)` and never
+   emitted unprefixed, so every `font:` shorthand using `var(--font-sans)` was
+   invalid — now defined as plain custom properties in `:root`.
+2. Navbar + footer — new light navbar (theme-aware wordmark logo using the user's
+   light/dark logo files, gradient active-underline, sun/moon toggle, mobile
+   overlay); footer and mobile nav moved onto theme tokens.
+3. Home rebuild — wassim-style scrolling layout: hero with an animated
+   blue→violet gradient graphic, featured project cards, recent writing list,
+   gradient CTA; Home now uses the shared navbar/footer. Dropped the full-screen
+   image panels, section images, and the curtain "BN" intro. Neutralized legacy
+   `main.css` rules (dark body background, global `main` top padding) that fought
+   the light theme.
+4. Motion — `assets/js/motion.js`: GSAP 3.13 (ScrollTrigger, SplitText,
+   CustomEase) + Lenis smooth scroll. Hero name reveals per-character, hero items
+   stagger in, sections reveal on scroll with a custom ease; anchor links routed
+   through Lenis. Progressive enhancement: reduced-motion and missing-GSAP both
+   fall back to showing content immediately; version-3.js yields reveal ownership
+   to motion.js. Verified in headless that all libs load, motion runs, and the
+   hero ends visible.
+
+Logo mapping note: the user's filenames describe the logo COLOR, not the theme,
+so they are mapped by visibility — light theme uses the black logo
+(`Bhupendra_black_logo.png`), dark theme uses the white logo
+(`Bhupendra_light.png`); favicons likewise.
+
+Remaining: Phase 5 (re-skin Projects + check Post/Resume/404; About/Contact/Blog
+already adopt the theme) and Phase 6 (cleanup of dead legacy CSS, pin Lucide).
+The motion feel needs a live eyeball via `./bin/dev` (headless can't show it).
+
+## 2026-06-13 — Locked theme + full-screen Home (v2) with curtain transitions [SUPERSEDED]
 
 The first Home redesign (hero + image-card grid) was rejected for losing the
 full-screen feel. After reviewing design references (pmportfolio.ca as the north
