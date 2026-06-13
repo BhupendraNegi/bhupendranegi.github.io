@@ -671,22 +671,6 @@
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  function initializeIntroCurtain() {
-    // The head script adds `is-loading` before first paint so the curtain
-    // covers the page. Wipe it away once the document is ready and painted.
-    var root = document.documentElement;
-
-    function reveal() {
-      window.requestAnimationFrame(function() {
-        window.requestAnimationFrame(function() {
-          root.classList.remove('is-loading');
-        });
-      });
-    }
-
-    reveal();
-  }
-
   function initializeScrollReveals(root) {
     var scope = root || document;
     var elements = scope.querySelectorAll('[data-reveal]:not(.is-revealed)');
@@ -726,36 +710,9 @@
     document.documentElement.dataset.version3TransitionsBound = 'true';
 
     window.addEventListener('pageshow', function() {
-      // Restore from the bfcache with the curtain open.
       isNavigating = false;
-      document.documentElement.classList.remove('v3-page-leaving', 'is-leaving', 'is-loading');
+      document.documentElement.classList.remove('v3-page-leaving', 'is-leaving');
       document.documentElement.classList.add('v3-page-ready');
-    });
-
-    document.addEventListener('click', function(event) {
-      var link = event.target.closest('a');
-
-      if (!link || !isTransitionableLink(link, event)) {
-        return;
-      }
-
-      event.preventDefault();
-      isNavigating = true;
-      closeCurrentMobileNav();
-      closeModal();
-
-      if (prefersReducedMotion()) {
-        window.location.href = link.href;
-        return;
-      }
-
-      // Lower the curtain to cover the page, then navigate. The next page
-      // loads with `is-loading` set, so the curtain wipes away on arrival.
-      document.documentElement.classList.add('is-leaving');
-
-      window.setTimeout(function() {
-        window.location.href = link.href;
-      }, 420);
     });
   }
 
@@ -810,7 +767,6 @@
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
-    initializeIntroCurtain();
     initializeScrollReveals(document);
     initializeThemeToggles();
     initializeMobileNavigation();

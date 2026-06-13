@@ -457,14 +457,8 @@
 /*  Home Page Start */
 
 body {
-  background-color: var(--color-dark);
-  color: var(--color-text);
   min-height: 100%;
   min-width: 300px;
-}
-
-#homepage {
-  overflow: hidden;
 }
 
 #homepage a {
@@ -531,7 +525,6 @@ body {
 
 main {
   flex: 1 0 auto;
-  padding-top: 80px;
 }
 
 .box {

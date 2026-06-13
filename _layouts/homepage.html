@@ -2,43 +2,92 @@
 layout: default
 ---
 
+{% include nav.html %}
 {% assign hero = site.data.sections.hero %}
-<main id="main-content" class="site-main site-page site-page--home homepage-main home" tabindex="-1">
 
-  <section class="home-panel home-panel--intro" aria-labelledby="home-hero-name">
-    <div class="home-intro-inner">
-      {% if hero.eyebrow %}<p class="home-hero-eyebrow" data-reveal data-reveal-order="1">{{ hero.eyebrow }}</p>{% endif %}
-      <h1 id="home-hero-name" class="home-hero-name" data-reveal data-reveal-order="2">{{ hero.name | default: site.name }}</h1>
-      <p class="home-hero-role" data-reveal data-reveal-order="3">
-        <span class="home-hero-role-main">{{ hero.role }}</span>
-        {% if hero.stack %}<span class="home-hero-stack">{{ hero.stack }}</span>{% endif %}
-      </p>
-      {% if hero.blurb %}<p class="home-hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb }}</p>{% endif %}
-      <div class="home-hero-actions" data-reveal data-reveal-order="5">
-        <a class="site-button" href="{{ site.data.sections.projects.url }}">
+<main id="main-content" class="site-main home-aurora" tabindex="-1">
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-reveal data-reveal-order="1">{{ hero.role | default: "Software Engineer" }}</p>
+      <h1 class="hero-name" data-reveal data-reveal-order="2" data-split>{{ hero.name | default: site.name }}</h1>
+      {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
+      {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb }}</p>{% endif %}
+      <div class="hero-actions" data-reveal data-reveal-order="5">
+        <a class="btn-primary" href="{{ site.data.sections.projects.url }}">
           <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
         </a>
-        <a class="site-button" href="{{ site.data.sections.blog.url }}">
-          <i class="site-icon" data-lucide="book-open" aria-hidden="true"></i> Read Blog
-        </a>
-        <a class="site-button" href="{{ site.data.sections.contact.url }}">
-          <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Contact
+        <a class="btn-ghost" href="{{ site.data.sections.contact.url }}">
+          <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch
         </a>
       </div>
-      <ul class="home-hero-social" data-reveal data-reveal-order="6">
+      <ul class="hero-social" data-reveal data-reveal-order="6">
         <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
         <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
         <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
+        <li><a href="{{ site.stackoverflow_link }}" target="_blank" rel="noopener" aria-label="Stack Overflow">{% include social-icon.html name="stackoverflow" %}</a></li>
       </ul>
     </div>
-    <a class="home-scroll-cue" href="#panel-about" aria-label="Scroll to explore">
-      <span>Scroll</span>
-      <i class="site-icon" data-lucide="chevron-down" aria-hidden="true"></i>
-    </a>
   </section>
 
-  {% include box.html section=site.data.sections.about index="01" %}
-  {% include box.html section=site.data.sections.projects index="02" %}
-  {% include box.html section=site.data.sections.blog index="03" %}
-  {% include box.html section=site.data.sections.contact index="04" %}
+  <section class="home-section" aria-labelledby="home-projects-heading">
+    <div class="section-head" data-reveal>
+      <h2 id="home-projects-heading" class="section-title">Featured <span class="grad">Projects</span></h2>
+      <a class="section-link" href="{{ site.data.sections.projects.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="home-project-grid">
+      {% for project in site.data.projects limit: 4 %}
+        <article class="home-project-card" data-reveal>
+          <h3 class="home-project-title">{{ project.title }}</h3>
+          <p class="home-project-desc">{{ project.description }}</p>
+          {% if project.tags %}
+            <ul class="home-project-tags">
+              {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+          <div class="home-project-links">
+            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+            {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="home-writing-heading">
+    <div class="section-head" data-reveal>
+      <h2 id="home-writing-heading" class="section-title">Recent <span class="grad">Writing</span></h2>
+      <a class="section-link" href="{{ site.data.sections.blog.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <ul class="home-writing-list">
+      {% for post in site.posts limit: 4 %}
+        {% assign words = post.content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 | plus: 1 %}
+        <li class="home-writing-item" data-reveal>
+          <a href="{{ post.url }}" class="home-writing-link">
+            <span class="home-writing-title">{{ post.title }}</span>
+            <span class="home-writing-meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+              <span aria-hidden="true">·</span>
+              <span>{{ minutes }} min read</span>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="home-section home-cta" aria-labelledby="home-cta-heading">
+    <div class="home-cta-inner" data-reveal>
+      <h2 id="home-cta-heading" class="section-title">Let's build something <span class="grad">together</span></h2>
+      <p class="home-cta-text">I'm always open to interesting projects and conversations. Have a question or an idea?</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="{{ site.data.sections.contact.url }}"><i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch</a>
+        <a class="btn-ghost" href="{{ site.data.sections.about.url }}"><i class="site-icon" data-lucide="user" aria-hidden="true"></i> More about me</a>
+      </div>
+    </div>
+  </section>
 </main>
+
+{% include footer.html %}
