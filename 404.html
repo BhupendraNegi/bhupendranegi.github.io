@@ -2,12 +2,14 @@
 permalink: /404.html
 layout: site_layout
 ---
-<style>
-</style>
-<div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: Arial, sans-serif;">
-  <img src="https://github.com/BhupendraNegi/bhupendranegi.github.io/blob/main/assets/images/octobiwan.jpg?raw=true"
-    alt="GitHub 404 Error Image" style="max-width: 300px; height: auto; margin-bottom: 20px;">
-  <h1 style="font-size: 5em; margin: 0;">404</h1>
-  <p style="font-size: 1.5em; margin: 10px 0;"><strong>Page not found</strong></p>
-  <p style="font-size: 1.2em; color: #666;">The requested page could not be found.</p>
-</div>
+<section class="not-found-page text-center" aria-labelledby="not-found-heading" data-reveal>
+  <img src="{{ site.baseurl }}/assets/images/octobiwan.jpg"
+    alt="A lost Octocat" class="not-found-image" loading="eager" decoding="async">
+  <h1 id="not-found-heading" class="grad">404</h1>
+  <p><strong>Page not found</strong></p>
+  <p>The page you're looking for doesn't exist or may have moved.</p>
+  <div class="not-found-actions">
+    <a class="btn-primary" href="/"><i data-lucide="home" class="site-icon" aria-hidden="true"></i> Back home</a>
+    <a class="btn-ghost" href="/blog"><i data-lucide="newspaper" class="site-icon" aria-hidden="true"></i> Read the blog</a>
+  </div>
+</section>

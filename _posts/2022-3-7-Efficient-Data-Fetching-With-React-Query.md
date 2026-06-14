@@ -6,6 +6,29 @@ title: Efficient Data Fetching with React Query
 -------
 React Query is a powerful library for managing server-state in React applications. It simplifies data fetching, caching, and synchronization, making your app faster and easier to maintain. In this blog, we’ll explore how to use React Query to fetch and cache data with a practical example.
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="app-window" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Component</span>
+      <span class="post-figure-step-sub">Calls useQuery()</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Query cache</span>
+      <span class="post-figure-step-sub">Instant data, then revalidates</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">API / Server</span>
+      <span class="post-figure-step-sub">Fetched on miss or stale</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">React Query serves cached data instantly, then refetches in the background to keep it fresh.</figcaption>
+</figure>
+
 ##### Why Use React Query?
 
 `Automatic Caching:` React Query caches data automatically and updates it when necessary.

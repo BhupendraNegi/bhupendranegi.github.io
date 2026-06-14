@@ -1,40 +1,52 @@
-<div class="my_navbar">
-  <nav class="z-depth-0 transparent">
-    <div class="container">
-      <div class="nav-wrapper transparent s12">
-        <a href="/" class="brand-logo"><img src="/assets/images/Bhupendra_light.png" alt="website logo" height="50px" /></a>
-        <a href="#!" data-activates="mobile-demo" class="button-collapse large">
-          <i class="material-icons sandwich">menu</i>
-        </a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          {% for my_section in site.data.sections %}
-            <li><a href={{my_section[1].url}} class="">{{my_section[1].name}}</a><div class="nav-underline"></div></li>
-          {% endfor %}
-          <li class="theme-toggle-li">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
-              <i class="fa fa-sun-o" aria-hidden="true"></i>
-              <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-              <i class="fa fa-moon-o" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          <li class="side-nav-logo">
-            <a href="/"><img src="/assets/images/Bhupendra_light.png" alt="website logo" height="36px" /></a>
-          </li>
-          {% for my_section in site.data.sections %}
-            <li><a href="{{my_section[1].url}}">{{my_section[1].name}}</a></li>
-          {% endfor %}
-          <li class="side-nav-toggle-li">
-            <button id="theme-toggle-mobile" class="theme-toggle theme-toggle-mobile" aria-label="Toggle theme">
-              <i class="fa fa-sun-o top-mragin" aria-hidden="true"></i>
-              <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-              <i class="fa fa-moon-o top-mragin" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="site-nav-inner">
+      <a href="/" class="site-brand" aria-label="{{ site.name }} home">
+        <img class="site-brand-logo logo-light" src="/assets/images/Bhupendra_black_logo.png" alt="{{ site.name }}" height="28" />
+        <img class="site-brand-logo logo-dark" src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="28" />
+      </a>
 
+      <ul id="nav-mobile" class="site-nav-list">
+        {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
+          {% assign is_active = false %}
+          {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
+          {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
+          <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ my_section[1].name }}</a></li>
+        {% endunless %}{% endfor %}
+      </ul>
+
+      <div class="site-nav-actions">
+        <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
+          <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
+          <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
+        </button>
+        <a class="nav-cta" href="/resume/">Resume</a>
+        <button id="mobile-nav-toggle" type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
+          <i data-lucide="menu" class="site-icon" aria-hidden="true"></i>
+        </button>
       </div>
+
+      <ul class="site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
+        <li class="mobile-nav-close-row">
+          <button type="button" class="mobile-nav-close" aria-label="Close navigation menu" data-mobile-nav-close>
+            <i data-lucide="x" class="site-icon" aria-hidden="true"></i>
+          </button>
+        </li>
+        {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
+          {% assign is_active = false %}
+          {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
+          {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
+          <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ my_section[1].name }}</a></li>
+        {% endunless %}{% endfor %}
+        <li class="mobile-nav-theme-row">
+          <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
+            <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
+            <span class="theme-toggle-label">Theme</span>
+            <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+      <div class="mobile-nav-backdrop" data-mobile-nav-close hidden></div>
     </div>
   </nav>
-</div>
+</header>

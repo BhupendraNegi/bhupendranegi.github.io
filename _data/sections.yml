@@ -1,29 +1,37 @@
+hero:
+  eyebrow: "Hi, I'm"
+  name: Bhupendra Negi
+  role: Senior Software Developer
+  stack: Ruby on Rails · React · Node.js
+  blurb: Full-stack developer with YEARS years building scalable web applications. I care about clean, maintainable code, solving gnarly problems, and shipping products that feel great to use.
+  location: Bangalore, India
+  experience: YEARS+ years experience
+  current: ClearStack
 about:
   url: /about
-  heading: Me
-  words: Hi, I'm Bhupendra Negi </br> Software Engineer, who loves to code and build applications
-  class: m5 about
+  heading: About
+  words: Who I am and what I like to build.
+  class: about
   border: about
   name: About
 projects:
   url: /projects
   heading: Projects
-  words: List of Experiments and Projects
-  class: m7 projects
+  words: Experiments, side projects, and work I'm proud of.
+  class: projects
   border: projects
   name: Projects
 blog:
   url: /blog
   heading: Blog
-  words: Check out My Blog
-  class: m6 blog
+  words: Notes on Ruby, Rails, React, and engineering.
+  class: blog
   border: blog
   name: Blog
 contact:
   url: /contact
   heading: Contact
-  words: Feel free to shoot me an email
-  class: m6 contact
+  words: Have a question or an idea? Get in touch.
+  class: contact
   border: contact
   name: Contact
-

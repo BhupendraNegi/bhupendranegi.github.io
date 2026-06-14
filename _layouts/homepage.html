@@ -2,24 +2,117 @@
 layout: default
 ---
 
-<div id="homepage">
-  <!-- <div class="hero">
-    <div class="hero-content">
-      <h1 class="hero-name">Bhupendra Negi</h1>
-      <p class="hero-tagline">Software Engineer &nbsp;·&nbsp; Ruby on Rails &nbsp;·&nbsp; React</p>
-      <div class="hero-links">
-        <a href="{{ site.github_link }}" target="_blank" rel="noopener">GitHub</a>
-        <a href="{{ site.linked_in_link }}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="/contact">Get in touch</a>
+{% assign hero = site.data.sections.hero %}
+{% include joining_date.html %}
+
+<main id="main-content" class="site-main home-aurora" tabindex="-1">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        {% if hero.eyebrow %}<p class="hero-eyebrow" data-reveal data-reveal-order="1">{{ hero.eyebrow }}</p>{% endif %}
+        <h1 class="hero-name" data-reveal data-reveal-order="2" data-split>{{ hero.name | default: site.name }}</h1>
+        <p class="hero-role" data-reveal data-reveal-order="3">
+          <span class="hero-role-main">{{ hero.role }}</span>
+          {% if hero.current %}<span class="hero-role-at">@ {{ hero.current }}</span>{% endif %}
+        </p>
+        {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
+        {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb | replace: "YEARS", years }}</p>{% endif %}
+        <ul class="hero-meta" data-reveal data-reveal-order="5">
+          {% if hero.experience %}<li><i class="site-icon" data-lucide="briefcase" aria-hidden="true"></i>{{ hero.experience | replace: "YEARS", years }}</li>{% endif %}
+          {% if hero.location %}<li><i class="site-icon" data-lucide="map-pin" aria-hidden="true"></i>{{ hero.location }}</li>{% endif %}
+          <li><i class="site-icon" data-lucide="award" aria-hidden="true"></i>IEEE Xtreme AIR 12</li>
+        </ul>
+        <div class="hero-actions" data-reveal data-reveal-order="6">
+          <a class="btn-primary" href="{{ site.data.sections.projects.url }}">
+            <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
+          </a>
+          <a class="btn-ghost" href="{{ site.data.sections.contact.url }}">
+            <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch
+          </a>
+        </div>
+        <ul class="hero-social" data-reveal data-reveal-order="6">
+          <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
+          <li><a href="{{ site.linked_in_link }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include social-icon.html name="linkedin" %}</a></li>
+          <li><a href="{{ site.twitter_link }}" target="_blank" rel="noopener" aria-label="Twitter / X">{% include social-icon.html name="twitter" %}</a></li>
+          <li><a href="{{ site.stackoverflow_link }}" target="_blank" rel="noopener" aria-label="Stack Overflow">{% include social-icon.html name="stackoverflow" %}</a></li>
+        </ul>
+      </div>
+
+      <div class="hero-media" data-reveal data-reveal-order="4" aria-hidden="true">
+        <div class="hero-portrait">
+          <div class="hero-portrait-inner">
+            <img src="/assets/images/bhupendra_1.jpg" alt="Bhupendra Negi" width="320" height="320" decoding="async" />
+          </div>
+        </div>
       </div>
     </div>
-  </div> -->
-  <div class="row top-row">
-    {% include box.html section=site.data.sections.about %}
-    {% include box.html section=site.data.sections.projects %}
-  </div>
-  <div class="row">
-    {% include box.html section=site.data.sections.blog %}
-    {% include box.html section=site.data.sections.contact %}
-  </div>
-</div>
+  </section>
+
+  <section class="home-section" aria-labelledby="home-projects-heading">
+    <div class="section-head" data-reveal>
+      <h2 id="home-projects-heading" class="section-title">Featured <span class="grad">Projects</span></h2>
+      <a class="section-link" href="{{ site.data.sections.projects.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="home-project-grid">
+      {% for project in site.data.projects limit: 4 %}
+        {% assign primary_tech = project.technologies[0] | default: "code-plain" %}
+        <article class="proj-card proj-card--{{ forloop.index }}" data-reveal>
+          <div class="proj-card-cover" aria-hidden="true">
+            <i class="devicon-{{ primary_tech }} proj-card-glyph"></i>
+            <span class="proj-card-cover-tint"></span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">{{ project.title }}</h3>
+            <p class="proj-card-desc">{{ project.description }}</p>
+            {% if project.tags %}
+              <ul class="proj-card-tags">
+                {% for tag in project.tags limit: 4 %}<li class="tag-chip">{{ tag }}</li>{% endfor %}
+              </ul>
+            {% endif %}
+            <div class="proj-card-links">
+              {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+              {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="home-writing-heading">
+    <div class="section-head" data-reveal>
+      <h2 id="home-writing-heading" class="section-title">Recent <span class="grad">Writing</span></h2>
+      <a class="section-link" href="{{ site.data.sections.blog.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="home-writing-grid">
+      {% for post in site.posts limit: 4 %}
+        {% assign words = post.content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 | plus: 1 %}
+        <a href="{{ post.url }}" class="post-card" data-reveal>
+          <span class="post-card-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ minutes }} min read</span>
+          </span>
+          <span class="post-card-title">{{ post.title }}</span>
+          {% if post.excerpt %}<span class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</span>{% endif %}
+          <span class="post-card-read">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section home-cta" aria-labelledby="home-cta-heading">
+    <div class="home-cta-inner" data-reveal>
+      <h2 id="home-cta-heading" class="section-title">Let's build something <span class="grad">together</span></h2>
+      <p class="home-cta-text">I'm always open to interesting projects and conversations. Have a question or an idea?</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="{{ site.data.sections.contact.url }}"><i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch</a>
+        <a class="btn-ghost" href="{{ site.data.sections.about.url }}"><i class="site-icon" data-lucide="user" aria-hidden="true"></i> More about me</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include footer.html %}

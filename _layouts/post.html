@@ -3,37 +3,45 @@ layout: site_layout
 comments: true
 ---
 
+{% assign words = content | number_of_words %}
+{% assign minutes = words | divided_by: 200 | plus: 1 %}
 
-<article class="post">
-  <br>
-  <div class="row">
-    <div class="col s11">
-      <h3 class="big_heading">{{ page.title }}</h3>
-    </div>
-    <div class="col s1 margin-top">
-      <a href="/blog"><button type="button" class="fill col" name="button"> << </button></a>
-    </div>
-  </div>
+<div class="post-progress" aria-hidden="true"><span class="post-progress-bar" data-post-progress></span></div>
 
-  <div class="date">
-    {{ page.date | date: "%B %e, %Y" }}
-  </div>
-  <div class="entry">
-    {{ content }}
-    <p class="post-footer">Thanks for reading!! Do let me know if you have any comments and feedback.</p>
-  </div>
-  {% include disqus.html %}
-  <div class="projects-bottom center-align">
-    <div class="row">
-      <div class="col m6 offset-m3 s12">
-        <div class="row">
-          <div class="col s6">
-            <a href="/blog"><button type="button" class="fill col s12" name="button">More Blogs</button></a>
-          </div>
-          <div class="col s6">
-            <button type="button" class="fill col s12" id="scroll-top" title="scroll back top" name="button">Scroll Back Top</button>
-          </div>
+<article class="post post-article">
+  <div class="post-shell">
+    <aside class="post-aside">
+      <nav class="post-toc" data-post-toc aria-label="On this page" hidden>
+        <p class="post-toc-title"><i data-lucide="list" class="site-icon" aria-hidden="true"></i> On this page</p>
+        <ul class="post-toc-list" data-post-toc-list></ul>
+      </nav>
+    </aside>
+
+    <div class="post-main">
+      <header class="post-hero" data-reveal>
+        <a href="/blog" class="post-back" aria-label="Back to blog"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> All articles</a>
+        <h1 class="post-hero-title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="post-hero-lead">{{ page.subtitle }}</p>{% endif %}
+        <div class="post-meta">
+          <i data-lucide="calendar" class="site-icon" aria-hidden="true"></i>
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          <span aria-hidden="true">·</span>
+          <i data-lucide="clock" class="site-icon" aria-hidden="true"></i>
+          <span>{{ minutes }} min read</span>
         </div>
+      </header>
+
+      <div class="entry site-prose" data-post-content data-reveal>
+        {{ content }}
+        <p class="post-footer">Thanks for reading! Let me know if you have any comments or feedback.</p>
+      </div>
+
+      {% include disqus.html %}
+
+      <div class="page-actions" data-reveal>
+        <a href="/blog" class="btn-primary"><i data-lucide="newspaper" class="site-icon" aria-hidden="true"></i> More articles</a>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
       </div>
     </div>
+  </div>
 </article>

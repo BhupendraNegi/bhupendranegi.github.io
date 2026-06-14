@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "== Checking Ruby =="
+if ! command -v ruby >/dev/null 2>&1; then
+  echo "Ruby is required. Install Ruby first, then run ./bin/setup again."
+  exit 1
+fi
+ruby -v
+
+echo "== Checking Bundler =="
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "Bundler is required. Installing Bundler..."
+  gem install bundler
+fi
+BUNDLER_VERSION_OUTPUT="$(bundle -v)"
+echo "$BUNDLER_VERSION_OUTPUT"
+LOCKED_BUNDLER_VERSION="$(awk '/BUNDLED WITH/{getline; gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print}' Gemfile.lock)"
+if [ -n "$LOCKED_BUNDLER_VERSION" ] && ! echo "$BUNDLER_VERSION_OUTPUT" | grep -q "$LOCKED_BUNDLER_VERSION"; then
+  echo "Installing Bundler $LOCKED_BUNDLER_VERSION..."
+  gem install bundler -v "$LOCKED_BUNDLER_VERSION"
+fi
+
+echo "== Installing Ruby gems =="
+bundle check || bundle install
+
+if [ -f package.json ]; then
+  echo "== Installing Node packages =="
+  if ! command -v npm >/dev/null 2>&1; then
+    echo "package.json exists, but npm is not installed. Install Node.js/npm, then run ./bin/setup again."
+    exit 1
+  fi
+  if [ -f package-lock.json ]; then
+    npm ci
+  else
+    npm install
+  fi
+fi
+
+if [ -f package.json ]; then
+  echo "== Building CSS =="
+  npm run css:build
+fi
+
+echo "== Verifying Jekyll build =="
+bundle exec jekyll build
+
+echo "== Setup complete =="
+echo "Run ./bin/dev to start the local site."

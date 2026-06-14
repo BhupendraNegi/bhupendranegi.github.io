@@ -6,6 +6,27 @@ title: React Context vs Redux vs Zustand
 -------
 Choosing the right state management tool in React depends on the complexity of your app and your specific needs. In this post, we’ll compare React Context, Redux, and Zustand using code examples and discussing their pros and cons.
 
+<figure class="post-figure">
+  <div class="post-figure-compare">
+    <div class="post-figure-step">
+      <i data-lucide="share-2" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">React Context</span>
+      <span class="post-figure-step-sub">Built-in. Best for small apps and low-frequency, theme-like state.</span>
+    </div>
+    <div class="post-figure-step">
+      <i data-lucide="layers" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Redux</span>
+      <span class="post-figure-step-sub">Predictable &amp; structured. Best for large apps with complex flows.</span>
+    </div>
+    <div class="post-figure-step">
+      <i data-lucide="zap" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Zustand</span>
+      <span class="post-figure-step-sub">Minimal global store. Best when you want power with little boilerplate.</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">Three tools, three sweet spots — pick by app size and how often state changes.</figcaption>
+</figure>
+
 ##### React Context
 React Context is a simple, built-in solution for passing state across components without prop drilling.
 

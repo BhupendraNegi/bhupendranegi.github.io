@@ -1,0 +1,15 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in site.html_pages %}{% unless page.sitemap == false or page.url == "/404.html" %}  <url>
+    <loc>{{ page.url | absolute_url | xml_escape }}</loc>
+  </url>
+{% endunless %}{% endfor %}{% for post in site.posts %}  <url>
+    <loc>{{ post.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+{% endfor %}</urlset>

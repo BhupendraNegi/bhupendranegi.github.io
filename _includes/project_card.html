@@ -1,47 +1,35 @@
-<div id="{{project.id}}" class="modal modal-fixed-footer">
+<div id="{{project.id}}" class="modal modal-fixed-footer" aria-label="{{project.title}}">
   <div class="modal-content">
     <div class="carousel carousel-slider center auto-play" data-indicators="true">
       {% for image in project.images %}
       <div class="black-text carousel-item">
         <div class="image_wrapper">
-          <img class="responsive-img project_img" src="{{image}}" alt="">
+          <img class="project_img" src="{{image}}" alt="{{project.title}} screenshot">
         </div>
       </div>
       {% endfor %}
     </div>
     <div class="project_info">
-      <div class="row">
-        <div class="col s3 m2 info_type">
-          title:
-        </div>
-        <h4 class="col s9 m10">{{project.title}}</h4>
-      </div>
-      <div class="row">
-        <div class="col s3 m2 info_type">
-          description:
-        </div>
-        <p class="description col s9 m10">{{project.description}}</p>
-      </div>
-      <div class="row">
-        <div class="col s3 m2 info_type">
-          skills:
-        </div>
-        <div class="col s9 m10">
+      <h4 class="project-modal-title">{{project.title}}</h4>
+      <p class="project-modal-desc">{{project.description}}</p>
+      {% if project.technologies %}
+        <div class="project-tech">
           {% for tech in project.technologies %}
-            <i class="devicon-{{tech}} project_icons"></i>
+            <span class="skill-chip"><i class="about_skill_icon devicon-{{ tech }}" aria-hidden="true"></i> {{ tech | split: '-' | first | capitalize }}</span>
           {% endfor %}
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
-  <div class="modal-footer center-align">
-      <div class="buttons">
-        <a class="button_wrapper" target="_blank" href="{{project.url}}"><button class="fill">Live</button></a>
-        <a class="button_wrapper" target="_blank" href="{{project.github_url}}"><button class="fill">Github</button></a>
-        <a href="" class="button_wrapper">
-          <button id="{{project.id}}" class="next fill">Next</button>
-        </a>
-      </div>
+  <div class="modal-footer project-modal-footer">
+    <div class="buttons">
+      {% if project.url %}
+        <a class="button_wrapper btn-primary" target="_blank" rel="noopener" href="{{project.url}}"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>
+      {% endif %}
+      {% if project.github_url %}
+        <a class="button_wrapper btn-ghost" target="_blank" rel="noopener" href="{{project.github_url}}"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>
+      {% endif %}
+      <button type="button" class="next btn-ghost">Next <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
+    </div>
   </div>
-</div>
 </div>
