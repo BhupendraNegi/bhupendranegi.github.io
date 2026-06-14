@@ -4,6 +4,20 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-14 — Five new Rails blog posts
+
+- Added five posts in the established post design (intro → `.post-figure`
+  diagram → `#####` sections → code cards):
+  - Reactive Rails With Hotwire (2024-07-10)
+  - Deploying Rails With Kamal 2.0 (2025-01-02)
+  - Managing Rails Secrets With SOPS (2025-03-10)
+  - Upgrading Rails 5 & 6 to Rails 8 (2025-05-22)
+  - Ruby on Rails vs Node.js vs Go (2026-01-10, comparison-style figure)
+- **Blog index now supports `tech:` / `icon:` front-matter overrides** for the
+  thumbnail, so a title like "**React**ive Rails" no longer mis-matches the React
+  logo. Set `tech: rails-plain` (Hotwire) and `tech: docker-plain` (Kamal).
+- The 13 posts now span 3 paginated pages.
+
 ## 2026-06-14 — Contact, Resume, and 404 pages
 
 - **Contact page** reworked from a lone floating form into a two-column layout
