@@ -2528,8 +2528,10 @@
   .blog-content a,
   .entry a,
   .back-link {
-    color: var(--site-accent);
-    text-decoration-color: color-mix(in srgb, var(--site-accent) 35%, transparent);
+    /* accent-strong (not accent) so inline link text clears WCAG AA on white:
+       #2563eb = 5.17:1 vs #3b82f6 = 3.68:1. */
+    color: var(--site-accent-strong);
+    text-decoration-color: color-mix(in srgb, var(--site-accent-strong) 40%, transparent);
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.18em;
   }
