@@ -6,10 +6,11 @@ Newest entries first. This complements `doc/design.md` (the plan) and
 
 ## 2026-06-14 — Post tweaks: SOPS retitle + multi-logo comparison
 
-- **Rails vs Node.js vs Go:** each comparison card now shows **three tech logos**
-  (Rails → Ruby/Rails/PostgreSQL, Node → Node.js/JavaScript/Express, Go →
-  Go/Docker/Kubernetes) via a new `.post-figure-icons` row, in accent color to
-  match the rest of the site's devicon usage.
+- **Rails vs Node.js vs Go:** each in-article comparison card now shows **three
+  tech logos** (Rails → Ruby/Rails/PostgreSQL, Node → Node.js/JavaScript/Express,
+  Go → Go/Docker/Kubernetes) via a new `.post-figure-icons` row, accent-colored.
+  The **blog-index thumbnail** for that post now shows Rails + Node.js + Go logos
+  too, via a new `techs:` (list) front-matter override + `.post-row-logos` style.
 - **SOPS post:** retitled "Managing **Rails** Secrets…" → "Managing Secrets With
   SOPS" (SOPS isn't Rails-specific), added a `subtitle:` front-matter line shown
   as a lead under the post title (new `post.subtitle` support in `post.html` +

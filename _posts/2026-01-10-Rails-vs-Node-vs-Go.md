@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ruby on Rails vs Node.js vs Go
+techs: [rails-plain, nodejs-plain, go-plain]
 ---
 
 -------

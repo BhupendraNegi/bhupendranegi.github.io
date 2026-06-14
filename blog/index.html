@@ -34,6 +34,10 @@ pagination: true
         <a class="post-row-media post-row-media--{{ variant }}" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
           {% if post.cover %}
             <img src="{{ post.cover }}" alt="" loading="lazy">
+          {% elsif post.techs %}
+            <span class="post-row-logos">
+              {% for tch in post.techs %}<i class="devicon-{{ tch }} post-row-logo" aria-hidden="true"></i>{% endfor %}
+            </span>
           {% elsif tech != "" %}
             <i class="devicon-{{ tech }} post-row-logo" aria-hidden="true"></i>
           {% else %}
