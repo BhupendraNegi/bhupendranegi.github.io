@@ -4,12 +4,14 @@ This checklist is the working plan for the `version-3` branch. Keep it updated a
 
 ### Open items at a glance (as of 2026-06-14)
 
-- Pin the Lucide version (drop `@latest`) so icons can't silently break.
-- SEO: improve per-page titles/descriptions and Open Graph defaults.
-- Add a global `box-sizing: border-box` rule (currently scoped).
-- Audit & remove the legacy `assets/css/main.css`.
-- Optimize images; review project links for dead URLs.
-- Color-contrast audit in both themes; verify real-device responsiveness.
+Done in the latest pass: pinned Lucide, SEO/OG metadata, global box-sizing,
+removed legacy `main.css`, dead-link cleanup, and the WCAG-AA contrast fixes
+(links + CTA gradient).
+
+Still open:
+
+- Optimize images (project screenshots / portrait are full-size PNGs).
+- Verify real-device responsiveness (emulated widths look fine).
 - Decide whether to keep Disqus.
 - **Manual:** switch GitHub Pages source to GitHub Actions; merge `version-3`.
 
@@ -98,7 +100,7 @@ Phase 1 notes:
 - [x] Normalize icon sizing and alignment.
 - [x] Remove unused icon libraries after migration.
 - [x] Fix missing brand icons. (2026-06-13: `lucide@latest` no longer ships `github`/`linkedin`/`twitter`, so the hero and footer social icons were rendering blank. Replaced with inline brand SVGs via `_includes/social-icon.html`.)
-- [ ] Pin the Lucide version instead of `@latest` in `_includes/scripts.html` so icons do not silently break when Lucide drops more glyphs.
+- [x] Pin the Lucide version instead of `@latest` in `_includes/scripts.html` (pinned to 1.18.0 on 2026-06-14).
 
 ## Phase 5b: "Aurora" theme overhaul (shipped)
 
@@ -161,25 +163,25 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Add skip link.
 - [x] Ensure semantic landmarks (`main`, `nav`, `footer`, sections with `aria-labelledby`).
 - [x] Ensure visible focus states (`:focus-visible` outlines on links, buttons, tags).
-- [ ] Ensure strong color contrast in both themes (not yet formally audited).
+- [x] Ensure strong color contrast in both themes (audited 2026-06-14: links use accent-strong, primary buttons use a darker CTA gradient; both clear AA).
 - [x] Respect `prefers-reduced-motion` (motion.js + version-3.js both branch on it).
 - [x] Ensure project filters expose selected state accessibly (`aria-pressed`).
 - [x] Ensure forms have clear labels and validation states (contact form: labels, `required`, `aria-live` status).
-- [ ] Add a global `box-sizing: border-box` base rule. Currently scoped to `.site-page, .site-page *`; a single global rule would cover everything and let local workarounds be removed. Verify against remaining legacy `main.css` before applying.
+- [x] Add a global `box-sizing: border-box` base rule (2026-06-14; scoped workaround removed).
 
 ## Phase 7: Performance, SEO, and Content
 
 - [x] Remove Materialize. (CDN `<link>` removed from `_includes/scripts.html` on 2026-06-13; no template used Materialize JS or bare grid classes. Legacy `assets/css/main.css` reduction continues separately.)
 - [x] Remove Highlight.js if Rouge handles code styling. (Removed on 2026-06-13; added a Rouge-generated theme in `assets/css/syntax.css`, imported into the Tailwind source, so syntax colors are now build-time with zero runtime JS.)
 - [x] Resolve the font mismatch. (2026-06-13: Inter + JetBrains Mono are loaded in `scripts.html`; also set `font-family: var(--font-sans)` on `body` so prose no longer falls back to the browser serif.)
-- [ ] Audit and remove legacy `assets/css/main.css` (~683 lines): determine what is still referenced, fold the rest into the Tailwind source, then drop the file.
+- [x] Audit and remove legacy `assets/css/main.css` (2026-06-14: ~676 lines, almost all dead; folded the live sticky-footer/`.center` rules into the Tailwind base and deleted the file).
 - [ ] Optimize images where possible.
 - [ ] Reduce external scripts where possible without removing required features.
 - [ ] Review Google Analytics behavior after navigation changes.
 - [ ] Review Disqus behavior after navigation changes.
-- [ ] Improve page titles and descriptions.
-- [ ] Improve Open Graph defaults.
-- [ ] Review project links for dead URLs.
+- [x] Improve page titles and descriptions (2026-06-14: post descriptions from excerpt/subtitle; canonical link).
+- [x] Improve Open Graph defaults (2026-06-14: og:type article for posts + article:published_time/author).
+- [x] Review project links for dead URLs (2026-06-14: removed the dead Health Tracker Heroku demo; rest verified live).
 - [ ] Add clear replacement points for future resume and screenshot updates.
 
 ## Phase 8: Launch
