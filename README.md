@@ -10,13 +10,13 @@ The site is built with Jekyll and published through GitHub Pages at:
 
 This repository contains a static portfolio site with:
 
-- A four-section animated home page for About, Projects, Blog, and Contact.
-- Portfolio project cards powered by `_data/projects.yml`.
+- An "Aurora" themed home page — a hero (name, role, social) plus featured projects and recent writing.
+- Portfolio project cards powered by `_data/projects.yml`, with filters and modals.
 - A skills section powered by `_data/skills.yml`.
-- Markdown blog posts in `_posts/`.
-- A resume page linking to `assets/images/bhupendra_resume.pdf`.
+- Markdown blog posts in `_posts/`, each with a sticky table of contents, copy-able code blocks, and an inline diagram.
+- A resume page with an inline PDF preview (`assets/images/bhupendra_resume.pdf`).
 - A contact form that submits through Formspree.
-- Light/dark theme support, lightweight Version 3 page transitions, Disqus comments, Google Translate, and Google Analytics.
+- Light/dark theme support, GSAP-driven motion, Disqus comments, Google Translate, and Google Analytics.
 
 ## Tech Stack
 
@@ -24,11 +24,12 @@ This repository contains a static portfolio site with:
 - Ruby and Bundler
 - Liquid templates
 - Markdown with Kramdown
-- Rouge and Highlight.js for code highlighting
-- Tailwind CSS CLI for Version 3 styles
-- Materialize CSS 0.100.2 as temporary legacy CSS during migration
+- Rouge for build-time code highlighting (theme in `assets/css/syntax.css`)
+- Tailwind CSS CLI for Version 3 styles (`assets/css/tailwind.css` → `assets/css/version-3.css`)
+- GSAP (ScrollTrigger, SplitText, CustomEase) for motion in `assets/js/motion.js`
 - Vanilla JavaScript in `assets/js/version-3.js`
-- Lucide UI icons and Devicon technology logos
+- Inter, JetBrains Mono, and Newsreader web fonts
+- Lucide UI icons and Devicon technology logos (brand logos are inline SVGs in `_includes/social-icon.html`)
 
 ## Repository Structure
 
@@ -41,7 +42,7 @@ This repository contains a static portfolio site with:
 ├── _posts/              # Blog posts
 ├── _sass/               # Sass sources
 ├── assets/
-│   ├── css/             # Main site stylesheet
+│   ├── css/             # Tailwind source + compiled version-3.css + syntax.css
 │   ├── images/          # Images, logos, icons, and resume PDF
 │   └── js/              # Custom JavaScript
 ├── blog/index.html      # Paginated blog listing
@@ -123,12 +124,12 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 ## Development Notes
 
 - Use `bundle exec` when running Jekyll so the locked dependencies are used.
-- Tailwind source styles live in `assets/css/tailwind.css` and compile to `assets/css/version-3.css`.
+- Tailwind source styles live in `assets/css/tailwind.css`; run `npm run css:build` to regenerate the committed `assets/css/version-3.css`. Do not hand-edit the compiled file.
 - Do not edit `_site/` directly; it is generated output.
 - Keep generated caches such as `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` out of commits.
-- JavaScript behavior lives in `assets/js/version-3.js`.
-- Page transitions use a small vanilla JavaScript layer instead of Barba.js.
-- External services include Formspree, Disqus, Google Analytics, Google Translate, CDN-hosted Materialize CSS, Highlight.js, Lucide, and Devicon.
+- JavaScript behavior lives in `assets/js/version-3.js`; GSAP motion lives in `assets/js/motion.js`.
+- Page transitions use a small vanilla JavaScript layer instead of Barba.js; jQuery has been removed.
+- External services / libraries: Formspree, Disqus, Google Analytics, Google Translate, GSAP, Lucide, and Devicon (all CDN-hosted).
 
 ## Verification
 
