@@ -48,6 +48,11 @@
     --site-gradient-start: #3b82f6;
     --site-gradient-end: #8b5cf6;
     --site-gradient: linear-gradient(120deg, var(--site-gradient-start), var(--site-gradient-end));
+    /* Darker gradient for solid CTAs only, so white button text clears WCAG AA
+       (white on #2563eb = 5.17:1, on #7c3aed = 5.70:1). The airy --site-gradient
+       above stays for the hero graphic and gradient text. Theme-independent
+       since contrast is white-vs-gradient. */
+    --site-gradient-cta: linear-gradient(120deg, #2563eb, #7c3aed);
   }
 
   [data-theme="dark"] {
@@ -591,7 +596,7 @@
 
   .btn-primary {
     color: #ffffff;
-    background: var(--site-gradient);
+    background: var(--site-gradient-cta);
     border: 0;
     box-shadow: 0 6px 20px color-mix(in srgb, var(--site-accent) 35%, transparent);
   }
