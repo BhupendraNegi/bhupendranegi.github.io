@@ -40,7 +40,9 @@
 
 - id: 3
   title: Health Tracker
-  url: https://sweetyhealthapp.herokuapp.com/
+  # Live demo retired — the old Heroku free dyno (sweetyhealthapp.herokuapp.com)
+  # is gone. Source + screenshots remain below.
+  url:
   github_url: https://github.com/BhupendraNegi/health-tracker
   description: A small Rails application to track your daily sugar levels.
   tags: [ruby, rails, javascript, postgresql, web]
