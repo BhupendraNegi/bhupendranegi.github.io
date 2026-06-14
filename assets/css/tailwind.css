@@ -3349,24 +3349,51 @@
     margin-top: 1.75rem;
   }
 
+  /* Google Translate, restyled as one clean pill. The container is just a fixed
+     anchor; all visuals live on the native <select> (.goog-te-combo): a globe on
+     the left, a custom chevron on the right, theme-aware surface. The "Powered
+     by Google" text + logo are collapsed via font-size:0 on the gadget. */
   .translate-widget {
-    background: rgb(255 255 255 / 0.94);
-    border: 1px solid var(--site-border);
-    border-radius: 0.5rem;
-    bottom: max(0.75rem, env(safe-area-inset-bottom));
-    box-shadow: var(--shadow-soft);
-    color: var(--site-text);
-    max-width: calc(100vw - 1.5rem);
-    padding: 0.4rem 0.5rem;
-    pointer-events: all !important;
     position: fixed;
-    right: 0.75rem;
-    width: min(74vw, 230px);
+    right: clamp(0.75rem, 2vw, 1.25rem);
+    bottom: max(0.85rem, env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: calc(100vw - 1.5rem);
+    pointer-events: all !important;
     z-index: 1200;
   }
 
-  [data-theme="dark"] .translate-widget {
-    background: rgb(17 19 26 / 0.94);
+  /* "Reset to English" — matches the pill; only shown while translated. */
+  .gt-reset {
+    align-items: center;
+    background: var(--site-surface);
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
+    box-shadow: var(--shadow-soft);
+    color: var(--site-accent-strong);
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font: 600 0.82rem/1 var(--font-sans);
+    gap: 0.4rem;
+    padding: 0.62rem 0.95rem;
+    transition: border-color 0.16s ease, color 0.16s ease;
+  }
+
+  .gt-reset[hidden] {
+    display: none;
+  }
+
+  .gt-reset:hover,
+  .gt-reset:focus-visible {
+    border-color: var(--site-accent-strong);
+  }
+
+  .gt-reset .site-icon {
+    height: 0.95rem;
+    width: 0.95rem;
   }
 
   .translate-widget * {
@@ -3374,38 +3401,55 @@
   }
 
   .translate-widget .goog-te-gadget {
-    color: var(--site-muted) !important;
-    font: 500 11px/1.2 var(--font-sans) !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
   }
 
   .translate-widget .goog-te-gadget > span,
-  .translate-widget .goog-te-gadget > br {
+  .translate-widget .goog-te-gadget > br,
+  .translate-widget .goog-te-gadget img,
+  .translate-widget .goog-logo-link {
     display: none !important;
   }
 
   .translate-widget .goog-te-combo {
-    background: transparent !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background-color: var(--site-surface) !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%233b82f6'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='10'/%3E%3Cpath%20d='M2%2012h20'/%3E%3Cpath%20d='M12%202a15.3%2015.3%200%200%201%204%2010%2015.3%2015.3%200%200%201-4%2010%2015.3%2015.3%200%200%201-4-10%2015.3%2015.3%200%200%201%204-10z'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2394a3b8'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left 0.8rem center, right 0.75rem center;
+    background-size: 1rem 1rem, 0.7rem 0.7rem;
     border: 1px solid var(--site-border) !important;
-    border-radius: 0.375rem;
+    border-radius: 999px !important;
+    box-shadow: var(--shadow-soft);
     color: var(--site-text) !important;
     cursor: pointer !important;
     display: block !important;
-    font: 600 0.8rem/1.2 var(--font-sans) !important;
+    font: 600 0.82rem/1 var(--font-sans) !important;
     margin: 0 !important;
-    min-height: 34px;
+    max-width: min(70vw, 220px);
     outline: none !important;
-    padding: 0.35rem 0.5rem;
-    width: 100%;
+    padding: 0.62rem 2rem 0.62rem 2.4rem !important;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  }
+
+  .translate-widget .goog-te-combo:hover {
+    border-color: var(--site-border-hover) !important;
   }
 
   .translate-widget .goog-te-combo:focus-visible {
     border-color: var(--site-accent-strong) !important;
-    box-shadow: 0 0 0 3px rgb(34 211 238 / 0.18);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--site-accent) 22%, transparent) !important;
   }
 
   .translate-widget .goog-te-combo option {
     background-color: var(--site-surface);
     color: var(--site-text);
+    font-weight: 500;
   }
 
   body.mobile-nav-open .translate-widget {
