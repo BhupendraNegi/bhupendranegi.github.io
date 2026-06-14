@@ -7,7 +7,9 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # `version-3` is here temporarily so the branch can be previewed live on the
+    # Pages URL before merging. Remove it (leave only `main`) after the merge.
+    branches: [main, version-3]
   workflow_dispatch:
 
 permissions:
