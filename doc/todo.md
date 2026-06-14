@@ -158,11 +158,11 @@ Workflow followed: one page at a time, iterating until the user approved each.
 
 ## Phase 6: Mobile and Accessibility
 
-- [ ] Verify 360px mobile layout.
-- [ ] Verify 390px mobile layout.
-- [ ] Verify 768px tablet layout.
-- [ ] Verify 1024px laptop layout.
-- [ ] Verify 1440px desktop layout.
+- [x] Verify 360px mobile layout.
+- [x] Verify 390px mobile layout.
+- [x] Verify 768px tablet layout.
+- [x] Verify 1024px laptop layout.
+- [x] Verify 1440px desktop layout.
 - [x] Add skip link.
 - [x] Ensure semantic landmarks (`main`, `nav`, `footer`, sections with `aria-labelledby`).
 - [x] Ensure visible focus states (`:focus-visible` outlines on links, buttons, tags).
@@ -179,13 +179,13 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Resolve the font mismatch. (2026-06-13: Inter + JetBrains Mono are loaded in `scripts.html`; also set `font-family: var(--font-sans)` on `body` so prose no longer falls back to the browser serif.)
 - [x] Audit and remove legacy `assets/css/main.css` (2026-06-14: ~676 lines, almost all dead; folded the live sticky-footer/`.center` rules into the Tailwind base and deleted the file).
 - [x] Optimize images (2026-06-14: removed ~900K of unreferenced images; converted the 748K home-portrait PNG to an 84K resized JPEG).
-- [ ] Reduce external scripts where possible without removing required features.
+- [x] Reduce external scripts where possible (2026-06-14: jQuery, Barba.js, Highlight.js, Materialize, and Lenis removed during the migration; dropped GSAP's CustomEase plugin by switching to the built-in `expo.out` ease. Remaining external scripts — GSAP core/ScrollTrigger/SplitText, Lucide, Analytics, Translate, Disqus — each back a kept feature).
 - [ ] Review Google Analytics behavior after navigation changes.
-- [ ] Review Disqus behavior after navigation changes.
+- [x] Review Disqus behavior after navigation changes.
 - [x] Improve page titles and descriptions (2026-06-14: post descriptions from excerpt/subtitle; canonical link).
 - [x] Improve Open Graph defaults (2026-06-14: og:type article for posts + article:published_time/author).
 - [x] Review project links for dead URLs (2026-06-14: removed the dead Health Tracker Heroku demo; rest verified live).
-- [ ] Add clear replacement points for future resume and screenshot updates.
+- [x] Add clear replacement points for future resume and screenshot updates.
 
 ## Phase 8: Launch
 
