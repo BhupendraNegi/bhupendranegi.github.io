@@ -6,6 +6,18 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-06-14 — Mobile navigation: alignment fix + modern drawer
+
+- **Alignment:** the theme toggle + hamburger now sit at the **right end** of the
+  mobile bar (`.site-nav-actions` gets `margin-left:auto` under 860px — the nav
+  list that carried the auto-margin is hidden there).
+- **Menu redesign:** the mobile menu is now a **compact, translucent (glass)
+  dropdown** that opens just below the floating navbar (not full-screen) — a
+  blurred, semi-transparent card with icon nav links and a "Toggle theme" row, no
+  "MENU" header. The hamburger swaps to an X while open; tapping outside closes
+  it. Replaces the old full-bleed divider list. (Resume is intentionally kept out
+  of the nav — `/resume/` stays reachable only by direct URL.)
+
 ## 2026-06-14 — Google Translate: cleaner UI + English reset
 
 - **UI:** restyled the widget as one clean pill on the native `.goog-te-combo`

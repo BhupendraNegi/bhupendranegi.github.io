@@ -22,30 +22,35 @@
         </button>
         <a class="nav-cta" href="/resume/">Resume</a>
         <button id="mobile-nav-toggle" type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
-          <i data-lucide="menu" class="site-icon" aria-hidden="true"></i>
+          <i data-lucide="menu" class="site-icon mobile-toggle-open" aria-hidden="true"></i>
+          <i data-lucide="x" class="site-icon mobile-toggle-close" aria-hidden="true"></i>
         </button>
       </div>
 
-      <ul class="site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
-        <li class="mobile-nav-close-row">
-          <button type="button" class="mobile-nav-close" aria-label="Close navigation menu" data-mobile-nav-close>
-            <i data-lucide="x" class="site-icon" aria-hidden="true"></i>
-          </button>
-        </li>
-        {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
-          {% assign is_active = false %}
-          {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
-          {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
-          <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ my_section[1].name }}</a></li>
-        {% endunless %}{% endfor %}
-        <li class="mobile-nav-theme-row">
+      <div class="site-mobile-nav" id="mobile-demo" aria-label="Mobile navigation" aria-hidden="true">
+        <ul class="mobile-nav-links">
+          {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
+            {% assign is_active = false %}
+            {% if page.url contains my_section[1].url %}{% assign is_active = true %}{% endif %}
+            {% if my_section[0] == 'blog' and page.layout == 'post' %}{% assign is_active = true %}{% endif %}
+            {% case my_section[0] %}
+              {% when 'about' %}{% assign sec_icon = 'user' %}
+              {% when 'projects' %}{% assign sec_icon = 'layout-grid' %}
+              {% when 'blog' %}{% assign sec_icon = 'newspaper' %}
+              {% when 'contact' %}{% assign sec_icon = 'mail' %}
+              {% else %}{% assign sec_icon = 'chevron-right' %}
+            {% endcase %}
+            <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}><i data-lucide="{{ sec_icon }}" class="site-icon" aria-hidden="true"></i><span>{{ my_section[1].name }}</span></a></li>
+          {% endunless %}{% endfor %}
+        </ul>
+        <div class="mobile-nav-foot">
           <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
             <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
-            <span class="theme-toggle-label">Theme</span>
             <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
+            <span class="theme-toggle-label">Toggle theme</span>
           </button>
-        </li>
-      </ul>
+        </div>
+      </div>
       <div class="mobile-nav-backdrop" data-mobile-nav-close hidden></div>
     </div>
   </nav>
