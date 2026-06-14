@@ -8,12 +8,15 @@ Done in the latest pass: pinned Lucide, SEO/OG metadata, global box-sizing,
 removed legacy `main.css`, dead-link cleanup, and the WCAG-AA contrast fixes
 (links + CTA gradient).
 
+Also done 2026-06-14: optimized images (removed ~900K of dead assets; home
+portrait 748K → 84K), and decided to **keep Disqus**.
+
 Still open:
 
-- Optimize images (project screenshots / portrait are full-size PNGs).
 - Verify real-device responsiveness (emulated widths look fine).
-- Decide whether to keep Disqus.
-- **Manual:** switch GitHub Pages source to GitHub Actions; merge `version-3`.
+- **Manual (user):** switch GitHub Pages source to GitHub Actions (Settings →
+  Pages → Build and deployment → Source → "GitHub Actions"); merge `version-3`
+  last, on the user's go-ahead.
 
 ## Guardrails (maintained throughout)
 
@@ -113,7 +116,7 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Phase 3 — Rebuild Home (Aurora hero: name/role/social + featured project cards + recent writing + gradient CTA; site-wide continuous gradient backdrop).
 - [x] Phase 4 — Motion: GSAP (`assets/js/motion.js` — SplitText heading intros, ScrollTrigger staggered reveals, custom ease; reduced-motion + no-GSAP fallbacks). Lenis smooth-scroll was trialed and reverted to native scroll per feedback.
 - [x] Phase 5 — Re-skin all remaining pages (About, Projects + fixed modals/filter, Blog index, Post layout, Contact, Resume, 404).
-- [x] Phase 6 — Cleanup pass: opacity-only page-enter (fixed navbar/modal stacking traps), portal project modals to `<body>`, bumped Devicon 2.15.1 → 2.16.0. (Still open: remove dead legacy `main.css`, pin Lucide version — see Remaining below.)
+- [x] Phase 6 — Cleanup pass: opacity-only page-enter (fixed navbar/modal stacking traps), portal project modals to `<body>`, bumped Devicon 2.15.1 → 2.16.0, removed dead legacy `main.css`, and pinned the Lucide version (2026-06-14).
 
 ## Per-page work under Aurora (one page at a time; see workflow rule above)
 
@@ -151,7 +154,7 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Single-post readability redesign (TOC, prose scale, code cards, diagrams).
 - [x] Diagram component (`.post-figure` flow + `.post-figure-compare`) on all posts.
 - [x] Five new posts authored.
-- [ ] Decide whether to keep Disqus.
+- [x] Decide whether to keep Disqus (2026-06-14: keeping it).
 
 ## Phase 6: Mobile and Accessibility
 
@@ -175,7 +178,7 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Remove Highlight.js if Rouge handles code styling. (Removed on 2026-06-13; added a Rouge-generated theme in `assets/css/syntax.css`, imported into the Tailwind source, so syntax colors are now build-time with zero runtime JS.)
 - [x] Resolve the font mismatch. (2026-06-13: Inter + JetBrains Mono are loaded in `scripts.html`; also set `font-family: var(--font-sans)` on `body` so prose no longer falls back to the browser serif.)
 - [x] Audit and remove legacy `assets/css/main.css` (2026-06-14: ~676 lines, almost all dead; folded the live sticky-footer/`.center` rules into the Tailwind base and deleted the file).
-- [ ] Optimize images where possible.
+- [x] Optimize images (2026-06-14: removed ~900K of unreferenced images; converted the 748K home-portrait PNG to an 84K resized JPEG).
 - [ ] Reduce external scripts where possible without removing required features.
 - [ ] Review Google Analytics behavior after navigation changes.
 - [ ] Review Disqus behavior after navigation changes.
