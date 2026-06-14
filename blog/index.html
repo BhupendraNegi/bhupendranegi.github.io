@@ -11,20 +11,39 @@ pagination: true
     <p class="page-hero-lead">Thoughts on Ruby, Rails, React, and the craft of building software.</p>
   </header>
 
-  <div class="home-writing-grid">
+  <div class="blog-list">
     {% for post in paginator.posts %}
       {% assign words = post.content | number_of_words %}
       {% assign minutes = words | divided_by: 200 | plus: 1 %}
-      <a href="{{ site.baseurl }}{{ post.url }}" class="post-card" data-reveal>
-        <span class="post-card-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-          <span aria-hidden="true">·</span>
-          <span>{{ minutes }} min read</span>
-        </span>
-        <span class="post-card-title">{{ post.title }}</span>
-        <span class="post-card-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 28 }}</span>
-        <span class="post-card-read">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></span>
-      </a>
+      {% assign t = post.title | downcase %}
+      {% assign icon = "file-text" %}
+      {% if t contains "react" %}{% assign icon = "atom" %}
+      {% elsif t contains "jekyll" %}{% assign icon = "feather" %}
+      {% elsif t contains "email" or t contains "mjml" %}{% assign icon = "mail" %}
+      {% elsif t contains "query" %}{% assign icon = "database" %}
+      {% elsif t contains "xml" or t contains "xslt" or t contains "csv" or t contains "import" %}{% assign icon = "file-code-2" %}
+      {% elsif t contains "queue" or t contains "etl" or t contains "ruby" or t contains "rails" or t contains "kiba" %}{% assign icon = "layers" %}
+      {% endif %}
+      {% assign variant = forloop.index0 | modulo: 4 %}
+      <article class="post-row" data-reveal>
+        <a class="post-row-media post-row-media--{{ variant }}" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
+          {% if post.cover %}
+            <img src="{{ post.cover }}" alt="" loading="lazy">
+          {% else %}
+            <i data-lucide="{{ icon }}" class="post-row-glyph" aria-hidden="true"></i>
+          {% endif %}
+        </a>
+        <div class="post-row-body">
+          <span class="post-card-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ minutes }} min read</span>
+          </span>
+          <h2 class="post-row-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+          <p class="post-row-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 32 }}</p>
+          <a class="post-card-read" href="{{ site.baseurl }}{{ post.url }}">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </article>
     {% endfor %}
   </div>
 

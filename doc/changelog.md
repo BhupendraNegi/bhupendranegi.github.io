@@ -4,6 +4,23 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-14 — Blog index reworked + dev-server notes
+
+- **Blog index:** replaced the multi-column post-card grid with a
+  **single-column list of horizontal rows** (thumbnail left, text right,
+  divider between), matching the Projects layout. Posts have no images, so each
+  row shows a **gradient thumbnail with a Lucide icon** chosen from keywords in
+  the title (react→atom, jekyll→feather, email→mail, query→database,
+  xml/csv/import→file-code, ruby/rails/etl/queue→layers). A `cover:` front-matter
+  field, if added to a post, overrides the placeholder with a real image.
+- **Pagination:** `paginate` lowered 10 → 5 so the 8 posts span 2 pages and the
+  Prev/1/2/Next control actually appears.
+- **Google Translate script** made `async` + explicit `https://` (was a blocking
+  protocol-relative `//` script that could stall the page-load indicator).
+- Note: a reported "site won't load with DevTools open / `ERR_INTERNET_
+  DISCONNECTED`" was **not** a site bug — it was Chrome DevTools' Network
+  throttling stuck on "Offline" (reproduced on the live GitHub Pages site too).
+
 ## 2026-06-13 — Projects page rework
 
 - **Layout (v3):** single-column list of **horizontal rows** — a bordered
