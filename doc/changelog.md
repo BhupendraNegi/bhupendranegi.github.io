@@ -1,8 +1,10 @@
 # Version 3 Changelog
 
 A dated log of meaningful changes on the `version-3` branch, with rationale.
-Newest entries first. This complements `doc/design.md` (the plan) and
-`doc/todo.md` (the checklist).
+Newest entries first. This is the record of what shipped; `doc/todo.md` tracks
+remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
+`blog-post-redesign.md` — were folded into this log and removed; they remain in
+git history if needed.)
 
 ## 2026-06-14 — Post tweaks: SOPS retitle + multi-logo comparison
 
@@ -85,7 +87,7 @@ Newest entries first. This complements `doc/design.md` (the plan) and
 - **Two-column reading layout** (`_layouts/post.html`): a sticky **table-of-
   contents rail** on the left and the article column (~720px measure) on the
   right, inside the canonical 1240px rail. Collapses to one column below 1080px
-  (the TOC hides on narrow screens). See `doc/blog-post-redesign.md`.
+  (the TOC hides on narrow screens).
 - **Table of contents** is generated client-side from the post's headings
   (`assets/js/version-3.js` → `initializePostEnhancements`): builds the list,
   ensures heading ids, two indent levels, **scroll-spy** active highlighting, and
@@ -214,7 +216,7 @@ series of consistency fixes from review feedback.
 ## 2026-06-13 — "Aurora" theme overhaul (phases 1–4)
 
 Brand-new light-first theme matching https://wassim.dev/ with richer motion like
-https://koysor.me/. Full plan in `doc/redesign-plan.md`. Replaces the rejected
+https://koysor.me/. Replaces the rejected
 full-screen/dark direction. Committed as four phases:
 
 1. Tokens + fonts — swapped the teal/ink palette for wassim's light-first tokens
@@ -266,7 +268,7 @@ pmportfolio.ca. Both replaced by the Aurora theme above.
 
 ## 2026-06-13 — Deployment hardening + legacy dependency removal
 
-Context: a review of `doc/design.md` and `doc/todo.md` against the actual repo
+Context: a review of the design plan and `doc/todo.md` against the actual repo
 surfaced a deployment mismatch and some render-blocking legacy dependencies that
 were still loading during migration. The site must keep auto-deploying to
 `https://bhupendranegi.github.io/` on push.
@@ -343,7 +345,6 @@ were still loading during migration. The site must keep auto-deploying to
   Lobster Two), but the Tailwind theme references Inter / Manrope / JetBrains Mono
   for `--font-sans` and `--font-mono`. Those families are not actually loaded, so
   body and code text fall back to system fonts. Decide whether to load the new
-  fonts or update the tokens to match what is loaded. (Relates to design.md
-  "Typography".)
+  fonts or update the tokens to match what is loaded. (Typography.)
 - `assets/css/main.css` (legacy, ~683 lines) is still loaded. Audit what of it is
   still referenced and fold the rest into the Tailwind source, then drop it.
