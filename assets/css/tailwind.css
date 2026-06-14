@@ -952,6 +952,13 @@
     width: 2.4rem;
   }
 
+  /* Tech logo (devicon) as the thumbnail "image" — white on the gradient */
+  .post-row-logo {
+    color: rgb(255 255 255 / 0.95);
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   .post-row-body {
     display: flex;
     flex-direction: column;
@@ -2576,20 +2583,82 @@
     font: italic 500 0.95rem/1.4 var(--font-sans);
   }
 
+  /* Modern pagination: text Prev/Next with arrows + round page pills */
   .pagination {
     align-items: center;
+    border-top: 1px solid var(--site-border);
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-block: 2rem;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .pagination-step {
+    align-items: center;
+    color: var(--site-text);
+    display: inline-flex;
+    font: 600 0.92rem/1 var(--font-sans);
+    gap: 0.45rem;
+    text-decoration: none;
+    transition: color 0.16s ease;
+  }
+
+  .pagination-step .site-icon {
+    height: 1rem;
+    transition: transform 0.16s ease;
+    width: 1rem;
+  }
+
+  .pagination-step[rel="prev"]:hover {
+    color: var(--site-accent);
+  }
+
+  .pagination-step[rel="prev"]:hover .site-icon {
+    transform: translateX(-3px);
+  }
+
+  .pagination-step[rel="next"]:hover {
+    color: var(--site-accent);
+  }
+
+  .pagination-step[rel="next"]:hover .site-icon {
+    transform: translateX(3px);
+  }
+
+  .pagination-step.is-disabled {
+    color: var(--site-muted);
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .pagination-pages {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .pagination-page {
+    align-items: center;
+    border-radius: 999px;
+    color: var(--site-muted);
+    display: inline-flex;
+    font: 600 0.92rem/1 var(--font-sans);
+    height: 38px;
     justify-content: center;
+    min-width: 38px;
+    text-decoration: none;
+    transition: background-color 0.16s ease, color 0.16s ease;
+  }
+
+  .pagination-page:hover {
+    background: color-mix(in srgb, var(--site-accent) 12%, transparent);
+    color: var(--site-text);
+  }
+
+  .pagination-page.is-current {
+    background: var(--site-accent);
+    color: #ffffff;
   }
 
   .resume-page {
