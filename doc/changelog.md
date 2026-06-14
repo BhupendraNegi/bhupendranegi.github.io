@@ -6,6 +6,21 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-06-14 — Analytics review + SEO structured data
+
+- **GA review:** confirmed navigation is full-page (the transition layer never
+  intercepted clicks — `isTransitionableLink` was dead code, now removed), so
+  `gtag` fires a normal pageview per load — dropping Barba didn't break tracking.
+- **GA hardening:** `analytics.html` now loads gtag **only in production**
+  (skips localhost/127.0.0.1/0.0.0.0/`*.local`), so dev/preview traffic stops
+  polluting the property; also guards a missing analytics ID.
+- **SEO structured data:** JSON-LD in the head — `BlogPosting` on posts (headline,
+  dates, author, image) and a sitewide `Person` (jobTitle + `sameAs` socials) for
+  a knowledge-panel-friendly author entity.
+- **RSS discovery:** `{% feed_meta %}` link (jekyll-feed) added to the head.
+- **Crawlability:** hand-rolled `sitemap.xml` (zero-dependency; lists pages +
+  posts with post `lastmod`, excludes 404/itself) and a `robots.txt` pointing to it.
+
 ## 2026-06-14 — Hardening: Lucide pin, SEO, box-sizing, dead CSS, a11y
 
 - **Pinned Lucide** to `1.18.0` (was `@latest`) so icons can't silently break
