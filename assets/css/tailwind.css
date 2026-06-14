@@ -68,19 +68,42 @@
     --site-gradient: linear-gradient(120deg, var(--site-gradient-start), var(--site-gradient-end));
   }
 
+  /* Global border-box. Tailwind Preflight is intentionally off, so this single
+     rule prevents `width: min(100%, Npx)` + padding containers (e.g.
+     .site-page-inner) from overflowing horizontally under the default
+     content-box. */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     background: var(--site-bg);
     color: var(--site-text);
   }
 
-  /* Body is transparent so the fixed .aurora-bg (z-index:-1) shows over the
-     html canvas instead of being hidden behind the body background. */
+  /* Body is a flex column so the footer sticks to the bottom on short pages
+     (folded in from the removed legacy main.css). Transparent so the fixed
+     .aurora-bg (z-index:-1) shows over the html canvas. */
   body {
     background: transparent;
     color: var(--site-text);
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-sans);
     line-height: 1.6;
     margin: 0;
+    min-height: 100vh;
+    min-width: 300px;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .center {
+    text-align: center;
   }
 }
 
@@ -185,10 +208,6 @@
     min-height: 100vh;
   }
 
-  .site-page,
-  .site-page * {
-    box-sizing: border-box;
-  }
 
   /* Match the home page content rail exactly (.hero / .home-section). */
   .site-page-inner {
