@@ -639,53 +639,6 @@
     });
   }
 
-  function isTransitionableLink(link, event) {
-    var rawHref = link.getAttribute('href') || '';
-
-    if (
-      isNavigating ||
-      event.defaultPrevented ||
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      !rawHref.trim() ||
-      rawHref.charAt(0) === '#' ||
-      link.classList.contains('modal-trigger') ||
-      link.classList.contains('modal-close') ||
-      link.hasAttribute('download') ||
-      link.dataset.noTransition === 'true'
-    ) {
-      return false;
-    }
-
-    if (link.target && link.target !== '_self') {
-      return false;
-    }
-
-    var url;
-    try {
-      url = new URL(rawHref, window.location.href);
-    } catch (error) {
-      return false;
-    }
-
-    if (url.origin !== window.location.origin) {
-      return false;
-    }
-
-    if (
-      url.pathname === window.location.pathname &&
-      url.search === window.location.search &&
-      url.hash
-    ) {
-      return false;
-    }
-
-    return true;
-  }
-
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }

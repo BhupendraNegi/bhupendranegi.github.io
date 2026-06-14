@@ -1,9 +1,32 @@
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+{% if site.google_analytics %}
+<!-- Google Analytics (gtag.js). Loaded only in production so local dev and
+     PR/preview traffic don't pollute the analytics property. Navigation is
+     full-page (no SPA routing), so a standard pageview fires on every load. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  (function () {
+    var host = window.location.hostname;
+    var isLocal =
+      host === 'localhost' ||
+      host === '127.0.0.1' ||
+      host === '0.0.0.0' ||
+      host === '' ||
+      host.indexOf('.local') !== -1;
 
-  gtag('config', '{{ site.google_analytics }}');
+    if (isLocal) {
+      return;
+    }
+
+    var id = '{{ site.google_analytics }}';
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', id);
+  })();
 </script>
+{% endif %}
