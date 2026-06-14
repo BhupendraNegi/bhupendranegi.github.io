@@ -199,9 +199,10 @@
   }
 
   .site-footer {
-    background: var(--site-bg-secondary);
+    background: transparent;
     border-top: 1px solid var(--site-border);
     color: var(--site-muted);
+    margin-top: clamp(2.5rem, 6vw, 4rem);
   }
 
   .site-footer-inner {
