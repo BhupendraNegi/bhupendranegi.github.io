@@ -36,12 +36,10 @@
     gsap.registerPlugin(window.ScrollTrigger);
   }
 
-  var ease = "power3.out";
-  if (window.CustomEase) {
-    gsap.registerPlugin(window.CustomEase);
-    window.CustomEase.create("aurora", "0.16, 1, 0.3, 1");
-    ease = "aurora";
-  }
+  // Built-in expo.out is visually ~identical to the old custom
+  // cubic-bezier(0.16, 1, 0.3, 1), so we use it instead of loading the
+  // CustomEase plugin (one fewer external script).
+  var ease = "expo.out";
 
   // --- Anchor links (native scroll) ------------------------------------------
   // Native browser scrolling is used (no smooth-scroll library) — it felt best
