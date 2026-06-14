@@ -43,6 +43,47 @@
   <meta name="twitter:description" content="{{ meta_description }}" />
   <meta name="twitter:image" content="{{ meta_image }}" />
 
+  <!-- RSS feed discovery (jekyll-feed) -->
+  {% feed_meta %}
+
+  <!-- Structured data (JSON-LD): a post is a BlogPosting; everything else
+       describes the site author so search engines can build a knowledge panel. -->
+  {% if page.layout == 'post' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ meta_description | strip | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "url": {{ meta_url | jsonify }},
+    "image": {{ meta_image | jsonify }},
+    "mainEntityOfPage": { "@type": "WebPage", "@id": {{ meta_url | jsonify }} },
+    "author": { "@type": "Person", "name": {{ site.name | jsonify }}, "url": {{ site.url | jsonify }} },
+    "publisher": { "@type": "Person", "name": {{ site.name | jsonify }} }
+  }
+  </script>
+  {% else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.name | jsonify }},
+    "url": {{ site.url | jsonify }},
+    "jobTitle": "Software Engineer",
+    "description": {{ meta_description | strip | jsonify }},
+    "image": {{ meta_image | jsonify }},
+    "sameAs": [
+      {{ site.github_link | jsonify }},
+      {{ site.linked_in_link | jsonify }},
+      {{ site.twitter_link | jsonify }},
+      {{ site.stackoverflow_link | jsonify }}
+    ]
+  }
+  </script>
+  {% endif %}
+
   <!-- Theme-aware favicon: black mark on light, white mark on dark -->
   <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_light.png" media="(prefers-color-scheme: dark)">
