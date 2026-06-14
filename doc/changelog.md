@@ -6,6 +6,16 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-06-14 — Google Translate: cleaner UI + English reset
+
+- **UI:** restyled the widget as one clean pill on the native `.goog-te-combo`
+  select — globe icon, custom chevron, theme-aware surface, rounded — and hid the
+  "Powered by Google" text/logo (font-size:0 on the gadget).
+- **English reset:** Google strips the page language from its own dropdown, and
+  we hide its "Show original" banner, so there was no way back. Added a small
+  "English" reset button (matching pill) that appears only while translated and
+  clears the `googtrans` cookie + reloads to restore the original.
+
 ## 2026-06-14 — Analytics review + SEO structured data
 
 - **GA review:** confirmed navigation is full-page (the transition layer never
