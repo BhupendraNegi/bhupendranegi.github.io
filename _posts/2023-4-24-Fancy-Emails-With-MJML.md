@@ -6,6 +6,29 @@ title: Fancy Emails With MJML
 -------
 In today’s fast-paced digital world, email marketing has become a vital part of business communication. Whether it’s a promotional campaign, a newsletter, or a product update, having an attractive and responsive email can make a big difference. But creating fancy emails that look good across different devices and email clients can be a headache. This is where MJML comes to the rescue.
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="code" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">MJML</span>
+      <span class="post-figure-step-sub">Clean, semantic markup</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="cog" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Compiler</span>
+      <span class="post-figure-step-sub">mjml → html</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="mail" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Responsive email</span>
+      <span class="post-figure-step-sub">Looks right everywhere</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">Write simple MJML; the compiler emits the bulletproof, table-based HTML email clients expect.</figcaption>
+</figure>
+
 ##### What is MJML?
 MJML (Mailjet Markup Language) is an open-source framework designed to help developers create responsive and visually appealing emails. It’s a powerful tool that makes crafting emails simpler, faster, and more efficient. Instead of dealing with messy HTML and complicated CSS for different email clients, MJML allows you to focus on content while the framework takes care of the layout and responsiveness.
 

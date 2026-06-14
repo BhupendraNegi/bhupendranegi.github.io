@@ -6,6 +6,35 @@ title: Getting Started With Jekyll
 -------
 `Jekyll` is a static site generator that makes building simple websites fast and easy. Whether you're creating a blog, portfolio, or project site, Jekyll provides a flexible and efficient solution. Here's why you should consider Jekyll:
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="file-text" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Markdown + Liquid</span>
+      <span class="post-figure-step-sub">Your content &amp; templates</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="cog" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Jekyll build</span>
+      <span class="post-figure-step-sub">jekyll build</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="file-code-2" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Static HTML</span>
+      <span class="post-figure-step-sub">_site/ output</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="globe" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">GitHub Pages</span>
+      <span class="post-figure-step-sub">Live, for free</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">How a Jekyll site goes from source files to a published website.</figcaption>
+</figure>
+
 ###### Why Choose Jekyll?
 1. `Speed:` Jekyll generates static HTML files, resulting in faster load times and improved performance.
 2. `No Database:` You don’t need a database. Content is stored in simple Markdown files, making the site more secure and easier to manage.
