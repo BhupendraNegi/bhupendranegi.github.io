@@ -6,6 +6,25 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-06-14 — Hardening: Lucide pin, SEO, box-sizing, dead CSS, a11y
+
+- **Pinned Lucide** to `1.18.0` (was `@latest`) so icons can't silently break
+  when Lucide drops/renames glyphs.
+- **SEO:** added a canonical link; `og:type` is `article` for posts (with
+  `article:published_time`/`author`), else `website`; meta description now derives
+  from `description` → `subtitle` → post excerpt → site default.
+- **Global `box-sizing: border-box`** base rule (Tailwind Preflight is off), and
+  removed the scoped `.site-page *` workaround.
+- **Removed legacy `assets/css/main.css`** (~676 lines, almost all dead old-home
+  CSS). Folded the only live rules — the sticky-footer `body`/`main` flex layout
+  and `.center` — into the Tailwind base; dropped the stylesheet `<link>`.
+- **Dead link:** removed the Health Tracker live URL (old Heroku free dyno is
+  gone); Code + gallery remain.
+- **Contrast (WCAG AA):** prose/UI links use `--site-accent-strong` (5.17:1 vs
+  3.68:1 on white); primary buttons use a dedicated darker `--site-gradient-cta`
+  (#2563eb → #7c3aed) so white labels pass, while the airy hero gradient is
+  unchanged.
+
 ## 2026-06-14 — Post tweaks: SOPS retitle + multi-logo comparison
 
 - **Rails vs Node.js vs Go:** each in-article comparison card now shows **three
