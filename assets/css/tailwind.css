@@ -3016,6 +3016,20 @@
     line-height: 1.4;
   }
 
+  /* A small row of tech logos (devicon) inside a comparison card, rendered in
+     the accent color to match the rest of the site's tech icons. */
+  .post-figure-icons {
+    align-items: center;
+    color: var(--site-accent);
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  .post-figure-icons i {
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
   .post-hero {
     border-bottom: 1px solid var(--site-border);
     margin-bottom: 2rem;
@@ -3028,6 +3042,13 @@
     letter-spacing: -0.02em;
     margin: 0.9rem 0 0;
     text-wrap: balance;
+  }
+
+  .post-hero-lead {
+    color: var(--site-muted);
+    font: 500 1.08rem/1.6 var(--font-sans);
+    margin: 0.7rem 0 0;
+    max-width: 60ch;
   }
 
   .post-meta {
