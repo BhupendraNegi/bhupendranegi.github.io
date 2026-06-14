@@ -180,7 +180,7 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Audit and remove legacy `assets/css/main.css` (2026-06-14: ~676 lines, almost all dead; folded the live sticky-footer/`.center` rules into the Tailwind base and deleted the file).
 - [x] Optimize images (2026-06-14: removed ~900K of unreferenced images; converted the 748K home-portrait PNG to an 84K resized JPEG).
 - [x] Reduce external scripts where possible (2026-06-14: jQuery, Barba.js, Highlight.js, Materialize, and Lenis removed during the migration; dropped GSAP's CustomEase plugin by switching to the built-in `expo.out` ease. Remaining external scripts — GSAP core/ScrollTrigger/SplitText, Lucide, Analytics, Translate, Disqus — each back a kept feature).
-- [ ] Review Google Analytics behavior after navigation changes.
+- [x] Review Google Analytics behavior after navigation changes (2026-06-14: navigation is full-page, so gtag fires per load; hardened to load only in production + added JSON-LD, sitemap.xml, robots.txt, and RSS discovery).
 - [x] Review Disqus behavior after navigation changes.
 - [x] Improve page titles and descriptions (2026-06-14: post descriptions from excerpt/subtitle; canonical link).
 - [x] Improve Open Graph defaults (2026-06-14: og:type article for posts + article:published_time/author).
