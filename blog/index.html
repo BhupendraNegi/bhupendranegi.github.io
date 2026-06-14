@@ -48,7 +48,7 @@ pagination: true
   </div>
 
   {% if paginator.total_pages > 1 %}
-    <div class="pagination" data-reveal>
+    <div class="pagination">
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev-next">&laquo; Prev</a>
       {% else %}
