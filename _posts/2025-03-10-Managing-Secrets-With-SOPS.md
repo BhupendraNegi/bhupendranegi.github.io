@@ -1,10 +1,12 @@
 ---
 layout: post
-title: Managing Rails Secrets With SOPS
+title: Managing Secrets With SOPS
+subtitle: A framework-agnostic way to encrypt secrets — shown here with a Rails app
+icon: lock-keyhole
 ---
 
 -------
-Rails ships with encrypted credentials, but they have limits: one shared key, an all-or-nothing file, and noisy diffs. [SOPS](https://github.com/getsops/sops) (Secrets OPerationS) takes a different approach — it encrypts just the **values** in a YAML/JSON/ENV file, supports multiple keys and cloud KMS, and produces diffs you can actually review. That means you can safely commit your secrets to git. Let's wire it into a Rails app.
+Secrets management is a problem in every stack, not just Rails. [SOPS](https://github.com/getsops/sops) (Secrets OPerationS) is a framework-agnostic tool that encrypts just the **values** in a YAML/JSON/ENV file, supports multiple keys and cloud KMS, and produces diffs you can actually review — so you can safely commit your secrets to git. It works with anything, but since I reach for it most often on Rails, that's the example we'll use here. Rails' own encrypted credentials are a fine starting point, but they have limits: one shared key, an all-or-nothing file, and noisy diffs — exactly what SOPS fixes.
 
 <figure class="post-figure">
   <div class="post-figure-flow">

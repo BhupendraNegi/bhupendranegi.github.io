@@ -4,6 +4,18 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-14 — Post tweaks: SOPS retitle + multi-logo comparison
+
+- **Rails vs Node.js vs Go:** each comparison card now shows **three tech logos**
+  (Rails → Ruby/Rails/PostgreSQL, Node → Node.js/JavaScript/Express, Go →
+  Go/Docker/Kubernetes) via a new `.post-figure-icons` row, in accent color to
+  match the rest of the site's devicon usage.
+- **SOPS post:** retitled "Managing **Rails** Secrets…" → "Managing Secrets With
+  SOPS" (SOPS isn't Rails-specific), added a `subtitle:` front-matter line shown
+  as a lead under the post title (new `post.subtitle` support in `post.html` +
+  `.post-hero-lead`), set the blog thumbnail to a `lock-keyhole` icon, and renamed
+  the file so the slug is `/Managing-Secrets-With-SOPS/`.
+
 ## 2026-06-14 — Five new Rails blog posts
 
 - Added five posts in the established post design (intro → `.post-figure`

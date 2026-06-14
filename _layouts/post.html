@@ -21,6 +21,7 @@ comments: true
       <header class="post-hero" data-reveal>
         <a href="/blog" class="post-back" aria-label="Back to blog"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> All articles</a>
         <h1 class="post-hero-title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="post-hero-lead">{{ page.subtitle }}</p>{% endif %}
         <div class="post-meta">
           <i data-lucide="calendar" class="site-icon" aria-hidden="true"></i>
           <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
