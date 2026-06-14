@@ -4,6 +4,82 @@ A dated log of meaningful changes on the `version-3` branch, with rationale.
 Newest entries first. This complements `doc/design.md` (the plan) and
 `doc/todo.md` (the checklist).
 
+## 2026-06-14 — Contact, Resume, and 404 pages
+
+- **Contact page** reworked from a lone floating form into a two-column layout
+  (nested at max 1060px inside the rail): a left **"Other ways to reach me"**
+  panel with tappable method cards (Email, LinkedIn, GitHub via inline brand
+  SVGs, plus a response-time note) and the form on the right. The submit button
+  is now a full-width **primary gradient CTA** ("Send message") instead of the
+  weak ghost-styled `button.fill`; added a `.btn-primary:disabled` state and
+  updated the JS busy/idle labels ("Sending…" / "Send message").
+- **Resume page** now embeds a **live, readable PDF preview** (`<object>` framed
+  as a card, ~82vh tall, with an "Open in new tab"/"Download PDF" action row and
+  a graceful fallback link) instead of a tiny card that forced a download.
+- **404 page** image now loads from the **local asset**
+  (`/assets/images/octobiwan.jpg`) instead of a fragile `github.com/...blob...?raw=true`
+  URL, and is framed with a border, radius, and soft shadow.
+
+## 2026-06-14 — Diagrams on every post + TOC card
+
+- **TOC sidebar is now a card:** `.post-aside` gets a `--site-surface` background,
+  border, radius, and soft shadow (theme-aware: white in light, dark surface in
+  dark).
+- **A relevant diagram on every post**, inserted right after each intro using the
+  reusable `.post-figure` component:
+  - Jekyll — build flow (Markdown+Liquid → Jekyll → Static HTML → GitHub Pages)
+  - CSV Import With Kiba — ETL pipeline (CSV → Source → Transform → Destination)
+  - React Query — cache flow (Component → Query cache → API/Server)
+  - XML Import With XSLT — transform flow (XML → XSLT → Output)
+  - Effortless Ruby ETL — Extract → Transform → Load
+  - Fancy Emails With MJML — MJML → Compiler → Responsive email
+  - Solid Queue — producer–consumer (Producer → Queue → Consumer)
+  - React Context vs Redux vs Zustand — a 3-up **comparison** card (new
+    `.post-figure-compare` grid variant) instead of a flow.
+  - All use Lucide icons; verified rendering in light and dark.
+- **Fixed a typo in the React post's URL:** renamed
+  `…-React-Context-Vs-Redux-Vs-Zustland.md` → `…-React-Context-vs-Redux-vs-Zustand.md`
+  (was "Zustland"). New slug `/React-Context-vs-Redux-vs-Zustand/`; old URL 404s.
+
+## 2026-06-14 — Post follow-ups: width, navbar gap, Solid Queue slug
+
+- **Full-rail width:** the post shell now fills the canonical 1240px rail
+  (`grid-template-columns: 220px minmax(0, 1fr)`, no centering) so a single post
+  matches the width of every other inner page (measured 52→1228px, same as
+  `.site-page-inner`). Was previously a centered ~930px block.
+- **Navbar gap:** added top padding to `.post-article` so the "All articles"
+  back-link clears the fixed navbar (gap ~6px → ~74px).
+- **Solid Queue slug:** renamed `2024-02-02-Solid-Queues-With-Rails.md` →
+  `…-Solid-Queue-With-Rails.md` so the URL is `/Solid-Queue-With-Rails/` (singular,
+  matching the title). The old plural URL now 404s.
+
+## 2026-06-14 — Single blog post redesigned for readability
+
+- **Two-column reading layout** (`_layouts/post.html`): a sticky **table-of-
+  contents rail** on the left and the article column (~720px measure) on the
+  right, inside the canonical 1240px rail. Collapses to one column below 1080px
+  (the TOC hides on narrow screens). See `doc/blog-post-redesign.md`.
+- **Table of contents** is generated client-side from the post's headings
+  (`assets/js/version-3.js` → `initializePostEnhancements`): builds the list,
+  ensures heading ids, two indent levels, **scroll-spy** active highlighting, and
+  smooth in-page scroll. Hidden automatically when a post has < 2 headings.
+- **Reading-progress bar** fixed to the top of the viewport, gradient fill driven
+  by article scroll position.
+- **Prose typography overhaul** (`.site-prose`): deliberate heading scale for
+  h2–h6 (these posts use h5/h6 as section titles — h5 now gets a gradient tick,
+  h6 an uppercase accent eyebrow), larger body measure (1.05rem/1.78), and styled
+  lists, blockquotes, horizontal rules, images, tables, and inline code.
+- **Code blocks** wrapped into a theme-aware `.code-card` with a header bar
+  showing the **language label** and a one-click **Copy** button (with copied
+  state). Rouge token colors (syntax.css) are preserved.
+- **Fixed the "More articles" button** rendering invisible: `.post a` (specificity
+  0,0,1,1) was overriding `.btn-primary { color:#fff }`. Prose-link colors are now
+  scoped to `.site-prose`/`.entry`/`.blog-content` so the page-action buttons keep
+  their own colors. The post title also no longer inherits the accent color.
+- **Diagram added** to "Getting Started With Jekyll": a theme-aware build-flow
+  figure (Markdown + Liquid → Jekyll build → Static HTML → GitHub Pages) via the
+  reusable `.post-figure` / `.post-figure-flow` styles.
+
 ## 2026-06-14 — Blog index reworked + dev-server notes
 
 - **Blog index:** replaced the multi-column post-card grid with a
