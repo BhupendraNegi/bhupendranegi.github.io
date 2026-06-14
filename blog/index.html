@@ -16,15 +16,18 @@ pagination: true
       {% assign words = post.content | number_of_words %}
       {% assign minutes = words | divided_by: 200 | plus: 1 %}
       {% assign t = post.title | downcase %}
-      {% assign tech = "" %}
-      {% assign icon = "file-text" %}
-      {% if t contains "react" or t contains "query" or t contains "redux" or t contains "zustand" %}{% assign tech = "react-plain" %}
-      {% elsif t contains "rails" or t contains "queue" %}{% assign tech = "rails-plain" %}
-      {% elsif t contains "ruby" or t contains "kiba" or t contains "etl" %}{% assign tech = "ruby-plain" %}
-      {% elsif t contains "jekyll" %}{% assign tech = "jekyll-plain" %}
-      {% elsif t contains "xml" or t contains "xslt" %}{% assign icon = "file-code-2" %}
-      {% elsif t contains "email" or t contains "mjml" %}{% assign icon = "mail" %}
-      {% elsif t contains "csv" or t contains "import" %}{% assign icon = "table" %}
+      {% assign tech = post.tech | default: "" %}
+      {% assign icon = post.icon | default: "file-text" %}
+      {% comment %} Per-post `tech:` / `icon:` front matter wins; otherwise infer from the title. {% endcomment %}
+      {% if tech == "" %}
+        {% if t contains "react" or t contains "query" or t contains "redux" or t contains "zustand" %}{% assign tech = "react-plain" %}
+        {% elsif t contains "rails" or t contains "queue" %}{% assign tech = "rails-plain" %}
+        {% elsif t contains "ruby" or t contains "kiba" or t contains "etl" %}{% assign tech = "ruby-plain" %}
+        {% elsif t contains "jekyll" %}{% assign tech = "jekyll-plain" %}
+        {% elsif t contains "xml" or t contains "xslt" %}{% assign icon = "file-code-2" %}
+        {% elsif t contains "email" or t contains "mjml" %}{% assign icon = "mail" %}
+        {% elsif t contains "csv" or t contains "import" %}{% assign icon = "table" %}
+        {% endif %}
       {% endif %}
       {% assign variant = forloop.index0 | modulo: 4 %}
       <article class="post-row" data-reveal>
