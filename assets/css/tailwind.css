@@ -881,6 +881,115 @@
     transform: translateX(4px);
   }
 
+  /* Blog index: single-column rows — thumbnail left, text right, divided */
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-row {
+    align-items: center;
+    border-bottom: 1px solid var(--site-border);
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+    padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .post-row:first-child {
+    padding-top: 0;
+  }
+
+  .post-row:last-child {
+    border-bottom: 0;
+  }
+
+  .post-row-media {
+    align-items: center;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--site-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .post-row-media--1 {
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+  }
+  .post-row-media--2 {
+    background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  }
+  .post-row-media--3 {
+    background: linear-gradient(135deg, #8b5cf6, #2563eb);
+  }
+
+  .post-row-media:hover,
+  .post-row-media:focus-visible {
+    box-shadow: 0 16px 40px rgb(59 130 246 / 0.22);
+    transform: translateY(-3px);
+  }
+
+  .post-row-media:focus-visible {
+    outline: 3px solid var(--site-accent-strong);
+    outline-offset: 3px;
+  }
+
+  .post-row-media img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+  }
+
+  .post-row-glyph {
+    color: rgb(255 255 255 / 0.92);
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  .post-row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .post-row-title {
+    color: var(--site-text);
+    font: 800 clamp(1.3rem, 2.5vw, 1.7rem)/1.2 var(--font-sans);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .post-row-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post-row-title a:hover {
+    color: var(--site-accent);
+  }
+
+  .post-row-excerpt {
+    color: var(--site-muted);
+    font: 400 1rem/1.65 var(--font-sans);
+    margin: 0;
+  }
+
+  .post-row-body .post-card-read {
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 620px) {
+    .post-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* CTA */
   .home-cta {
     text-align: center;
@@ -1686,7 +1795,7 @@
     box-shadow: var(--shadow-soft);
     display: block;
     overflow: hidden;
-    padding: 14px;
+    padding: 4px;
     position: relative;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
