@@ -195,5 +195,5 @@ Workflow followed: one page at a time, iterating until the user approved each.
 - [x] Update `README.md` with Version 3 commands and architecture (2026-06-14).
 - [ ] Verify GitHub Pages deployment path end-to-end.
 - [ ] **Switch the Pages source to GitHub Actions** (repo Settings → Pages → Source → "GitHub Actions"). Manual, one-time; until then the native branch build stays live.
-- [ ] Review on real mobile and desktop devices (not just emulated widths).
+- [x] Review on real mobile and desktop devices (not just emulated widths).
 - [ ] Merge `version-3` when ready.
