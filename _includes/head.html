@@ -1,13 +1,16 @@
 {% capture meta_title %}{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }} — Software Engineer{% endif %}{% endcapture %}
-{% capture meta_description %}{% if page.description %}{{ page.description }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
+{% capture meta_description %}{% if page.description %}{{ page.description }}{% elsif page.subtitle %}{{ page.subtitle }}{% elsif page.layout == 'post' %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
+{% assign meta_description = meta_description | strip %}
 {% assign meta_url = page.url | absolute_url %}
 {% assign meta_image = '/assets/images/bhupendra.png' | absolute_url %}
+{% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta http-equiv="Expires" content="600" />
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
+  <link rel="canonical" href="{{ meta_url }}" />
   <script>
     (function() {
       var t = localStorage.getItem('theme') || 'light';
@@ -24,12 +27,14 @@
   </script>
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{{ meta_type }}" />
   <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:url" content="{{ meta_url }}" />
   <meta property="og:title" content="{{ meta_title }}" />
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{{ meta_image }}" />
+  {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:author" content="{{ site.name }}" />{% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
