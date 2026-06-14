@@ -8,7 +8,12 @@
     <span class="aurora-orb aurora-orb--3"></span>
   </div>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div id="google_translate_element" class="translate-widget" aria-label="Translate this site"></div>
+  <div class="translate-widget" aria-label="Translate this site">
+    <div id="google_translate_element"></div>
+    <button type="button" id="gt-reset" class="gt-reset" hidden>
+      <i data-lucide="rotate-ccw" class="site-icon" aria-hidden="true"></i> English
+    </button>
+  </div>
 
   {% include nav.html %}
 
@@ -28,6 +33,46 @@
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
+  <!-- Reset to English. Google strips the page language from its dropdown and we
+       hide its "Show original" banner, so this clears the googtrans cookie and
+       reloads to restore the original. The button only shows while translated. -->
+  <script type="text/javascript">
+    (function () {
+      function googtrans() {
+        var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+        return m ? decodeURIComponent(m[1]) : '';
+      }
+      function isTranslated() {
+        var parts = googtrans().split('/');
+        return parts.length >= 3 && parts[2] && parts[2] !== 'en';
+      }
+      function syncReset() {
+        var btn = document.getElementById('gt-reset');
+        if (btn) { btn.hidden = !isTranslated(); }
+      }
+      function clearTranslation() {
+        var host = window.location.hostname;
+        var expired = '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+        document.cookie = 'googtrans' + expired;
+        document.cookie = 'googtrans' + expired + '; domain=' + host;
+        document.cookie = 'googtrans' + expired + '; domain=.' + host;
+      }
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#gt-reset')) { return; }
+        clearTranslation();
+        window.location.reload();
+      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncReset);
+      } else {
+        syncReset();
+      }
+      // The combo translates in place (no reload) and sets the cookie a beat
+      // later, so poll to reveal the reset button once a translation is active.
+      window.setInterval(syncReset, 1200);
+    })();
+  </script>
 </body>
 
 </html>
