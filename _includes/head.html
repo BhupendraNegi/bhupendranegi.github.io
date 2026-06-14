@@ -1,28 +1,94 @@
 {% capture meta_title %}{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }} — Software Engineer{% endif %}{% endcapture %}
-{% capture meta_description %}{% if page.description %}{{ page.description }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
+{% capture meta_description %}{% if page.description %}{{ page.description }}{% elsif page.subtitle %}{{ page.subtitle }}{% elsif page.layout == 'post' %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
+{% assign meta_description = meta_description | strip %}
+{% assign meta_url = page.url | absolute_url %}
+{% assign meta_image = '/assets/images/bhupendra.png' | absolute_url %}
+{% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta http-equiv="Expires" content="600" />
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
+  <link rel="canonical" href="{{ meta_url }}" />
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+
+      // Scroll reveals are a progressive enhancement: only arm them when JS runs
+      // and motion is allowed, so content stays visible if JS fails or the user
+      // prefers reduced motion.
+      var root = document.documentElement;
+      if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reveals');
+      }
+    })();
+  </script>
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{{ meta_type }}" />
   <meta property="og:site_name" content="{{ site.name }}" />
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:url" content="{{ meta_url }}" />
   <meta property="og:title" content="{{ meta_title }}" />
   <meta property="og:description" content="{{ meta_description }}" />
-  <meta property="og:image" content="{{ site.url }}/assets/images/bhupendra.png" />
+  <meta property="og:image" content="{{ meta_image }}" />
+  {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:author" content="{{ site.name }}" />{% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@BhupendraNegi21" />
   <meta name="twitter:title" content="{{ meta_title }}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/bhupendra.png" />
+  <meta name="twitter:image" content="{{ meta_image }}" />
 
-  <link rel="shortcut icon" type="image/jpg" href="/assets/images/Bhupendra_B_dark.png">
+  <!-- RSS feed discovery (jekyll-feed) -->
+  {% feed_meta %}
+
+  <!-- Structured data (JSON-LD): a post is a BlogPosting; everything else
+       describes the site author so search engines can build a knowledge panel. -->
+  {% if page.layout == 'post' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ meta_description | strip | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "url": {{ meta_url | jsonify }},
+    "image": {{ meta_image | jsonify }},
+    "mainEntityOfPage": { "@type": "WebPage", "@id": {{ meta_url | jsonify }} },
+    "author": { "@type": "Person", "name": {{ site.name | jsonify }}, "url": {{ site.url | jsonify }} },
+    "publisher": { "@type": "Person", "name": {{ site.name | jsonify }} }
+  }
+  </script>
+  {% else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.name | jsonify }},
+    "url": {{ site.url | jsonify }},
+    "jobTitle": "Software Engineer",
+    "description": {{ meta_description | strip | jsonify }},
+    "image": {{ meta_image | jsonify }},
+    "sameAs": [
+      {{ site.github_link | jsonify }},
+      {{ site.linked_in_link | jsonify }},
+      {{ site.twitter_link | jsonify }},
+      {{ site.stackoverflow_link | jsonify }}
+    ]
+  }
+  </script>
+  {% endif %}
+
+  <!-- Theme-aware favicon: black mark on light, white mark on dark -->
+  <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_light.png" media="(prefers-color-scheme: dark)">
+  <link rel="shortcut icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png">
   {% include scripts.html %}
+  <link rel="stylesheet" href="/assets/css/version-3.css" media="screen">
   {% include analytics.html %}
 </head>

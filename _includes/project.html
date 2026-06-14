@@ -1,12 +1,26 @@
-<div class="project row modal-trigger" tags="{{ project.tags | join: ',' }}" style="background-image: url({{project.cover}}); background-size: {{ project.size }};">
-  <div class="cover {% cycle 'left', 'right'%} col m5 s12" href="#{{project.id}}">
-    <div class="valign-wrapper">
-      <div class="col s8 offset-s2">
-        <h3>{{project.title}}</h3>
-        <!-- Trigger -->
-        <button class="fill col s12 modal-trigger" href="#{{project.id}}">learn more</button>
+<article class="project" data-tags="{{ project.tags | join: ',' }}" data-reveal>
+  <div class="proj-card project-tile">
+    <a class="project-tile-media modal-trigger" href="#{{ project.id }}" aria-label="Open gallery for {{ project.title }}">
+      <img src="{{ project.cover }}" alt="{{ project.title }} preview" loading="lazy">
+    </a>
+    <div class="proj-card-body">
+      <h3 class="proj-card-title">
+        <a href="#{{ project.id }}" class="modal-trigger project-title-link">{{ project.title }}</a>
+      </h3>
+      <p class="proj-card-desc">{{ project.description }}</p>
+      {% if project.technologies %}
+        <div class="project-tech">
+          {% for tech in project.technologies %}
+            <span class="skill-chip"><i class="about_skill_icon devicon-{{ tech }}" aria-hidden="true"></i> {{ tech | split: '-' | first | capitalize }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div class="proj-card-links">
+        <button type="button" class="proj-card-detail modal-trigger" data-modal-target="#{{ project.id }}" aria-label="Open gallery for {{ project.title }}"><i class="site-icon" data-lucide="images" aria-hidden="true"></i> View gallery</button>
+        {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+        {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
       </div>
     </div>
-    <!-- Structure -->
-    {% include project_card.html %}
-</div>
+  </div>
+  {% include project_card.html %}
+</article>

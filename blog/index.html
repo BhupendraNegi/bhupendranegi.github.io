@@ -4,53 +4,85 @@ title: Blog
 pagination: true
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
+<section class="blog-page" aria-labelledby="blog-heading">
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Writing</p>
+    <h1 id="blog-heading" class="page-hero-title" data-split>Articles &amp; <span class="tx-accent">Posts</span></h1>
+    <p class="page-hero-lead">Thoughts on Ruby, Rails, React, and the craft of building software.</p>
+  </header>
 
-<div class="posts">
-  {% for post in paginator.posts %}
-    <article class="post">
-
-      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
-      <div class="date">
-        {{ post.date | date: "%B %e, %Y" }}
-      </div>
-      <div class="entry">
-        <p>
-          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 60 }}
-        </p>
-      </div>
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more" onclick="window.location.href=this.href; return false;">Read More</a>
-    </article>
-  {% endfor %}
+  <div class="blog-list">
+    {% for post in paginator.posts %}
+      {% assign words = post.content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 | plus: 1 %}
+      {% assign t = post.title | downcase %}
+      {% assign tech = post.tech | default: "" %}
+      {% assign icon = post.icon | default: "file-text" %}
+      {% comment %} Per-post `tech:` / `icon:` front matter wins; otherwise infer from the title. {% endcomment %}
+      {% if tech == "" %}
+        {% if t contains "react" or t contains "query" or t contains "redux" or t contains "zustand" %}{% assign tech = "react-plain" %}
+        {% elsif t contains "rails" or t contains "queue" %}{% assign tech = "rails-plain" %}
+        {% elsif t contains "ruby" or t contains "kiba" or t contains "etl" %}{% assign tech = "ruby-plain" %}
+        {% elsif t contains "jekyll" %}{% assign tech = "jekyll-plain" %}
+        {% elsif t contains "xml" or t contains "xslt" %}{% assign icon = "file-code-2" %}
+        {% elsif t contains "email" or t contains "mjml" %}{% assign icon = "mail" %}
+        {% elsif t contains "csv" or t contains "import" %}{% assign icon = "table" %}
+        {% endif %}
+      {% endif %}
+      {% assign variant = forloop.index0 | modulo: 4 %}
+      <article class="post-row" data-reveal>
+        <a class="post-row-media post-row-media--{{ variant }}" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
+          {% if post.cover %}
+            <img src="{{ post.cover }}" alt="" loading="lazy">
+          {% elsif post.techs %}
+            <span class="post-row-logos">
+              {% for tch in post.techs %}<i class="devicon-{{ tch }} post-row-logo" aria-hidden="true"></i>{% endfor %}
+            </span>
+          {% elsif tech != "" %}
+            <i class="devicon-{{ tech }} post-row-logo" aria-hidden="true"></i>
+          {% else %}
+            <i data-lucide="{{ icon }}" class="post-row-glyph" aria-hidden="true"></i>
+          {% endif %}
+        </a>
+        <div class="post-row-body">
+          <span class="post-card-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ minutes }} min read</span>
+          </span>
+          <h2 class="post-row-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+          <p class="post-row-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 32 }}</p>
+          <a class="post-card-read" href="{{ site.baseurl }}{{ post.url }}">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
 
   {% if paginator.total_pages > 1 %}
-    <div class="pagination">
+    <nav class="pagination" aria-label="Blog pages">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev-next">&laquo; Prev</a>
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-step" rel="prev"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Previous</a>
       {% else %}
-        <span class="pagination-disabled prev-next">&laquo; Prev</span>
+        <span class="pagination-step is-disabled"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Previous</span>
       {% endif %}
 
       <div class="pagination-pages">
         {% for page in (1..paginator.total_pages) %}
           {% if page == paginator.page %}
-            <span class="pagination-current">{{ page }}</span>
+            <span class="pagination-page is-current" aria-current="page">{{ page }}</span>
           {% elsif page == 1 %}
-            <a href="{{ '/blog/' | relative_url }}" class="pagination-link">{{ page }}</a>
+            <a href="{{ '/blog/' | relative_url }}" class="pagination-page">{{ page }}</a>
           {% else %}
-            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-link">{{ page }}</a>
+            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-page">{{ page }}</a>
           {% endif %}
         {% endfor %}
       </div>
 
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link prev-next">Next &raquo;</a>
+        <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-step" rel="next">Next <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></a>
       {% else %}
-        <span class="pagination-disabled prev-next">Next &raquo;</span>
+        <span class="pagination-step is-disabled">Next <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></span>
       {% endif %}
-    </div>
+    </nav>
   {% endif %}
-
-</div>
-
-
+</section>

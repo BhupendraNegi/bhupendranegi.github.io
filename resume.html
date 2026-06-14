@@ -1,34 +1,32 @@
 ---
 layout: site_layout
-quote: The challenge of life, I have found, is to build a resume that doesn't simply tell a story about what you want to be, but it's a story about who you want to be.
-author: Oprah Winfrey
 ---
 
-{% include quote.html quote=page.quote author=page.author %}
+<section class="resume-page" aria-labelledby="resume-heading">
+  <header class="page-hero page-hero--center" data-reveal>
+    <p class="page-hero-eyebrow">Resume</p>
+    <h1 id="resume-heading" class="page-hero-title" data-split>My <span class="tx-accent">resume</span></h1>
+    <p class="page-hero-lead">A snapshot of my experience, skills, and the work I've shipped over the years.</p>
+  </header>
 
+  <div class="resume-actions" data-reveal>
+    <a class="btn-primary" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="Open the resume PDF" target="_blank" rel="noopener">
+      <i data-lucide="external-link" class="site-icon" aria-hidden="true"></i> Open in new tab
+    </a>
+    <a class="btn-ghost" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" download>
+      <i data-lucide="download" class="site-icon" aria-hidden="true"></i> Download PDF
+    </a>
+  </div>
 
-<div class="container">
-  <h2 class="heading big_heading center">Resume</h2>
-</div>
-<div class="row resume-wrapper">
-  <a href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="click to open in pdf viewer" target="_blank">
-    <button class="fill col s8 offset-s2 m4 offset-m4">View as pdf</button>
-  </a>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+  <div class="resume-viewer site-card" data-reveal>
+    <object class="resume-embed" data="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-label="Bhupendra Negi resume preview">
+      <div class="resume-fallback">
+        <span class="resume-card-icon" aria-hidden="true"><i data-lucide="file-text" class="site-icon"></i></span>
+        <p>Your browser can't display the PDF inline.</p>
+        <a class="btn-primary" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" target="_blank" rel="noopener">
+          <i data-lucide="external-link" class="site-icon" aria-hidden="true"></i> Open the resume
+        </a>
+      </div>
+    </object>
+  </div>
+</section>

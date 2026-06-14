@@ -6,6 +6,29 @@ title: Effortless Ruby ETL
 -------
 Have you ever wondered how raw data gets transformed into something meaningful and useful? Whether you're migrating a database, cleaning up messy data, or synchronizing information between systems, you've likely been doing ETL (Extract-Transform-Load) without even realizing it!
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="download" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Extract</span>
+      <span class="post-figure-step-sub">CSV · database · API</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="wand-2" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Transform</span>
+      <span class="post-figure-step-sub">Clean · filter · reshape</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Load</span>
+      <span class="post-figure-step-sub">DB · report · dashboard</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">Every ETL job is the same three moves — pull it in, polish it, put it somewhere useful.</figcaption>
+</figure>
+
 ##### What is ETL?
 1. `Extract:` The first step is like being a data detective—you gather data from various sources. Whether it's a CSV file, a database, or even an API, your mission is to pull in all the information you need.
 

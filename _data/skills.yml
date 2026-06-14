@@ -4,10 +4,14 @@
       skill_name: Ruby
     - class: javascript-plain
       skill_name: JavaScript
-    - class: python-plain
-      skill_name: Python
+    - class: typescript-plain
+      skill_name: TypeScript
     - class: java-plain
       skill_name: Java
+    - class: python-plain
+      skill_name: Python
+    - class: cplusplus-plain
+      skill_name: C++
 
 - name: Backend Frameworks
   skills:

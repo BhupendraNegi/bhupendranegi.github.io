@@ -6,6 +6,29 @@ title: Solid Queue With Rails
 -------
 In a world where applications need to handle thousands of tasks efficiently, job queues are the unsung heroes. They help process background tasks, ensuring your application stays responsive while heavy lifting happens in the background. One such solution that stands out is Solid Queue.
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Producer</span>
+      <span class="post-figure-step-sub">Rails enqueues a job</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="layers" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Queue</span>
+      <span class="post-figure-step-sub">Durable, DB-backed store</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="cpu" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Consumer</span>
+      <span class="post-figure-step-sub">Workers run jobs concurrently</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">Solid Queue's producer–consumer model keeps the web request fast while workers do the heavy lifting.</figcaption>
+</figure>
+
 ##### Why Solid Queue is Fast
 
 `1. Lightweight and Minimal Overhead:` Solid Queue avoids unnecessary complexity by focusing on core job queuing. Its lightweight design ensures it has minimal impact on your system resources. Unlike some heavy queuing systems, Solid Queue doesn’t add extra bloat to your stack.

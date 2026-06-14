@@ -6,6 +6,35 @@ title: CSV Import With Kiba
 -------
 CSV (Comma-Separated Values) files are widely used for data exchange, and importing them efficiently in Ruby on Rails can be streamlined with the kiba gem. Kiba is a powerful tool for building ETL (Extract, Transform, Load) pipelines, making it an excellent choice for handling CSV imports.
 
+<figure class="post-figure">
+  <div class="post-figure-flow">
+    <div class="post-figure-step">
+      <i data-lucide="file-spreadsheet" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">CSV file</span>
+      <span class="post-figure-step-sub">Raw rows</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="download" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Source</span>
+      <span class="post-figure-step-sub">Extract each row</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="wand-2" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Transform</span>
+      <span class="post-figure-step-sub">Clean &amp; map fields</span>
+    </div>
+    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-step">
+      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      <span class="post-figure-step-label">Destination</span>
+      <span class="post-figure-step-sub">Load into the DB</span>
+    </div>
+  </div>
+  <figcaption class="post-figure-caption">A Kiba ETL pipeline: every CSV row flows from source, through transforms, into your database.</figcaption>
+</figure>
+
 ##### Why Use Kiba for CSV Imports?
 
 The kiba gem simplifies the process of importing and processing CSV files by:

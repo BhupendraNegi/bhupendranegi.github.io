@@ -1,14 +1,12 @@
-<a href={{include.section.url}} class="homepage-section glitch col s12 {{include.section.class}}">
-  <div class="glitch__img {{include.section.class}}__bkgrnd"></div>
-  <div class="glitch__img {{include.section.class}}__bkgrnd"></div>
-  <div class="glitch__img {{include.section.class}}__bkgrnd"></div>
-  <div class="glitch__img {{include.section.class}}__bkgrnd"></div>
-  <div class="glitch__img {{include.section.class}}__bkgrnd"></div>
-  <div class="box valign-wrapper">
-    <div class="row col s12 m12 l12">
-      <h3 class="col s12 m12 l12 home_heading">{{ include.section.heading }}</h3>
-      <p class="col s12 words">{{ include.section.words }}</p>
-    </div>
-  </div>
-  <div class="{{include.section.border}}-border my-borders"></div>
+<a id="panel-{{ include.section.class }}" href="{{ include.section.url }}" class="home-panel home-panel--link home-panel--{{ include.section.class }}">
+  <span class="home-panel-bg" aria-hidden="true"></span>
+  <span class="home-panel-overlay" aria-hidden="true"></span>
+  <span class="home-panel-content">
+    {% if include.index %}<span class="home-panel-index" data-reveal aria-hidden="true">{{ include.index }}</span>{% endif %}
+    <span class="home-panel-heading" data-reveal>{{ include.section.heading }}</span>
+    <span class="home-panel-words" data-reveal>{{ include.section.words }}</span>
+    <span class="home-panel-cta" data-reveal>
+      Explore {{ include.section.name }} <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i>
+    </span>
+  </span>
 </a>
