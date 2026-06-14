@@ -2,7 +2,6 @@
   var activeModal = null;
   var previousFocus = null;
   var modalOverlay = null;
-  var isNavigating = false;
   // Project modals in document order, captured before any get portalled to
   // <body> on open (so the "Next" button can still cycle through them).
   var projectModals = [];
@@ -687,7 +686,6 @@
     document.documentElement.dataset.version3TransitionsBound = 'true';
 
     window.addEventListener('pageshow', function() {
-      isNavigating = false;
       document.documentElement.classList.remove('v3-page-leaving', 'is-leaving');
       document.documentElement.classList.add('v3-page-ready');
     });
