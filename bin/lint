@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+#
+# Lints every source file type in the repo with the right tool for each:
+#
+#   JavaScript  -> ESLint        (assets/js, *.mjs)
+#   CSS         -> Stylelint     (assets/css/tailwind.css, syntax.css)
+#   Markdown    -> markdownlint  (_posts, doc, *.md)
+#   JSON / YAML -> Prettier      (_config.yml, _data, package.json, ...)
+#   Built HTML  -> html-proofer  (_site: links, images, markup)
+#
+# Usage:
+#   bin/lint            Check everything (builds the site for html-proofer)
+#   bin/lint --fix      Auto-fix what each tool can, then re-check
+#   bin/lint --quick    Skip the Jekyll build + html-proofer (fast feedback)
+#   bin/lint --help     Show this help
+#
+# Exits non-zero if any check fails. See AGENT.md "Linting" for details.
+
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+FIX=0
+RUN_HTML=1
+
+for arg in "$@"; do
+  case "$arg" in
+    --fix) FIX=1 ;;
+    --quick|--no-html) RUN_HTML=0 ;;
+    -h|--help)
+      sed -n '3,/Exits non-zero/p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $arg (try --help)"
+      exit 2
+      ;;
+  esac
+done
+
+failures=()
+
+section() {
+  printf '\n\033[1m── %s\033[0m\n' "$1"
+}
+
+record() {
+  # record <name> <exit-code>
+  if [ "$2" -eq 0 ]; then
+    printf '\033[32m✓ %s\033[0m\n' "$1"
+  else
+    printf '\033[31m✗ %s\033[0m\n' "$1"
+    failures+=("$1")
+  fi
+}
+
+# --- JavaScript (ESLint) -----------------------------------------------------
+section "JavaScript — ESLint"
+if [ "$FIX" -eq 1 ]; then
+  npx eslint . --fix
+else
+  npx eslint .
+fi
+record "ESLint" $?
+
+# --- CSS (Stylelint) ---------------------------------------------------------
+section "CSS — Stylelint"
+CSS_SOURCES=(assets/css/tailwind.css assets/css/syntax.css)
+if [ "$FIX" -eq 1 ]; then
+  npx stylelint "${CSS_SOURCES[@]}" --fix
+  css_status=$?
+  # Regenerate the committed, minified bundle after fixing the source.
+  npm run css:build >/dev/null
+else
+  npx stylelint "${CSS_SOURCES[@]}"
+  css_status=$?
+fi
+record "Stylelint" $css_status
+
+# --- Markdown (markdownlint) -------------------------------------------------
+section "Markdown — markdownlint"
+if [ "$FIX" -eq 1 ]; then
+  npx markdownlint-cli2 --fix
+else
+  npx markdownlint-cli2
+fi
+record "markdownlint" $?
+
+# --- JSON / YAML (Prettier) --------------------------------------------------
+section "JSON / YAML — Prettier"
+if [ "$FIX" -eq 1 ]; then
+  npx prettier --write "**/*.{json,yml,yaml}"
+else
+  npx prettier --check "**/*.{json,yml,yaml}"
+fi
+record "Prettier" $?
+
+# --- Built HTML (html-proofer) -----------------------------------------------
+if [ "$RUN_HTML" -eq 1 ]; then
+  section "Built HTML — html-proofer"
+  if npm run build >/dev/null 2>&1; then
+    bundle exec htmlproofer ./_site \
+      --disable-external \
+      --allow-hash-href \
+      --ignore-empty-alt \
+      --no-enforce-https
+    record "html-proofer" $?
+  else
+    echo "Jekyll build failed — run 'npm run build' to see the error."
+    record "html-proofer (build)" 1
+  fi
+else
+  printf '\n(skipping html-proofer — pass without --quick to run it)\n'
+fi
+
+# --- Summary -----------------------------------------------------------------
+printf '\n\033[1m── Summary\033[0m\n'
+if [ "${#failures[@]}" -eq 0 ]; then
+  printf '\033[32mAll checks passed.\033[0m\n'
+  exit 0
+else
+  printf '\033[31mFailed: %s\033[0m\n' "${failures[*]}"
+  exit 1
+fi

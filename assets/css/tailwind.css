@@ -34,9 +34,9 @@
     --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
     --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
-    --site-bg: #ffffff;
+    --site-bg: #fff;
     --site-bg-secondary: #f8f9fa;
-    --site-surface: #ffffff;
+    --site-surface: #fff;
     --site-text: #1a1a2e;
     --site-muted: #64748b;
     --site-border: #e2e8f0;
@@ -269,7 +269,7 @@
   .site-footer-icon-link:focus-visible {
     background: var(--site-accent);
     border-color: var(--site-accent);
-    color: #ffffff;
+    color: #fff;
     transform: translateY(-1px);
   }
 
@@ -595,7 +595,7 @@
   }
 
   .btn-primary {
-    color: #ffffff;
+    color: #fff;
     background: var(--site-gradient-cta);
     border: 0;
     box-shadow: 0 6px 20px color-mix(in srgb, var(--site-accent) 35%, transparent);
@@ -1223,7 +1223,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    color: #ffffff;
+    color: #fff;
     background: var(--site-gradient);
     font: 600 0.85rem/1 var(--font-sans);
     padding: 0.6rem 1.1rem;
@@ -1552,7 +1552,7 @@
     align-items: center;
     background: var(--site-gradient);
     border-radius: 12px;
-    color: #ffffff;
+    color: #fff;
     display: inline-flex;
     height: 40px;
     justify-content: center;
@@ -2304,14 +2304,14 @@
   .active_tag {
     background: var(--site-accent) !important;
     border-color: var(--site-accent) !important;
-    color: #ffffff !important;
+    color: #fff !important;
   }
 
   .tag[aria-pressed="true"] .about_skill_icon,
   .tag[aria-pressed="true"] .site-icon,
   .active_tag .about_skill_icon,
   .active_tag .site-icon {
-    color: #ffffff;
+    color: #fff;
   }
 
   .tag-clear .site-icon {
@@ -2401,7 +2401,7 @@
     background: rgb(8 9 13 / 0.72);
     border: 1px solid rgb(248 250 252 / 0.22) !important;
     border-radius: 999px;
-    color: #ffffff;
+    color: #fff;
     cursor: pointer;
     display: inline-flex;
     font: 800 1rem/1 var(--font-sans);
@@ -2507,7 +2507,7 @@
     background: rgb(8 9 13 / 0.72);
     border: 1px solid rgb(248 250 252 / 0.2) !important;
     border-radius: 999px;
-    color: #ffffff;
+    color: #fff;
     display: inline-flex;
     font: 800 0.85rem/1 var(--font-sans);
     height: 34px;
@@ -3237,7 +3237,7 @@
 
   .pagination-page.is-current {
     background: var(--site-accent);
-    color: #ffffff;
+    color: #fff;
   }
 
   .resume-actions {
@@ -3284,7 +3284,7 @@
     background: var(--site-gradient);
     border-radius: 18px;
     box-shadow: 0 16px 40px rgb(59 130 246 / 0.28);
-    color: #ffffff;
+    color: #fff;
     display: inline-flex;
     height: 64px;
     justify-content: center;

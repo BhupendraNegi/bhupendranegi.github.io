@@ -51,8 +51,6 @@ Solid Queue operates on a producer-consumer model: This separation ensures that 
 
 `Consumer:` Worker threads fetch and execute tasks from the queue.
 
-
-
 ##### Implementation
 
 ##### Install the Gem
@@ -76,12 +74,13 @@ SolidQueue.configure do |config|
   config.retry_attempts = 3  # Retry failed jobs 3 times
 end
 ```
-Here, you configure the number of workers (threads), logging, and retry attempts. You can add more configurations based on your application’s needs.
 
+Here, you configure the number of workers (threads), logging, and retry attempts. You can add more configurations based on your application’s needs.
 
 ##### Define Your Jobs
 
 Create a directory for your jobs (e.g., app/jobs). Then, define your job classes. Each job must implement a perform method:
+
 ```ruby
 class MyBackgroundJob
   def perform(data)
@@ -121,6 +120,7 @@ class ComplexJob
   end
 end
 ```
+
 This structure ensures that your code remains readable and maintainable.
 
 ##### Enqueue Jobs
@@ -152,11 +152,13 @@ class UsersController < ApplicationController
   end
 end
 ```
+
 Here, both a simple and a complex job are triggered after a user is successfully created.
 
 ##### Start the Workers
 
 Solid Queue includes a worker manager to process jobs. Start the workers using the Rails runner:
+
 ```ruby
 rails runner "SolidQueue.start"
 ```
@@ -259,8 +261,8 @@ class FailedJobsController < ApplicationController
 end
 ```
 
-
 ##### Best Practices with Solid Queue
+
 `Use Idempotent Jobs:` Ensure that your jobs can run multiple times without adverse effects. For example, check for the existence of a record before creating it.
 
 `Prioritize and Categorize Jobs:` Use job priorities or categories to ensure critical tasks are executed first while others are queued.

@@ -30,6 +30,7 @@ Have you ever wondered how raw data gets transformed into something meaningful a
 </figure>
 
 ##### What is ETL?
+
 1. `Extract:` The first step is like being a data detective—you gather data from various sources. Whether it's a CSV file, a database, or even an API, your mission is to pull in all the information you need.
 
 2. `Transform:` Next, the fun part—transforming the data! This is where you clean, filter, and reformat your data into a shiny, polished version. It’s like giving your data a makeover so it’s ready for action.
@@ -40,20 +41,17 @@ Have you ever wondered how raw data gets transformed into something meaningful a
 
 Ruby is a fantastic language for building ETL processes because it’s simple, powerful, and flexible. And with the Kiba gem, you can create robust ETL pipelines with ease. Let’s walk through a basic example of how to implement ETL using Kiba.
 
-
 ##### Setting Up Kiba
+
 -------
 
-
 First, you'll need to install the Kiba gem. Add it to your Gemfile:
-
 
 ```ruby
 gem 'kiba'
 ```
 
 Then, run bundle install to install the gem.
-
 
 ##### Building Your ETL Pipeline
 
@@ -119,6 +117,7 @@ Kiba.run(ETLJob)
 Once the job runs successfully, your data will be extracted from the CSV file, transformed to ensure consistency, and loaded into the SQLite database—all with just a few lines of Ruby code!
 
 ##### What we learnt?
+
 ETL is a powerful process that turns raw data into valuable insights, and with Ruby and the Kiba gem, you can create your own ETL pipelines with ease. Whether you're working on a small project or handling large-scale data processing, Ruby gives you the tools to get the job done efficiently.
 
 So the next time you’re working with data in Ruby, remember: with Kiba, you’re just a few steps away from turning your data into gold!

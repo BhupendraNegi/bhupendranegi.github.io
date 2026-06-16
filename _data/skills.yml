@@ -44,8 +44,6 @@
     - class: jquery-plain
       skill_name: jQuery
 
-
-
 - name: Databases
   skills:
     - class: mysql-plain
@@ -56,7 +54,6 @@
       skill_name: MongoDB
     - class: oracle-original
       skill_name: Oracle
-      
 
 - name: Devops
   skills:
@@ -70,7 +67,6 @@
       skill_name: Terraform
     - class: amazonwebservices-plain
       skill_name: Amazon Web Services
-      
 
 - name: Testing
   skills:

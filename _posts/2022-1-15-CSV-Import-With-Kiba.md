@@ -50,6 +50,7 @@ The kiba gem simplifies the process of importing and processing CSV files by:
 ##### Setting Up Kiba in Rails
 
 Add kiba to your Gemfile and run bundle install:
+
 ```ruby
 gem 'kiba'
 ```
@@ -86,9 +87,11 @@ class CsvImportJob
   end
 end
 ```
+
 ##### Trigger the Job
 
 Create a service object to execute the Kiba job. Add a file app/services/csv_importer.rb:
+
 ```ruby
 
 class CsvImporter
@@ -101,11 +104,13 @@ end
 ##### Create a Controller for Importing
 
 Generate a controller to handle CSV imports:
+
 ```ruby
 rails generate controller Imports
 ```
 
 In app/controllers/imports_controller.rb, add the following code:
+
 ```ruby
 class ImportsController < ApplicationController
   def create
@@ -123,6 +128,7 @@ end
 ##### Set Up Routes
 
 Add a route for the import action in config/routes.rb:
+
 ```ruby
 Rails.application.routes.draw do
   post 'imports', to: 'imports#create'
@@ -132,6 +138,7 @@ end
 ##### Create a View for File Upload (Optional)
 
 If you want a front-end interface for uploading CSV files, create a simple form in app/views/imports/new.html.erb:
+
 ```ruby
 <%= form_with url: imports_path, local: true, multipart: true do |form| %>
   <div>
@@ -148,11 +155,13 @@ If you want a front-end interface for uploading CSV files, create a simple form 
 ##### Testing the Implementation
 
 Start the Rails server:
+
 ```bash
 rails server
 ```
 
 Upload a CSV file using the form or use a tool like curl to test the endpoint:
+
 ```bash
 curl -F "file=@products.csv" http://localhost:3000/imports
 ```
@@ -172,6 +181,3 @@ With Kiba, you can handle advanced requirements, such as:
 ##### Conclusion
 
 The kiba gem is a robust and flexible tool for building CSV import pipelines in Rails. By leveraging its modular design, you can efficiently handle complex data transformations while keeping your code clean and maintainable. Start using Kiba today to supercharge your data imports!
-
-
-

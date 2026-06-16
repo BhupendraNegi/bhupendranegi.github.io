@@ -30,9 +30,11 @@ In today’s fast-paced digital world, email marketing has become a vital part o
 </figure>
 
 ##### What is MJML?
+
 MJML (Mailjet Markup Language) is an open-source framework designed to help developers create responsive and visually appealing emails. It’s a powerful tool that makes crafting emails simpler, faster, and more efficient. Instead of dealing with messy HTML and complicated CSS for different email clients, MJML allows you to focus on content while the framework takes care of the layout and responsiveness.
 
 ##### Why Do You Need MJML?
+
 `Responsive Design Made Easy:` MJML’s key strength is its ability to create emails that automatically adapt to various screen sizes. It ensures that your emails look great on both desktops and mobile devices without the need for complicated media queries.
 
 `Cross-Client Compatibility:` Emails often render differently across email clients (Gmail, Outlook, etc.). MJML’s framework handles the inconsistencies across these platforms, ensuring a consistent look.
@@ -43,13 +45,14 @@ MJML (Mailjet Markup Language) is an open-source framework designed to help deve
 
 `Open Source:` MJML is free to use, and it’s continuously updated by a community of developers.
 
-
 ##### How Does MJML Work?
+
 MJML works by letting you write in a custom markup language that’s easier to understand than traditional HTML. You then use the MJML engine (available as an online tool, Node.js library, or even through plugins for different code editors) to compile it into responsive HTML code ready for emails.
 
 Let’s break down the structure a little. MJML has tags like  `<mj-section>, <mj-column>, <mj-text>,` and `<mj-button>`  to create sections, columns, text blocks, and buttons. You don’t need to worry about complex CSS to make these elements look good on different devices.
 
 ##### MJML Example:
+
 Let’s take a look at a professional, well-designed email using MJML, perfect for a Product Launch or Special Offer campaign. This example will demonstrate how to create an engaging, visually appealing email with clear branding, a call-to-action, and mobile responsiveness.
 
 ```html
@@ -117,7 +120,6 @@ Let’s take a look at a professional, well-designed email using MJML, perfect f
 </mjml>
 ```
 
-
 ##### Benefits of Using MJML
 
 `Responsive Layout:` This email will adapt to different screen sizes and devices (mobile, tablet, and desktop). The content will look great no matter where it’s viewed.
@@ -128,8 +130,8 @@ Let’s take a look at a professional, well-designed email using MJML, perfect f
 
 `Cross-Client Compatibility:` With MJML, you don’t need to worry about rendering issues across different email clients like Gmail, Yahoo, Outlook, and Apple Mail.
 
-
 ##### Conclusion
+
 MJML makes designing responsive, beautiful emails a breeze. Whether you're a beginner or a seasoned developer, it simplifies the email creation process while ensuring high-quality results. The best part? You don’t need to worry about the headache of making your email look good on every device and email client, as MJML handles that for you.
 
 `Give it a try:` You can start using MJML right now by visiting their official site, where you can write, test, and compile your emails directly online!

@@ -36,6 +36,7 @@ title: Getting Started With Jekyll
 </figure>
 
 ###### Why Choose Jekyll?
+
 1. `Speed:` Jekyll generates static HTML files, resulting in faster load times and improved performance.
 2. `No Database:` You don’t need a database. Content is stored in simple Markdown files, making the site more secure and easier to manage.
 3. `Customizable:` Full control over the site layout, themes, and structure. You can create dynamic content with Liquid templating.
@@ -44,12 +45,15 @@ title: Getting Started With Jekyll
 ##### Getting Started with Jekyll
 
 ##### Install Jekyll
+
 Make sure you have Ruby installed, then install Jekyll with:
 
 ```bash
 gem install jekyll bundler
 ```
+
 ##### Create a New Site
+
 Run the following command to create a new Jekyll project:
 
 ```bash
@@ -57,17 +61,20 @@ Copy code
 jekyll new my-awesome-site
 cd my-awesome-site
 ```
+
 This creates a new directory with the necessary files.
 
 ##### Directory Structure
+
 Here’s what you’ll see:
+
 - `_config.yml:` Configuration file for your site settings.
 - `_posts/:` Folder for your blog posts. Each post is a Markdown file.
 - `_layouts/:` Templates that define the structure of pages and posts.
 - `index.md:` The homepage.
 
-
 ##### The Gemfile
+
 In your newly created Jekyll site, you'll notice a Gemfile. This file is used by Bundler to manage the Ruby gems (libraries) your site depends on. Gems are packages that extend Jekyll's functionality, and the Gemfile ensures the right versions of these gems are installed.
 
 Here’s a simple Gemfile:
@@ -88,6 +95,7 @@ bundle install
 ```
 
 ##### Customize Your Site
+
 Open `_config.yml` and add details like your site’s title:
 
 ```yaml
@@ -98,6 +106,7 @@ theme: minima
 ```
 
 ##### Layouts: Understanding Templates
+
 Jekyll uses layouts to define the structure of your pages and posts. Layouts are stored in the _layouts/ directory. For example, the default layout file is default.html.
 
 A typical layout might look like this:
@@ -128,6 +137,7 @@ A typical layout might look like this:
 You can also create custom layouts for different page types, such as a post layout in _layouts/post.html for blog posts.
 
 ##### Create Your First Post
+
 Create a new post in the _posts/ folder with the filename 2024-12-22-my-first-post.md. Inside the file:
 
 ```bash
@@ -140,15 +150,17 @@ Welcome to my first post on Jekyll!
 ```
 
 ##### Preview Your Site
+
 Run this command to see your site locally:
 
 ```bash
 bundle exec jekyll serve
 ```
+
 Your site will be available at `http://localhost:4000`
 
-
 ##### Deploy on GitHub Pages
+
 Once you’ve finished customizing your site, you can easily deploy it on GitHub Pages.
 
 - Push your project to a GitHub repository.

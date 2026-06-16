@@ -6,10 +6,23 @@
     "css:build": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --minify",
     "css:watch": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --watch",
     "dev": "./bin/dev",
-    "setup": "./bin/setup"
+    "setup": "./bin/setup",
+    "lint": "./bin/lint",
+    "lint:fix": "./bin/lint --fix",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint assets/css/tailwind.css assets/css/syntax.css",
+    "lint:md": "markdownlint-cli2",
+    "lint:data": "prettier --check \"**/*.{json,yml,yaml}\""
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.0",
+    "eslint": "^10.5.0",
+    "globals": "^17.6.0",
+    "markdownlint-cli2": "^0.22.1",
+    "prettier": "^3.8.4",
+    "stylelint": "^17.13.0",
+    "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4.3.0"
   }
 }

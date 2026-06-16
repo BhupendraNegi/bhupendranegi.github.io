@@ -1,0 +1,25 @@
+{
+  // Markdown linting for blog posts (_posts) and docs.
+  // Posts use Jekyll front matter and intentional inline HTML (the
+  // `.post-figure` diagram component), so those rules are relaxed.
+  "config": {
+    "default": true,
+    "MD001": false, // heading increment — posts use ##### section titles by convention (see AGENT.md)
+    "MD013": false, // line length — prose wraps naturally, no hard limit
+    "MD026": false, // trailing punctuation — author headings end with ':' intentionally
+    "MD033": false, // inline HTML — used for post diagrams/figures
+    "MD041": false, // first line heading — front matter precedes content
+    "MD034": false, // bare URLs — occasionally intentional in posts
+    "MD024": false, // duplicate headings — posts repeat "Pros:/Cons:" per item intentionally
+    "MD025": { "front_matter_title": "" }, // title lives in front matter
+    "MD036": false, // emphasis-as-heading — used for figure captions
+    "MD060": false // table pipe alignment — prose tables vary in column width
+  },
+  "globs": ["**/*.md"],
+  "ignores": [
+    "_site/**",
+    "node_modules/**",
+    "vendor/**",
+    ".github/**"
+  ]
+}

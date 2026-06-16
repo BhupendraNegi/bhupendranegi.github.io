@@ -37,13 +37,14 @@ XSLT is a powerful tool for transforming XML data into a desired format. It can 
   <figcaption class="post-figure-caption">XSLT reshapes messy XML into exactly the format your app needs — without touching app code.</figcaption>
 </figure>
 
-5. Handle complex XML structures efficiently without extensive custom parsing logic.
+1. Handle complex XML structures efficiently without extensive custom parsing logic.
 
-6. Reuse existing XSLT stylesheets for standardized transformations across different applications or services.
+2. Reuse existing XSLT stylesheets for standardized transformations across different applications or services.
 
 ##### Sample XML and XSLT
 
 Let's assume you have the following XML file (data.xml):
+
 ```xml
 <products>
   <product>
@@ -90,9 +91,11 @@ And an enhanced XSLT file (transform.xslt) to transform the XML into a JSON-like
 This XSLT transformation filters products to include only those in the "Electronics" category. You can further customize the conditions, such as filtering by price range or combining multiple criteria.
 
 ##### Implementation
+
 `Create a Service Object`
 
 To keep your code clean, encapsulate the logic in a service object. Create a file app/services/xml_importer.rb:
+
 ```ruby
 require 'nokogiri'
 
@@ -111,11 +114,13 @@ end
 ```
 
 `Generate a controller to handle XML imports:`
+
 ```ruby
 rails generate controller Imports
 ```
 
 In app/controllers/imports_controller.rb, add the following code:
+
 ```ruby
 
 class ImportsController < ApplicationController
@@ -129,9 +134,11 @@ class ImportsController < ApplicationController
   end
 end
 ```
+
 `Set Up Routes`
 
 Add a route for the import action in config/routes.rb:
+
 ```ruby
 
 Rails.application.routes.draw do
@@ -142,25 +149,26 @@ end
 `Testing the Implementation`
 
 Place the data.xml and transform.xslt files in the Rails root directory. Start the Rails server:
+
 ```ruby
 rails server
 ```
 
 Use a tool like curl or Postman to test the endpoint:
+
 ```bash
 curl -X POST http://localhost:3000/imports
 ```
 
 You should receive a JSON response with the transformed data:
+
 ```bash
 [
   {"id": "1", "name": "Product A", "price": "100", "category": "Electronics"},
   {"id": "3", "name": "Product C", "price": "150", "category": "Electronics"}
 ]
 ```
+
 ##### Conclusion
 
 By leveraging XSLT and Nokogiri, you can easily transform and import XML data into your Rails application. This approach is powerful, flexible, and allows for clean separation of transformation logic from application code. Experiment with different XML and XSLT structures to unlock the full potential of this technique!
-
-
-

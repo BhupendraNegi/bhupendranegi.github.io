@@ -65,7 +65,7 @@
   if (window.SplitText) {
     try {
       gsap.registerPlugin(window.SplitText);
-    } catch (e) {}
+    } catch {}
   }
 
   // Split a heading into characters; returns the char array, or null.
@@ -76,7 +76,7 @@
     try {
       var s = new window.SplitText(el, { type: "words,chars" });
       return s.chars && s.chars.length ? s.chars : null;
-    } catch (e) {
+    } catch {
       return null;
     }
   }

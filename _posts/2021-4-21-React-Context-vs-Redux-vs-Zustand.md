@@ -28,6 +28,7 @@ Choosing the right state management tool in React depends on the complexity of y
 </figure>
 
 ##### React Context
+
 React Context is a simple, built-in solution for passing state across components without prop drilling.
 
 ```js
@@ -75,22 +76,27 @@ const App = () => (
 
 export default App;
 ```
+
 ##### When to Use:
+
 1. Simple state management.
 2. Small to medium-sized apps.
 3. Global state like themes, authentication, etc.
 
 ##### Pros:
+
 1. Built into React, no external dependencies.
 2. Simple to set up and use.
 3. No extra boilerplate code.
+
 ##### Cons:
+
 1. Not optimized for large apps with frequent state changes (could lead to re-renders).
 2. Doesn’t support side effects, middleware, or advanced features.
 3. Limited scalability for more complex state management needs.
 
-
 ##### Redux
+
 Redux is a powerful state management library, especially useful for large applications that require predictable state, complex logic, and handling side effects.
 
 ```js
@@ -152,22 +158,27 @@ const App = () => (
 
 export default App;
 ```
+
 ##### When to Use:
+
 1. Large-scale apps with complex state.
 2. Need for centralized state management.
 3. Handling async operations (like API calls).
 
 ##### Pros:
+
 1. Scalable and predictable state management.
 2. Powerful tools (e.g., Redux DevTools) for debugging.
 3. Good for handling side effects, async actions, and middleware (e.g., Redux Thunk).
 
 ##### Cons:
+
 1. Boilerplate-heavy (requires actions, reducers, and types).
 2. Steeper learning curve.
 3. Overkill for small to medium apps with simple state needs.
 
 ##### Zustand
+
 Zustand is a minimalistic state management library that provides a simple API with hooks, ideal for medium to large apps.
 
 ```js
@@ -205,17 +216,21 @@ const App = () => (
 
 export default App;
 ```
+
 ##### When to Use:
+
 1. Medium to large apps that need flexibility without boilerplate.
 2. Projects requiring a simple, hook-based API for state management.
 
 ##### Pros:
+
 1. Lightweight and minimalistic.
 2. No boilerplate code (no actions, reducers).
 3. Built with hooks and easy to use.
 4. Supports React’s modern API with flexibility.
 
 ##### Cons:
+
 1. Lacks advanced features (like middleware) compared to Redux.
 2. Less mature than Redux, so it may not have the same robust ecosystem.
 3. No built-in support for handling side effects (although this can be added).
@@ -226,15 +241,10 @@ export default App;
 |---------------------|-----------------------------------------|--------------------------------------|-----------------------------------------------|
 | Boilerplate         | Minimal (only context and provider)     | High (actions, reducers, store setup)| Minimal (only store setup)                    |
 | Learning Curve      | Very low                                | High (due to actions, reducers, etc.)| Low (simple and hook-based)                   |
-| Async Handling      | No built-in support	                    | Supports via middleware (e.g., Thunk)| No built-in support (customizable)            |
-| Performance         |	Can lead to re-renders in large apps    | Optimized for large apps	           | Good performance for medium-large apps        |
-| State Sharing	      | Simple, but not suited for complex apps | Powerful, great for complex apps	   | Simple, flexible, ideal for medium-large apps |
-| Best For	          | Small apps, simple global state	        | Large apps with complex state	       | Medium to large apps with simple setup        |
-
-
-
-
-
+| Async Handling      | No built-in support                     | Supports via middleware (e.g., Thunk)| No built-in support (customizable)            |
+| Performance         | Can lead to re-renders in large apps    | Optimized for large apps            | Good performance for medium-large apps        |
+| State Sharing       | Simple, but not suited for complex apps | Powerful, great for complex apps    | Simple, flexible, ideal for medium-large apps |
+| Best For           | Small apps, simple global state         | Large apps with complex state        | Medium to large apps with simple setup        |
 
 <!-- 
 |Feature	| React Context |	Redux	| Zustand |
@@ -247,6 +257,7 @@ Performance	Can lead to re-renders in large apps	Optimized for large apps	Good p
 State Sharing	Simple, but not suited for complex apps	Powerful, great for complex apps	Simple, flexible, ideal for medium-large apps
 Best For	Small apps, simple global state	Large apps with complex state	Medium to large apps with simple setup -->
 ##### Conclusion
+
 `React Context:` Great for small-to-medium apps with simple global state management. Best for lightweight use cases like themes or authentication.
 
 `Redux:` Ideal for large apps with complex state, asynchronous actions, and side effects. Offers great debugging tools and scalability.
