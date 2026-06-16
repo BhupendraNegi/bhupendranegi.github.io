@@ -70,3 +70,30 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Runs ./bin/lint in parallel with build/deploy. It is intentionally NOT a
+  # dependency of `build` or `deploy`, so a lint failure surfaces on the run
+  # (red check) without ever blocking a publish. See AGENT.md "Linting".
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: .ruby-version
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Node packages
+        run: npm ci
+
+      - name: Lint
+        run: ./bin/lint
