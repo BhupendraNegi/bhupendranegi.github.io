@@ -13,6 +13,12 @@ group :jekyll_plugins do
   gem "jekyll-sass-converter", "~> 2.2"
 end
 
+group :development do
+  # Validates the built _site HTML: broken internal links, missing images,
+  # malformed markup. Run via ./bin/lint (see bin/lint and package.json).
+  gem "html-proofer", "~> 5.0"
+end
+
 platforms :windows, :jruby do
   gem "tzinfo", "~> 1.2"
   gem "tzinfo-data"

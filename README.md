@@ -103,6 +103,14 @@ npm run build
 
 The generated site is written to `_site/`.
 
+Lint all source files (JS, CSS, Markdown, YAML/JSON, and the built HTML):
+
+```sh
+./bin/lint          # check everything
+./bin/lint --fix    # auto-fix what each tool can
+./bin/lint --quick  # skip the build + html-proofer
+```
+
 ## Common Updates
 
 Update site metadata, social links, analytics, Disqus, pagination, and permalink settings in `_config.yml`.
@@ -136,6 +144,7 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 Before publishing changes, run:
 
 ```sh
+./bin/lint
 npm run build
 ```
 

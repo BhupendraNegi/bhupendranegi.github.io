@@ -1,0 +1,9 @@
+# Prettier here only formats data/config (JSON + YAML). Everything else is
+# owned by a dedicated linter or is generated output.
+_site/
+node_modules/
+vendor/
+.jekyll-cache/
+Gemfile.lock
+package-lock.json
+assets/css/version-3.css

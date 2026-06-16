@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -17,7 +17,6 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
 
 # Site Details
 title: Bhupendra Negi
@@ -32,7 +31,6 @@ twitter_link: https://x.com/BhupendraNegi21
 
 joining_date: "2019-08-05"
 disqus: https-bhupendranegi-github-io
-
 
 description: Software Engineer specialising in Ruby on Rails and React
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -56,7 +54,7 @@ sass:
 
 paginate: 10
 paginate_path: "/blog/page:num"
-  
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

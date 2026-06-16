@@ -64,6 +64,32 @@ Build with drafts, if drafts are added later:
 bundle exec jekyll build --drafts
 ```
 
+## Linting
+
+One entry point lints every source file type, each with the right tool:
+
+```sh
+./bin/lint          # check everything (also builds the site for html-proofer)
+./bin/lint --fix    # auto-fix what each tool can, then re-check
+./bin/lint --quick  # skip the Jekyll build + html-proofer (fast feedback)
+```
+
+| Files | Tool | Config |
+| --- | --- | --- |
+| `assets/js/*.js`, `*.mjs` | ESLint | `eslint.config.mjs` |
+| `assets/css/tailwind.css`, `syntax.css` | Stylelint | `.stylelintrc.json` |
+| `_posts/`, `doc/`, `*.md` | markdownlint | `.markdownlint-cli2.jsonc` |
+| `_config.yml`, `_data/*.yml`, `*.json` | Prettier | `.prettierrc.json` |
+| built `_site/` HTML | html-proofer | flags in `bin/lint` |
+
+Notes:
+
+- The compiled `assets/css/version-3.css` is generated and is **not** linted; lint the source `tailwind.css` instead. `bin/lint --fix` regenerates the bundle after fixing the source.
+- Per-tool npm aliases exist too: `npm run lint:js`, `lint:css`, `lint:md`, `lint:data`.
+- Editor defaults live in `.editorconfig`; line endings are normalized to LF via `.gitattributes`.
+- Linting is a local/dev step — it is intentionally **not** wired into the GitHub Pages deploy workflow, so it can never block a publish.
+- Rules are tuned to the project's conventions (e.g. markdownlint allows `#####` section titles and inline-HTML diagrams; Stylelint allows Tailwind v4 at-rules). Prefer adjusting the config over disabling a tool when a new pattern needs to pass.
+
 ## Editing Guidelines
 
 - Keep site-wide identity, links, analytics, pagination, and plugin settings in `_config.yml`.
@@ -73,6 +99,7 @@ bundle exec jekyll build --drafts
 - **Content width is consistent site-wide:** every page's main content uses the same 1240px rail (the home `.hero`/`.home-section` and inner pages' `.site-page-inner`, both `width: min(100%, 1240px)` with `padding-inline: clamp(1.25rem, 5vw, 2rem)`). Do not give a page its own narrower `max-width`; if a block must be narrower (e.g. a form or reading column), nest it inside the rail rather than shrinking the page container.
 - Keep asset paths root-relative where the current code already does so, for example `/assets/images/...`.
 - After editing `assets/css/tailwind.css`, run `npm run css:build` to regenerate the committed `assets/css/version-3.css`. Never hand-edit the compiled file.
+- Run `./bin/lint` before finishing meaningful changes (or `./bin/lint --fix` to auto-format). See the Linting section above.
 - Keep interactive behavior in `assets/js/version-3.js` and motion in `assets/js/motion.js`; avoid adding jQuery or Barba.js back into the runtime.
 - Posts use a reusable diagram component: `<figure class="post-figure">` with either a `.post-figure-flow` (icon-card steps joined by arrows) or a `.post-figure-compare` (a row of cards). Reuse it for new post diagrams rather than inventing new markup.
 - Post body headings use `#####`/`######` as section titles by convention; the prose CSS styles them as real headings and the TOC is generated from them client-side.
@@ -87,6 +114,7 @@ bundle exec jekyll build --drafts
 Before finishing meaningful changes, run:
 
 ```sh
+./bin/lint
 npm run build
 ```
 

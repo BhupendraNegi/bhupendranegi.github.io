@@ -19,7 +19,7 @@
   function getStoredTheme() {
     try {
       return localStorage.getItem('theme');
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -27,7 +27,7 @@
   function storeTheme(theme) {
     try {
       localStorage.setItem('theme', theme);
-    } catch (error) {
+    } catch {
       return;
     }
   }
@@ -930,7 +930,7 @@
           area.style.opacity = '0';
           document.body.appendChild(area);
           area.select();
-          try { document.execCommand('copy'); onCopied(); } catch (error) {}
+          try { document.execCommand('copy'); onCopied(); } catch {}
           document.body.removeChild(area);
         }
       });
