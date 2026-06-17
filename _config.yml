@@ -48,6 +48,7 @@ plugins:
   - jekyll-feed
   - jekyll-sass-converter
   - jekyll-paginate
+  - jekyll-sitemap
 
 sass:
   style: :expanded

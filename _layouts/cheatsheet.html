@@ -1,0 +1,47 @@
+---
+layout: site_layout
+---
+
+<div class="post-progress" aria-hidden="true"><span class="post-progress-bar" data-post-progress></span></div>
+
+<article class="post post-article">
+  <div class="post-shell">
+    <aside class="post-aside">
+      <nav class="post-toc" data-post-toc data-post-toc-levels="h2" aria-label="On this page" hidden>
+        <p class="post-toc-title"><i data-lucide="list" class="site-icon" aria-hidden="true"></i> On this page</p>
+        <ul class="post-toc-list" data-post-toc-list></ul>
+      </nav>
+    </aside>
+
+    <div class="post-main">
+      <header class="post-hero" data-reveal>
+        <p class="post-back"><i data-lucide="terminal" class="site-icon" aria-hidden="true"></i> Cheatsheet</p>
+        <h1 class="post-hero-title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="post-hero-lead">{{ page.subtitle }}</p>{% endif %}
+      </header>
+
+      <div class="entry site-prose cheatsheet-prose" data-post-content data-reveal>
+        {{ content }}
+      </div>
+
+      <div class="page-actions" data-reveal>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% comment %} Page-specific structured data so search engines index this as a
+technical reference (richer than the site-wide Person schema in head.html). {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.subtitle | strip | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ page.url | absolute_url | jsonify }} },
+  "author": { "@type": "Person", "name": {{ site.name | jsonify }}, "url": {{ site.url | jsonify }} },
+  "publisher": { "@type": "Person", "name": {{ site.name | jsonify }} }
+}
+</script>
