@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Upgrading Rails 5 & 6 to Rails 8
+cover: /assets/images/blog/rails-upgrade.jpg
 ---
 
 -------

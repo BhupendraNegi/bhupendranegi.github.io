@@ -14,7 +14,7 @@
       postgresql-plain,
       materialize-plain,
     ]
-  cover: https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true
+  cover: /assets/images/projects/data-management/cover.jpg
   images:
     [
       "https://github.com/BhupendraNegi/databasebank/blob/main/app/assets/images/home.png?raw=true",
@@ -29,7 +29,7 @@
   description: A Basic Javascript Game made for learning
   tags: [javascript, web, game]
   technologies: [html5-plain, css3-plain-wordmark, javascript-plain]
-  cover: https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tic-tack1.png?raw=true
+  cover: /assets/images/projects/tic-tac-toe/cover.jpg
   images:
     [
       "https://github.com/BhupendraNegi/tic-tac-toe/blob/main/tick-tack2.png?raw=true",
@@ -55,7 +55,7 @@
       heroku-original,
       materialize-plain,
     ]
-  cover: https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true
+  cover: /assets/images/projects/health-tracker/cover.jpg
   images:
     [
       "https://github.com/BhupendraNegi/health-tracker/blob/main/app/assets/images/home_page.png?raw=true",
@@ -68,7 +68,7 @@
   description: A Basic Music Player Application made for Android Users. User can create playlist, add songs to the favourites and shake the phone to change the music.
   tags: [java, kotlin, android, mobile]
   technologies: [java-plain, kotlin-plain, mysql-plain, androidstudio-plain, materialize-plain]
-  cover: https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/tenorplay.png?raw=true
+  cover: /assets/images/projects/tenor-play/cover.jpg
   images:
     [
       "https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Splash_Screen.gif?raw=true",

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Efficient Data Fetching with React Query
+cover: /assets/images/blog/react-query-data-fetching.jpg
 ---
 
 -------
