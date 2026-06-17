@@ -1,6 +1,7 @@
 ---
 layout: post
 title: XML Import With XSLT
+cover: /assets/images/blog/xml-import-xslt.jpg
 ---
 
 -------

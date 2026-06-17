@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started With Jekyll
+cover: /assets/images/blog/getting-started-with-jekyll.jpg
 ---
 
 -------
@@ -100,6 +101,7 @@ Open `_config.yml` and add details like your site’s title:
 
 ```yaml
 title: My Awesome Site
+cover: /assets/images/blog/getting-started-with-jekyll.jpg
 description: A personal blog
 url: "https://my-awesome-site.com"
 theme: minima
@@ -144,6 +146,7 @@ Create a new post in the _posts/ folder with the filename 2024-12-22-my-first-po
 ---
 layout: post
 title: "My First Post"
+cover: /assets/images/blog/getting-started-with-jekyll.jpg
 date: 2024-12-22
 ---
 Welcome to my first post on Jekyll!

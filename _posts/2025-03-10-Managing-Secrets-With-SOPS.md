@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Managing Secrets With SOPS
+cover: /assets/images/blog/sops-secrets.jpg
 subtitle: A framework-agnostic way to encrypt secrets — shown here with a Rails app
 icon: lock-keyhole
 ---

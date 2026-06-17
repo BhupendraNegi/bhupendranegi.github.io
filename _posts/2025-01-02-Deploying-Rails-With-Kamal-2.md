@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Deploying Rails With Kamal 2.0
+cover: /assets/images/blog/kamal-deploy.jpg
 tech: docker-plain
 ---
 
