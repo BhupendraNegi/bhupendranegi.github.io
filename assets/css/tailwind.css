@@ -2642,6 +2642,25 @@
     margin: 2rem 0 0.7rem;
   }
 
+  /* Cheatsheet: two-tier heading colours so the big section headings (h2) and
+     their sub-group headings (h3) read as distinct shades of "near-black",
+     making sections easier to separate at a glance. Scoped to this page only. */
+  .cheatsheet-prose h2 {
+    color: #0b1020;
+  }
+
+  .cheatsheet-prose h3 {
+    color: #475569;
+  }
+
+  [data-theme="dark"] .cheatsheet-prose h2 {
+    color: #f8fafc;
+  }
+
+  [data-theme="dark"] .cheatsheet-prose h3 {
+    color: #94a3b8;
+  }
+
   /* Lists */
   .site-prose :is(ul, ol),
   .blog-content :is(ul, ol),

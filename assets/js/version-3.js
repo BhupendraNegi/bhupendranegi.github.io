@@ -757,8 +757,12 @@
       return [];
     }
 
+    // Pages can narrow which heading levels appear in the summary via
+    // `data-post-toc-levels` on the nav (e.g. "h2" for a top-level-only index).
+    var levels = nav.getAttribute('data-post-toc-levels') || 'h2, h3, h4, h5, h6';
+
     var headings = Array.prototype.slice.call(
-      content.querySelectorAll('h2, h3, h4, h5, h6')
+      content.querySelectorAll(levels)
     ).filter(function(heading) {
       return (heading.textContent || '').trim().length > 0;
     });
