@@ -2,6 +2,7 @@
 layout: post
 title: Solid Queue With Rails
 cover: /assets/images/blog/solid-queue-rails.jpg
+tags: [Rails]
 ---
 
 -------

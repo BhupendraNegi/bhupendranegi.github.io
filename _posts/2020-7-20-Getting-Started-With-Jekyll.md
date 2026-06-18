@@ -2,6 +2,7 @@
 layout: post
 title: Getting Started With Jekyll
 cover: /assets/images/blog/getting-started-with-jekyll.jpg
+tags: [Jekyll]
 ---
 
 -------

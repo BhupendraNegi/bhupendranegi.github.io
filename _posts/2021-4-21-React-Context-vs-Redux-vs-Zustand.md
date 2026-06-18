@@ -2,6 +2,7 @@
 layout: post
 title: React Context vs Redux vs Zustand
 cover: /assets/images/blog/react-state-management.jpg
+tags: [React]
 ---
 
 -------
