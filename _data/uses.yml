@@ -1,0 +1,137 @@
+# /uses page content — the tools behind the work.
+#
+# Each group renders as a card. Per item:
+#   name    (required) — the tool/thing
+#   detail  (optional) — a short note
+#   icon    (optional) — a Devicon class WITHOUT the leading "devicon-"
+#                        (e.g. ruby-plain). Must exist in the loaded Devicon.
+#   lucide  (optional) — a Lucide icon name, used when there is no Devicon glyph
+#
+# Lines marked <FILL IN> are placeholders — replace them with your real setup.
+
+- group: Editor & Terminal
+  icon: monitor # lucide icon for the group heading
+  items:
+    - name: RubyMine
+      lucide: code-2
+      detail: My main IDE for Ruby and Rails work.
+    - name: VS Code
+      icon: vscode-plain
+      detail: For everything else, with the Claude Code extension.
+    - name: iTerm2
+      lucide: square-terminal
+      detail: My everyday terminal.
+    - name: Ghostty
+      lucide: ghost
+      detail: Fast GPU-accelerated terminal I'm trying out.
+    - name: Shell
+      lucide: terminal
+      detail: zsh with Oh My Zsh.
+    - name: Editor font
+      lucide: type
+      detail: JetBrains Mono.
+    - name: Editor theme
+      lucide: palette
+      detail: Monokai Dark in VS Code.
+
+- group: Languages & Runtimes
+  icon: code-2
+  items:
+    - name: Ruby
+      icon: ruby-plain
+      detail: 4.0.3, with Bundler 4.0.14.
+    - name: Node.js
+      icon: nodejs-plain
+      detail: 22.22.3.
+    - name: JavaScript / TypeScript
+      icon: typescript-plain
+      detail: Vanilla JS on this site; TypeScript at work.
+    - name: Version manager
+      lucide: layers
+      detail: mise, to pin Ruby and Node per project.
+
+- group: Frameworks & Libraries
+  icon: blocks
+  items:
+    - name: Ruby on Rails
+      icon: rails-plain
+      detail: My main backend framework (currently on Rails 8).
+    - name: React
+      icon: react-original
+      detail: For rich, interactive front ends.
+    - name: Tailwind CSS
+      lucide: wind
+      detail: v4 — the styling for this site.
+    - name: GSAP
+      lucide: sparkles
+      detail: ScrollTrigger & SplitText for the site's motion.
+    - name: Jekyll
+      icon: jekyll-plain
+      detail: The static site generator powering this portfolio.
+
+- group: AI Coding
+  icon: bot
+  items:
+    - name: Claude Code
+      lucide: terminal
+      detail: Anthropic's agentic CLI — my main AI pair.
+    - name: Codex
+      lucide: sparkles
+      detail: OpenAI's coding agent.
+    - name: GitHub Copilot
+      lucide: wand-2
+      detail: Inline completions in the editor.
+
+- group: Dev Tools & Infra
+  icon: wrench
+  items:
+    - name: Git & GitHub
+      icon: git-plain
+      detail: Version control and where this site lives.
+    - name: Docker / Colima
+      icon: docker-plain
+      detail: Containers and a lightweight local runtime on macOS.
+    - name: Jupyter Notebook
+      icon: jupyter-plain
+      detail: For data exploration and quick experiments.
+    - name: Kamal
+      lucide: ship
+      detail: Zero-downtime deploys for Rails apps.
+    - name: SOPS
+      lucide: lock
+      detail: Encrypted, version-controlled secrets.
+
+- group: Hardware
+  icon: laptop
+  items:
+    - name: Laptop
+      lucide: laptop
+      detail: MacBook Pro (M3 Max, Apple Silicon) running macOS.
+    - name: Keyboard
+      lucide: keyboard
+      detail: Apple Magic Keyboard.
+    - name: Mouse
+      lucide: mouse-pointer-2
+      detail: Apple Magic Mouse.
+    - name: Monitor
+      lucide: monitor
+      detail: LG UltraFine 4K (27") external display.
+
+- group: Apps & Services
+  icon: app-window
+  items:
+    - name: Design
+      icon: figma-plain
+      detail: Figma for UI design.
+    - name: Diagrams
+      lucide: workflow
+      detail: Mermaid AI for diagrams and flowcharts.
+    - name: Music
+      lucide: music
+      detail: Spotify and YouTube Music on while I code.
+    - name: Browser
+      lucide: globe
+      detail: Firefox, Brave, and Chrome.
+    - name: Notes
+      lucide: notebook-pen
+      detail: Google Keep and Apple Notes.
