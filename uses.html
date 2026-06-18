@@ -1,0 +1,43 @@
+---
+layout: site_layout
+title: Uses
+permalink: /uses/
+description: The gear and software Bhupendra Negi uses day to day — editor, terminal, languages, frameworks, dev tools, and hardware.
+---
+
+<section class="uses-page" aria-labelledby="uses-heading">
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Uses</p>
+    <h1 id="uses-heading" class="page-hero-title" data-split>What's in my <span class="tx-accent">toolkit</span></h1>
+    <p class="page-hero-lead">The editor, languages, tools, and hardware I reach for every day. A companion to the <a href="/cheatsheet/">cheatsheet</a> &mdash; those are the commands, these are what I run them with.</p>
+  </header>
+
+  <div class="uses-grid">
+    {% for group in site.data.uses %}
+      <section class="uses-group site-card" data-reveal>
+        <h2 class="uses-group-title">
+          <span class="uses-group-icon"><i data-lucide="{{ group.icon | default: 'wrench' }}" class="site-icon" aria-hidden="true"></i></span>
+          {{ group.group }}
+        </h2>
+        <ul class="uses-list">
+          {% for item in group.items %}
+            <li class="uses-item">
+              <span class="uses-item-icon" aria-hidden="true">
+                {% if item.icon %}<i class="devicon-{{ item.icon }}"></i>{% else %}<i data-lucide="{{ item.lucide | default: 'dot' }}" class="site-icon"></i>{% endif %}
+              </span>
+              <span class="uses-item-body">
+                <span class="uses-item-name">{{ item.name }}</span>
+                {% if item.detail %}<span class="uses-item-detail">{{ item.detail }}</span>{% endif %}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+
+  <div class="page-actions" data-reveal>
+    <a class="btn-primary" href="/cheatsheet/"><i data-lucide="terminal" class="site-icon" aria-hidden="true"></i> Open the cheatsheet</a>
+    <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
+  </div>
+</section>
