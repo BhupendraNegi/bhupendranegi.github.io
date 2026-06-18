@@ -6,6 +6,12 @@
         <img class="site-brand-logo logo-dark" src="/assets/images/Bhupendra_light.png" alt="{{ site.name }}" height="28" />
       </a>
 
+      <button id="search-open" type="button" class="nav-search" aria-label="Search the site" data-search-open>
+        <i data-lucide="search" class="site-icon nav-search-icon" aria-hidden="true"></i>
+        <span class="nav-search-label">Search</span>
+        <span class="nav-search-kbd"><kbd>⌘</kbd><kbd>K</kbd></span>
+      </button>
+
       <ul id="nav-mobile" class="site-nav-list">
         {% for my_section in site.data.sections %}{% unless my_section[0] == 'hero' %}
           {% assign is_active = false %}
@@ -44,6 +50,10 @@
           {% endunless %}{% endfor %}
         </ul>
         <div class="mobile-nav-foot">
+          <button id="search-open-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Search the site" data-search-open>
+            <i data-lucide="search" class="site-icon" aria-hidden="true"></i>
+            <span class="theme-toggle-label">Search</span>
+          </button>
           <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
             <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
             <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
@@ -55,3 +65,38 @@
     </div>
   </nav>
 </header>
+
+<div class="site-search" id="site-search" data-search-overlay data-search-url="{{ site.baseurl }}/search.json" hidden aria-hidden="true">
+  <div class="site-search-backdrop" data-search-close></div>
+  <div class="site-search-panel" role="dialog" aria-modal="true" aria-label="Search the site">
+    <div class="site-search-field">
+      <i data-lucide="search" class="site-icon site-search-field-icon" aria-hidden="true"></i>
+      <input
+        type="search"
+        id="site-search-input"
+        class="site-search-input"
+        placeholder="Search posts and pages…"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Search query"
+        aria-controls="site-search-results"
+        data-search-input
+      />
+      <button type="button" class="site-search-close" data-search-close aria-label="Close search">
+        <i data-lucide="x" class="site-icon" aria-hidden="true"></i>
+      </button>
+    </div>
+    <ul class="site-search-results" id="site-search-results" role="listbox" aria-label="Search results" data-search-results></ul>
+    <p class="site-search-state" data-search-state>Type to search posts and pages.</p>
+    <a class="site-search-all" href="{{ site.baseurl }}/search/" data-search-all data-search-page="{{ site.baseurl }}/search/" hidden>
+      <span>View all results</span>
+      <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i>
+    </a>
+    <div class="site-search-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>

@@ -7,3 +7,8 @@ vendor/
 Gemfile.lock
 package-lock.json
 assets/css/version-3.css
+
+# Liquid template that emits JSON at build time — not plain JSON, so Prettier
+# can't parse its front matter. The generated _site/search.json is validated
+# by the build instead.
+search.json
