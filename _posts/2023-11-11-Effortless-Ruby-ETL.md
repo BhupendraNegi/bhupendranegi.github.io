@@ -2,6 +2,7 @@
 layout: post
 title: Effortless Ruby ETL
 cover: /assets/images/blog/ruby-etl.jpg
+tags: [Ruby, Data]
 ---
 
 -------

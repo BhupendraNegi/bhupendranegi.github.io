@@ -47,14 +47,15 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sass-converter
-  - jekyll-paginate
   - jekyll-sitemap
 
 sass:
   style: :expanded
 
-paginate: 10
-paginate_path: "/blog/page:num"
+# Pagination is intentionally disabled: the blog index renders every post so the
+# client-side topic filter (assets/js/version-3.js) can work across all of them.
+# With a small post count this is one comfortable page. Re-add jekyll-paginate
+# (and server-side tag pages) if the archive grows large.
 
 # Exclude from processing.
 # The following items will not be processed, by default.

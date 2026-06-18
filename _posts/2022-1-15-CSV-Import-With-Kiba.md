@@ -2,6 +2,7 @@
 layout: post
 title: CSV Import With Kiba
 cover: /assets/images/blog/csv-import-kiba.jpg
+tags: [Ruby, Data]
 ---
 
 -------

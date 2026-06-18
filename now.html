@@ -1,0 +1,49 @@
+---
+layout: site_layout
+title: Now
+permalink: /now/
+description: What Bhupendra Negi is focused on right now — current work, what I'm learning, and what's keeping me busy.
+last_updated: 2026-06-18
+---
+
+<section class="now-page" aria-labelledby="now-heading">
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Now</p>
+    <h1 id="now-heading" class="page-hero-title" data-split>What I'm doing <span class="tx-accent">now</span></h1>
+    <p class="page-hero-lead">A snapshot of what I'm focused on at the moment &mdash; updated every so often. Inspired by the <a href="https://nownownow.com/about" target="_blank" rel="noopener">/now page</a> movement.</p>
+    {% if page.last_updated %}<p class="now-updated"><i data-lucide="clock" class="site-icon" aria-hidden="true"></i> Last updated {{ page.last_updated | date: "%B %-d, %Y" }}</p>{% endif %}
+  </header>
+
+  <div class="now-grid">
+    <section class="now-block site-card" data-reveal>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="hammer" class="site-icon" aria-hidden="true"></i></span> Working on</h2>
+      <ul class="now-list">
+        <li>Backend and data work at <strong>ClearStack</strong> on Electronic Billing Administration &mdash; performance and clean deployment with Ruby on Rails.</li>
+        <li>Maintaining and improving <strong>this site</strong> &mdash; recently shipped site-wide search, a <a href="/uses/">/uses</a> page, per-post social images, and blog topic filtering.</li>
+        <li>Keeping the <a href="/cheatsheet/">dev cheatsheet</a> growing as I pick up new commands and workflows.</li>
+      </ul>
+    </section>
+
+    <section class="now-block site-card" data-reveal>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="sprout" class="site-icon" aria-hidden="true"></i></span> Learning &amp; exploring</h2>
+      <ul class="now-list">
+        <li>Getting more out of <strong>AI-assisted development</strong> &mdash; Claude Code, Codex, and Copilot in the daily loop.</li>
+        <li>Digging deeper into <strong>Rails 8</strong> and the Solid stack (Queue, Cache, Cable).</li>
+        <li>Comparing backend runtimes &mdash; see my recent post on <a href="/Rails-vs-Node-vs-Go/">Rails vs Node.js vs Go</a>.</li>
+      </ul>
+    </section>
+
+    <section class="now-block site-card" data-reveal>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="coffee" class="site-icon" aria-hidden="true"></i></span> Away from the keyboard</h2>
+      <ul class="now-list">
+        <li>Based in <strong>Bangalore, India</strong>.</li>
+        <li><FILL IN &mdash; a hobby, what you're reading, or anything you'd like to share.></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="page-actions" data-reveal>
+    <a class="btn-primary" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
+    <a class="btn-ghost" href="/uses/"><i data-lucide="wrench" class="site-icon" aria-hidden="true"></i> What I use</a>
+  </div>
+</section>

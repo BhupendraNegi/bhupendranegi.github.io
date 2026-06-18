@@ -36,6 +36,25 @@ comments: true
         <p class="post-footer">Thanks for reading! Let me know if you have any comments or feedback.</p>
       </div>
 
+      {% if page.previous or page.next %}
+      <nav class="post-nav" aria-label="More articles" data-reveal>
+        {% comment %} Jekyll: page.previous is the chronologically older post,
+        page.next is the newer one. {% endcomment %}
+        {% if page.previous %}
+        <a class="post-nav-link post-nav-older" href="{{ page.previous.url | relative_url }}">
+          <span class="post-nav-dir"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Older post</span>
+          <span class="post-nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% else %}<span class="post-nav-spacer" aria-hidden="true"></span>{% endif %}
+        {% if page.next %}
+        <a class="post-nav-link post-nav-newer" href="{{ page.next.url | relative_url }}">
+          <span class="post-nav-dir">Newer post <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></span>
+          <span class="post-nav-title">{{ page.next.title }}</span>
+        </a>
+        {% else %}<span class="post-nav-spacer" aria-hidden="true"></span>{% endif %}
+      </nav>
+      {% endif %}
+
       {% include disqus.html %}
 
       <div class="page-actions" data-reveal>

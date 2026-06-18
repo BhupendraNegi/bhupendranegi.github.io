@@ -1,7 +1,6 @@
 ---
 layout: site_layout
 title: Blog
-pagination: true
 ---
 
 <section class="blog-page" aria-labelledby="blog-heading">
@@ -9,10 +8,23 @@ pagination: true
     <p class="page-hero-eyebrow">Writing</p>
     <h1 id="blog-heading" class="page-hero-title" data-split>Articles &amp; <span class="tx-accent">Posts</span></h1>
     <p class="page-hero-lead">Thoughts on Ruby, Rails, React, and the craft of building software.</p>
+    <p class="page-hero-actions">
+      <a class="btn-ghost btn-rss" href="{{ '/feed.xml' | relative_url }}"><i data-lucide="rss" class="site-icon" aria-hidden="true"></i> Subscribe via RSS</a>
+    </p>
   </header>
 
-  <div class="blog-list">
-    {% for post in paginator.posts %}
+  <div class="blog-filter" role="group" aria-label="Filter posts by topic" data-reveal>
+    <button class="tag is-active" type="button" data-blog-tag="" aria-pressed="true"><i data-lucide="layers" class="site-icon" aria-hidden="true"></i> All</button>
+    <button class="tag" type="button" data-blog-tag="rails" aria-pressed="false"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Rails</button>
+    <button class="tag" type="button" data-blog-tag="ruby" aria-pressed="false"><i class="about_skill_icon devicon-ruby-plain" aria-hidden="true"></i> Ruby</button>
+    <button class="tag" type="button" data-blog-tag="react" aria-pressed="false"><i class="about_skill_icon devicon-react-original" aria-hidden="true"></i> React</button>
+    <button class="tag" type="button" data-blog-tag="data" aria-pressed="false"><i data-lucide="database" class="site-icon" aria-hidden="true"></i> Data</button>
+    <button class="tag" type="button" data-blog-tag="devops" aria-pressed="false"><i data-lucide="server" class="site-icon" aria-hidden="true"></i> DevOps</button>
+    <button class="tag" type="button" data-blog-tag="jekyll" aria-pressed="false"><i class="about_skill_icon devicon-jekyll-plain" aria-hidden="true"></i> Jekyll</button>
+  </div>
+
+  <div class="blog-list" data-blog-list>
+    {% for post in site.posts %}
       {% assign words = post.content | number_of_words %}
       {% assign minutes = words | divided_by: 200 | plus: 1 %}
       {% assign t = post.title | downcase %}
@@ -30,7 +42,7 @@ pagination: true
         {% endif %}
       {% endif %}
       {% assign variant = forloop.index0 | modulo: 4 %}
-      <article class="post-row" data-reveal>
+      <article class="post-row" data-reveal data-tags="{{ post.tags | join: ' ' | downcase }}">
         <a class="post-row-media post-row-media--{{ variant }}" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
           {% if post.cover %}
             <img src="{{ post.cover }}" alt="" loading="lazy">
@@ -58,31 +70,5 @@ pagination: true
     {% endfor %}
   </div>
 
-  {% if paginator.total_pages > 1 %}
-    <nav class="pagination" aria-label="Blog pages">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-step" rel="prev"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Previous</a>
-      {% else %}
-        <span class="pagination-step is-disabled"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Previous</span>
-      {% endif %}
-
-      <div class="pagination-pages">
-        {% for page in (1..paginator.total_pages) %}
-          {% if page == paginator.page %}
-            <span class="pagination-page is-current" aria-current="page">{{ page }}</span>
-          {% elsif page == 1 %}
-            <a href="{{ '/blog/' | relative_url }}" class="pagination-page">{{ page }}</a>
-          {% else %}
-            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-page">{{ page }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-step" rel="next">Next <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></a>
-      {% else %}
-        <span class="pagination-step is-disabled">Next <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></span>
-      {% endif %}
-    </nav>
-  {% endif %}
+  <p class="blog-empty" data-blog-empty hidden>No posts in this topic yet.</p>
 </section>
