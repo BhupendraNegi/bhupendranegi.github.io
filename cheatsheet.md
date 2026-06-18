@@ -4,6 +4,9 @@ title: Dev Cheatsheet
 description: A practical developer cheatsheet — copy-paste commands for Git, Ruby on Rails, RSpec, Yarn, Docker, Kamal, Lima/Colima, MySQL, and everyday shell work.
 subtitle: A no-fluff reference for day-to-day development.
 permalink: /cheatsheet/
+# Split each heading into its own anchored search result (see search.json).
+search_sections: true
+search_section_label: Cheatsheet
 ---
 
 The index on the left lists the top-level sections; each is split into smaller

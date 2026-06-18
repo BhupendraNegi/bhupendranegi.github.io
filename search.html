@@ -1,0 +1,34 @@
+---
+layout: site_layout
+title: Search
+permalink: /search/
+search: false
+---
+
+<section class="search-page" aria-labelledby="search-heading" data-search-page-url="{{ site.baseurl }}/search.json">
+  <header class="page-hero" data-reveal>
+    <p class="page-hero-eyebrow">Search</p>
+    <h1 id="search-heading" class="page-hero-title" data-split>Search the <span class="tx-accent">site</span></h1>
+    <p class="page-hero-lead">Find any blog post or page. Results update as you type.</p>
+  </header>
+
+  <div class="search-page-field" data-reveal>
+    <i data-lucide="search" class="site-icon search-page-icon" aria-hidden="true"></i>
+    <input
+      type="search"
+      id="search-page-input"
+      class="search-page-input"
+      placeholder="Search posts and pages…"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      aria-label="Search query"
+      aria-controls="search-page-results"
+      data-search-page-input
+    />
+  </div>
+
+  <p class="search-page-count" data-search-page-count aria-live="polite"></p>
+
+  <ul class="search-page-results" id="search-page-results" data-search-page-results></ul>
+</section>

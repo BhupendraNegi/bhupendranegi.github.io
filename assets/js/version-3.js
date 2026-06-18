@@ -5,6 +5,11 @@
   // Project modals in document order, captured before any get portalled to
   // <body> on open (so the "Next" button can still cycle through them).
   var projectModals = [];
+  // Site search overlay handles, assigned by initializeSearch() so the global
+  // keyboard shortcuts (Cmd/Ctrl+K, "/", Escape) can drive it.
+  var openSiteSearch = null;
+  var closeSiteSearch = null;
+  var siteSearchOpen = false;
 
   function initializeLucideIcons(root) {
     if (!window.lucide || typeof window.lucide.createIcons !== 'function') {
@@ -702,8 +707,29 @@
       var firstFocusable;
       var lastFocusable;
       var toggle = document.querySelector('[data-mobile-nav-toggle]');
+      var target = event.target;
+      var typing = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+
+      // Cmd/Ctrl+K opens search from anywhere; "/" opens it unless already typing.
+      if ((event.key === 'k' || event.key === 'K') && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        if (openSiteSearch) { openSiteSearch(); }
+        return;
+      }
+
+      if (event.key === '/' && !typing && !siteSearchOpen) {
+        event.preventDefault();
+        if (openSiteSearch) { openSiteSearch(); }
+        return;
+      }
 
       if (event.key === 'Escape') {
+        if (siteSearchOpen) {
+          event.preventDefault();
+          if (closeSiteSearch) { closeSiteSearch(); }
+          return;
+        }
+
         if (activeModal) {
           event.preventDefault();
           closeModal();
@@ -962,6 +988,397 @@
     initializeLucideIcons(content);
   }
 
+  function escapeSearchHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function highlightSearchTerms(text, terms) {
+    var safe = escapeSearchHtml(text);
+    terms.forEach(function(term) {
+      if (!term) {
+        return;
+      }
+      var escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      safe = safe.replace(new RegExp('(' + escaped + ')', 'gi'), '<mark>$1</mark>');
+    });
+    return safe;
+  }
+
+  // Shared ranking used by both the navbar overlay and the /search/ page so
+  // results stay consistent. Every term must appear in the title or body;
+  // title matches weigh heavier than body matches.
+  function searchScoreDoc(doc, terms) {
+    var title = (doc.title || '').toLowerCase();
+    var body = (doc.body || '').toLowerCase();
+    var total = 0;
+
+    for (var i = 0; i < terms.length; i += 1) {
+      var term = terms[i];
+      if (!term) {
+        continue;
+      }
+      if (title.indexOf(term) !== -1) {
+        total += 12;
+      } else if (body.indexOf(term) !== -1) {
+        total += 4;
+      } else {
+        return 0;
+      }
+    }
+
+    return total;
+  }
+
+  function rankSearchResults(index, query) {
+    var trimmed = (query || '').trim().toLowerCase();
+
+    if (!trimmed || !index) {
+      return { terms: [], results: [] };
+    }
+
+    var terms = trimmed.split(/\s+/);
+    var results = index
+      .map(function(doc) { return { doc: doc, score: searchScoreDoc(doc, terms) }; })
+      .filter(function(entry) { return entry.score > 0; })
+      .sort(function(a, b) { return b.score - a.score; });
+
+    return { terms: terms, results: results };
+  }
+
+  function buildSearchResultMarkup(doc, terms) {
+    return (
+      '<span class="site-search-result-head">' +
+        '<span class="site-search-result-cat">' + escapeSearchHtml(doc.category || 'Page') + '</span>' +
+        (doc.date ? '<span class="site-search-result-date">' + escapeSearchHtml(doc.date) + '</span>' : '') +
+      '</span>' +
+      '<span class="site-search-result-title">' + highlightSearchTerms(doc.title || '', terms) + '</span>' +
+      '<span class="site-search-result-excerpt">' + highlightSearchTerms(doc.excerpt || '', terms) + '</span>'
+    );
+  }
+
+  function initializeSearch() {
+    var overlay = document.querySelector('[data-search-overlay]');
+
+    if (!overlay || overlay.dataset.searchReady === 'true') {
+      return;
+    }
+
+    overlay.dataset.searchReady = 'true';
+
+    var input = overlay.querySelector('[data-search-input]');
+    var resultsEl = overlay.querySelector('[data-search-results]');
+    var stateEl = overlay.querySelector('[data-search-state]');
+    var allLink = overlay.querySelector('[data-search-all]');
+    var closeButtons = overlay.querySelectorAll('[data-search-close]');
+    var openButtons = document.querySelectorAll('[data-search-open]');
+    var indexUrl = overlay.getAttribute('data-search-url') || '/search.json';
+    var searchPageUrl = (allLink && allLink.getAttribute('data-search-page')) || '/search/';
+
+    var index = null;
+    var loading = false;
+    var results = [];
+    var activeIndex = -1;
+    var debounceTimer = null;
+    var restoreFocus = null;
+
+    function loadIndex() {
+      if (index || loading) {
+        return;
+      }
+      loading = true;
+      window.fetch(indexUrl, { credentials: 'same-origin' })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          index = Array.isArray(data) ? data : [];
+          loading = false;
+          if (siteSearchOpen && input.value.trim()) {
+            renderResults(input.value);
+          }
+        })
+        .catch(function() {
+          loading = false;
+          if (siteSearchOpen) {
+            setState('Search is unavailable right now.');
+          }
+        });
+    }
+
+    function setState(message) {
+      if (!stateEl) {
+        return;
+      }
+      if (message) {
+        stateEl.textContent = message;
+        stateEl.hidden = false;
+      } else {
+        stateEl.hidden = true;
+      }
+    }
+
+    function updateAllLink(query) {
+      if (!allLink) {
+        return;
+      }
+      var trimmed = query.trim();
+      allLink.href = trimmed
+        ? searchPageUrl + '?q=' + encodeURIComponent(trimmed)
+        : searchPageUrl;
+    }
+
+    function setActive(nextIndex) {
+      var items = resultsEl.querySelectorAll('.site-search-result');
+
+      if (!items.length) {
+        activeIndex = -1;
+        return;
+      }
+
+      activeIndex = (nextIndex + items.length) % items.length;
+
+      items.forEach(function(item, itemIndex) {
+        var isActive = itemIndex === activeIndex;
+        item.classList.toggle('is-active', isActive);
+        var link = item.querySelector('a');
+        if (link) {
+          link.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        }
+        if (isActive) {
+          item.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    }
+
+    function renderResults(query) {
+      var trimmed = query.trim();
+      resultsEl.innerHTML = '';
+      activeIndex = -1;
+      results = [];
+      updateAllLink(query);
+
+      if (!trimmed) {
+        setState('Type to search posts and pages.');
+        return;
+      }
+
+      if (!index) {
+        setState(loading ? 'Loading…' : 'Search is unavailable right now.');
+        return;
+      }
+
+      var ranked = rankSearchResults(index, query);
+      var terms = ranked.terms;
+      results = ranked.results.slice(0, 8);
+
+      if (!results.length) {
+        setState('No matches for “' + trimmed + '”.');
+        return;
+      }
+
+      setState('');
+
+      results.forEach(function(entry, entryIndex) {
+        var doc = entry.doc;
+        var item = document.createElement('li');
+        item.className = 'site-search-result';
+        item.setAttribute('role', 'presentation');
+
+        var link = document.createElement('a');
+        link.href = doc.url;
+        link.setAttribute('role', 'option');
+        link.setAttribute('aria-selected', 'false');
+        link.innerHTML = buildSearchResultMarkup(doc, terms);
+
+        item.appendChild(link);
+        item.addEventListener('mousemove', function() { setActive(entryIndex); });
+        resultsEl.appendChild(item);
+      });
+
+      if (allLink) {
+        allLink.hidden = ranked.results.length <= results.length;
+      }
+
+      setActive(0);
+    }
+
+    function open() {
+      if (siteSearchOpen) {
+        return;
+      }
+      restoreFocus = document.activeElement;
+      loadIndex();
+      overlay.hidden = false;
+      overlay.setAttribute('aria-hidden', 'false');
+      // Force a reflow so the opening transition runs.
+      void overlay.offsetWidth;
+      overlay.classList.add('is-open');
+      document.body.classList.add('modal-open');
+      siteSearchOpen = true;
+      window.requestAnimationFrame(function() {
+        input.focus();
+        input.select();
+      });
+      renderResults(input.value);
+    }
+
+    function close() {
+      if (!siteSearchOpen) {
+        return;
+      }
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      siteSearchOpen = false;
+      window.setTimeout(function() {
+        if (!siteSearchOpen) {
+          overlay.hidden = true;
+        }
+      }, 200);
+      if (restoreFocus && typeof restoreFocus.focus === 'function') {
+        restoreFocus.focus();
+      }
+    }
+
+    openButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        open();
+      });
+    });
+
+    closeButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        close();
+      });
+    });
+
+    input.addEventListener('input', function() {
+      window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(function() {
+        renderResults(input.value);
+      }, 120);
+    });
+
+    input.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        setActive(activeIndex + 1);
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        setActive(activeIndex - 1);
+      } else if (event.key === 'Enter') {
+        var links = resultsEl.querySelectorAll('.site-search-result a');
+        if (activeIndex >= 0 && links[activeIndex]) {
+          event.preventDefault();
+          window.location.href = links[activeIndex].href;
+        }
+      }
+    });
+
+    openSiteSearch = open;
+    closeSiteSearch = close;
+
+    initializeLucideIcons(overlay);
+  }
+
+  // The full /search/ page — same index and ranking as the overlay, but shows
+  // every match (not just the top 8) and keeps the query in the URL (?q=).
+  function initializeSearchPage() {
+    var page = document.querySelector('[data-search-page-url]');
+
+    if (!page) {
+      return;
+    }
+
+    var input = page.querySelector('[data-search-page-input]');
+    var resultsEl = page.querySelector('[data-search-page-results]');
+    var countEl = page.querySelector('[data-search-page-count]');
+    var indexUrl = page.getAttribute('data-search-page-url') || '/search.json';
+    var index = null;
+    var debounceTimer = null;
+
+    function getQueryParam() {
+      try {
+        return new URLSearchParams(window.location.search).get('q') || '';
+      } catch {
+        return '';
+      }
+    }
+
+    function syncUrl(query) {
+      var trimmed = query.trim();
+      var next = window.location.pathname + (trimmed ? '?q=' + encodeURIComponent(trimmed) : '');
+      window.history.replaceState(null, '', next);
+    }
+
+    function render(query) {
+      var trimmed = query.trim();
+      resultsEl.innerHTML = '';
+
+      if (!trimmed) {
+        countEl.textContent = '';
+        return;
+      }
+
+      if (!index) {
+        countEl.textContent = 'Loading…';
+        return;
+      }
+
+      var ranked = rankSearchResults(index, query);
+      var matches = ranked.results;
+
+      if (!matches.length) {
+        countEl.textContent = 'No matches for “' + trimmed + '”.';
+        return;
+      }
+
+      countEl.textContent = matches.length + (matches.length === 1 ? ' result' : ' results') + ' for “' + trimmed + '”';
+
+      matches.forEach(function(entry) {
+        var doc = entry.doc;
+        var item = document.createElement('li');
+        item.className = 'site-search-result search-page-result';
+
+        var link = document.createElement('a');
+        link.href = doc.url;
+        link.innerHTML = buildSearchResultMarkup(doc, ranked.terms);
+
+        item.appendChild(link);
+        resultsEl.appendChild(item);
+      });
+    }
+
+    function loadIndex() {
+      window.fetch(indexUrl, { credentials: 'same-origin' })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          index = Array.isArray(data) ? data : [];
+          render(input.value);
+        })
+        .catch(function() {
+          countEl.textContent = 'Search is unavailable right now.';
+        });
+    }
+
+    input.value = getQueryParam();
+
+    input.addEventListener('input', function() {
+      window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(function() {
+        syncUrl(input.value);
+        render(input.value);
+      }, 120);
+    });
+
+    loadIndex();
+    input.focus();
+  }
+
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
@@ -975,6 +1392,8 @@
     initializeNavigationState();
     initializeScrollTopControl();
     initializePostEnhancements();
+    initializeSearch();
+    initializeSearchPage();
     initializeLucideIcons(document);
 
     document.dispatchEvent(new Event('version3:page-ready'));

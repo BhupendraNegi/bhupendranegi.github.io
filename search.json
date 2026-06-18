@@ -1,0 +1,64 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+search: false
+---
+{%- comment -%}
+  Site-wide search index. Emits one JSON document per blog post and per titled
+  page, consumed by the navbar search overlay and the /search/ page
+  (assets/js/version-3.js).
+
+  - Add `search: false` to a page's front matter to exclude it.
+  - `search_title` / `search_body` index a page that has no `title` (e.g. the
+    home page) without disturbing its <title> tag.
+  - `search_sections: true` additionally splits a page into one result per
+    `##` / `###` heading, each linking to that heading's anchor. Label those
+    sub-results with `search_section_label`.
+{%- endcomment -%}
+{%- assign docs = site.posts | concat: site.html_pages -%}
+[
+{%- assign sep = "" -%}
+{%- for doc in docs -%}
+{%- assign doc_title = doc.title | default: doc.search_title -%}
+{%- comment -%} Skip untitled, opted-out, and paginated (/blog/page2/) pages. {%- endcomment -%}
+{%- unless doc_title == nil or doc.search == false or doc.url contains "/page" -%}
+{%- assign doc_body = doc.content | strip_html | strip_newlines | default: "" -%}
+{%- assign doc_body = doc.search_body | default: doc_body -%}
+{{ sep }}
+{
+  "title": {{ doc_title | strip_html | jsonify }},
+  "url": {{ doc.url | prepend: site.baseurl | jsonify }},
+  "category": {% if doc.date %}"Blog"{% else %}"Page"{% endif %},
+  "date": {% if doc.date %}{{ doc.date | date: "%b %-d, %Y" | jsonify }}{% else %}""{% endif %},
+  "excerpt": {{ doc_body | truncatewords: 28 | jsonify }},
+  "body": {{ doc_body | jsonify }}
+}
+{%- assign sep = "," -%}
+{%- endunless -%}
+
+{%- comment -%} Heading-level sub-results for section-split pages. {%- endcomment -%}
+{%- if doc.search_sections -%}
+{%- assign label = doc.search_section_label | default: doc_title -%}
+{%- comment -%} Treat ### like ## so every heading becomes a split point. {%- endcomment -%}
+{%- assign normalized = doc.content | replace: '<h3 id="', '<h2 id="' -%}
+{%- assign parts = normalized | split: '<h2 id="' -%}
+{%- for part in parts offset:1 -%}
+{%- assign anchor = part | split: '"' | first -%}
+{%- assign head = part | split: '</h' | first -%}
+{%- assign sec_title = head | split: '">' | last | replace: '&amp;', '&' -%}
+{%- assign sec_body = part | strip_html | strip_newlines -%}
+{{ sep }}
+{
+  "title": {{ sec_title | strip_html | jsonify }},
+  "url": {{ doc.url | append: '#' | append: anchor | prepend: site.baseurl | jsonify }},
+  "category": {{ label | jsonify }},
+  "date": "",
+  "excerpt": {{ sec_body | truncatewords: 24 | jsonify }},
+  "body": {{ sec_body | jsonify }}
+}
+{%- assign sep = "," -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+]
