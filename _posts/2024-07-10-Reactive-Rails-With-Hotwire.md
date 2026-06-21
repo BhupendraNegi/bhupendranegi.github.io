@@ -3,6 +3,7 @@ layout: post
 title: Reactive Rails With Hotwire
 cover: /assets/images/blog/hotwire-reactive-rails.jpg
 tech: rails-plain
+tags: [Rails]
 ---
 
 -------

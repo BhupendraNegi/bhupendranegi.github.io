@@ -252,6 +252,28 @@
     gap: 0.5rem;
   }
 
+  /* Footer "more pages" row — surfaces the standalone Now/Uses/Cheatsheet pages
+     site-wide. Takes its own line above the copyright + social row. */
+  .site-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    flex-basis: 100%;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .site-footer-links a {
+    color: var(--site-muted);
+    font: 600 0.9rem/1 var(--font-sans);
+    text-decoration: none;
+    transition: color 0.16s ease;
+  }
+
+  .site-footer-links a:hover {
+    color: var(--site-accent);
+  }
+
   .site-footer-icon-link {
     align-items: center;
     border: 1px solid var(--site-border);
@@ -907,9 +929,30 @@
   }
 
   /* Blog index: single-column rows — thumbnail left, text right, divided */
+  /* Blog topic filter — chips reuse the .tag look from the projects page. */
+  .blog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 2rem 0 0.5rem;
+  }
+
+  .blog-empty {
+    color: var(--site-muted);
+    font: 400 0.95rem/1.5 var(--font-sans);
+    padding: 2rem 0;
+    text-align: center;
+  }
+
   .blog-list {
     display: flex;
     flex-direction: column;
+  }
+
+  /* When the first visible row changes due to filtering, keep the top padding
+     rule from leaving a gap: hidden rows are removed from flow entirely. */
+  .post-row[hidden] {
+    display: none !important;
   }
 
   .post-row {
@@ -1805,6 +1848,19 @@
     margin-inline: auto;
   }
 
+  .page-hero-actions {
+    margin: 1.4rem 0 0;
+  }
+
+  .btn-rss {
+    color: #f26522;
+  }
+
+  .btn-rss:hover {
+    border-color: #f26522 !important;
+    color: #f26522;
+  }
+
   .about-page,
   .projects-page,
   .resume-page,
@@ -2667,6 +2723,89 @@
   .uses-item-detail {
     font: 400 0.85rem/1.45 var(--font-sans);
     color: var(--site-muted);
+  }
+
+  /* /now page */
+  .now-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 1rem 0 0;
+    color: var(--site-muted);
+    font: 500 0.85rem/1 var(--font-sans);
+  }
+
+  .now-updated .site-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .now-block {
+    padding: 1.5rem;
+  }
+
+  .now-block-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 1rem;
+    font: 700 1.1rem/1.2 var(--font-sans);
+    color: var(--site-text);
+  }
+
+  .now-block-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    flex: 0 0 auto;
+    border-radius: 0.6rem;
+    color: #fff;
+    background: var(--site-gradient);
+  }
+
+  .now-block-icon .site-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .now-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .now-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    font: 400 0.95rem/1.55 var(--font-sans);
+    color: var(--site-muted);
+  }
+
+  .now-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--site-accent);
+  }
+
+  .now-list strong {
+    color: var(--site-text);
   }
 
   /* Grid cell: a plain wrapper holding the visible card + its (fixed) modal.
@@ -3633,6 +3772,68 @@
     font-style: italic;
     margin-top: 2rem;
     padding-top: 1.5rem;
+  }
+
+  /* End-of-article navigation to the newer/older post. */
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 0;
+  }
+
+  .post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--site-border);
+    border-radius: 0.75rem;
+    background: var(--site-surface);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.16s ease, transform 0.16s ease;
+  }
+
+  .post-nav-link:hover {
+    border-color: var(--site-accent);
+    transform: translateY(-2px);
+  }
+
+  .post-nav-newer {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .post-nav-dir {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font: 600 0.72rem/1 var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--site-accent);
+  }
+
+  .post-nav-dir .site-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .post-nav-title {
+    font: 600 0.98rem/1.35 var(--font-sans);
+    color: var(--site-text);
+  }
+
+  @media (max-width: 600px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .post-nav-newer {
+      text-align: left;
+      align-items: flex-start;
+    }
   }
 
   .posts {

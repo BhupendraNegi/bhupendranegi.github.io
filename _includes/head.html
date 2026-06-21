@@ -2,7 +2,9 @@
 {% capture meta_description %}{% if page.description %}{{ page.description }}{% elsif page.subtitle %}{{ page.subtitle }}{% elsif page.layout == 'post' %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Software Engineer specialising in Ruby on Rails and React. Check out my projects and writing.{% endif %}{% endcapture %}
 {% assign meta_description = meta_description | strip %}
 {% assign meta_url = page.url | absolute_url %}
-{% assign meta_image = '/assets/images/bhupendra.png' | absolute_url %}
+{% comment %} Prefer a page/post's own art for social cards (posts set `cover:`;
+any page may set `image:`); fall back to the headshot. {% endcomment %}
+{% assign meta_image = page.image | default: page.cover | default: '/assets/images/bhupendra.png' | absolute_url %}
 {% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
 <head>
   <meta charset="UTF-8">

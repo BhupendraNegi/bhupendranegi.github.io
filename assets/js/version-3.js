@@ -1379,6 +1379,47 @@
     input.focus();
   }
 
+  // Blog index topic filter: single-select chips that show only posts whose
+  // data-tags include the chosen tag (the "All" chip has an empty tag).
+  function initializeBlogFilter() {
+    var filter = document.querySelector('.blog-filter');
+    var list = document.querySelector('[data-blog-list]');
+
+    if (!filter || !list) {
+      return;
+    }
+
+    var buttons = filter.querySelectorAll('[data-blog-tag]');
+    var posts = list.querySelectorAll('.post-row');
+    var empty = document.querySelector('[data-blog-empty]');
+
+    function apply(tag) {
+      var shown = 0;
+      posts.forEach(function(post) {
+        var tags = (post.getAttribute('data-tags') || '').split(/\s+/);
+        var match = !tag || tags.indexOf(tag) !== -1;
+        post.hidden = !match;
+        if (match) {
+          shown += 1;
+        }
+      });
+      if (empty) {
+        empty.hidden = shown !== 0;
+      }
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        buttons.forEach(function(other) {
+          var active = other === button;
+          other.classList.toggle('is-active', active);
+          other.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        apply(button.getAttribute('data-blog-tag'));
+      });
+    });
+  }
+
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
@@ -1386,6 +1427,7 @@
     initializeThemeToggles();
     initializeMobileNavigation();
     initializeProjectFilters();
+    initializeBlogFilter();
     initializeModals();
     initializeContactForm();
     initializeAutoResizeTextareas();

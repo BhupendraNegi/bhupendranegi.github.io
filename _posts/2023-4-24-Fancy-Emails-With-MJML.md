@@ -2,6 +2,7 @@
 layout: post
 title: Fancy Emails With MJML
 cover: /assets/images/blog/mjml-emails.jpg
+tags: [Rails]
 ---
 
 -------

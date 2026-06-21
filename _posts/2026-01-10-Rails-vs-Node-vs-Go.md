@@ -3,6 +3,7 @@ layout: post
 title: Ruby on Rails vs Node.js vs Go
 cover: /assets/images/blog/rails-node-go.jpg
 techs: [rails-plain, nodejs-plain, go-plain]
+tags: [Rails, Ruby]
 ---
 
 -------
