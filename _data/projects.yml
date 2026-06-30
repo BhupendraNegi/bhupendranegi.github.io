@@ -1,3 +1,59 @@
+- id: 5
+  title: HookView
+  url:
+  github_url: https://github.com/BhupendraNegi/hookview
+  description: >-
+    When Stripe, GitHub or Shopify fire a webhook at your app, you can't see
+    what they actually sent — so debugging means guessing. HookView solves that:
+    mint a disposable URL, point any service's webhooks at it, and watch every
+    request land live with its headers, query params and pretty-printed JSON. No
+    accounts, nothing to install; captures auto-expire after 24h.
+  tags: [typescript, nextjs, react, redis, web]
+  technologies:
+    [
+      nextjs-original,
+      typescript-plain,
+      react-original,
+      tailwindcss-plain,
+      redis-plain,
+      docker-plain,
+      vercel-original,
+    ]
+  cover: /assets/images/projects/hookview/cover.jpg
+  images:
+    [
+      "https://github.com/BhupendraNegi/hookview/blob/main/docs/screenshots/landing.png?raw=true",
+      "https://github.com/BhupendraNegi/hookview/blob/main/docs/screenshots/inbox.png?raw=true",
+    ]
+
+- id: 6
+  title: itsanproblem
+  url:
+  github_url: https://github.com/BhupendraNegi/itsanproblem
+  description: >-
+    Either you can rant about a problem or you can do something about it.
+    itsanproblem is an anonymous problem-sharing platform: post the problems
+    you're facing anonymously, and let others weigh in by name with help,
+    advice or solidarity. A React + TypeScript SPA on a Rails API, with JWT
+    auth, moderation tooling and a Dockerised dev stack.
+  tags: [ruby, rails, react, typescript, web]
+  technologies:
+    [
+      react-original,
+      typescript-plain,
+      ruby-plain,
+      rails-plain,
+      postgresql-plain,
+      vitejs-plain,
+      docker-plain,
+    ]
+  cover: /assets/images/projects/itsanproblem/cover.jpg
+  images:
+    [
+      "https://github.com/BhupendraNegi/itsanproblem/blob/main/docs/screenshots/feed.png?raw=true",
+      "https://github.com/BhupendraNegi/itsanproblem/blob/main/docs/screenshots/post.png?raw=true",
+    ]
+
 - id: 1
   title: Data Management
   url:
@@ -76,32 +132,4 @@
       "https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-29-32-668_com.example.darkknight.tenorplay.png?raw=true",
       "https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-34-09-467_com.example.darkknight.tenorplay.png?raw=true",
       "https://github.com/BhupendraNegi/Tenor-play/blob/master/TenorPlay/Screenshots/Screenshot_2018-08-16-01-29-48-053_com.example.darkknight.tenorplay.png?raw=true",
-    ]
-
-- id: 5
-  title: HookView
-  url:
-  github_url: https://github.com/BhupendraNegi/hookview
-  description: >-
-    When Stripe, GitHub or Shopify fire a webhook at your app, you can't see
-    what they actually sent — so debugging means guessing. HookView solves that:
-    mint a disposable URL, point any service's webhooks at it, and watch every
-    request land live with its headers, query params and pretty-printed JSON. No
-    accounts, nothing to install; captures auto-expire after 24h.
-  tags: [typescript, nextjs, react, redis, web]
-  technologies:
-    [
-      nextjs-original,
-      typescript-plain,
-      react-original,
-      tailwindcss-plain,
-      redis-plain,
-      docker-plain,
-      vercel-original,
-    ]
-  cover: /assets/images/projects/hookview/cover.jpg
-  images:
-    [
-      "https://github.com/BhupendraNegi/hookview/blob/main/docs/screenshots/landing.png?raw=true",
-      "https://github.com/BhupendraNegi/hookview/blob/main/docs/screenshots/inbox.png?raw=true",
     ]
