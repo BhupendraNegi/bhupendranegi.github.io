@@ -141,6 +141,7 @@
     flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: center;
+    margin-top: clamp(2rem, 5vw, 3rem);
   }
 
   .site-icon {
@@ -264,14 +265,28 @@
   }
 
   .site-footer-links a {
+    align-items: center;
+    border: 1px solid var(--site-border);
+    border-radius: 999px;
     color: var(--site-muted);
+    display: inline-flex;
     font: 600 0.9rem/1 var(--font-sans);
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
     text-decoration: none;
-    transition: color 0.16s ease;
+    transition: border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
   }
 
-  .site-footer-links a:hover {
+  .site-footer-links a .site-icon {
+    height: 0.95rem;
+    width: 0.95rem;
+  }
+
+  .site-footer-links a:hover,
+  .site-footer-links a:focus-visible {
+    border-color: var(--site-accent);
     color: var(--site-accent);
+    transform: translateY(-1px);
   }
 
   .site-footer-icon-link {
@@ -2806,6 +2821,18 @@
 
   .now-list strong {
     color: var(--site-text);
+  }
+
+  .now-item-meta {
+    color: var(--site-muted);
+    font: 500 0.8rem/1 var(--font-sans);
+    white-space: nowrap;
+  }
+
+  .now-inline-icon {
+    height: 0.85rem;
+    vertical-align: -0.1em;
+    width: 0.85rem;
   }
 
   /* Grid cell: a plain wrapper holding the visible card + its (fixed) modal.

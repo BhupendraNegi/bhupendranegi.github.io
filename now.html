@@ -3,7 +3,7 @@ layout: site_layout
 title: Now
 permalink: /now/
 description: What Bhupendra Negi is focused on right now — current work, what I'm learning, and what's keeping me busy.
-last_updated: 2026-06-18
+last_updated: 2026-07-03
 ---
 
 <section class="now-page" aria-labelledby="now-heading">
@@ -19,6 +19,7 @@ last_updated: 2026-06-18
       <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="hammer" class="site-icon" aria-hidden="true"></i></span> Working on</h2>
       <ul class="now-list">
         <li>Backend and data work at <strong>ClearStack</strong> on Electronic Billing Administration &mdash; performance and clean deployment with Ruby on Rails.</li>
+        <li>Just shipped <a href="https://bhupendranegi.github.io/CronLens/" target="_blank" rel="noopener"><strong>CronLens</strong></a> &mdash; paste a cron expression and see exactly when it runs, in plain English. All client-side, built with Next.js + TypeScript.</li>
         <li>Maintaining and improving <strong>this site</strong> &mdash; recently shipped site-wide search, a <a href="/uses/">/uses</a> page, per-post social images, and blog topic filtering.</li>
         <li>Keeping the <a href="/cheatsheet/">dev cheatsheet</a> growing as I pick up new commands and workflows.</li>
       </ul>
@@ -28,8 +29,32 @@ last_updated: 2026-06-18
       <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="sprout" class="site-icon" aria-hidden="true"></i></span> Learning &amp; exploring</h2>
       <ul class="now-list">
         <li>Getting more out of <strong>AI-assisted development</strong> &mdash; Claude Code, Codex, and Copilot in the daily loop.</li>
-        <li>Digging deeper into <strong>Rails 8</strong> and the Solid stack (Queue, Cache, Cable).</li>
-        <li>Comparing backend runtimes &mdash; see my recent post on <a href="/Rails-vs-Node-vs-Go/">Rails vs Node.js vs Go</a>.</li>
+        <li>Going deeper on <strong>Next.js + TypeScript</strong> through side projects &mdash; CronLens and HookView both run on the App Router.</li>
+        <li>Digging into <strong>Rails 8</strong> and the Solid stack (Queue, Cache, Cable).</li>
+        <li>Comparing backend runtimes &mdash; see my post on <a href="/Rails-vs-Node-vs-Go/">Rails vs Node.js vs Go</a>.</li>
+      </ul>
+    </section>
+
+    <section class="now-block site-card" data-reveal>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="rocket" class="site-icon" aria-hidden="true"></i></span> Recently shipped</h2>
+      <ul class="now-list">
+        {% for project in site.data.projects limit: 3 %}
+        <li>
+          {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener"><strong>{{ project.title }}</strong></a>{% elsif project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener"><strong>{{ project.title }}</strong></a>{% else %}<strong>{{ project.title }}</strong>{% endif %}
+          &mdash; {{ project.description | strip_newlines | truncate: 110 }}
+        </li>
+        {% endfor %}
+        <li><a href="/projects">See all projects <i data-lucide="arrow-right" class="site-icon now-inline-icon" aria-hidden="true"></i></a></li>
+      </ul>
+    </section>
+
+    <section class="now-block site-card" data-reveal>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="pen-line" class="site-icon" aria-hidden="true"></i></span> Writing lately</h2>
+      <ul class="now-list">
+        {% for post in site.posts limit: 3 %}
+        <li><a href="{{ post.url }}"><strong>{{ post.title }}</strong></a> <span class="now-item-meta">{{ post.date | date: "%b %Y" }}</span></li>
+        {% endfor %}
+        <li><a href="/blog">All posts <i data-lucide="arrow-right" class="site-icon now-inline-icon" aria-hidden="true"></i></a></li>
       </ul>
     </section>
 
@@ -37,7 +62,7 @@ last_updated: 2026-06-18
       <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="coffee" class="site-icon" aria-hidden="true"></i></span> Away from the keyboard</h2>
       <ul class="now-list">
         <li>Based in <strong>Bangalore, India</strong>.</li>
-        <li><FILL IN &mdash; a hobby, what you're reading, or anything you'd like to share.></li>
+        <li>Off hours, I'm usually tinkering with a side-project idea &mdash; <strong>CronLens</strong> and <strong>HookView</strong> both started that way.</li>
       </ul>
     </section>
   </div>
@@ -45,5 +70,6 @@ last_updated: 2026-06-18
   <div class="page-actions" data-reveal>
     <a class="btn-primary" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
     <a class="btn-ghost" href="/uses/"><i data-lucide="wrench" class="site-icon" aria-hidden="true"></i> What I use</a>
+    <a class="btn-ghost" href="/cheatsheet/"><i data-lucide="square-terminal" class="site-icon" aria-hidden="true"></i> Dev cheatsheet</a>
   </div>
 </section>
