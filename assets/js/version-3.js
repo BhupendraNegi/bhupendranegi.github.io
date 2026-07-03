@@ -1076,7 +1076,34 @@
     var closeButtons = overlay.querySelectorAll('[data-search-close]');
     var openButtons = document.querySelectorAll('[data-search-open]');
     var indexUrl = overlay.getAttribute('data-search-url') || '/search.json';
-    var searchPageUrl = (allLink && allLink.getAttribute('data-search-page')) || '/search/';
+
+    function sanitizeSearchPageUrl(rawUrl) {
+      var fallback = '/search/';
+      if (!rawUrl) {
+        return fallback;
+      }
+
+      var trimmedUrl = rawUrl.trim();
+      if (!trimmedUrl) {
+        return fallback;
+      }
+
+      if (trimmedUrl.charAt(0) === '/') {
+        return trimmedUrl;
+      }
+
+      try {
+        var parsed = new URL(trimmedUrl, window.location.origin);
+        if ((parsed.protocol === 'http:' || parsed.protocol === 'https:') &&
+            parsed.origin === window.location.origin) {
+          return parsed.pathname + parsed.search + parsed.hash;
+        }
+      } catch (error) {}
+
+      return fallback;
+    }
+
+    var searchPageUrl = sanitizeSearchPageUrl(allLink && allLink.getAttribute('data-search-page'));
 
     var index = null;
     var loading = false;
