@@ -1,6 +1,34 @@
+- id: 7
+  title: CronLens
+  url: https://bhupendranegi.github.io/CronLens/
+  github_url: https://github.com/BhupendraNegi/CronLens
+  description: >-
+    Cron expressions are easy to write and easy to get wrong. CronLens is a
+    developer-focused cron visualizer: paste a cron string and instantly see a
+    plain-English translation, the next run times (timezone- and DST-aware), a
+    field-by-field breakdown, and warnings for expressions that are valid but
+    surprising. Supports 5-field, 6-field and Quartz dialects — everything runs
+    client-side, nothing leaves your browser.
+  tags: [typescript, nextjs, react, web]
+  technologies:
+    [
+      nextjs-original,
+      typescript-plain,
+      react-original,
+      tailwindcss-plain,
+      docker-plain,
+      github-original,
+    ]
+  cover: /assets/images/projects/cronlens/cover.jpg
+  images:
+    [
+      "https://github.com/BhupendraNegi/CronLens/blob/main/app/images/landing_page_1.png?raw=true",
+      "https://github.com/BhupendraNegi/CronLens/blob/main/app/images/landing_page_2.png?raw=true",
+    ]
+
 - id: 5
   title: HookView
-  url:
+  url: https://hookview.vercel.app/
   github_url: https://github.com/BhupendraNegi/hookview
   description: >-
     When Stripe, GitHub or Shopify fire a webhook at your app, you can't see
