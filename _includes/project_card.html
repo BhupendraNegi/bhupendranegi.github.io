@@ -27,7 +27,7 @@
         <a class="button_wrapper btn-primary" target="_blank" rel="noopener" href="{{project.url}}"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>
       {% endif %}
       {% if project.github_url %}
-        <a class="button_wrapper btn-ghost" target="_blank" rel="noopener" href="{{project.github_url}}"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>
+        <a class="button_wrapper btn-ghost" target="_blank" rel="noopener" href="{{project.github_url}}">{% include social-icon.html name="github" %} Code</a>
       {% endif %}
       <button type="button" class="next btn-ghost">Next <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
     </div>

@@ -12,7 +12,7 @@
   tags: [typescript, nextjs, react, web]
   technologies:
     [
-      nextjs-original,
+      nextjs-plain,
       typescript-plain,
       react-original,
       tailwindcss-plain,
@@ -39,7 +39,7 @@
   tags: [typescript, nextjs, react, redis, web]
   technologies:
     [
-      nextjs-original,
+      nextjs-plain,
       typescript-plain,
       react-original,
       tailwindcss-plain,

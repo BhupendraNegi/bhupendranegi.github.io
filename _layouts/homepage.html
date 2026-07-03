@@ -71,7 +71,7 @@ layout: default
               </ul>
             {% endif %}
             <div class="proj-card-links">
-              {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code"><i class="site-icon" data-lucide="github" aria-hidden="true"></i> Code</a>{% endif %}
+              {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code">{% include social-icon.html name="github" %} Code</a>{% endif %}
               {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
             </div>
           </div>

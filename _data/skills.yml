@@ -26,6 +26,8 @@
   skills:
     - class: react-plain
       skill_name: React
+    - class: nextjs-plain
+      skill_name: Next.js
     - class: angularjs-plain
       skill_name: Angular
     - class: jekyll-plain
