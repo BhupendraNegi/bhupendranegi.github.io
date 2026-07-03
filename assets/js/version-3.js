@@ -988,24 +988,35 @@
     initializeLucideIcons(content);
   }
 
-  function escapeSearchHtml(value) {
-    return String(value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
+  // Appends `text` to `parent` as text nodes, wrapping each term match in a
+  // <mark> element. Built with DOM APIs (never innerHTML) so query and index
+  // text can't be interpreted as HTML.
+  function appendHighlightedText(parent, text, terms) {
+    var value = String(text);
+    var escapedTerms = terms
+      .filter(function(term) { return Boolean(term); })
+      .map(function(term) { return term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
 
-  function highlightSearchTerms(text, terms) {
-    var safe = escapeSearchHtml(text);
-    terms.forEach(function(term) {
-      if (!term) {
+    if (!escapedTerms.length) {
+      parent.appendChild(document.createTextNode(value));
+      return;
+    }
+
+    // Splitting on a capturing group keeps the matches: odd indexes are hits.
+    var parts = value.split(new RegExp('(' + escapedTerms.join('|') + ')', 'gi'));
+
+    parts.forEach(function(part, partIndex) {
+      if (!part) {
         return;
       }
-      var escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      safe = safe.replace(new RegExp('(' + escaped + ')', 'gi'), '<mark>$1</mark>');
+      if (partIndex % 2 === 1) {
+        var mark = document.createElement('mark');
+        mark.textContent = part;
+        parent.appendChild(mark);
+      } else {
+        parent.appendChild(document.createTextNode(part));
+      }
     });
-    return safe;
   }
 
   // Shared ranking used by both the navbar overlay and the /search/ page so
@@ -1049,15 +1060,37 @@
     return { terms: terms, results: results };
   }
 
-  function buildSearchResultMarkup(doc, terms) {
-    return (
-      '<span class="site-search-result-head">' +
-        '<span class="site-search-result-cat">' + escapeSearchHtml(doc.category || 'Page') + '</span>' +
-        (doc.date ? '<span class="site-search-result-date">' + escapeSearchHtml(doc.date) + '</span>' : '') +
-      '</span>' +
-      '<span class="site-search-result-title">' + highlightSearchTerms(doc.title || '', terms) + '</span>' +
-      '<span class="site-search-result-excerpt">' + highlightSearchTerms(doc.excerpt || '', terms) + '</span>'
-    );
+  function buildSearchResultContent(doc, terms) {
+    var fragment = document.createDocumentFragment();
+
+    var head = document.createElement('span');
+    head.className = 'site-search-result-head';
+
+    var category = document.createElement('span');
+    category.className = 'site-search-result-cat';
+    category.textContent = doc.category || 'Page';
+    head.appendChild(category);
+
+    if (doc.date) {
+      var date = document.createElement('span');
+      date.className = 'site-search-result-date';
+      date.textContent = doc.date;
+      head.appendChild(date);
+    }
+
+    fragment.appendChild(head);
+
+    var title = document.createElement('span');
+    title.className = 'site-search-result-title';
+    appendHighlightedText(title, doc.title || '', terms);
+    fragment.appendChild(title);
+
+    var excerpt = document.createElement('span');
+    excerpt.className = 'site-search-result-excerpt';
+    appendHighlightedText(excerpt, doc.excerpt || '', terms);
+    fragment.appendChild(excerpt);
+
+    return fragment;
   }
 
   function initializeSearch() {
@@ -1190,7 +1223,7 @@
         link.href = doc.url;
         link.setAttribute('role', 'option');
         link.setAttribute('aria-selected', 'false');
-        link.innerHTML = buildSearchResultMarkup(doc, terms);
+        link.appendChild(buildSearchResultContent(doc, terms));
 
         item.appendChild(link);
         item.addEventListener('mousemove', function() { setActive(entryIndex); });
@@ -1346,7 +1379,7 @@
 
         var link = document.createElement('a');
         link.href = doc.url;
-        link.innerHTML = buildSearchResultMarkup(doc, ranked.terms);
+        link.appendChild(buildSearchResultContent(doc, ranked.terms));
 
         item.appendChild(link);
         resultsEl.appendChild(item);
