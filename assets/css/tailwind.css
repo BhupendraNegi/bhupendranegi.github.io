@@ -1863,19 +1863,6 @@
     margin-inline: auto;
   }
 
-  .page-hero-actions {
-    margin: 1.4rem 0 0;
-  }
-
-  .btn-rss {
-    color: #f26522;
-  }
-
-  .btn-rss:hover {
-    border-color: #f26522 !important;
-    color: #f26522;
-  }
-
   .about-page,
   .projects-page,
   .resume-page,
