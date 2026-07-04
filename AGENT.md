@@ -109,6 +109,17 @@ Notes:
 - Contact form submission is handled client-side through Formspree and `fetch`.
 - Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
 
+### Adding or replacing images
+
+When the user drops a new image into the repo (typically a large PNG export, ~2MB), always run it through this pipeline — never commit the raw PNG:
+
+1. **Compress into the referenced file.** Convert to the JPEG filename the templates/data already point at, so no reference changes are needed: `sips --resampleWidth <W> -s format jpeg -s formatOptions 80 new.png --out target.jpg`. Width guide: 1200px for blog/project covers (they double as social images), ~800px for portraits and other thumbnails. Skip resampling if the source is already near that size.
+2. **Generate the WebP twin** alongside it: `cwebp -q 80 target.jpg -o target.webp` (Homebrew cwebp).
+3. **Delete the original oversized PNG.**
+4. **Render via `<picture>`** — a `<source type="image/webp">` plus the original JPEG/PNG as the `<img>` fallback. Existing spots (blog index, project tiles, home/About portraits, 404) already do this, so replacing an image in place needs no markup changes; only brand-new image slots do.
+5. **Keep `og:image` on JPEG/PNG.** `head.html` builds social cards from `cover:`/`page.image` as-is — those must never point at a WebP (link-preview scrapers are unreliable with it).
+6. If a new `<picture>` wrapper sits inside a styled media box, add its selector to the shared `display: contents` rule in `tailwind.css` (search for "WebP <picture> wrappers").
+
 ## Verification Checklist
 
 Before finishing meaningful changes, run:
