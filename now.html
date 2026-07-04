@@ -3,41 +3,22 @@ layout: site_layout
 title: Now
 permalink: /now/
 description: What Bhupendra Negi is focused on right now — current work, what I'm learning, and what's keeping me busy.
-last_updated: 2026-07-03
+last_updated: 2026-07-04
 ---
 
 <section class="now-page" aria-labelledby="now-heading">
   <header class="page-hero" data-reveal>
     <p class="page-hero-eyebrow">Now</p>
     <h1 id="now-heading" class="page-hero-title" data-split>What I'm doing <span class="tx-accent">now</span></h1>
-    <p class="page-hero-lead">A snapshot of what I'm focused on at the moment &mdash; updated every so often. Inspired by the <a href="https://nownownow.com/about" target="_blank" rel="noopener">/now page</a> movement.</p>
+    <p class="page-hero-lead">A snapshot of what has my attention right now &mdash; the work, the learning, and the life around it. Updated every so often.</p>
     {% if page.last_updated %}<p class="now-updated"><i data-lucide="clock" class="site-icon" aria-hidden="true"></i> Last updated {{ page.last_updated | date: "%B %-d, %Y" }}</p>{% endif %}
   </header>
 
   <div class="now-grid">
     <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="hammer" class="site-icon" aria-hidden="true"></i></span> Working on</h2>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="hammer" class="site-icon" aria-hidden="true"></i></span> Building &amp; shipping</h2>
       <ul class="now-list">
-        <li>Backend and data work at <strong>ClearStack</strong> on Electronic Billing Administration &mdash; performance and clean deployment with Ruby on Rails.</li>
-        <li>Just shipped <a href="https://bhupendranegi.github.io/CronLens/" target="_blank" rel="noopener"><strong>CronLens</strong></a> &mdash; paste a cron expression and see exactly when it runs, in plain English. All client-side, built with Next.js + TypeScript.</li>
-        <li>Maintaining and improving <strong>this site</strong> &mdash; recently shipped site-wide search, a <a href="/uses/">/uses</a> page, per-post social images, and blog topic filtering.</li>
-        <li>Keeping the <a href="/cheatsheet/">dev cheatsheet</a> growing as I pick up new commands and workflows.</li>
-      </ul>
-    </section>
-
-    <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="sprout" class="site-icon" aria-hidden="true"></i></span> Learning &amp; exploring</h2>
-      <ul class="now-list">
-        <li>Getting more out of <strong>AI-assisted development</strong> &mdash; Claude Code, Codex, and Copilot in the daily loop.</li>
-        <li>Going deeper on <strong>Next.js + TypeScript</strong> through side projects &mdash; CronLens and HookView both run on the App Router.</li>
-        <li>Digging into <strong>Rails 8</strong> and the Solid stack (Queue, Cache, Cable).</li>
-        <li>Comparing backend runtimes &mdash; see my post on <a href="/Rails-vs-Node-vs-Go/">Rails vs Node.js vs Go</a>.</li>
-      </ul>
-    </section>
-
-    <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="rocket" class="site-icon" aria-hidden="true"></i></span> Recently shipped</h2>
-      <ul class="now-list">
+        <li>Full-stack development at <strong>ClearStack</strong> &mdash; building Electronic Billing Administration end to end on Ruby on Rails, from data-heavy backend work to the interfaces on top, with performance and clean deployments always in view.</li>
         {% for project in site.data.projects limit: 3 %}
         <li>
           {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener"><strong>{{ project.title }}</strong></a>{% elsif project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener"><strong>{{ project.title }}</strong></a>{% else %}<strong>{{ project.title }}</strong>{% endif %}
@@ -49,8 +30,11 @@ last_updated: 2026-07-03
     </section>
 
     <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="pen-line" class="site-icon" aria-hidden="true"></i></span> Writing lately</h2>
+      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="sprout" class="site-icon" aria-hidden="true"></i></span> Learning &amp; writing</h2>
       <ul class="now-list">
+        <li>Making <strong>AI-assisted development</strong> a first-class part of the workflow &mdash; Claude Code, Codex, and Copilot in the daily loop.</li>
+        <li>Going deeper on <strong>Next.js and TypeScript</strong> through side projects &mdash; CronLens and HookView both run on the App Router.</li>
+        <li>Digging into <strong>Rails 8</strong> and the Solid stack (Queue, Cache, Cable).</li>
         {% for post in site.posts limit: 3 %}
         <li><a href="{{ post.url }}"><strong>{{ post.title }}</strong></a> <span class="now-item-meta">{{ post.date | date: "%b %Y" }}</span></li>
         {% endfor %}
@@ -61,8 +45,10 @@ last_updated: 2026-07-03
     <section class="now-block site-card" data-reveal>
       <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="coffee" class="site-icon" aria-hidden="true"></i></span> Away from the keyboard</h2>
       <ul class="now-list">
-        <li>Based in <strong>Bangalore, India</strong>.</li>
-        <li>Off hours, I'm usually tinkering with a side-project idea &mdash; <strong>CronLens</strong> and <strong>HookView</strong> both started that way.</li>
+        <li>Based in <strong>Bengaluru</strong>, originally from <strong>Dehradun, Uttarakhand</strong> &mdash; which explains the pull of the mountains.</li>
+        <li><strong>Trekking</strong> in the mountains whenever I can, and exploring the places the trails lead through.</li>
+        <li>Reading &mdash; alternating between Amish Tripathi's mythological epics (<em>The Immortals of Meluha</em>, <em>The Secret of the Nagas</em>, <em>Sita: Warrior of Mithila</em>) and the Sidney Sheldon thrillers <em>Chasing Tomorrow</em> and <em>The Phoenix</em>.</li>
+        <li>Writing <strong>poetry</strong> every now and then &mdash; the mountains usually get the credit.</li>
       </ul>
     </section>
   </div>
