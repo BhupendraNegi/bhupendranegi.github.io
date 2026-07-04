@@ -12,8 +12,8 @@
   tags: [typescript, nextjs, react, web]
   technologies:
     [
-      nextjs-plain,
       typescript-plain,
+      nextjs-plain,
       react-original,
       tailwindcss-plain,
       docker-plain,

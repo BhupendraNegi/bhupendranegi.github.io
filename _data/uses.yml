@@ -1,13 +1,11 @@
 # /uses page content — the tools behind the work.
 #
-# Each group renders as a card. Per item:
+# Each group renders as a card (the page is designed around 6 cards). Per item:
 #   name    (required) — the tool/thing
 #   detail  (optional) — a short note
 #   icon    (optional) — a Devicon class WITHOUT the leading "devicon-"
 #                        (e.g. ruby-plain). Must exist in the loaded Devicon.
 #   lucide  (optional) — a Lucide icon name, used when there is no Devicon glyph
-#
-# Lines marked <FILL IN> are placeholders — replace them with your real setup.
 
 - group: Editor & Terminal
   icon: monitor # lucide icon for the group heading
@@ -18,53 +16,34 @@
     - name: VS Code
       icon: vscode-plain
       detail: For everything else, with the Claude Code extension.
-    - name: iTerm2
+    - name: Terminals
       lucide: square-terminal
-      detail: My everyday terminal.
-    - name: Ghostty
-      lucide: ghost
-      detail: Fast GPU-accelerated terminal I'm trying out.
+      detail: iTerm2 day to day; trying out Ghostty.
     - name: Shell
       lucide: terminal
       detail: zsh with Oh My Zsh.
-    - name: Editor font
+    - name: Editor setup
       lucide: type
-      detail: JetBrains Mono.
-    - name: Editor theme
-      lucide: palette
-      detail: Monokai Dark in VS Code.
+      detail: JetBrains Mono, Monokai Dark theme.
 
-- group: Languages & Runtimes
+- group: Languages & Frameworks
   icon: code-2
   items:
-    - name: Ruby
+    - name: Ruby & Rails
       icon: ruby-plain
-      detail: 4.0.3, with Bundler 4.0.14.
-    - name: Node.js
-      icon: nodejs-plain
-      detail: 22.22.3.
+      detail: Ruby 4.0.3 and Rails 8 — my main backend stack.
     - name: JavaScript / TypeScript
       icon: typescript-plain
-      detail: Vanilla JS on this site; TypeScript at work.
-    - name: Version manager
-      lucide: layers
-      detail: mise, to pin Ruby and Node per project.
-
-- group: Frameworks & Libraries
-  icon: blocks
-  items:
-    - name: Ruby on Rails
-      icon: rails-plain
-      detail: My main backend framework (currently on Rails 8).
-    - name: React
+      detail: Vanilla JS on this site; TypeScript at work and in side projects.
+    - name: Node.js
+      icon: nodejs-plain
+      detail: 22.22.3, pinned per project with mise.
+    - name: React & Next.js
       icon: react-original
-      detail: For rich, interactive front ends.
-    - name: Tailwind CSS
+      detail: For rich front ends — CronLens and HookView run on Next.js.
+    - name: Tailwind CSS & GSAP
       lucide: wind
-      detail: v4 — the styling for this site.
-    - name: GSAP
-      lucide: sparkles
-      detail: ScrollTrigger & SplitText for the site's motion.
+      detail: The styling and motion behind this site.
     - name: Jekyll
       icon: jekyll-plain
       detail: The static site generator powering this portfolio.
