@@ -1,7 +1,7 @@
 ---
 layout: cheatsheet
 title: Dev Cheatsheet
-description: A practical developer cheatsheet — copy-paste commands for Git, Ruby on Rails, RSpec, Yarn, Docker, Kamal, Lima/Colima, MySQL, and everyday shell work.
+description: A practical developer cheatsheet — copy-paste commands for Git, Ruby on Rails, RSpec, JavaScript/TypeScript, Yarn, Docker, Kamal, Lima/Colima, MySQL, and everyday shell work.
 subtitle: A no-fluff reference for day-to-day development.
 permalink: /cheatsheet/
 # Split each heading into its own anchored search result (see search.json).
@@ -316,10 +316,15 @@ ssh -T git@github.com            # test the connection
 
 ```bash
 ssh <user>@<host>                       # open a shell
+ssh -i ~/.ssh/<key> <user>@<host>       # use a specific identity (private key)
 ssh <user>@<host> -p 2222               # non-default port
 ssh <user>@<host> "df -h"               # run one command and return
+ssh -t <user>@<host> htop               # force a TTY for interactive remote commands
+ssh -A <user>@<host>                    # forward your agent (use local keys on the server)
 ssh-copy-id <user>@<host>               # install your public key on a server
+ssh-copy-id -i ~/.ssh/<key>.pub <user>@<host>   # install a specific public key
 ssh -J <jump-host> <user>@<host>        # hop through a bastion / jump host
+ssh -o ConnectTimeout=5 <user>@<host>   # fail fast if the host is unreachable
 ssh -v <user>@<host>                    # verbose — debug auth/connection issues
 ```
 
@@ -478,7 +483,6 @@ gem cleanup                     # remove old gem versions
 
 ```bash
 bin/rails s -p 3000              # start the server
-bin/rails c                      # console
 redis-server                     # start Redis
 overmind start                   # start every Procfile process
 overmind connect <process>       # attach to one process (e.g. web, workers)
@@ -487,17 +491,41 @@ bundle exec sidekiq -C config/sidekiq.yml          # background jobs (Sidekiq)
 bundle exec rake resque:work QUEUE=*               # background jobs (Resque)
 ```
 
-### Generators & migrations
+### Console & inspect
 
 ```bash
-bin/rails g migration <Name>                 # create a migration
-bin/rails g scaffold <Name> field:type       # scaffold a resource
+bin/rails c                      # console
+bin/rails c --sandbox            # console that rolls back all changes on exit
+bin/rails dbconsole              # database CLI for the current environment
+bin/rails runner "User.count"    # run a line of Ruby inside the app
+bin/rails routes                 # every route in the app
+bin/rails routes -g <pattern>    # only routes matching a pattern
+bin/rails about                  # versions of Rails, Ruby, and the stack
+```
+
+### Generators & scaffolds
+
+```bash
+bin/rails g                                  # list every available generator
+bin/rails g scaffold <Name> <field>:<type>   # model + migration + controller + views + routes
+bin/rails g model <Name> <field>:<type>      # model + migration only
+bin/rails g controller <Names> index show    # controller with the given actions
+bin/rails g migration Add<Field>To<Table> <field>:<type>   # migration from a naming convention
+bin/rails destroy scaffold <Name>            # undo a generator (works for any of them)
+```
+
+### Migrations & database
+
+```bash
 bin/rails db:setup                           # create + load schema + seed
-bin/rails db:migrate                         # run migrations
+bin/rails db:migrate                         # run pending migrations
 bin/rails db:migrate:status                  # see migration state
 bin/rails db:rollback                        # undo the last migration
+bin/rails db:rollback STEP=3                 # undo the last three
 bin/rails db:migrate:down VERSION=<ts>       # revert a specific migration
 bin/rails db:seed                            # load seeds
+bin/rails db:prepare                         # create + migrate (or just migrate) — CI-friendly
+bin/rails db:reset                           # drop + recreate from schema + seed (destructive)
 ```
 
 ### Rake tasks
@@ -533,9 +561,11 @@ cucumber --tags @wip                     # run tagged scenarios
 cucumber -f progress                     # compact dot output
 ```
 
-## Node & Yarn
+## JavaScript & TypeScript
 
-Front-end dependencies and build scripts.
+Front-end dependencies, quick Node runs, and the TypeScript compiler.
+
+### Yarn
 
 ```bash
 yarn install                 # install deps from package.json
@@ -546,6 +576,28 @@ yarn upgrade <pkg>           # upgrade a package
 yarn why <pkg>               # explain why a package is installed
 yarn <script>                # run a package.json script (e.g. yarn build)
 yarn cache clean             # clear the Yarn cache
+```
+
+### npx & quick Node runs
+
+```bash
+npx <tool>                   # run a project CLI (or fetch and run it once)
+npx tsx <file>.ts            # run a TypeScript file directly, no build step
+node --watch <file>.js       # rerun automatically on file changes
+node -e "console.log(1+1)"   # evaluate a one-liner
+node --inspect <file>.js     # debug in Chrome DevTools (chrome://inspect)
+npm outdated                 # which dependencies have newer versions
+npm audit fix                # patch known vulnerabilities in deps
+```
+
+### TypeScript
+
+```bash
+npx tsc --init               # create a tsconfig.json to start from
+npx tsc                      # compile the whole project
+npx tsc --noEmit             # type-check only — ideal for CI and pre-commit
+npx tsc --watch              # recompile on save
+npx tsc <file>.ts            # compile a single file (ignores tsconfig)
 ```
 
 ## MySQL
@@ -588,6 +640,19 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '<new-password>';
 ## Docker
 
 Build, run, inspect, and ship images.
+
+### Contexts
+
+Each context points the CLI at a different daemon — one per Colima profile, so
+pick the right one before anything else.
+
+```bash
+docker context ls                # see all contexts, * marks the active one
+docker context use <context>     # switch every docker command to that daemon
+docker --context <context> ps    # one-off command against a context, no switch
+docker context inspect <context> # endpoint details for a context
+docker context use default       # back to the default daemon
+```
 
 ### Containers & images
 
