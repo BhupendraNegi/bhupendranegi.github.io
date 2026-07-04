@@ -1022,8 +1022,11 @@
     outline-offset: 3px;
   }
 
-  /* The WebP <picture> wrapper must be invisible to the media box layout. */
-  .post-row-media picture {
+  /* WebP <picture> wrappers must be invisible to their media box layout. */
+  .post-row-media picture,
+  .project-tile-media picture,
+  .hero-portrait-inner picture,
+  .about-portrait picture {
     display: contents;
   }
 

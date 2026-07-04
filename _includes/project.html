@@ -1,7 +1,10 @@
 <article class="project" data-tags="{{ project.tags | join: ',' }}" data-reveal>
   <div class="proj-card project-tile">
     <a class="project-tile-media modal-trigger" href="#{{ project.id }}" aria-label="Open gallery for {{ project.title }}">
-      <img src="{{ project.cover }}" alt="{{ project.title }} preview" loading="lazy">
+      <picture>
+        <source type="image/webp" srcset="{{ project.cover | replace: '.jpg', '.webp' }}">
+        <img src="{{ project.cover }}" alt="{{ project.title }} preview" loading="lazy">
+      </picture>
     </a>
     <div class="proj-card-body">
       <h3 class="proj-card-title">
