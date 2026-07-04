@@ -181,6 +181,43 @@
       });
     }
 
+    // --- Filter re-entrances --------------------------------------------------
+    // The blog/projects filters re-lay-out their list instantly, but cards still
+    // waiting on a scroll reveal would keep their pre-filter opacity:0 (their
+    // once-only triggers point at positions that no longer exist). When a filter
+    // fires, retire every reveal trigger inside that list, then replay a quick
+    // staggered entrance on the cards the filter kept.
+    document.addEventListener("aurora:refilter", function (event) {
+      var container = event.detail && event.detail.container;
+      if (!container) return;
+      var items = gsap.utils.toArray("[data-reveal]", container);
+      if (!items.length) return;
+      ScrollTrigger.getAll().forEach(function (st) {
+        if (st.trigger && container.contains(st.trigger)) st.kill();
+      });
+      gsap.killTweensOf(items);
+      gsap.set(items, { opacity: 1, y: 0 });
+      var visible = items.filter(function (el) { return !el.hidden; });
+      if (visible.length) {
+        gsap.fromTo(
+          visible,
+          { opacity: 0, y: 18 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: ease,
+            stagger: 0.05,
+            overwrite: true,
+            clearProps: "transform"
+          }
+        );
+      }
+      // Triggers further down the page (footer, siblings) sit on stale
+      // positions after the list collapses/expands — recompute them.
+      ScrollTrigger.refresh();
+    });
+
     // Recalculate once everything (fonts, images) has settled.
     window.addEventListener("load", function () {
       ScrollTrigger.refresh();

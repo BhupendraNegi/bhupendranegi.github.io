@@ -179,7 +179,7 @@
         });
     }
 
-    function updateProjects() {
+    function updateProjects(animate) {
       var activeTags = getActiveTags();
 
       projects.forEach(function(project) {
@@ -189,7 +189,17 @@
         });
 
         project.hidden = !shouldShow;
+        if (shouldShow && animate) {
+          project.classList.add('is-revealed');
+        }
       });
+
+      // Only user-driven filtering replays the entrance animation; the initial
+      // call at page load must leave the scroll reveals untouched.
+      if (animate && projects[0]) {
+        var container = projects[0].closest('.project_list') || projects[0].parentNode;
+        document.dispatchEvent(new CustomEvent('aurora:refilter', { detail: { container: container } }));
+      }
     }
 
     function clearFilters() {
@@ -197,7 +207,7 @@
         button.classList.remove('active_tag');
         button.setAttribute('aria-pressed', 'false');
       });
-      updateProjects();
+      updateProjects(true);
     }
 
     setFilterListOpen(toggle.getAttribute('aria-expanded') === 'true');
@@ -223,7 +233,7 @@
         var isActive = button.getAttribute('aria-pressed') === 'true';
         button.classList.toggle('active_tag', !isActive);
         button.setAttribute('aria-pressed', isActive ? 'false' : 'true');
-        updateProjects();
+        updateProjects(true);
       });
     });
 
@@ -1433,12 +1443,16 @@
         var match = !tag || tags.indexOf(tag) !== -1;
         post.hidden = !match;
         if (match) {
+          // Covers the no-GSAP fallback: a card whose IO reveal never fired
+          // must still be visible once the filter brings it into view.
+          post.classList.add('is-revealed');
           shown += 1;
         }
       });
       if (empty) {
         empty.hidden = shown !== 0;
       }
+      document.dispatchEvent(new CustomEvent('aurora:refilter', { detail: { container: list } }));
     }
 
     buttons.forEach(function(button) {
