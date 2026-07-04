@@ -42,7 +42,12 @@ title: Blog
       <article class="post-row" data-reveal data-tags="{{ post.tags | join: ' ' | downcase }}">
         <a class="post-row-media post-row-media--{{ variant }}" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
           {% if post.cover %}
-            <img src="{{ post.cover }}" alt="" loading="lazy">
+            {% comment %} WebP for the page, JPEG kept as fallback and for the
+            og:image social card (head.html uses `cover` as-is). {% endcomment %}
+            <picture>
+              <source type="image/webp" srcset="{{ post.cover | replace: '.jpg', '.webp' }}">
+              <img src="{{ post.cover }}" alt="" loading="lazy">
+            </picture>
           {% elsif post.techs %}
             <span class="post-row-logos">
               {% for tch in post.techs %}<i class="devicon-{{ tch }} post-row-logo" aria-hidden="true"></i>{% endfor %}

@@ -1022,6 +1022,11 @@
     outline-offset: 3px;
   }
 
+  /* The WebP <picture> wrapper must be invisible to the media box layout. */
+  .post-row-media picture {
+    display: contents;
+  }
+
   .post-row-media img {
     height: 100%;
     object-fit: cover;
