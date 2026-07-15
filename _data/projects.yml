@@ -1,3 +1,32 @@
+- id: 8
+  title: CompressKaro
+  url: https://bhupendranegi.github.io/CompressKaro/
+  github_url: https://github.com/BhupendraNegi/CompressKaro
+  description: >-
+    Compressing a PDF or shrinking an image shouldn't mean uploading your
+    files to a stranger's server. CompressKaro is a free, privacy-first
+    toolbox for PDFs and images — compress, merge, convert, watermark, strip
+    EXIF, generate favicons and more — where every byte is processed in your
+    browser. Built with Astro and React islands; nothing ever leaves your
+    device.
+  tags: [typescript, react, astro, web]
+  technologies:
+    [
+      astro-plain,
+      typescript-plain,
+      react-original,
+      tailwindcss-plain,
+      docker-plain,
+      github-original,
+    ]
+  cover: /assets/images/projects/compresskaro/cover.jpg
+  images:
+    [
+      "https://github.com/BhupendraNegi/CompressKaro/blob/main/public/images/cover_1.png?raw=true",
+      "https://github.com/BhupendraNegi/CompressKaro/blob/main/public/images/image_to_pdf.png?raw=true",
+      "https://github.com/BhupendraNegi/CompressKaro/blob/main/public/images/merge_pdf.png?raw=true",
+    ]
+
 - id: 7
   title: CronLens
   url: https://bhupendranegi.github.io/CronLens/
