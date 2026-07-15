@@ -68,14 +68,27 @@
     } catch {}
   }
 
-  // Split a heading into characters; returns the char array, or null.
+  // Google Translate (the widget in default.html) translates each text node
+  // independently, so a heading split into one-letter spans comes back as
+  // letter-by-letter gibberish. If a translation is already active when the
+  // page loads, keep headings whole and use the block-level fallback intro.
+  function translationActive() {
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+    if (!m) return false;
+    var parts = decodeURIComponent(m[1]).split("/");
+    return parts.length >= 3 && !!parts[2] && parts[2] !== "en";
+  }
+
+  // Split a heading into characters; returns the SplitText instance, or null.
   // "words,chars" keeps each word in an inline-block wrapper so lines never
   // break mid-word, while still animating individual characters.
+  // Callers must revert() once their intro finishes, so Google Translate
+  // (started after load) sees whole headings — see translationActive above.
   function splitChars(el) {
-    if (!el || !window.SplitText) return null;
+    if (!el || !window.SplitText || translationActive()) return null;
     try {
       var s = new window.SplitText(el, { type: "words,chars" });
-      return s.chars && s.chars.length ? s.chars : null;
+      return s.chars && s.chars.length ? s : null;
     } catch {
       return null;
     }
@@ -86,10 +99,15 @@
   if (hero) {
     var heroReveals = gsap.utils.toArray(".hero [data-reveal]");
     var heroName = hero.querySelector(".hero-name[data-split]");
-    var heroChars = splitChars(heroName);
-    var intro = gsap.timeline({ defaults: { ease: ease } });
-    if (heroChars) {
-      intro.from(heroChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0);
+    var heroSplit = splitChars(heroName);
+    var intro = gsap.timeline({
+      defaults: { ease: ease },
+      onComplete: function () {
+        if (heroSplit) heroSplit.revert();
+      }
+    });
+    if (heroSplit) {
+      intro.from(heroSplit.chars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0);
       intro.from(
         heroReveals.filter(function (el) { return el !== heroName; }),
         { opacity: 0, y: 22, stagger: 0.08, duration: 0.6 },
@@ -106,7 +124,7 @@
   var innerHero = document.querySelector(".page-hero, .post-hero");
   if (innerHero) {
     var ihTitle = innerHero.querySelector(".page-hero-title, .post-hero-title");
-    var ihChars = splitChars(ihTitle);
+    var ihSplit = splitChars(ihTitle);
     var before = [];
     var after = [];
     var seenTitle = false;
@@ -114,10 +132,15 @@
       if (child === ihTitle) { seenTitle = true; return; }
       (seenTitle ? after : before).push(child);
     });
-    var ihIntro = gsap.timeline({ defaults: { ease: ease } });
-    if (ihChars) {
+    var ihIntro = gsap.timeline({
+      defaults: { ease: ease },
+      onComplete: function () {
+        if (ihSplit) ihSplit.revert();
+      }
+    });
+    if (ihSplit) {
       if (before.length) ihIntro.from(before, { opacity: 0, y: 18, stagger: 0.08, duration: 0.5 }, 0);
-      ihIntro.from(ihChars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0.1);
+      ihIntro.from(ihSplit.chars, { yPercent: 120, opacity: 0, stagger: 0.025, duration: 0.7 }, 0.1);
       if (after.length) ihIntro.from(after, { opacity: 0, y: 18, stagger: 0.08, duration: 0.6 }, 0.4);
     } else {
       ihIntro.from(
