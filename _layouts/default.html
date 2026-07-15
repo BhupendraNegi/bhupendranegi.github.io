@@ -32,7 +32,11 @@
       }, 'google_translate_element');
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+  <!-- Loaded from the cookieless googleapis.com host: translate.google.com
+       carries the visitor's Google account cookies, and accounts with the
+       Translate service disabled (e.g. Workspace policy) get redirected to
+       accounts.google.com/info/servicerestricted — the widget never loads. -->
+  <script src="https://translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
   <!-- Reset to English. Google strips the page language from its dropdown and we
        hide its "Show original" banner, so this clears the googtrans cookie and

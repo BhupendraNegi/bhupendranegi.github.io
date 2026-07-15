@@ -82,17 +82,38 @@
   // Split a heading into characters; returns the SplitText instance, or null.
   // "words,chars" keeps each word in an inline-block wrapper so lines never
   // break mid-word, while still animating individual characters.
-  // Callers must revert() once their intro finishes, so Google Translate
+  // Callers must revertSplit() once their intro finishes, so Google Translate
   // (started after load) sees whole headings — see translationActive above.
+  var activeSplits = [];
+
   function splitChars(el) {
     if (!el || !window.SplitText || translationActive()) return null;
     try {
       var s = new window.SplitText(el, { type: "words,chars" });
-      return s.chars && s.chars.length ? s : null;
+      if (!s.chars || !s.chars.length) return null;
+      activeSplits.push(s);
+      return s;
     } catch {
       return null;
     }
   }
+
+  function revertSplit(s) {
+    var i = activeSplits.indexOf(s);
+    if (i === -1) return;
+    activeSplits.splice(i, 1);
+    try {
+      s.revert();
+    } catch {}
+  }
+
+  // If the visitor picks a language while an intro is still running, revert
+  // outstanding splits right away so Google translates whole headings (the
+  // heading simply snaps to its final state).
+  document.addEventListener("change", function (event) {
+    if (!event.target.closest(".goog-te-combo")) return;
+    activeSplits.slice().forEach(revertSplit);
+  });
 
   // Home hero: split the name, stagger the rest.
   var hero = document.querySelector(".hero");
@@ -103,7 +124,7 @@
     var intro = gsap.timeline({
       defaults: { ease: ease },
       onComplete: function () {
-        if (heroSplit) heroSplit.revert();
+        if (heroSplit) revertSplit(heroSplit);
       }
     });
     if (heroSplit) {
@@ -135,7 +156,7 @@
     var ihIntro = gsap.timeline({
       defaults: { ease: ease },
       onComplete: function () {
-        if (ihSplit) ihSplit.revert();
+        if (ihSplit) revertSplit(ihSplit);
       }
     });
     if (ihSplit) {
