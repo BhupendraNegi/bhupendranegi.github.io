@@ -19,17 +19,16 @@
     "@tailwindcss/cli": "^4.3.0",
     "eslint": "^10.5.0",
     "globals": "^17.6.0",
-    "markdownlint-cli2": "^0.22.1",
+    "markdownlint-cli2": "^0.23.1",
     "prettier": "^3.8.4",
     "stylelint": "^17.13.0",
     "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4.3.0"
   },
   "comments": {
-    "overrides": "markdownlint-cli2@0.22.1 exact-pins markdown-it 14.1.1 and js-yaml 4.1.1; these force the maintainer's DoS-patched releases (CVE: quadratic-complexity DoS in markdown-it smartquotes and js-yaml merge keys). Drop when markdownlint-cli2 ships them upstream."
+    "overrides": "markdownlint-cli2@0.23.1 pins js-yaml 5.2.1, which is still vulnerable to GHSA-pm4m-ph32-ghv5 (exponential parse time in flow collections). Force the patched 5.2.2. Drop when markdownlint-cli2 ships it upstream."
   },
   "overrides": {
-    "markdown-it": "14.2.0",
-    "js-yaml": "4.2.0"
+    "js-yaml": "5.2.2"
   }
 }
