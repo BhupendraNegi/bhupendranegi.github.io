@@ -7,6 +7,7 @@
 #   Markdown    -> markdownlint  (_posts, doc, *.md)
 #   JSON / YAML -> Prettier      (_config.yml, _data, package.json, ...)
 #   Built HTML  -> html-proofer  (_site: links, images, markup)
+#                  + a check that every icon resolved (_data/icons.json)
 #
 # Usage:
 #   bin/lint            Check everything (builds the site for html-proofer)
@@ -104,6 +105,17 @@ if [ "$RUN_HTML" -eq 1 ]; then
       --ignore-empty-alt \
       --no-enforce-https
     record "html-proofer" $?
+
+    # Icons are inlined at build time from _data/icons.json. A name missing
+    # from that file renders an empty SVG tagged data-icon-missing.
+    missing_icons=$(grep -rhoE 'data-icon-missing="[^"]*"' _site --include='*.html' | sort -u)
+    if [ -n "$missing_icons" ]; then
+      echo "Icons missing from _data/icons.json (run 'npm run icons:build'):"
+      echo "$missing_icons"
+      record "Icons" 1
+    else
+      record "Icons" 0
+    fi
   else
     echo "Jekyll build failed — run 'npm run build' to see the error."
     record "html-proofer (build)" 1

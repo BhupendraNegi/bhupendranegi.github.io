@@ -12,25 +12,25 @@ You don't always need a single-page app to build a snappy, modern UI. Hotwire �
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="mouse-pointer-click" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="mouse-pointer-click" class="site-icon" %}
       <span class="post-figure-step-label">User action</span>
       <span class="post-figure-step-sub">Click · submit · visit</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="server" class="site-icon" %}
       <span class="post-figure-step-label">Rails</span>
       <span class="post-figure-step-sub">Renders an HTML partial</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="zap" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="zap" class="site-icon" %}
       <span class="post-figure-step-label">Turbo</span>
       <span class="post-figure-step-sub">Streams HTML to the page</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="monitor-check" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="monitor-check" class="site-icon" %}
       <span class="post-figure-step-label">DOM</span>
       <span class="post-figure-step-sub">Updated in place</span>
     </div>

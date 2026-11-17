@@ -11,14 +11,14 @@
   var closeSiteSearch = null;
   var siteSearchOpen = false;
 
-  function initializeLucideIcons(root) {
-    if (!window.lucide || typeof window.lucide.createIcons !== 'function') {
-      return;
-    }
+  // Icons are inline SVGs rendered at build time (_includes/icon.html). The few
+  // that scripts inject live in <template id="site-icons"> (default.html) —
+  // add new ones there, then run `npm run icons:build`.
+  function icon(name) {
+    var store = document.getElementById('site-icons');
+    var svg = store && store.content ? store.content.querySelector('.lucide-' + name) : null;
 
-    window.lucide.createIcons({
-      root: root || document
-    });
+    return svg ? svg.outerHTML : '';
   }
 
   function getStoredTheme() {
@@ -313,8 +313,8 @@
           next.type = 'button';
           previous.setAttribute('aria-label', 'Previous image');
           next.setAttribute('aria-label', 'Next image');
-          previous.innerHTML = '<i data-lucide="chevron-left" class="site-icon" aria-hidden="true"></i>';
-          next.innerHTML = '<i data-lucide="chevron-right" class="site-icon" aria-hidden="true"></i>';
+          previous.innerHTML = icon('chevron-left');
+          next.innerHTML = icon('chevron-right');
 
           previous.addEventListener('click', function(event) {
             event.preventDefault();
@@ -369,7 +369,7 @@
     closeButton.className = 'modal-close modal-close-button';
     closeButton.type = 'button';
     closeButton.setAttribute('aria-label', 'Close dialog');
-    closeButton.innerHTML = '<i data-lucide="x" class="site-icon" aria-hidden="true"></i>';
+    closeButton.innerHTML = icon('x');
     modal.insertBefore(closeButton, modal.firstChild);
   }
 
@@ -959,20 +959,18 @@
       var copy = document.createElement('button');
       copy.type = 'button';
       copy.className = 'code-copy';
-      copy.innerHTML = '<i data-lucide="copy" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copy</span>';
+      copy.innerHTML = icon('copy') + '<span class="code-copy-label">Copy</span>';
 
       copy.addEventListener('click', function() {
         var code = pre.innerText.replace(/\n$/, '');
 
         function onCopied() {
           copy.classList.add('is-copied');
-          copy.innerHTML = '<i data-lucide="check" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copied</span>';
-          initializeLucideIcons(copy);
+          copy.innerHTML = icon('check') + '<span class="code-copy-label">Copied</span>';
 
           window.setTimeout(function() {
             copy.classList.remove('is-copied');
-            copy.innerHTML = '<i data-lucide="copy" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copy</span>';
-            initializeLucideIcons(copy);
+            copy.innerHTML = icon('copy') + '<span class="code-copy-label">Copy</span>';
           }, 1800);
         }
 
@@ -1010,7 +1008,6 @@
     var entries = buildPostTableOfContents(content);
     initializePostScrollSpy(entries);
     initializePostProgress();
-    initializeLucideIcons(content);
   }
 
   // Appends `text` to `parent` as text nodes, wrapping each term match in a
@@ -1340,7 +1337,6 @@
     openSiteSearch = open;
     closeSiteSearch = close;
 
-    initializeLucideIcons(overlay);
   }
 
   // The full /search/ page — same index and ranking as the overlay, but shows
@@ -1498,7 +1494,6 @@
     initializePostEnhancements();
     initializeSearch();
     initializeSearchPage();
-    initializeLucideIcons(document);
 
     document.dispatchEvent(new Event('version3:page-ready'));
   }

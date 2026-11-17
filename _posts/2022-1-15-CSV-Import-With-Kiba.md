@@ -11,25 +11,25 @@ CSV (Comma-Separated Values) files are widely used for data exchange, and import
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="file-spreadsheet" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="file-spreadsheet" class="site-icon" %}
       <span class="post-figure-step-label">CSV file</span>
       <span class="post-figure-step-sub">Raw rows</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="download" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="download" class="site-icon" %}
       <span class="post-figure-step-label">Source</span>
       <span class="post-figure-step-sub">Extract each row</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="wand-2" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="wand-2" class="site-icon" %}
       <span class="post-figure-step-label">Transform</span>
       <span class="post-figure-step-sub">Clean &amp; map fields</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="database" class="site-icon" %}
       <span class="post-figure-step-label">Destination</span>
       <span class="post-figure-step-sub">Load into the DB</span>
     </div>

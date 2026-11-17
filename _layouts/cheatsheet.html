@@ -8,14 +8,14 @@ layout: site_layout
   <div class="post-shell">
     <aside class="post-aside">
       <nav class="post-toc" data-post-toc data-post-toc-levels="h2" aria-label="On this page" hidden>
-        <p class="post-toc-title"><i data-lucide="list" class="site-icon" aria-hidden="true"></i> On this page</p>
+        <p class="post-toc-title">{% include icon.html name="list" class="site-icon" %} On this page</p>
         <ul class="post-toc-list" data-post-toc-list></ul>
       </nav>
     </aside>
 
     <div class="post-main">
       <header class="post-hero" data-reveal>
-        <p class="post-back"><i data-lucide="terminal" class="site-icon" aria-hidden="true"></i> Cheatsheet</p>
+        <p class="post-back">{% include icon.html name="terminal" class="site-icon" %} Cheatsheet</p>
         <h1 class="post-hero-title">{{ page.title }}</h1>
         {% if page.subtitle %}<p class="post-hero-lead">{{ page.subtitle }}</p>{% endif %}
       </header>
@@ -25,7 +25,7 @@ layout: site_layout
       </div>
 
       <div class="page-actions" data-reveal>
-        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button">{% include icon.html name="arrow-up" class="site-icon" %} Back to top</button>
       </div>
     </div>
   </div>

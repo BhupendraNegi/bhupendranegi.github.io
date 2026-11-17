@@ -6,6 +6,25 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-17 — Icons rendered at build time (no Lucide script, no Devicon font)
+
+- **Why:** every page loaded the Lucide runtime (403 KB of JS) to draw UI icons
+  after load, and any page with a tech logo pulled Devicon's stylesheet (104 KB)
+  plus its 1.2 MB icon font. Icons popped in late and vanished if a CDN failed.
+- **Now:** icons are inline SVG emitted by Jekyll. `_includes/icon.html` (Lucide)
+  and `_includes/tech-icon.html` (Devicon) read SVG bodies from
+  `_data/icons.json`, which `npm run icons:build` (`bin/build-icons.mjs`)
+  generates from the pinned `lucide-static` / `devicon` devDependencies — only
+  the icons actually referenced (83 Lucide, 50 Devicon). Both CDN tags are gone.
+- **Repeats:** logo paths are large, so the first use on a page carries the
+  paths and later uses reference it with `<use>`.
+- **Script-injected icons** (carousel arrows, modal close, code-copy) are cloned
+  from `<template id="site-icons">` in `default.html`.
+- **Safety net:** the build script fails on unknown icon names, and `./bin/lint`
+  fails if a built page has an icon missing from the data file.
+- **Fix found on the way:** `materialize-plain` never existed in Devicon, so that
+  chip had no logo; it is now `materializecss-plain`.
+
 ## 2026-06-14 — Mobile navigation: alignment fix + modern drawer
 
 - **Alignment:** the theme toggle + hamburger now sit at the **right end** of the

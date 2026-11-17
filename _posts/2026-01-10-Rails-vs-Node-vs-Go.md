@@ -13,27 +13,27 @@ tags: [Rails, Ruby]
   <div class="post-figure-compare">
     <div class="post-figure-step">
       <span class="post-figure-icons">
-        <i class="devicon-ruby-plain" aria-hidden="true"></i>
-        <i class="devicon-rails-plain" aria-hidden="true"></i>
-        <i class="devicon-postgresql-plain" aria-hidden="true"></i>
+        {% include tech-icon.html name="ruby-plain" %}
+        {% include tech-icon.html name="rails-plain" %}
+        {% include tech-icon.html name="postgresql-plain" %}
       </span>
       <span class="post-figure-step-label">Ruby on Rails</span>
       <span class="post-figure-step-sub">Convention-driven. Fastest path to a business-logic-heavy product.</span>
     </div>
     <div class="post-figure-step">
       <span class="post-figure-icons">
-        <i class="devicon-nodejs-plain" aria-hidden="true"></i>
-        <i class="devicon-javascript-plain" aria-hidden="true"></i>
-        <i class="devicon-express-original" aria-hidden="true"></i>
+        {% include tech-icon.html name="nodejs-plain" %}
+        {% include tech-icon.html name="javascript-plain" %}
+        {% include tech-icon.html name="express-original" %}
       </span>
       <span class="post-figure-step-label">Node.js</span>
       <span class="post-figure-step-sub">JavaScript everywhere. Great at real-time and shared front/back code.</span>
     </div>
     <div class="post-figure-step">
       <span class="post-figure-icons">
-        <i class="devicon-go-plain" aria-hidden="true"></i>
-        <i class="devicon-docker-plain" aria-hidden="true"></i>
-        <i class="devicon-kubernetes-plain" aria-hidden="true"></i>
+        {% include tech-icon.html name="go-plain" %}
+        {% include tech-icon.html name="docker-plain" %}
+        {% include tech-icon.html name="kubernetes-plain" %}
       </span>
       <span class="post-figure-step-label">Go</span>
       <span class="post-figure-step-sub">Compiled & concurrent. Built for high-throughput, low-overhead systems.</span>

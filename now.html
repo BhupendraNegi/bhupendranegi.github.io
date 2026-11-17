@@ -11,12 +11,12 @@ last_updated: 2026-07-04
     <p class="page-hero-eyebrow">Now</p>
     <h1 id="now-heading" class="page-hero-title" data-split>What I'm doing <span class="tx-accent">now</span></h1>
     <p class="page-hero-lead">A snapshot of what has my attention right now &mdash; the work, the learning, and the life around it. Updated every so often.</p>
-    {% if page.last_updated %}<p class="now-updated"><i data-lucide="clock" class="site-icon" aria-hidden="true"></i> Last updated {{ page.last_updated | date: "%B %-d, %Y" }}</p>{% endif %}
+    {% if page.last_updated %}<p class="now-updated">{% include icon.html name="clock" class="site-icon" %} Last updated {{ page.last_updated | date: "%B %-d, %Y" }}</p>{% endif %}
   </header>
 
   <div class="now-grid">
     <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="hammer" class="site-icon" aria-hidden="true"></i></span> Building &amp; shipping</h2>
+      <h2 class="now-block-title"><span class="now-block-icon">{% include icon.html name="hammer" class="site-icon" %}</span> Building &amp; shipping</h2>
       <ul class="now-list">
         <li>Full-stack development at <strong>ClearStack</strong> &mdash; building Electronic Billing Administration end to end on Ruby on Rails, from data-heavy backend work to the interfaces on top, with performance and clean deployments always in view.</li>
         {% for project in site.data.projects limit: 3 %}
@@ -25,12 +25,12 @@ last_updated: 2026-07-04
           &mdash; {{ project.description | strip_newlines | truncate: 110 }}
         </li>
         {% endfor %}
-        <li><a href="/projects">See all projects <i data-lucide="arrow-right" class="site-icon now-inline-icon" aria-hidden="true"></i></a></li>
+        <li><a href="/projects">See all projects {% include icon.html name="arrow-right" class="site-icon now-inline-icon" %}</a></li>
       </ul>
     </section>
 
     <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="sprout" class="site-icon" aria-hidden="true"></i></span> Learning &amp; writing</h2>
+      <h2 class="now-block-title"><span class="now-block-icon">{% include icon.html name="sprout" class="site-icon" %}</span> Learning &amp; writing</h2>
       <ul class="now-list">
         <li>Making <strong>AI-assisted development</strong> a first-class part of the workflow &mdash; Claude Code, Codex, and Copilot in the daily loop.</li>
         <li>Going deeper on <strong>Next.js and TypeScript</strong> through side projects &mdash; CronLens and HookView both run on the App Router.</li>
@@ -38,12 +38,12 @@ last_updated: 2026-07-04
         {% for post in site.posts limit: 3 %}
         <li><a href="{{ post.url }}"><strong>{{ post.title }}</strong></a> <span class="now-item-meta">{{ post.date | date: "%b %Y" }}</span></li>
         {% endfor %}
-        <li><a href="/blog">All posts <i data-lucide="arrow-right" class="site-icon now-inline-icon" aria-hidden="true"></i></a></li>
+        <li><a href="/blog">All posts {% include icon.html name="arrow-right" class="site-icon now-inline-icon" %}</a></li>
       </ul>
     </section>
 
     <section class="now-block site-card" data-reveal>
-      <h2 class="now-block-title"><span class="now-block-icon"><i data-lucide="coffee" class="site-icon" aria-hidden="true"></i></span> Away from the keyboard</h2>
+      <h2 class="now-block-title"><span class="now-block-icon">{% include icon.html name="coffee" class="site-icon" %}</span> Away from the keyboard</h2>
       <ul class="now-list">
         <li>Based in <strong>Bengaluru</strong>, originally from <strong>Dehradun, Uttarakhand</strong> &mdash; which explains the pull of the mountains.</li>
         <li><strong>Trekking</strong> in the mountains whenever I can, and exploring the places the trails lead through.</li>
@@ -54,8 +54,8 @@ last_updated: 2026-07-04
   </div>
 
   <div class="page-actions" data-reveal>
-    <a class="btn-primary" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
-    <a class="btn-ghost" href="/uses/"><i data-lucide="wrench" class="site-icon" aria-hidden="true"></i> What I use</a>
-    <a class="btn-ghost" href="/cheatsheet/"><i data-lucide="square-terminal" class="site-icon" aria-hidden="true"></i> Dev cheatsheet</a>
+    <a class="btn-primary" href="/contact">{% include icon.html name="mail" class="site-icon" %} Get in touch</a>
+    <a class="btn-ghost" href="/uses/">{% include icon.html name="wrench" class="site-icon" %} What I use</a>
+    <a class="btn-ghost" href="/cheatsheet/">{% include icon.html name="square-terminal" class="site-icon" %} Dev cheatsheet</a>
   </div>
 </section>

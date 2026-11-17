@@ -11,11 +11,21 @@
   <div class="translate-widget" aria-label="Translate this site">
     <div id="google_translate_element"></div>
     <button type="button" id="gt-reset" class="gt-reset" hidden>
-      <i data-lucide="rotate-ccw" class="site-icon" aria-hidden="true"></i> English
+      {% include icon.html name="rotate-ccw" class="site-icon" %} English
     </button>
   </div>
 
   {% include nav.html %}
+
+  {% comment %} Icons that scripts inject at runtime (carousel arrows, modal
+  close, code-copy states). version-3.js clones them via icon('name'). {% endcomment %}
+  <template id="site-icons">
+    {% include icon.html name="chevron-left" class="site-icon" %}
+    {% include icon.html name="chevron-right" class="site-icon" %}
+    {% include icon.html name="x" class="site-icon" %}
+    {% include icon.html name="copy" class="site-icon" %}
+    {% include icon.html name="check" class="site-icon" %}
+  </template>
 
   <div class="site-shell">
     <div class="site-content" data-page-container>

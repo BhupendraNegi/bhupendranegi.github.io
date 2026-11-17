@@ -29,7 +29,7 @@ This repository contains a static portfolio site with:
 - GSAP (ScrollTrigger, SplitText, CustomEase) for motion in `assets/js/motion.js`
 - Vanilla JavaScript in `assets/js/version-3.js`
 - Inter, JetBrains Mono, and Newsreader web fonts
-- Lucide UI icons and Devicon technology logos (brand logos are inline SVGs in `_includes/social-icon.html`)
+- Lucide UI icons and Devicon technology logos, inlined as SVG at build time (`npm run icons:build` → `_data/icons.json`); brand logos are inline SVGs in `_includes/social-icon.html`
 
 ## Repository Structure
 
@@ -117,7 +117,7 @@ Update site metadata, social links, analytics, Disqus, pagination, and permalink
 
 Add or edit projects in `_data/projects.yml`. Project tags should match the filter buttons in `projects.html`, and project `id` values should remain numeric because the project modal "Next" button increments them.
 
-Add or edit skills in `_data/skills.yml`. Skill icon classes use Devicon class names.
+Add or edit skills in `_data/skills.yml`. Skill icon classes use Devicon class names (without the `devicon-` prefix); run `npm run icons:build` after adding a new one.
 
 Add blog posts in `_posts/` with Jekyll front matter. A typical filename looks like:
 
@@ -137,7 +137,7 @@ Replace resume content by updating `assets/images/bhupendra_resume.pdf`.
 - Keep generated caches such as `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` out of commits.
 - JavaScript behavior lives in `assets/js/version-3.js`; GSAP motion lives in `assets/js/motion.js`.
 - Page transitions use a small vanilla JavaScript layer instead of Barba.js; jQuery has been removed.
-- External services / libraries: Formspree, Disqus, Google Analytics, Google Translate, GSAP, Lucide, and Devicon (all CDN-hosted).
+- External services / libraries: Formspree, Disqus, Google Analytics, Google Translate, and GSAP (all CDN-hosted). Lucide and Devicon icons are inlined at build time, not loaded from a CDN.
 
 ## Verification
 

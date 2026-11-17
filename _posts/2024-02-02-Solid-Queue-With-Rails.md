@@ -11,19 +11,19 @@ In a world where applications need to handle thousands of tasks efficiently, job
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="server" class="site-icon" %}
       <span class="post-figure-step-label">Producer</span>
       <span class="post-figure-step-sub">Rails enqueues a job</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="layers" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="layers" class="site-icon" %}
       <span class="post-figure-step-label">Queue</span>
       <span class="post-figure-step-sub">Durable, DB-backed store</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="cpu" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="cpu" class="site-icon" %}
       <span class="post-figure-step-label">Consumer</span>
       <span class="post-figure-step-sub">Workers run jobs concurrently</span>
     </div>

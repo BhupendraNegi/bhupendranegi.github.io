@@ -11,17 +11,17 @@ Choosing the right state management tool in React depends on the complexity of y
 <figure class="post-figure">
   <div class="post-figure-compare">
     <div class="post-figure-step">
-      <i data-lucide="share-2" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="share-2" class="site-icon" %}
       <span class="post-figure-step-label">React Context</span>
       <span class="post-figure-step-sub">Built-in. Best for small apps and low-frequency, theme-like state.</span>
     </div>
     <div class="post-figure-step">
-      <i data-lucide="layers" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="layers" class="site-icon" %}
       <span class="post-figure-step-label">Redux</span>
       <span class="post-figure-step-sub">Predictable &amp; structured. Best for large apps with complex flows.</span>
     </div>
     <div class="post-figure-step">
-      <i data-lucide="zap" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="zap" class="site-icon" %}
       <span class="post-figure-step-label">Zustand</span>
       <span class="post-figure-step-sub">Minimal global store. Best when you want power with little boilerplate.</span>
     </div>

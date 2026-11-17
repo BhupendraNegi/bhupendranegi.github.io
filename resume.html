@@ -11,20 +11,20 @@ layout: site_layout
 
   <div class="resume-actions" data-reveal>
     <a class="btn-primary" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" title="Open the resume PDF" target="_blank" rel="noopener">
-      <i data-lucide="external-link" class="site-icon" aria-hidden="true"></i> Open in new tab
+      {% include icon.html name="external-link" class="site-icon" %} Open in new tab
     </a>
     <a class="btn-ghost" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" download>
-      <i data-lucide="download" class="site-icon" aria-hidden="true"></i> Download PDF
+      {% include icon.html name="download" class="site-icon" %} Download PDF
     </a>
   </div>
 
   <div class="resume-viewer site-card" data-reveal>
     <object class="resume-embed" data="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-label="Bhupendra Negi resume preview">
       <div class="resume-fallback">
-        <span class="resume-card-icon" aria-hidden="true"><i data-lucide="file-text" class="site-icon"></i></span>
+        <span class="resume-card-icon" aria-hidden="true">{% include icon.html name="file-text" class="site-icon" %}</span>
         <p>Your browser can't display the PDF inline.</p>
         <a class="btn-primary" href="{{ site.baseurl }}/assets/images/bhupendra_resume.pdf" target="_blank" rel="noopener">
-          <i data-lucide="external-link" class="site-icon" aria-hidden="true"></i> Open the resume
+          {% include icon.html name="external-link" class="site-icon" %} Open the resume
         </a>
       </div>
     </object>

@@ -154,6 +154,17 @@
     width: 1.1rem;
   }
 
+  /* Tech logos (_includes/tech-icon.html): inline single-colour SVGs that size
+     with font-size and take the text colour, like the icon font they replaced. */
+  .tech-icon {
+    display: inline-block;
+    fill: currentColor;
+    flex: 0 0 auto;
+    height: 1em;
+    vertical-align: -0.125em;
+    width: 1em;
+  }
+
   .heading {
     color: var(--site-text);
     font-family: var(--font-sans);
@@ -776,6 +787,8 @@
 
   .proj-card-glyph {
     font-size: 4.5rem;
+    height: 1em;
+    width: 1em;
     line-height: 1;
     color: rgb(255 255 255 / 0.92);
     filter: drop-shadow(0 6px 18px rgb(15 23 42 / 0.25));
@@ -3727,7 +3740,7 @@
     gap: 0.7rem;
   }
 
-  .post-figure-icons i {
+  .post-figure-icons .tech-icon {
     font-size: 1.55rem;
     line-height: 1;
   }

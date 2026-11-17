@@ -15,7 +15,7 @@
       {% if project.technologies %}
         <div class="project-tech">
           {% for tech in project.technologies %}
-            <span class="skill-chip"><i class="about_skill_icon devicon-{{ tech }}" aria-hidden="true"></i> {{ tech | split: '-' | first | capitalize }}</span>
+            <span class="skill-chip">{% include tech-icon.html name=tech class="about_skill_icon" %} {{ tech | split: '-' | first | capitalize }}</span>
           {% endfor %}
         </div>
       {% endif %}
@@ -24,12 +24,12 @@
   <div class="modal-footer project-modal-footer">
     <div class="buttons">
       {% if project.url %}
-        <a class="button_wrapper btn-primary" target="_blank" rel="noopener" href="{{project.url}}"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>
+        <a class="button_wrapper btn-primary" target="_blank" rel="noopener" href="{{project.url}}">{% include icon.html name="external-link" class="site-icon" %} Live</a>
       {% endif %}
       {% if project.github_url %}
         <a class="button_wrapper btn-ghost" target="_blank" rel="noopener" href="{{project.github_url}}">{% include social-icon.html name="github" %} Code</a>
       {% endif %}
-      <button type="button" class="next btn-ghost">Next <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
+      <button type="button" class="next btn-ghost">Next {% include icon.html name="arrow-right" class="site-icon" %}</button>
     </div>
   </div>
 </div>

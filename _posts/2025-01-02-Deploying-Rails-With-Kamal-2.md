@@ -12,25 +12,25 @@ Platforms like Heroku are convenient, but they get expensive fast — and you gi
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="code" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="code" class="site-icon" %}
       <span class="post-figure-step-label">Your app</span>
       <span class="post-figure-step-sub">Rails + Dockerfile</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="package" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="package" class="site-icon" %}
       <span class="post-figure-step-label">Image</span>
       <span class="post-figure-step-sub">kamal build</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="upload-cloud" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="upload-cloud" class="site-icon" %}
       <span class="post-figure-step-label">Registry</span>
       <span class="post-figure-step-sub">Push the image</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="server" class="site-icon" %}
       <span class="post-figure-step-label">Servers</span>
       <span class="post-figure-step-sub">Zero-downtime swap</span>
     </div>

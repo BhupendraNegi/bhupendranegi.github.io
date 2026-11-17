@@ -10,7 +10,7 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - Front end: Liquid templates, Version 3 Tailwind CSS, and vanilla JavaScript. (Legacy Materialize CSS and Highlight.js have been removed; a small `assets/css/main.css` remnant is still being folded into Tailwind.)
 - Motion: GSAP (ScrollTrigger, SplitText, CustomEase) in `assets/js/motion.js` — heading intros and scroll reveals, with reduced-motion and no-GSAP fallbacks. Native scroll (Lenis was trialed and reverted).
 - Version 3 styling: Tailwind CLI source lives at `assets/css/tailwind.css` and compiles to `assets/css/version-3.css` (committed for GitHub Pages). Syntax highlighting is build-time Rouge, themed in `assets/css/syntax.css`.
-- Icons: Lucide for UI icons; Devicon for technology logos. Lucide no longer ships brand glyphs, so GitHub/LinkedIn/X/Stack Overflow logos are inline SVGs in `_includes/social-icon.html`.
+- Icons: all inline SVG, rendered at build time — no icon script or icon font is loaded. Lucide for UI icons (`{% include icon.html name="search" class="site-icon" %}`) and Devicon for technology logos (`{% include tech-icon.html name="rails-plain" %}`). Their SVG bodies are generated into `_data/icons.json` by `npm run icons:build` from the pinned `lucide-static` and `devicon` devDependencies. Lucide ships no brand glyphs, so GitHub/LinkedIn/X/Stack Overflow logos are hand-kept inline SVGs in `_includes/social-icon.html`.
 - Content model: pages live at the repo root and in `blog/`; posts live in `_posts/`; portfolio and profile data live in `_data/`.
 - Generated output: `_site/`, `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` are build artifacts and should not be committed.
 
@@ -24,10 +24,11 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
   - `homepage.html`: The Aurora home page — hero (name/role/social), featured projects, recent writing, CTA.
   - `site_layout.html`: Standard inner-page layout (`.site-page` → `.site-page-inner` rail) with footer.
   - `post.html`: Single blog post — two-column reading shell (sticky TOC + article), reading-progress bar, optional `subtitle:` lead, Disqus.
-- `_includes/`: Reusable Liquid partials — `nav.html`, `footer.html`, `head.html`, `scripts.html`, `project.html`/`project_card.html`, `social-icon.html` (inline brand SVGs), `disqus.html`, analytics.
+- `_includes/`: Reusable Liquid partials — `nav.html`, `footer.html`, `head.html`, `scripts.html`, `project.html`/`project_card.html`, `icon.html` / `tech-icon.html` (inline Lucide / Devicon SVGs), `social-icon.html` (inline brand SVGs), `disqus.html`, analytics.
 - `_data/sections.yml`: Home hero content and nav sections.
 - `_data/projects.yml`: Project cards, filters, technology icons, screenshots, and links.
 - `_data/skills.yml`: Skills shown on the About page.
+- `_data/icons.json`: Generated icon SVG bodies (committed). Never hand-edit; regenerate with `npm run icons:build` (`bin/build-icons.mjs`).
 - `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
 - `assets/css/main.css`: Small legacy stylesheet remnant, still being folded into the Tailwind source.
 - `assets/css/tailwind.css`: Version 3 source CSS (the single source of truth for styling).
@@ -80,7 +81,7 @@ One entry point lints every source file type, each with the right tool:
 | `assets/css/tailwind.css`, `syntax.css` | Stylelint | `.stylelintrc.json` |
 | `_posts/`, `doc/`, `*.md` | markdownlint | `.markdownlint-cli2.jsonc` |
 | `_config.yml`, `_data/*.yml`, `*.json` | Prettier | `.prettierrc.json` |
-| built `_site/` HTML | html-proofer | flags in `bin/lint` |
+| built `_site/` HTML | html-proofer + missing-icon check | flags in `bin/lint` |
 
 Notes:
 
@@ -105,7 +106,9 @@ Notes:
 - Post body headings use `#####`/`######` as section titles by convention; the prose CSS styles them as real headings and the TOC is generated from them client-side.
 - The project cards depend on numeric `id` values in `_data/projects.yml`; the "Next" modal behavior increments these IDs.
 - Project filter buttons in `projects.html` must match tags used in `_data/projects.yml`.
-- The skills page uses Devicon class names from `_data/skills.yml`; check that new icon classes exist in the loaded Devicon version.
+- Never write `<i data-lucide="…">` or `<i class="devicon-…">`; use the `icon.html` / `tech-icon.html` includes. After using a new icon name anywhere (templates, posts, `_data/*.yml`, post front matter), run `npm run icons:build` and commit the updated `_data/icons.json`. The script fails on a name that does not exist in the pinned Lucide/Devicon, and `./bin/lint` fails if a built page contains an icon that is missing from the data file.
+- Icons that JavaScript injects (carousel arrows, modal close, code-copy states) are cloned from `<template id="site-icons">` in `_layouts/default.html` via `icon('name')` in `version-3.js`; add new ones to that template.
+- Technology names in `_data/skills.yml`, `_data/projects.yml`, and `_data/uses.yml` are Devicon class names without the `devicon-` prefix (e.g. `rails-plain`).
 - Contact form submission is handled client-side through Formspree and `fetch`.
 - Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
 
@@ -151,5 +154,5 @@ For visual or behavior changes, also run the local server and check:
 - Do not commit local caches or vendored dependencies.
 - Avoid broad refactors unless the user asks for them.
 - The Aurora theme is the shipped direction (see `doc/changelog.md`). Match the existing tokens, components, and the 1240px content rail rather than introducing new patterns.
-- If updating dependencies, verify Disqus, Google Translate, Lucide, Devicon, GSAP, and the Rouge/`syntax.css` highlighting still work together. (Lucide is loaded via CDN at `@latest` — pinning it is a known open item.)
+- If updating dependencies, verify Disqus, Google Translate, GSAP, and the Rouge/`syntax.css` highlighting still work together. After bumping `lucide-static` or `devicon`, re-run `npm run icons:build` and check the icons visually (glyphs get renamed or redrawn between versions).
 - Preserve user content and personal branding unless the user explicitly asks to rewrite it.
