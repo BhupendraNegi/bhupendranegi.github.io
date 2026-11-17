@@ -8,8 +8,7 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
 {% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta http-equiv="Expires" content="600" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
   <link rel="canonical" href="{{ meta_url }}" />
