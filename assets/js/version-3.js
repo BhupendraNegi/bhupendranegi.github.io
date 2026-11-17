@@ -70,6 +70,21 @@
         applyTheme(nextTheme);
       });
     });
+
+    // Until the visitor picks a theme themselves, keep following the system
+    // colour scheme when it changes (e.g. an OS auto light/dark schedule).
+    if (window.matchMedia && document.documentElement.dataset.version3SchemeBound !== 'true') {
+      var schemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      if (typeof schemeQuery.addEventListener === 'function') {
+        document.documentElement.dataset.version3SchemeBound = 'true';
+        schemeQuery.addEventListener('change', function(event) {
+          if (!getStoredTheme()) {
+            applyTheme(event.matches ? 'dark' : 'light');
+          }
+        });
+      }
+    }
   }
 
   function closeCurrentMobileNav() {

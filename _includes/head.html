@@ -14,7 +14,13 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
   <link rel="canonical" href="{{ meta_url }}" />
   <script>
     (function() {
-      var t = localStorage.getItem('theme') || 'light';
+      // A stored choice wins; otherwise follow the system colour scheme.
+      // Storage access can throw (blocked cookies/private modes), so guard it.
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) { t = null; }
+      if (t !== 'dark' && t !== 'light') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
       document.documentElement.setAttribute('data-theme', t);
 
       // Scroll reveals are a progressive enhancement: only arm them when JS runs
