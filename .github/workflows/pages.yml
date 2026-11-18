@@ -26,9 +26,14 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Runners are pinned to ubuntu-24.04 rather than ubuntu-latest. When
+# ubuntu-latest moved to 26.04, ruby/setup-ruby had no prebuilt Ruby 4.0.3 for
+# it ("Unavailable version 4.0.3 for ruby on ubuntu-26.04") and every build
+# failed. Bump the image deliberately, after checking the pinned Ruby in
+# .ruby-version is published for the new one.
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,7 +71,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -79,7 +84,7 @@ jobs:
   # dependency of `build` or `deploy`, so a lint failure surfaces on the run
   # (red check) without ever blocking a publish. See AGENT.md "Linting".
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -108,7 +113,7 @@ jobs:
   # is dead: fix or remove it. See bin/check-links for what is ignored and why.
   links:
     if: github.event_name != 'push'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4

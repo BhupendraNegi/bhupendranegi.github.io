@@ -6,6 +6,13 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — CI: pin the runner image
+
+- Every Pages build had been failing at "Setup Ruby" since `ubuntu-latest`
+  moved to Ubuntu 26.04: `ruby/setup-ruby` has no prebuilt Ruby 4.0.3 for that
+  image. All jobs in `.github/workflows/pages.yml` now run on `ubuntu-24.04`,
+  where it is available.
+
 ## 2026-11-18 — Dependabot and merge policy
 
 - Recorded in `AGENT.md` ("Git Commits"): Dependabot updates are re-applied
