@@ -19,9 +19,9 @@
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.0",
     "devicon": "2.16.0",
-    "eslint": "^10.5.0",
+    "eslint": "^10.15.0",
     "globals": "^17.6.0",
-    "js-yaml": "5.2.2",
+    "js-yaml": "5.5.0",
     "lucide-static": "1.18.0",
     "markdownlint-cli2": "^0.24.1",
     "prettier": "^3.8.4",
@@ -30,9 +30,9 @@
     "tailwindcss": "^4.3.0"
   },
   "comments": {
-    "overrides": "markdownlint-cli2@0.23.1 pins js-yaml 5.2.1, which is still vulnerable to GHSA-pm4m-ph32-ghv5 (exponential parse time in flow collections). Force the patched 5.2.2. Drop when markdownlint-cli2 ships it upstream."
+    "overrides": "micromark-extension-math (via markdownlint) requires katex ^0.16.0, which is affected by GHSA-238p-pmpm-9mq7. Force the patched 0.18 line. Drop when markdownlint ships a katex >= 0.18.2 upstream."
   },
   "overrides": {
-    "js-yaml": "5.2.2"
+    "katex": "^0.18.2"
   }
 }

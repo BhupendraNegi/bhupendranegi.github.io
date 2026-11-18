@@ -6,6 +6,16 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Dependency security updates (dev tooling)
+
+- Cleared the three open Dependabot alerts, all in lint/build tooling (nothing
+  shipped to visitors): `minimatch` → 11.0.9 (via ESLint 10.15),
+  `js-yaml` → 5.5.0 (the old override that forced 5.2.2 is removed), and
+  `katex` → 0.18.x (new override; `micromark-extension-math` still asks for 0.16).
+- `npm audit fix` also updated `nanoid` and `colord`.
+- Still reported by `npm audit`: `picomatch` (every version is affected and no
+  fixed release exists yet); it comes in through Tailwind CLI and Stylelint.
+
 ## 2026-11-18 — CI: pin the runner image
 
 - Every Pages build had been failing at "Setup Ruby" since `ubuntu-latest`
