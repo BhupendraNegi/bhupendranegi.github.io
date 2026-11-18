@@ -28,6 +28,7 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - `_data/sections.yml`: Home hero content and nav sections.
 - `_data/projects.yml`: Project cards, filters, technology icons, screenshots, and links.
 - `_data/skills.yml`: Skills shown on the About page.
+- `_data/resume.yml`: Content of the on-page résumé at `/resume/` (`resume.html`). Keep it in step with the downloadable `assets/images/bhupendra_resume.pdf`.
 - `_data/icons.json`: Generated icon SVG bodies (committed). Never hand-edit; regenerate with `npm run icons:build` (`bin/build-icons.mjs`).
 - `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
 - `assets/css/main.css`: Small legacy stylesheet remnant, still being folded into the Tailwind source.
@@ -109,6 +110,8 @@ Notes:
 - Never write `<i data-lucide="…">` or `<i class="devicon-…">`; use the `icon.html` / `tech-icon.html` includes. After using a new icon name anywhere (templates, posts, `_data/*.yml`, post front matter), run `npm run icons:build` and commit the updated `_data/icons.json`. The script fails on a name that does not exist in the pinned Lucide/Devicon, and `./bin/lint` fails if a built page contains an icon that is missing from the data file.
 - Icons that JavaScript injects (carousel arrows, modal close, code-copy states) are cloned from `<template id="site-icons">` in `_layouts/default.html` via `icon('name')` in `version-3.js`; add new ones to that template.
 - Technology names in `_data/skills.yml`, `_data/projects.yml`, and `_data/uses.yml` are Devicon class names without the `devicon-` prefix (e.g. `rails-plain`).
+- **`/resume/` is unlisted on purpose.** Never add a link or button to it anywhere on the site (nav, footer, home, About, CTAs), and keep `search: false` and `sitemap: false` in its front matter so it stays out of the site search and the sitemap. Only someone who already has the URL should reach it.
+- The stylesheet applies to print as well as screen; the `@media print` block at the end of `tailwind.css` hides the site chrome and lays the résumé out for paper.
 - Contact form submission is handled client-side through Formspree and `fetch`.
 - Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
 
@@ -140,7 +143,7 @@ For visual or behavior changes, also run the local server and check:
 - Blog index pagination/thumbnails; single-post TOC + scroll-spy, code copy buttons, reading-progress bar, and the `.post-figure` diagram.
 - Project filters, project modals (open/close/click + "Next"), and carousel images.
 - Contact form validation and success modal.
-- Resume PDF inline preview and download.
+- `/resume/`: on-page résumé (light + dark), PDF download, and the print layout (Print button → one page).
 
 ## Git Commits
 

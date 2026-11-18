@@ -1478,6 +1478,21 @@
     });
   }
 
+  // "Print" buttons (the résumé page): open the browser's print dialog, which
+  // also offers "Save as PDF". The print stylesheet lives in tailwind.css.
+  function initializePrintButtons() {
+    document.querySelectorAll('[data-print-page]').forEach(function(button) {
+      if (button.dataset.version3PrintBound === 'true') {
+        return;
+      }
+
+      button.dataset.version3PrintBound = 'true';
+      button.addEventListener('click', function() {
+        window.print();
+      });
+    });
+  }
+
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
@@ -1494,6 +1509,7 @@
     initializePostEnhancements();
     initializeSearch();
     initializeSearchPage();
+    initializePrintButtons();
 
     document.dispatchEvent(new Event('version3:page-ready'));
   }

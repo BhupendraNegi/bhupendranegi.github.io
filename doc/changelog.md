@@ -6,6 +6,22 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Résumé as a web page (still unlisted)
+
+- **Why:** `/resume/` only embedded the PDF with `<object>`, which shows the
+  first page only (or nothing) on iOS and many Android browsers, and the page
+  had no title or description.
+- **Now:** the résumé is real HTML rendered from `_data/resume.yml`, readable on
+  any device in both themes. The PDF stays as a download. A Print button opens
+  the print dialog; a print stylesheet lays it out on one page.
+- **Still unlisted:** nothing on the site links to `/resume/`, and the page is
+  now also excluded from the sitemap (`sitemap: false`) and from the site search
+  (`search: false`) — adding a title would otherwise have listed it in search.
+- **Print everywhere:** the stylesheet was `media="screen"`, so every page
+  printed unstyled. It now applies to print too, with the nav, footer, backdrop
+  and translate widget hidden.
+- Also added meta descriptions to the Blog index and Search pages.
+
 ## 2026-11-17 — Icons rendered at build time (no Lucide script, no Devicon font)
 
 - **Why:** every page loaded the Lucide runtime (403 KB of JS) to draw UI icons

@@ -3980,74 +3980,127 @@
     margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
   }
 
-  /* Inline PDF preview, framed like a card. */
-  .resume-viewer {
+  /* The on-page résumé (resume.html, content in _data/resume.yml). A reading
+     column nested inside the 1240px rail; prints as a clean document (see the
+     print block at the end of this file). */
+  .resume-doc {
+    color: var(--site-text);
+    font: 400 0.95rem/1.6 var(--font-sans);
     margin-inline: auto;
     max-width: 900px;
-    overflow: hidden;
-    padding: clamp(0.4rem, 1.5vw, 0.6rem);
+    padding: clamp(1.5rem, 5vw, 3rem);
   }
 
-  .resume-embed {
-    background: var(--site-bg-secondary);
-    border: 0;
-    border-radius: calc(var(--radius-card) - 4px);
-    display: block;
-    height: min(82vh, 1120px);
-    width: 100%;
+  .resume-doc p {
+    margin: 0;
   }
 
-  .resume-fallback {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: clamp(2rem, 6vw, 3.5rem);
+  .resume-doc a {
+    color: var(--site-accent-strong);
+    text-underline-offset: 0.18em;
+  }
+
+  .resume-head {
     text-align: center;
   }
 
-  .resume-fallback p {
-    color: var(--site-muted);
-    margin: 0;
-  }
-
-  .resume-card-icon {
-    align-items: center;
-    background: var(--site-gradient);
-    border-radius: 18px;
-    box-shadow: 0 16px 40px rgb(59 130 246 / 0.28);
-    color: #fff;
-    display: inline-flex;
-    height: 64px;
-    justify-content: center;
-    width: 64px;
-  }
-
-  .resume-card-icon .site-icon {
-    height: 1.85rem;
-    width: 1.85rem;
-  }
-
-  .resume-card h3 {
+  .resume-name {
     color: var(--site-text);
-    font: 700 1.4rem/1.2 var(--font-sans);
-    margin: 0;
+    font: 800 clamp(1.7rem, 4vw, 2.2rem)/1.15 var(--font-sans);
+    letter-spacing: -0.01em;
   }
 
-  .resume-card p {
+  .resume-doc .resume-title {
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+
+  .resume-contact {
     color: var(--site-muted);
-    margin: 0;
-  }
-
-  .resume-card-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    font-size: 0.88rem;
+    gap: 0.15rem 1.1rem;
     justify-content: center;
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
   }
 
-  .resume-button {
-    width: min(100%, 320px);
+  .resume-section {
+    margin-top: 1.5rem;
+  }
+
+  .resume-section-title {
+    border-bottom: 2px solid color-mix(in srgb, var(--site-accent) 45%, transparent);
+    color: var(--site-accent-strong);
+    font: 700 0.82rem/1.3 var(--font-sans);
+    letter-spacing: 0.12em;
+    margin: 0 0 0.7rem;
+    padding-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .resume-entry + .resume-entry {
+    margin-top: 1.1rem;
+  }
+
+  .resume-entry-head {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 1rem;
+    justify-content: space-between;
+  }
+
+  .resume-entry-title {
+    color: var(--site-text);
+    font: 700 1.02rem/1.35 var(--font-sans);
+    margin: 0;
+  }
+
+  .resume-entry-meta {
+    color: var(--site-muted);
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .resume-engagement {
+    color: var(--site-accent-strong);
+    font: italic 500 0.92rem/1.4 var(--font-sans);
+    margin: 0.55rem 0 0.2rem;
+  }
+
+  .resume-engagement-stack {
+    font-weight: 400;
+  }
+
+  .resume-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.15rem;
+  }
+
+  .resume-list li + li {
+    margin-top: 0.2rem;
+  }
+
+  .resume-skills,
+  .resume-projects {
+    display: grid;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .resume-skills dt,
+  .resume-skills dd {
+    display: inline;
+    margin: 0;
+  }
+
+  .resume-skills dt {
+    font-weight: 700;
   }
 
   .not-found-page {
@@ -4415,5 +4468,97 @@
     html:has(.home) {
       scroll-behavior: auto;
     }
+  }
+}
+
+/* Print: only /resume/ is designed for paper. Drop the site chrome and the
+   decorative backdrop, and lay the résumé out as a plain black-on-white
+   document. Unlayered on purpose so it wins over the component layer. */
+@media print {
+  @page {
+    margin: 10mm 13mm;
+  }
+
+  /* Everything on the résumé is sized in rem, so scaling the root fits it on
+     one A4/Letter page. */
+  html {
+    font-size: 11px;
+  }
+
+  html,
+  body {
+    background: #fff;
+  }
+
+  .aurora-bg,
+  .site-header,
+  .site-search,
+  .site-footer,
+  .translate-widget,
+  .skip-link,
+  .resume-page .page-hero,
+  .resume-actions {
+    display: none;
+  }
+
+  html.reveals [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .site-main.site-page,
+  .site-page-inner,
+  .resume-page {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .resume-doc {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    color: #000;
+    line-height: 1.45;
+    max-width: none;
+    padding: 0;
+  }
+
+  .resume-name,
+  .resume-entry-title {
+    color: #000;
+  }
+
+  .resume-contact,
+  .resume-entry-meta {
+    color: #333;
+  }
+
+  .resume-doc a {
+    color: #000;
+  }
+
+  .resume-section {
+    margin-top: 9pt;
+  }
+
+  .resume-section-title,
+  .resume-engagement {
+    color: #1f4e79;
+  }
+
+  .resume-section-title {
+    border-bottom-color: #1f4e79;
+  }
+
+  .resume-entry-head,
+  .resume-engagement,
+  .resume-section-title {
+    break-after: avoid;
+  }
+
+  .resume-list li {
+    break-inside: avoid;
   }
 }
