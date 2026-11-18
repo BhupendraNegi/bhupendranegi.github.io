@@ -1478,6 +1478,49 @@
     });
   }
 
+  // Disqus is heavy and third-party, so its embed is only loaded once the
+  // comments are about to scroll into view (or the URL targets a comment).
+  function initializeComments() {
+    var thread = document.getElementById('disqus_thread');
+    var shortname = thread ? thread.getAttribute('data-disqus-shortname') : '';
+
+    if (!thread || !shortname || thread.dataset.version3CommentsBound === 'true') {
+      return;
+    }
+
+    thread.dataset.version3CommentsBound = 'true';
+
+    function loadComments() {
+      if (thread.dataset.version3CommentsLoaded === 'true') {
+        return;
+      }
+
+      thread.dataset.version3CommentsLoaded = 'true';
+
+      var script = document.createElement('script');
+      script.src = 'https://' + shortname + '.disqus.com/embed.js';
+      script.async = true;
+      script.setAttribute('data-timestamp', String(Date.now()));
+      (document.head || document.body).appendChild(script);
+    }
+
+    var hash = window.location.hash || '';
+
+    if (hash === '#disqus_thread' || hash.indexOf('#comment-') === 0 || !('IntersectionObserver' in window)) {
+      loadComments();
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries.some(function(entry) { return entry.isIntersecting; })) {
+        observer.disconnect();
+        loadComments();
+      }
+    }, { rootMargin: '600px 0px' });
+
+    observer.observe(thread);
+  }
+
   // "Print" buttons (the résumé page): open the browser's print dialog, which
   // also offers "Save as PDF". The print stylesheet lives in tailwind.css.
   function initializePrintButtons() {
@@ -1510,6 +1553,7 @@
     initializeSearch();
     initializeSearchPage();
     initializePrintButtons();
+    initializeComments();
 
     document.dispatchEvent(new Event('version3:page-ready'));
   }

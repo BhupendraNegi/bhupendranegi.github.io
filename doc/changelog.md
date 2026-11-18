@@ -6,6 +6,16 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Disqus loads on demand
+
+- The Disqus embed used to load on every post as soon as the page opened. It is
+  now fetched only when the comments area is about to scroll into view
+  (IntersectionObserver, 600px ahead), or straight away when the URL targets a
+  comment (`#comment-…` / `#disqus_thread`) or the browser lacks the observer.
+- Logic moved from an inline script in `_includes/disqus.html` to
+  `initializeComments()` in `version-3.js`. Thread URLs/identifiers are
+  unchanged, so existing comments stay attached.
+
 ## 2026-11-18 — Larger link previews + modified dates for posts
 
 - `twitter:card` is `summary_large_image` on pages that have a `cover:` or
