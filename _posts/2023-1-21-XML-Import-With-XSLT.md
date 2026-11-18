@@ -19,19 +19,19 @@ XSLT is a powerful tool for transforming XML data into a desired format. It can 
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="file-code-2" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="file-code-2" class="site-icon" %}
       <span class="post-figure-step-label">XML</span>
       <span class="post-figure-step-sub">Incoming source data</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="wand-2" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="wand-2" class="site-icon" %}
       <span class="post-figure-step-label">XSLT</span>
       <span class="post-figure-step-sub">Declarative stylesheet rules</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="braces" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="braces" class="site-icon" %}
       <span class="post-figure-step-label">Output</span>
       <span class="post-figure-step-sub">HTML · JSON · DB rows</span>
     </div>

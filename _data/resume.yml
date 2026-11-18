@@ -1,0 +1,125 @@
+# Résumé content for /resume/ (resume.html). This is the single source for the
+# on-page résumé; keep it in step with assets/images/bhupendra_resume.pdf, which
+# stays available as the download.
+#
+# The page is intentionally unlisted: it is not linked from the site, the site
+# search, or the sitemap. Only someone who has the /resume/ URL reaches it.
+#
+# Contact links (email, GitHub, LinkedIn, site) come from _config.yml.
+
+name: Bhupendra Negi
+title: Senior Software Developer
+location: Bengaluru, India
+
+summary: >-
+  Full-stack engineer with six years of experience building and modernizing
+  Ruby on Rails and React applications for clients in insurance, education, and
+  the non-profit sector. Strengths include legacy framework upgrades, search and
+  background-job infrastructure, payment integrations, and containerized
+  deployment pipelines.
+
+experience:
+  - role: Senior Software Developer
+    company: ClearStack
+    dates: Mar 2022 – Present
+    location: Bengaluru, India
+    engagements:
+      - name: The Standard Insurance, Electronic Billing Administration
+        stack: Rails, React, Oracle, PostgreSQL, Docker, Ansible
+        highlights:
+          - >-
+            Designed a template-driven upload system supporting four file
+            formats (CSV, XLSX, TXT, and XML) that reduced the time required to
+            onboard new employee data feeds by 30 percent.
+          - >-
+            Automated file collection from client Samba folders on a 30-minute
+            schedule, reducing manual intervention by 90 percent and flagging
+            failed uploads for follow-up.
+          - >-
+            Replaced Sunspot and Solr with Meilisearch for employee search,
+            cutting query response times and adding permission filters,
+            background indexing, health checks, and reindexing tools.
+          - >-
+            Migrated background processing from Resque and Whenever to
+            PostgreSQL-backed Solid Queue, then delivered Docker and Kamal
+            deployment on ARM64 servers with worker health checks and managed
+            PostgreSQL, Valkey, and Meilisearch services.
+      - name: Peer Water Exchange
+        stack: Rails, Hotwire, React, TypeScript, MySQL, AWS
+        highlights:
+          - >-
+            Upgraded the platform from Rails 5.2 and Ruby 2.7 to Rails 8 and
+            Ruby 3.4, replacing the legacy asset pipeline with ES modules,
+            Tailwind, and Propshaft, and introducing Docker, Kamal, and SOPS for
+            delivery.
+          - >-
+            Delivered a Google Cloud translation feature that made the platform
+            available in eight additional languages, using cached progressive
+            loading to keep pages responsive and an administrator review queue
+            to maintain quality.
+      - name: ClearStack Platform
+        stack: Rails 8, Hotwire, PostgreSQL, Azure, Kamal
+        highlights:
+          - >-
+            Consolidated the public website, blog, careers pages, and internal
+            recruiting pipeline into a single application, supported by
+            continuously built Docker images, managed secrets, automated
+            backups, and rollback tooling.
+          - >-
+            Built an AI resume review tool that summarizes candidates, extracts
+            skills, explains job fit, and compares up to four applicants side by
+            side.
+
+  - role: Full Stack Developer
+    company: eLitmus Evaluation Pvt. Ltd.
+    dates: Aug 2019 – Feb 2022
+    location: Bengaluru, India
+    highlights:
+      - >-
+        Launched the gift-card store end to end across five areas:
+        administrator setup, catalogue management, bulk code uploads, checkout,
+        and customer purchases, contributing to measurable sales growth.
+      - >-
+        Integrated Razorpay payments for test bookings and gift-card purchases
+        through a single reusable checkout flow.
+      - >-
+        Streamlined the registration flow by adding mobile OTP login through the
+        Gupshup API, which improved user retention.
+      - >-
+        Developed a campus-hiring dashboard that allowed corporate clients to
+        review candidate profiles and advance applicants through every hiring
+        stage from a single screen.
+
+skills:
+  - label: Application development
+    items: Ruby, Rails, Node.js, REST APIs, Sidekiq, React, TypeScript, JavaScript, Hotwire, Next.js
+  - label: Data and infrastructure
+    items: PostgreSQL, MySQL, Oracle, Redis, Valkey, AWS, Azure, Docker, Kamal, Terraform, Ansible, SOPS, CI/CD
+  - label: Testing and operations
+    items: RSpec, Cucumber, Selenium, GitHub Actions, GitLab CI
+
+projects:
+  - name: CompressKaro
+    text: Browser-based PDF and image tools that process files locally, so nothing is ever uploaded.
+    link_label: github/compresskaro
+    url: https://github.com/BhupendraNegi/CompressKaro
+  - name: CronLens
+    text: A cron visualizer that explains expressions and previews run times across time zones and daylight saving changes.
+    link_label: github/cronlens
+    url: https://github.com/BhupendraNegi/CronLens
+  - name: HookView
+    text: A disposable webhook inbox for inspecting headers, query parameters, and JSON payloads.
+    link_label: github/hookview
+    url: https://github.com/BhupendraNegi/hookview
+  - name: Writing
+    text: Published technical articles on Rails, React, data pipelines, and DevOps.
+    link_label: bhupendranegi.github.io/blog
+    url: /blog/
+
+education:
+  - degree: B.Tech, Computer Science and Engineering
+    school: BTKIT, Dwarahat
+    dates: 2015 – 2019
+
+recognition:
+  - "IEEE Xtreme Programming Competition: All India Rank 12 and All India Rank 46."

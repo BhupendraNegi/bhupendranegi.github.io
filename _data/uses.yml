@@ -4,8 +4,10 @@
 #   name    (required) — the tool/thing
 #   detail  (optional) — a short note
 #   icon    (optional) — a Devicon class WITHOUT the leading "devicon-"
-#                        (e.g. ruby-plain). Must exist in the loaded Devicon.
+#                        (e.g. ruby-plain).
 #   lucide  (optional) — a Lucide icon name, used when there is no Devicon glyph
+#
+# After adding a new icon/lucide name, run `npm run icons:build`.
 
 - group: Editor & Terminal
   icon: monitor # lucide icon for the group heading

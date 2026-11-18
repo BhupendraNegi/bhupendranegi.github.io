@@ -11,19 +11,19 @@ In today’s fast-paced digital world, email marketing has become a vital part o
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="code" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="code" class="site-icon" %}
       <span class="post-figure-step-label">MJML</span>
       <span class="post-figure-step-sub">Clean, semantic markup</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="cog" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="cog" class="site-icon" %}
       <span class="post-figure-step-label">Compiler</span>
       <span class="post-figure-step-sub">mjml → html</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="mail" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="mail" class="site-icon" %}
       <span class="post-figure-step-label">Responsive email</span>
       <span class="post-figure-step-sub">Looks right everywhere</span>
     </div>

@@ -6,6 +6,112 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Dependabot and merge policy
+
+- Recorded in `AGENT.md` ("Git Commits"): Dependabot updates are re-applied
+  locally and committed under the owner's identity rather than merging the
+  bot's PR, and pull requests are merged locally (fast-forward) rather than
+  with GitHub's merge button. Both keep the history single-identity.
+  Dependabot alerts stay on.
+
+## 2026-11-18 — Small fixes: portrait sizes, search noindex, translate polling, docs
+
+- **Home portrait:** added 400px JPEG/WebP variants and a `srcset`, so 1x
+  screens download ~21 KB instead of the 800px file; the image is fetched at
+  high priority, and its `width`/`height` now state its real 800×1066 shape.
+- **Search page:** `/search/` is `noindex` and out of the sitemap.
+- **Google Translate reset button:** replaced the 1.2-second polling timer with
+  a `MutationObserver` on the class Google sets on `<html>`, plus the language
+  dropdown's `change` event.
+- **AGENT.md:** removed stale notes (the `main.css` remnant, CustomEase, blog
+  pagination, lint "not in CI").
+
+## 2026-11-18 — Build cleanup: unused theme, gems and stray files
+
+- **Theme:** `theme: minima` is now `theme: null` and the `minima` gem is gone.
+  Every layout is local, but the theme was still publishing `assets/main.css`,
+  `main.css.map` and `minima-social-icons.svg` to the live site.
+- **Gems removed:** `jekyll-paginate` (pagination was dropped in June),
+  `jekyll-sass-converter` as a direct dependency/plugin (no `_sass/`; Jekyll
+  still pulls it in itself), and `jekyll-sitemap` (it was silently skipped
+  because `sitemap.xml` exists, and it would list the resume PDF if it ran).
+- **No longer published:** `README.md` and `eslint.config.mjs` are excluded.
+- Verified by diffing the built site before and after: every page, the feed and
+  the sitemap are byte-identical; only those five stray files disappeared.
+
+## 2026-11-18 — Disqus loads on demand
+
+- The Disqus embed used to load on every post as soon as the page opened. It is
+  now fetched only when the comments area is about to scroll into view
+  (IntersectionObserver, 600px ahead), or straight away when the URL targets a
+  comment (`#comment-…` / `#disqus_thread`) or the browser lacks the observer.
+- Logic moved from an inline script in `_includes/disqus.html` to
+  `initializeComments()` in `version-3.js`. Thread URLs/identifiers are
+  unchanged, so existing comments stay attached.
+
+## 2026-11-18 — Larger link previews + modified dates for posts
+
+- `twitter:card` is `summary_large_image` on pages that have a `cover:` or
+  `image:` (every post), so shared links show the full cover instead of a small
+  thumbnail. Pages falling back to the headshot keep the small `summary` card.
+- New optional `last_modified_at:` front matter for revised posts. It feeds the
+  JSON-LD `dateModified`, `article:modified_time`, the sitemap `lastmod`, and an
+  "Updated …" note in the post header. Without it, nothing changes.
+
+## 2026-11-18 — Weekly rebuild + external link check
+
+- **Why:** the "N years of experience" figure and the footer year are computed
+  at build time, and the site only rebuilt on a push, so they could go stale.
+  Dead project links also had to be found by hand.
+- **Weekly rebuild:** `.github/workflows/pages.yml` now also runs on a schedule
+  (Mondays 02:30 UTC) and redeploys.
+- **Link check:** new `bin/check-links` runs html-proofer with external links
+  enabled; a `links` job runs it on the weekly/manual runs only (never on a
+  push, so a third-party outage cannot fail a publish). LinkedIn (bot-blocked),
+  font preconnect hints and rate-limit responses are ignored.
+- **Found on the first run:** the Tenor Play Amazon listing is gone (404), so
+  its "Live" link was removed; Code and the gallery remain.
+- `_includes/joining_date.html` now reads `joining_date` from `_config.yml`
+  instead of repeating the date.
+
+## 2026-11-18 — Résumé as a web page (still unlisted)
+
+- **Why:** `/resume/` only embedded the PDF with `<object>`, which shows the
+  first page only (or nothing) on iOS and many Android browsers, and the page
+  had no title or description.
+- **Now:** the résumé is real HTML rendered from `_data/resume.yml`, readable on
+  any device in both themes. The PDF stays as a download. A Print button opens
+  the print dialog; a print stylesheet lays it out on one page.
+- **Still unlisted:** nothing on the site links to `/resume/`, and the page is
+  now also excluded from the sitemap (`sitemap: false`) and from the site search
+  (`search: false`) — adding a title would otherwise have listed it in search.
+  It also carries `noindex` (new `noindex: true` front-matter switch in
+  `head.html`), and the hidden "Resume" nav button that was still in every
+  page's markup has been removed.
+- **Print everywhere:** the stylesheet was `media="screen"`, so every page
+  printed unstyled. It now applies to print too, with the nav, footer, backdrop
+  and translate widget hidden.
+- Also added meta descriptions to the Blog index and Search pages.
+
+## 2026-11-17 — Icons rendered at build time (no Lucide script, no Devicon font)
+
+- **Why:** every page loaded the Lucide runtime (403 KB of JS) to draw UI icons
+  after load, and any page with a tech logo pulled Devicon's stylesheet (104 KB)
+  plus its 1.2 MB icon font. Icons popped in late and vanished if a CDN failed.
+- **Now:** icons are inline SVG emitted by Jekyll. `_includes/icon.html` (Lucide)
+  and `_includes/tech-icon.html` (Devicon) read SVG bodies from
+  `_data/icons.json`, which `npm run icons:build` (`bin/build-icons.mjs`)
+  generates from the pinned `lucide-static` / `devicon` devDependencies — only
+  the icons actually referenced (83 Lucide, 50 Devicon). Both CDN tags are gone.
+- **Repeats:** logo paths are large, so the first use on a page carries the
+  paths and later uses reference it with `<use>`.
+- **Script-injected icons** (carousel arrows, modal close, code-copy) are cloned
+  from `<template id="site-icons">` in `default.html`.
+- **Safety net:** the build script fails on unknown icon names, and `./bin/lint`
+  fails if a built page has an icon missing from the data file.
+- **Fix found on the way:** `materialize-plain` never existed in Devicon, so that
+  chip had no logo; it is now `materializecss-plain`.
+
 ## 2026-06-14 — Mobile navigation: alignment fix + modern drawer
 
 - **Alignment:** the theme toggle + hamburger now sit at the **right end** of the

@@ -14,14 +14,14 @@
       {% if project.technologies %}
         <div class="project-tech">
           {% for tech in project.technologies %}
-            <span class="skill-chip"><i class="about_skill_icon devicon-{{ tech }}" aria-hidden="true"></i> {{ tech | split: '-' | first | capitalize }}</span>
+            <span class="skill-chip">{% include tech-icon.html name=tech class="about_skill_icon" %} {{ tech | split: '-' | first | capitalize }}</span>
           {% endfor %}
         </div>
       {% endif %}
       <div class="proj-card-links">
-        <button type="button" class="proj-card-detail modal-trigger" data-modal-target="#{{ project.id }}" aria-label="Open gallery for {{ project.title }}"><i class="site-icon" data-lucide="images" aria-hidden="true"></i> View gallery</button>
+        <button type="button" class="proj-card-detail modal-trigger" data-modal-target="#{{ project.id }}" aria-label="Open gallery for {{ project.title }}">{% include icon.html name="images" class="site-icon" %} View gallery</button>
         {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code">{% include social-icon.html name="github" %} Code</a>{% endif %}
-        {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+        {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo">{% include icon.html name="external-link" class="site-icon" %} Live</a>{% endif %}
       </div>
     </div>
   </div>

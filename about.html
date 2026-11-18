@@ -24,8 +24,8 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
       <h2 class="about-card-name">Bhupendra Negi</h2>
       <p class="about-card-role">Senior Software Developer <span class="about-card-at">@ ClearStack</span></p>
       <ul class="about-card-facts">
-        <li><i data-lucide="map-pin" class="site-icon" aria-hidden="true"></i> Bangalore, India</li>
-        <li><i data-lucide="briefcase" class="site-icon" aria-hidden="true"></i> {{ years }}+ years experience</li>
+        <li>{% include icon.html name="map-pin" class="site-icon" %} Bangalore, India</li>
+        <li>{% include icon.html name="briefcase" class="site-icon" %} {{ years }}+ years experience</li>
       </ul>
       <ul class="hero-social about-card-social">
         <li><a href="{{ site.github_link }}" target="_blank" rel="noopener" aria-label="GitHub">{% include social-icon.html name="github" %}</a></li>
@@ -40,24 +40,24 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
       <p class="about-bio-text">A full-stack developer with {{ years }} years building scalable web apps, end to end. Here's what I care about most:</p>
       <div class="about-values">
         <div class="about-value site-card">
-          <span class="about-value-icon"><i data-lucide="code-2" class="site-icon" aria-hidden="true"></i></span>
+          <span class="about-value-icon">{% include icon.html name="code-2" class="site-icon" %}</span>
           <h3 class="about-value-title">Clean code</h3>
           <p class="about-value-text">Readable, maintainable code that's a pleasure to work in.</p>
         </div>
         <div class="about-value site-card">
-          <span class="about-value-icon"><i data-lucide="puzzle" class="site-icon" aria-hidden="true"></i></span>
+          <span class="about-value-icon">{% include icon.html name="puzzle" class="site-icon" %}</span>
           <h3 class="about-value-title">Problem solving</h3>
           <p class="about-value-text">Untangling gnarly backend and data problems.</p>
         </div>
         <div class="about-value site-card">
-          <span class="about-value-icon"><i data-lucide="sparkles" class="site-icon" aria-hidden="true"></i></span>
+          <span class="about-value-icon">{% include icon.html name="sparkles" class="site-icon" %}</span>
           <h3 class="about-value-title">Great UX</h3>
           <p class="about-value-text">Shipping products that feel great to use.</p>
         </div>
       </div>
       <div class="about-actions">
-        <a class="btn-primary" href="/projects"><i data-lucide="folder-open" class="site-icon" aria-hidden="true"></i> View Projects</a>
-        <a class="btn-ghost" href="/contact"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i> Get in touch</a>
+        <a class="btn-primary" href="/projects">{% include icon.html name="folder-open" class="site-icon" %} View Projects</a>
+        <a class="btn-ghost" href="/contact">{% include icon.html name="mail" class="site-icon" %} Get in touch</a>
       </div>
     </div>
   </div>
@@ -78,13 +78,13 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
           </div>
           <p class="journey-text">Gnarly backend and data work on Electronic Billing Administration, with a focus on performance and clean deployment.</p>
           <div class="journey-tech">
-            <span class="skill-chip"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Ruby on Rails</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-typescript-plain" aria-hidden="true"></i> Typescript</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-docker-plain" aria-hidden="true"></i> Docker</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-postgresql-plain" aria-hidden="true"></i> PostgreSQL</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-oracle-original" aria-hidden="true"></i> Oracle</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-terraform-plain" aria-hidden="true"></i> Terraform</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-amazonwebservices-plain" aria-hidden="true"></i> AWS</span>
+            <span class="skill-chip">{% include tech-icon.html name="rails-plain" class="about_skill_icon" %} Ruby on Rails</span>
+            <span class="skill-chip">{% include tech-icon.html name="typescript-plain" class="about_skill_icon" %} Typescript</span>
+            <span class="skill-chip">{% include tech-icon.html name="docker-plain" class="about_skill_icon" %} Docker</span>
+            <span class="skill-chip">{% include tech-icon.html name="postgresql-plain" class="about_skill_icon" %} PostgreSQL</span>
+            <span class="skill-chip">{% include tech-icon.html name="oracle-original" class="about_skill_icon" %} Oracle</span>
+            <span class="skill-chip">{% include tech-icon.html name="terraform-plain" class="about_skill_icon" %} Terraform</span>
+            <span class="skill-chip">{% include tech-icon.html name="amazonwebservices-plain" class="about_skill_icon" %} AWS</span>
           </div>
         </div>
       </li>
@@ -99,11 +99,11 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
           </div>
           <p class="journey-text">My first taste of shipping products people rely on &mdash; payments, auth, and dashboards, built end to end.</p>
           <div class="journey-tech">
-            <span class="skill-chip"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Ruby on Rails</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-ruby-plain" aria-hidden="true"></i> Ruby</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-react-plain" aria-hidden="true"></i> React</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-javascript-plain" aria-hidden="true"></i> JavaScript</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-mysql-plain" aria-hidden="true"></i> MySQL</span>
+            <span class="skill-chip">{% include tech-icon.html name="rails-plain" class="about_skill_icon" %} Ruby on Rails</span>
+            <span class="skill-chip">{% include tech-icon.html name="ruby-plain" class="about_skill_icon" %} Ruby</span>
+            <span class="skill-chip">{% include tech-icon.html name="react-plain" class="about_skill_icon" %} React</span>
+            <span class="skill-chip">{% include tech-icon.html name="javascript-plain" class="about_skill_icon" %} JavaScript</span>
+            <span class="skill-chip">{% include tech-icon.html name="mysql-plain" class="about_skill_icon" %} MySQL</span>
           </div>
         </div>
       </li>
@@ -118,9 +118,9 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
           </div>
           <p class="journey-text">Dove headfirst into computer science &mdash; the logic behind real applications &mdash; with Android side-projects along the way.</p>
           <div class="journey-tech">
-            <span class="skill-chip"><i class="about_skill_icon devicon-java-plain" aria-hidden="true"></i> Java</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-cplusplus-plain" aria-hidden="true"></i> C++</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-android-plain" aria-hidden="true"></i> Android</span>
+            <span class="skill-chip">{% include tech-icon.html name="java-plain" class="about_skill_icon" %} Java</span>
+            <span class="skill-chip">{% include tech-icon.html name="cplusplus-plain" class="about_skill_icon" %} C++</span>
+            <span class="skill-chip">{% include tech-icon.html name="android-plain" class="about_skill_icon" %} Android</span>
           </div>
         </div>
       </li>
@@ -135,9 +135,9 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
           </div>
           <p class="journey-text">Where the spark began &mdash; a school management system built in Java set me on the path to coding.</p>
           <div class="journey-tech">
-            <span class="skill-chip"><i class="about_skill_icon devicon-java-plain" aria-hidden="true"></i> Java</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-c-plain" aria-hidden="true"></i> C</span>
-            <span class="skill-chip"><i class="about_skill_icon devicon-cplusplus-plain" aria-hidden="true"></i> C++</span>
+            <span class="skill-chip">{% include tech-icon.html name="java-plain" class="about_skill_icon" %} Java</span>
+            <span class="skill-chip">{% include tech-icon.html name="c-plain" class="about_skill_icon" %} C</span>
+            <span class="skill-chip">{% include tech-icon.html name="cplusplus-plain" class="about_skill_icon" %} C++</span>
           </div>
         </div>
       </li>
@@ -153,7 +153,7 @@ description: About Bhupendra Negi — a software engineer specialising in Ruby o
         <h4 class="heading">{{tech_group.name}}</h4>
         <div class="skills">
           {% for tech in tech_group.skills %}
-            <span class="skill-chip"><i class="about_skill_icon devicon-{{tech.class}}" aria-hidden="true"></i><span class="skill_names">{{tech.skill_name}}</span></span>
+            <span class="skill-chip">{% include tech-icon.html name=tech.class class="about_skill_icon" %}<span class="skill_names">{{tech.skill_name}}</span></span>
           {% endfor %}
         </div>
       </section>

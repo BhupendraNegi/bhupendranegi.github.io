@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#
+# Checks every external link on the built site (project demos, repos, post
+# references) so dead links are caught without clicking through by hand.
+#
+# Usage:
+#   bin/check-links            Build the site, then check external links
+#   bin/check-links --no-build Check the existing _site/ as is
+#
+# Runs weekly in CI (.github/workflows/pages.yml, job "links"); a failure
+# there means a link on the live site has died. It is separate from ./bin/lint,
+# which stays offline and fast.
+#
+# Ignored on purpose:
+#   - LinkedIn: answers bots with status 999 whether or not the page exists.
+#   - fonts.googleapis.com / fonts.gstatic.com: <link rel="preconnect"> hints,
+#     not pages; their bare origins answer 404.
+#   - Status 429: rate limiting, not a dead link.
+
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+if [ "${1:-}" != "--no-build" ]; then
+  if ! npm run build >/dev/null 2>&1; then
+    echo "Build failed — run 'npm run build' to see the error."
+    exit 1
+  fi
+fi
+
+bundle exec htmlproofer ./_site \
+  --allow-hash-href \
+  --ignore-empty-alt \
+  --no-enforce-https \
+  --ignore-status-codes "429,999" \
+  --ignore-urls "https://fonts.googleapis.com,https://fonts.gstatic.com,/linkedin\.com/"

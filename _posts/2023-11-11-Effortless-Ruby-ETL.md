@@ -11,19 +11,19 @@ Have you ever wondered how raw data gets transformed into something meaningful a
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="download" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="download" class="site-icon" %}
       <span class="post-figure-step-label">Extract</span>
       <span class="post-figure-step-sub">CSV · database · API</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="wand-2" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="wand-2" class="site-icon" %}
       <span class="post-figure-step-label">Transform</span>
       <span class="post-figure-step-sub">Clean · filter · reshape</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="database" class="site-icon" %}
       <span class="post-figure-step-label">Load</span>
       <span class="post-figure-step-sub">DB · report · dashboard</span>
     </div>

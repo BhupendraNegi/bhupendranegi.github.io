@@ -125,7 +125,7 @@
       css3-plain-wordmark,
       javascript-plain,
       postgresql-plain,
-      materialize-plain,
+      materializecss-plain,
     ]
   cover: /assets/images/projects/data-management/cover.jpg
   images:
@@ -166,7 +166,7 @@
       javascript-plain,
       postgresql-plain,
       heroku-original,
-      materialize-plain,
+      materializecss-plain,
     ]
   cover: /assets/images/projects/health-tracker/cover.jpg
   images:
@@ -176,11 +176,11 @@
     ]
 - id: 4
   title: Tenor Play
-  url: https://www.amazon.com/Bhupendra-Negi-Tenor-Play/dp/B07GKXS3XS/
+  url:
   github_url: https://github.com/BhupendraNegi/Tenor-play
   description: A Basic Music Player Application made for Android Users. User can create playlist, add songs to the favourites and shake the phone to change the music.
   tags: [java, kotlin, android, mobile]
-  technologies: [java-plain, kotlin-plain, mysql-plain, androidstudio-plain, materialize-plain]
+  technologies: [java-plain, kotlin-plain, mysql-plain, androidstudio-plain, materializecss-plain]
   cover: /assets/images/projects/tenor-play/cover.jpg
   images:
     [

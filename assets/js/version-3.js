@@ -11,14 +11,14 @@
   var closeSiteSearch = null;
   var siteSearchOpen = false;
 
-  function initializeLucideIcons(root) {
-    if (!window.lucide || typeof window.lucide.createIcons !== 'function') {
-      return;
-    }
+  // Icons are inline SVGs rendered at build time (_includes/icon.html). The few
+  // that scripts inject live in <template id="site-icons"> (default.html) —
+  // add new ones there, then run `npm run icons:build`.
+  function icon(name) {
+    var store = document.getElementById('site-icons');
+    var svg = store && store.content ? store.content.querySelector('.lucide-' + name) : null;
 
-    window.lucide.createIcons({
-      root: root || document
-    });
+    return svg ? svg.outerHTML : '';
   }
 
   function getStoredTheme() {
@@ -70,6 +70,21 @@
         applyTheme(nextTheme);
       });
     });
+
+    // Until the visitor picks a theme themselves, keep following the system
+    // colour scheme when it changes (e.g. an OS auto light/dark schedule).
+    if (window.matchMedia && document.documentElement.dataset.version3SchemeBound !== 'true') {
+      var schemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      if (typeof schemeQuery.addEventListener === 'function') {
+        document.documentElement.dataset.version3SchemeBound = 'true';
+        schemeQuery.addEventListener('change', function(event) {
+          if (!getStoredTheme()) {
+            applyTheme(event.matches ? 'dark' : 'light');
+          }
+        });
+      }
+    }
   }
 
   function closeCurrentMobileNav() {
@@ -298,8 +313,8 @@
           next.type = 'button';
           previous.setAttribute('aria-label', 'Previous image');
           next.setAttribute('aria-label', 'Next image');
-          previous.innerHTML = '<i data-lucide="chevron-left" class="site-icon" aria-hidden="true"></i>';
-          next.innerHTML = '<i data-lucide="chevron-right" class="site-icon" aria-hidden="true"></i>';
+          previous.innerHTML = icon('chevron-left');
+          next.innerHTML = icon('chevron-right');
 
           previous.addEventListener('click', function(event) {
             event.preventDefault();
@@ -354,7 +369,7 @@
     closeButton.className = 'modal-close modal-close-button';
     closeButton.type = 'button';
     closeButton.setAttribute('aria-label', 'Close dialog');
-    closeButton.innerHTML = '<i data-lucide="x" class="site-icon" aria-hidden="true"></i>';
+    closeButton.innerHTML = icon('x');
     modal.insertBefore(closeButton, modal.firstChild);
   }
 
@@ -944,20 +959,18 @@
       var copy = document.createElement('button');
       copy.type = 'button';
       copy.className = 'code-copy';
-      copy.innerHTML = '<i data-lucide="copy" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copy</span>';
+      copy.innerHTML = icon('copy') + '<span class="code-copy-label">Copy</span>';
 
       copy.addEventListener('click', function() {
         var code = pre.innerText.replace(/\n$/, '');
 
         function onCopied() {
           copy.classList.add('is-copied');
-          copy.innerHTML = '<i data-lucide="check" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copied</span>';
-          initializeLucideIcons(copy);
+          copy.innerHTML = icon('check') + '<span class="code-copy-label">Copied</span>';
 
           window.setTimeout(function() {
             copy.classList.remove('is-copied');
-            copy.innerHTML = '<i data-lucide="copy" class="site-icon" aria-hidden="true"></i><span class="code-copy-label">Copy</span>';
-            initializeLucideIcons(copy);
+            copy.innerHTML = icon('copy') + '<span class="code-copy-label">Copy</span>';
           }, 1800);
         }
 
@@ -995,7 +1008,6 @@
     var entries = buildPostTableOfContents(content);
     initializePostScrollSpy(entries);
     initializePostProgress();
-    initializeLucideIcons(content);
   }
 
   // Appends `text` to `parent` as text nodes, wrapping each term match in a
@@ -1325,7 +1337,6 @@
     openSiteSearch = open;
     closeSiteSearch = close;
 
-    initializeLucideIcons(overlay);
   }
 
   // The full /search/ page — same index and ranking as the overlay, but shows
@@ -1467,6 +1478,66 @@
     });
   }
 
+  // Disqus is heavy and third-party, so its embed is only loaded once the
+  // comments are about to scroll into view (or the URL targets a comment).
+  function initializeComments() {
+    var thread = document.getElementById('disqus_thread');
+    // Set by _includes/disqus.html from _config.yml. It becomes part of a
+    // script URL, so accept nothing but a plain Disqus shortname.
+    var shortname = typeof window.disqusShortname === 'string' ? window.disqusShortname : '';
+
+    if (!thread || !/^[a-z0-9-]+$/i.test(shortname) || thread.dataset.version3CommentsBound === 'true') {
+      return;
+    }
+
+    thread.dataset.version3CommentsBound = 'true';
+
+    function loadComments() {
+      if (thread.dataset.version3CommentsLoaded === 'true') {
+        return;
+      }
+
+      thread.dataset.version3CommentsLoaded = 'true';
+
+      var script = document.createElement('script');
+      script.src = 'https://' + shortname + '.disqus.com/embed.js';
+      script.async = true;
+      script.setAttribute('data-timestamp', String(Date.now()));
+      (document.head || document.body).appendChild(script);
+    }
+
+    var hash = window.location.hash || '';
+
+    if (hash === '#disqus_thread' || hash.indexOf('#comment-') === 0 || !('IntersectionObserver' in window)) {
+      loadComments();
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries.some(function(entry) { return entry.isIntersecting; })) {
+        observer.disconnect();
+        loadComments();
+      }
+    }, { rootMargin: '600px 0px' });
+
+    observer.observe(thread);
+  }
+
+  // "Print" buttons (the résumé page): open the browser's print dialog, which
+  // also offers "Save as PDF". The print stylesheet lives in tailwind.css.
+  function initializePrintButtons() {
+    document.querySelectorAll('[data-print-page]').forEach(function(button) {
+      if (button.dataset.version3PrintBound === 'true') {
+        return;
+      }
+
+      button.dataset.version3PrintBound = 'true';
+      button.addEventListener('click', function() {
+        window.print();
+      });
+    });
+  }
+
   function initializeVersion3Scripts() {
     initializeGlobalEvents();
     initializePageTransitions();
@@ -1483,7 +1554,8 @@
     initializePostEnhancements();
     initializeSearch();
     initializeSearchPage();
-    initializeLucideIcons(document);
+    initializePrintButtons();
+    initializeComments();
 
     document.dispatchEvent(new Event('version3:page-ready'));
   }

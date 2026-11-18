@@ -11,19 +11,19 @@ React Query is a powerful library for managing server-state in React application
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="app-window" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="app-window" class="site-icon" %}
       <span class="post-figure-step-label">Component</span>
       <span class="post-figure-step-sub">Calls useQuery()</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="database" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="database" class="site-icon" %}
       <span class="post-figure-step-label">Query cache</span>
       <span class="post-figure-step-sub">Instant data, then revalidates</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="server" class="site-icon" %}
       <span class="post-figure-step-label">API / Server</span>
       <span class="post-figure-step-sub">Fetched on miss or stale</span>
     </div>

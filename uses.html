@@ -16,14 +16,14 @@ description: The gear and software Bhupendra Negi uses day to day — editor, te
     {% for group in site.data.uses %}
       <section class="uses-group site-card" data-reveal>
         <h2 class="uses-group-title">
-          <span class="uses-group-icon"><i data-lucide="{{ group.icon | default: 'wrench' }}" class="site-icon" aria-hidden="true"></i></span>
+          {% assign group_icon = group.icon | default: 'wrench' %}<span class="uses-group-icon">{% include icon.html name=group_icon class="site-icon" %}</span>
           {{ group.group }}
         </h2>
         <ul class="uses-list">
           {% for item in group.items %}
             <li class="uses-item">
               <span class="uses-item-icon" aria-hidden="true">
-                {% if item.icon %}<i class="devicon-{{ item.icon }}"></i>{% else %}<i data-lucide="{{ item.lucide | default: 'dot' }}" class="site-icon"></i>{% endif %}
+                {% if item.icon %}{% include tech-icon.html name=item.icon %}{% else %}{% assign item_icon = item.lucide | default: 'dot' %}{% include icon.html name=item_icon class="site-icon" %}{% endif %}
               </span>
               <span class="uses-item-body">
                 <span class="uses-item-name">{{ item.name }}</span>
@@ -37,7 +37,7 @@ description: The gear and software Bhupendra Negi uses day to day — editor, te
   </div>
 
   <div class="page-actions" data-reveal>
-    <a class="btn-primary" href="/cheatsheet/"><i data-lucide="terminal" class="site-icon" aria-hidden="true"></i> Open the cheatsheet</a>
-    <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
+    <a class="btn-primary" href="/cheatsheet/">{% include icon.html name="terminal" class="site-icon" %} Open the cheatsheet</a>
+    <button type="button" class="btn-ghost" id="scroll-top" name="button">{% include icon.html name="arrow-up" class="site-icon" %} Back to top</button>
   </div>
 </section>

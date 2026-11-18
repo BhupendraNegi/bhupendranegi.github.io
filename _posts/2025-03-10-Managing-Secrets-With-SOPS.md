@@ -13,25 +13,25 @@ Secrets management is a problem in every stack, not just Rails. [SOPS](https://g
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="key" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="key" class="site-icon" %}
       <span class="post-figure-step-label">Secrets</span>
       <span class="post-figure-step-sub">Plaintext values</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="lock" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="lock" class="site-icon" %}
       <span class="post-figure-step-label">SOPS</span>
       <span class="post-figure-step-sub">Encrypt with an age key</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="git-branch" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="git-branch" class="site-icon" %}
       <span class="post-figure-step-label">Git</span>
       <span class="post-figure-step-sub">Safe to commit</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="server" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="server" class="site-icon" %}
       <span class="post-figure-step-label">Rails</span>
       <span class="post-figure-step-sub">Decrypted into ENV</span>
     </div>

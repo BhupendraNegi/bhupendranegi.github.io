@@ -13,25 +13,25 @@ description: Selected projects by Bhupendra Negi — web apps and tools built wi
 
   <div class="filter-bar" data-reveal>
     <button id="filter" class="btn-ghost" type="button" aria-controls="tags" aria-expanded="false" data-project-filter-toggle>
-      <i data-lucide="sliders-horizontal" class="site-icon" aria-hidden="true"></i> Filter by Technology
+      {% include icon.html name="sliders-horizontal" class="site-icon" %} Filter by Technology
     </button>
     <div id="tags" class="project-filter-tags" hidden>
-      <button class="tag" type="button" data-project-tag="ruby" aria-pressed="false"><i class="about_skill_icon devicon-ruby-plain" aria-hidden="true"></i> Ruby</button>
-      <button class="tag" type="button" data-project-tag="rails" aria-pressed="false"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Rails</button>
-      <button class="tag" type="button" data-project-tag="javascript" aria-pressed="false"><i class="about_skill_icon devicon-javascript-plain" aria-hidden="true"></i> JavaScript</button>
-      <button class="tag" type="button" data-project-tag="typescript" aria-pressed="false"><i class="about_skill_icon devicon-typescript-plain" aria-hidden="true"></i> TypeScript</button>
-      <button class="tag" type="button" data-project-tag="react" aria-pressed="false"><i class="about_skill_icon devicon-react-original" aria-hidden="true"></i> React</button>
-      <button class="tag" type="button" data-project-tag="nextjs" aria-pressed="false"><i class="about_skill_icon devicon-nextjs-plain" aria-hidden="true"></i> Next.js</button>
-      <button class="tag" type="button" data-project-tag="astro" aria-pressed="false"><i class="about_skill_icon devicon-astro-plain" aria-hidden="true"></i> Astro</button>
-      <button class="tag" type="button" data-project-tag="redis" aria-pressed="false"><i class="about_skill_icon devicon-redis-plain" aria-hidden="true"></i> Redis</button>
-      <button class="tag" type="button" data-project-tag="postgresql" aria-pressed="false"><i class="about_skill_icon devicon-postgresql-plain" aria-hidden="true"></i> PostgreSQL</button>
-      <button class="tag" type="button" data-project-tag="web" aria-pressed="false"><i class="site-icon" data-lucide="globe" aria-hidden="true"></i> Web</button>
-      <button class="tag" type="button" data-project-tag="java" aria-pressed="false"><i class="about_skill_icon devicon-java-plain" aria-hidden="true"></i> Java</button>
-      <button class="tag" type="button" data-project-tag="kotlin" aria-pressed="false"><i class="about_skill_icon devicon-kotlin-plain" aria-hidden="true"></i> Kotlin</button>
-      <button class="tag" type="button" data-project-tag="android" aria-pressed="false"><i class="about_skill_icon devicon-android-plain" aria-hidden="true"></i> Android</button>
-      <button class="tag" type="button" data-project-tag="mobile" aria-pressed="false"><i class="site-icon" data-lucide="smartphone" aria-hidden="true"></i> Mobile</button>
-      <button class="tag" type="button" data-project-tag="game" aria-pressed="false"><i class="site-icon" data-lucide="gamepad-2" aria-hidden="true"></i> Game</button>
-      <button class="tag tag-clear" type="button" data-project-clear-filters><i class="site-icon" data-lucide="x" aria-hidden="true"></i> Clear</button>
+      <button class="tag" type="button" data-project-tag="ruby" aria-pressed="false">{% include tech-icon.html name="ruby-plain" class="about_skill_icon" %} Ruby</button>
+      <button class="tag" type="button" data-project-tag="rails" aria-pressed="false">{% include tech-icon.html name="rails-plain" class="about_skill_icon" %} Rails</button>
+      <button class="tag" type="button" data-project-tag="javascript" aria-pressed="false">{% include tech-icon.html name="javascript-plain" class="about_skill_icon" %} JavaScript</button>
+      <button class="tag" type="button" data-project-tag="typescript" aria-pressed="false">{% include tech-icon.html name="typescript-plain" class="about_skill_icon" %} TypeScript</button>
+      <button class="tag" type="button" data-project-tag="react" aria-pressed="false">{% include tech-icon.html name="react-original" class="about_skill_icon" %} React</button>
+      <button class="tag" type="button" data-project-tag="nextjs" aria-pressed="false">{% include tech-icon.html name="nextjs-plain" class="about_skill_icon" %} Next.js</button>
+      <button class="tag" type="button" data-project-tag="astro" aria-pressed="false">{% include tech-icon.html name="astro-plain" class="about_skill_icon" %} Astro</button>
+      <button class="tag" type="button" data-project-tag="redis" aria-pressed="false">{% include tech-icon.html name="redis-plain" class="about_skill_icon" %} Redis</button>
+      <button class="tag" type="button" data-project-tag="postgresql" aria-pressed="false">{% include tech-icon.html name="postgresql-plain" class="about_skill_icon" %} PostgreSQL</button>
+      <button class="tag" type="button" data-project-tag="web" aria-pressed="false">{% include icon.html name="globe" class="site-icon" %} Web</button>
+      <button class="tag" type="button" data-project-tag="java" aria-pressed="false">{% include tech-icon.html name="java-plain" class="about_skill_icon" %} Java</button>
+      <button class="tag" type="button" data-project-tag="kotlin" aria-pressed="false">{% include tech-icon.html name="kotlin-plain" class="about_skill_icon" %} Kotlin</button>
+      <button class="tag" type="button" data-project-tag="android" aria-pressed="false">{% include tech-icon.html name="android-plain" class="about_skill_icon" %} Android</button>
+      <button class="tag" type="button" data-project-tag="mobile" aria-pressed="false">{% include icon.html name="smartphone" class="site-icon" %} Mobile</button>
+      <button class="tag" type="button" data-project-tag="game" aria-pressed="false">{% include icon.html name="gamepad-2" class="site-icon" %} Game</button>
+      <button class="tag tag-clear" type="button" data-project-clear-filters>{% include icon.html name="x" class="site-icon" %} Clear</button>
     </div>
   </div>
 
@@ -43,11 +43,11 @@ description: Selected projects by Bhupendra Negi — web apps and tools built wi
 
   <div class="home-cta projects-bottom" data-reveal>
     <div class="home-cta-inner">
-      <h2 class="section-title"><i class="site-icon" data-lucide="terminal" aria-hidden="true"></i> Dev <span class="grad">Cheatsheet</span></h2>
+      <h2 class="section-title">{% include icon.html name="terminal" class="site-icon" %} Dev <span class="grad">Cheatsheet</span></h2>
       <p class="home-cta-text">A running collection of the commands I reach for most &mdash; Git, SSH, Docker, Ruby/Rails, databases, and everyday shell. One click to copy any of them.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="/cheatsheet/"><i class="site-icon" data-lucide="terminal" aria-hidden="true"></i> Open the cheatsheet</a>
-        <a class="btn-ghost" href="/uses/"><i class="site-icon" data-lucide="wrench" aria-hidden="true"></i> What I use</a>
+        <a class="btn-primary" href="/cheatsheet/">{% include icon.html name="terminal" class="site-icon" %} Open the cheatsheet</a>
+        <a class="btn-ghost" href="/uses/">{% include icon.html name="wrench" class="site-icon" %} What I use</a>
       </div>
     </div>
   </div>
@@ -57,8 +57,8 @@ description: Selected projects by Bhupendra Negi — web apps and tools built wi
       <h2 class="section-title">Have a question or <span class="grad">feedback?</span></h2>
       <p class="home-cta-text">I'd love to hear what you think &mdash; feel free to reach out.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="/contact"><i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch</a>
-        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i class="site-icon" data-lucide="arrow-up" aria-hidden="true"></i> Back to top</button>
+        <a class="btn-primary" href="/contact">{% include icon.html name="mail" class="site-icon" %} Get in touch</a>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button">{% include icon.html name="arrow-up" class="site-icon" %} Back to top</button>
       </div>
     </div>
   </div>

@@ -19,16 +19,16 @@ layout: default
         {% if hero.stack %}<p class="hero-stack" data-reveal data-reveal-order="3">{{ hero.stack }}</p>{% endif %}
         {% if hero.blurb %}<p class="hero-blurb" data-reveal data-reveal-order="4">{{ hero.blurb | replace: "YEARS", years }}</p>{% endif %}
         <ul class="hero-meta" data-reveal data-reveal-order="5">
-          {% if hero.experience %}<li><i class="site-icon" data-lucide="briefcase" aria-hidden="true"></i>{{ hero.experience | replace: "YEARS", years }}</li>{% endif %}
-          {% if hero.location %}<li><i class="site-icon" data-lucide="map-pin" aria-hidden="true"></i>{{ hero.location }}</li>{% endif %}
-          <li><i class="site-icon" data-lucide="award" aria-hidden="true"></i>IEEE Xtreme AIR 12</li>
+          {% if hero.experience %}<li>{% include icon.html name="briefcase" class="site-icon" %}{{ hero.experience | replace: "YEARS", years }}</li>{% endif %}
+          {% if hero.location %}<li>{% include icon.html name="map-pin" class="site-icon" %}{{ hero.location }}</li>{% endif %}
+          <li>{% include icon.html name="award" class="site-icon" %}IEEE Xtreme AIR 12</li>
         </ul>
         <div class="hero-actions" data-reveal data-reveal-order="6">
           <a class="btn-primary" href="{{ site.data.sections.projects.url }}">
-            <i class="site-icon" data-lucide="layout-grid" aria-hidden="true"></i> View Projects
+            {% include icon.html name="layout-grid" class="site-icon" %} View Projects
           </a>
           <a class="btn-ghost" href="{{ site.data.sections.contact.url }}">
-            <i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch
+            {% include icon.html name="mail" class="site-icon" %} Get in touch
           </a>
         </div>
         <ul class="hero-social" data-reveal data-reveal-order="6">
@@ -43,8 +43,11 @@ layout: default
         <div class="hero-portrait">
           <div class="hero-portrait-inner">
             <picture>
-              <source type="image/webp" srcset="/assets/images/bhupendra_1.webp">
-              <img src="/assets/images/bhupendra_1.jpg" alt="Bhupendra Negi" width="320" height="320" decoding="async" />
+              {% comment %} Shown at up to 300px (210px on phones): the 400w file
+              covers 1x screens, the 800w original covers high-density ones.
+              This is the page's largest image, so it is fetched at high priority. {% endcomment %}
+              <source type="image/webp" srcset="/assets/images/bhupendra_1-400.webp 400w, /assets/images/bhupendra_1.webp 800w" sizes="(max-width: 600px) 210px, 300px">
+              <img src="/assets/images/bhupendra_1.jpg" srcset="/assets/images/bhupendra_1-400.jpg 400w, /assets/images/bhupendra_1.jpg 800w" sizes="(max-width: 600px) 210px, 300px" alt="Bhupendra Negi" width="800" height="1066" fetchpriority="high" decoding="async" />
             </picture>
           </div>
         </div>
@@ -55,14 +58,13 @@ layout: default
   <section class="home-section" aria-labelledby="home-projects-heading">
     <div class="section-head" data-reveal>
       <h2 id="home-projects-heading" class="section-title">Featured <span class="grad">Projects</span></h2>
-      <a class="section-link" href="{{ site.data.sections.projects.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+      <a class="section-link" href="{{ site.data.sections.projects.url }}">View all {% include icon.html name="arrow-right" class="site-icon" %}</a>
     </div>
     <div class="home-project-grid">
       {% for project in site.data.projects limit: 4 %}
-        {% assign primary_tech = project.technologies[0] | default: "code-plain" %}
         <article class="proj-card proj-card--{{ forloop.index }}" data-reveal>
           <div class="proj-card-cover" aria-hidden="true">
-            <i class="devicon-{{ primary_tech }} proj-card-glyph"></i>
+            {% assign primary_tech = project.technologies | first %}{% if primary_tech %}{% include tech-icon.html name=primary_tech class="proj-card-glyph" %}{% else %}{% include icon.html name="code" class="proj-card-glyph" %}{% endif %}
             <span class="proj-card-cover-tint"></span>
           </div>
           <div class="proj-card-body">
@@ -75,7 +77,7 @@ layout: default
             {% endif %}
             <div class="proj-card-links">
               {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} source code">{% include social-icon.html name="github" %} Code</a>{% endif %}
-              {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo"><i class="site-icon" data-lucide="external-link" aria-hidden="true"></i> Live</a>{% endif %}
+              {% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener" aria-label="{{ project.title }} live demo">{% include icon.html name="external-link" class="site-icon" %} Live</a>{% endif %}
             </div>
           </div>
         </article>
@@ -86,7 +88,7 @@ layout: default
   <section class="home-section" aria-labelledby="home-writing-heading">
     <div class="section-head" data-reveal>
       <h2 id="home-writing-heading" class="section-title">Recent <span class="grad">Writing</span></h2>
-      <a class="section-link" href="{{ site.data.sections.blog.url }}">View all <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+      <a class="section-link" href="{{ site.data.sections.blog.url }}">View all {% include icon.html name="arrow-right" class="site-icon" %}</a>
     </div>
     <div class="home-writing-grid">
       {% for post in site.posts limit: 4 %}
@@ -100,7 +102,7 @@ layout: default
           </span>
           <span class="post-card-title">{{ post.title }}</span>
           {% if post.excerpt %}<span class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</span>{% endif %}
-          <span class="post-card-read">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></span>
+          <span class="post-card-read">Read article {% include icon.html name="arrow-right" class="site-icon" %}</span>
         </a>
       {% endfor %}
     </div>
@@ -111,8 +113,8 @@ layout: default
       <h2 id="home-cta-heading" class="section-title">Let's build something <span class="grad">together</span></h2>
       <p class="home-cta-text">I'm always open to interesting projects and conversations. Have a question or an idea?</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="{{ site.data.sections.contact.url }}"><i class="site-icon" data-lucide="mail" aria-hidden="true"></i> Get in touch</a>
-        <a class="btn-ghost" href="{{ site.data.sections.about.url }}"><i class="site-icon" data-lucide="user" aria-hidden="true"></i> More about me</a>
+        <a class="btn-primary" href="{{ site.data.sections.contact.url }}">{% include icon.html name="mail" class="site-icon" %} Get in touch</a>
+        <a class="btn-ghost" href="{{ site.data.sections.about.url }}">{% include icon.html name="user" class="site-icon" %} More about me</a>
       </div>
     </div>
   </section>

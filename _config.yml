@@ -43,18 +43,20 @@ permalink: /:title/
 markdown: kramdown
 highlighter: rouge
 
-theme: minima
+# No gem theme: every layout and include lives in this repo (_layouts/,
+# _includes/), and styling is the Tailwind bundle. `theme: null` also stops
+# Jekyll falling back to a default theme's assets.
+theme: null
 plugins:
   - jekyll-feed
-  - jekyll-sass-converter
-  - jekyll-sitemap
 
-sass:
-  style: :expanded
+# The sitemap is the hand-written sitemap.xml template (not jekyll-sitemap), so
+# exactly the listed pages and posts appear — and nothing unlisted, such as
+# /resume/ or the resume PDF.
 
 # Pagination is intentionally disabled: the blog index renders every post so the
 # client-side topic filter (assets/js/version-3.js) can work across all of them.
-# With a small post count this is one comfortable page. Re-add jekyll-paginate
+# With a small post count this is one comfortable page. Add jekyll-paginate
 # (and server-side tag pages) if the archive grows large.
 
 # Exclude from processing.
@@ -68,6 +70,8 @@ sass:
 exclude:
   - AGENT.md
   - CLAUDE.md
+  - README.md
+  - eslint.config.mjs
   - Procfile
   - .sass-cache/
   - .jekyll-cache/

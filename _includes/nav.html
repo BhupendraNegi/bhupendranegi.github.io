@@ -7,7 +7,7 @@
       </a>
 
       <button id="search-open" type="button" class="nav-search" aria-label="Search the site" data-search-open>
-        <i data-lucide="search" class="site-icon nav-search-icon" aria-hidden="true"></i>
+        {% include icon.html name="search" class="site-icon nav-search-icon" %}
         <span class="nav-search-label">Search</span>
         <span class="nav-search-kbd"><kbd>⌘</kbd><kbd>K</kbd></span>
       </button>
@@ -23,13 +23,12 @@
 
       <div class="site-nav-actions">
         <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
-          <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
-          <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
+          {% include icon.html name="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" %}
+          {% include icon.html name="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" %}
         </button>
-        <a class="nav-cta" href="/resume/">Resume</a>
         <button id="mobile-nav-toggle" type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-demo" aria-expanded="false" data-mobile-nav-toggle>
-          <i data-lucide="menu" class="site-icon mobile-toggle-open" aria-hidden="true"></i>
-          <i data-lucide="x" class="site-icon mobile-toggle-close" aria-hidden="true"></i>
+          {% include icon.html name="menu" class="site-icon mobile-toggle-open" %}
+          {% include icon.html name="x" class="site-icon mobile-toggle-close" %}
         </button>
       </div>
 
@@ -46,17 +45,17 @@
               {% when 'contact' %}{% assign sec_icon = 'mail' %}
               {% else %}{% assign sec_icon = 'chevron-right' %}
             {% endcase %}
-            <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}><i data-lucide="{{ sec_icon }}" class="site-icon" aria-hidden="true"></i><span>{{ my_section[1].name }}</span></a></li>
+            <li><a href="{{ my_section[1].url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{% include icon.html name=sec_icon class="site-icon" %}<span>{{ my_section[1].name }}</span></a></li>
           {% endunless %}{% endfor %}
         </ul>
         <div class="mobile-nav-foot">
           <button id="search-open-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Search the site" data-search-open>
-            <i data-lucide="search" class="site-icon" aria-hidden="true"></i>
+            {% include icon.html name="search" class="site-icon" %}
             <span class="theme-toggle-label">Search</span>
           </button>
           <button id="theme-toggle-mobile" type="button" class="theme-toggle theme-toggle-mobile" aria-label="Switch theme" aria-pressed="false" data-theme-toggle>
-            <i data-lucide="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true"></i>
-            <i data-lucide="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true"></i>
+            {% include icon.html name="sun" class="site-icon theme-toggle-icon theme-toggle-icon--sun" %}
+            {% include icon.html name="moon" class="site-icon theme-toggle-icon theme-toggle-icon--moon" %}
             <span class="theme-toggle-label">Toggle theme</span>
           </button>
         </div>
@@ -70,7 +69,7 @@
   <div class="site-search-backdrop" data-search-close></div>
   <div class="site-search-panel" role="dialog" aria-modal="true" aria-label="Search the site">
     <div class="site-search-field">
-      <i data-lucide="search" class="site-icon site-search-field-icon" aria-hidden="true"></i>
+      {% include icon.html name="search" class="site-icon site-search-field-icon" %}
       <input
         type="search"
         id="site-search-input"
@@ -84,14 +83,14 @@
         data-search-input
       />
       <button type="button" class="site-search-close" data-search-close aria-label="Close search">
-        <i data-lucide="x" class="site-icon" aria-hidden="true"></i>
+        {% include icon.html name="x" class="site-icon" %}
       </button>
     </div>
     <ul class="site-search-results" id="site-search-results" role="listbox" aria-label="Search results" data-search-results></ul>
     <p class="site-search-state" data-search-state>Type to search posts and pages.</p>
     <a class="site-search-all" href="{{ site.baseurl }}/search/" data-search-all data-search-page="{{ site.baseurl }}/search/" hidden>
       <span>View all results</span>
-      <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="arrow-right" class="site-icon" %}
     </a>
     <div class="site-search-foot">
       <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>

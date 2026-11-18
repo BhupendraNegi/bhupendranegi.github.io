@@ -2,7 +2,8 @@
   "name": "bhupendranegi.github.io",
   "private": true,
   "scripts": {
-    "build": "npm run css:build && bundle exec jekyll build",
+    "build": "npm run icons:build && npm run css:build && bundle exec jekyll build",
+    "icons:build": "node bin/build-icons.mjs",
     "css:build": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --minify",
     "css:watch": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/version-3.css --watch",
     "dev": "./bin/dev",
@@ -17,8 +18,11 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.0",
+    "devicon": "2.16.0",
     "eslint": "^10.5.0",
     "globals": "^17.6.0",
+    "js-yaml": "5.2.2",
+    "lucide-static": "1.18.0",
     "markdownlint-cli2": "^0.24.1",
     "prettier": "^3.8.4",
     "stylelint": "^17.13.0",

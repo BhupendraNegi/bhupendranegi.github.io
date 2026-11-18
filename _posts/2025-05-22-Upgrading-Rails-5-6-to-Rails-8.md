@@ -11,25 +11,25 @@ Staying on an old Rails version feels safe, but it quietly piles up risk: missin
 <figure class="post-figure">
   <div class="post-figure-flow">
     <div class="post-figure-step">
-      <i data-lucide="package" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="package" class="site-icon" %}
       <span class="post-figure-step-label">Rails 5.2</span>
       <span class="post-figure-step-sub">Your baseline</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="package" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="package" class="site-icon" %}
       <span class="post-figure-step-label">Rails 6.1</span>
       <span class="post-figure-step-sub">Zeitwerk, multi-DB</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="package" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="package" class="site-icon" %}
       <span class="post-figure-step-label">Rails 7.x</span>
       <span class="post-figure-step-sub">Hotwire, importmaps</span>
     </div>
-    <div class="post-figure-arrow"><i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></div>
+    <div class="post-figure-arrow">{% include icon.html name="arrow-right" class="site-icon" %}</div>
     <div class="post-figure-step">
-      <i data-lucide="rocket" class="site-icon" aria-hidden="true"></i>
+      {% include icon.html name="rocket" class="site-icon" %}
       <span class="post-figure-step-label">Rails 8.0</span>
       <span class="post-figure-step-sub">Solid trifecta</span>
     </div>

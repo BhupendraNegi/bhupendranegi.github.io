@@ -6,16 +6,30 @@
 any page may set `image:`); fall back to the headshot. {% endcomment %}
 {% assign meta_image = page.image | default: page.cover | default: '/assets/images/bhupendra.png' | absolute_url %}
 {% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
+{% comment %} Pages with their own wide art (post covers are 1200px) get the large
+card; the square headshot fallback stays a small summary card. {% endcomment %}
+{% if page.image or page.cover %}{% assign meta_card = 'summary_large_image' %}{% else %}{% assign meta_card = 'summary' %}{% endif %}
+{% comment %} Optional `last_modified_at:` front matter (a date) marks a revised
+post; without it the modified date is the publish date. {% endcomment %}
+{% assign meta_modified = page.last_modified_at | default: page.date %}
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta http-equiv="Expires" content="600" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
   <link rel="canonical" href="{{ meta_url }}" />
+  {% comment %} `noindex: true` in a page's front matter keeps it out of search
+  engines (the page must stay crawlable for the tag to be seen). {% endcomment %}
+  {% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}
   <script>
     (function() {
-      var t = localStorage.getItem('theme') || 'light';
+      // A stored choice wins; otherwise follow the system colour scheme.
+      // Storage access can throw (blocked cookies/private modes), so guard it.
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) { t = null; }
+      if (t !== 'dark' && t !== 'light') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
       document.documentElement.setAttribute('data-theme', t);
 
       // Scroll reveals are a progressive enhancement: only arm them when JS runs
@@ -36,10 +50,11 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{{ meta_image }}" />
   {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:modified_time" content="{{ meta_modified | date_to_xmlschema }}" />
   <meta property="article:author" content="{{ site.name }}" />{% endif %}
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="{{ meta_card }}" />
   <meta name="twitter:site" content="@BhupendraNegi21" />
   <meta name="twitter:title" content="{{ meta_title }}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
@@ -58,7 +73,7 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
     "headline": {{ page.title | jsonify }},
     "description": {{ meta_description | strip | jsonify }},
     "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ meta_modified | date_to_xmlschema }}",
     "url": {{ meta_url | jsonify }},
     "image": {{ meta_image | jsonify }},
     "mainEntityOfPage": { "@type": "WebPage", "@id": {{ meta_url | jsonify }} },
@@ -91,6 +106,6 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
   <link rel="icon" type="image/png" href="/assets/images/Bhupendra_B_light.png" media="(prefers-color-scheme: dark)">
   <link rel="shortcut icon" type="image/png" href="/assets/images/Bhupendra_B_dark.png">
   {% include scripts.html %}
-  <link rel="stylesheet" href="/assets/css/version-3.css" media="screen">
+  <link rel="stylesheet" href="/assets/css/version-3.css">
   {% include analytics.html %}
 </head>

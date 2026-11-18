@@ -12,21 +12,25 @@ comments: true
   <div class="post-shell">
     <aside class="post-aside">
       <nav class="post-toc" data-post-toc aria-label="On this page" hidden>
-        <p class="post-toc-title"><i data-lucide="list" class="site-icon" aria-hidden="true"></i> On this page</p>
+        <p class="post-toc-title">{% include icon.html name="list" class="site-icon" %} On this page</p>
         <ul class="post-toc-list" data-post-toc-list></ul>
       </nav>
     </aside>
 
     <div class="post-main">
       <header class="post-hero" data-reveal>
-        <a href="/blog" class="post-back" aria-label="Back to blog"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> All articles</a>
+        <a href="/blog" class="post-back" aria-label="Back to blog">{% include icon.html name="arrow-left" class="site-icon" %} All articles</a>
         <h1 class="post-hero-title">{{ page.title }}</h1>
         {% if page.subtitle %}<p class="post-hero-lead">{{ page.subtitle }}</p>{% endif %}
         <div class="post-meta">
-          <i data-lucide="calendar" class="site-icon" aria-hidden="true"></i>
+          {% include icon.html name="calendar" class="site-icon" %}
           <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          {% if page.last_modified_at %}
           <span aria-hidden="true">·</span>
-          <i data-lucide="clock" class="site-icon" aria-hidden="true"></i>
+          <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+          {% endif %}
+          <span aria-hidden="true">·</span>
+          {% include icon.html name="clock" class="site-icon" %}
           <span>{{ minutes }} min read</span>
         </div>
       </header>
@@ -42,13 +46,13 @@ comments: true
         page.next is the newer one. {% endcomment %}
         {% if page.previous %}
         <a class="post-nav-link post-nav-older" href="{{ page.previous.url | relative_url }}">
-          <span class="post-nav-dir"><i data-lucide="arrow-left" class="site-icon" aria-hidden="true"></i> Older post</span>
+          <span class="post-nav-dir">{% include icon.html name="arrow-left" class="site-icon" %} Older post</span>
           <span class="post-nav-title">{{ page.previous.title }}</span>
         </a>
         {% else %}<span class="post-nav-spacer" aria-hidden="true"></span>{% endif %}
         {% if page.next %}
         <a class="post-nav-link post-nav-newer" href="{{ page.next.url | relative_url }}">
-          <span class="post-nav-dir">Newer post <i data-lucide="arrow-right" class="site-icon" aria-hidden="true"></i></span>
+          <span class="post-nav-dir">Newer post {% include icon.html name="arrow-right" class="site-icon" %}</span>
           <span class="post-nav-title">{{ page.next.title }}</span>
         </a>
         {% else %}<span class="post-nav-spacer" aria-hidden="true"></span>{% endif %}
@@ -58,8 +62,8 @@ comments: true
       {% include disqus.html %}
 
       <div class="page-actions" data-reveal>
-        <a href="/blog" class="btn-primary"><i data-lucide="newspaper" class="site-icon" aria-hidden="true"></i> More articles</a>
-        <button type="button" class="btn-ghost" id="scroll-top" name="button"><i data-lucide="arrow-up" class="site-icon" aria-hidden="true"></i> Back to top</button>
+        <a href="/blog" class="btn-primary">{% include icon.html name="newspaper" class="site-icon" %} More articles</a>
+        <button type="button" class="btn-ghost" id="scroll-top" name="button">{% include icon.html name="arrow-up" class="site-icon" %} Back to top</button>
       </div>
     </div>
   </div>

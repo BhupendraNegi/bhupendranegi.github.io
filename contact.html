@@ -18,7 +18,7 @@ description: Get in touch with Bhupendra Negi — send a message or reach out by
       <ul class="contact-methods">
         <li>
           <a class="contact-method" href="mailto:{{ site.email }}">
-            <span class="contact-method-icon"><i data-lucide="mail" class="site-icon" aria-hidden="true"></i></span>
+            <span class="contact-method-icon">{% include icon.html name="mail" class="site-icon" %}</span>
             <span class="contact-method-body">
               <span class="contact-method-label">Email</span>
               <span class="contact-method-value">{{ site.email }}</span>
@@ -45,7 +45,7 @@ description: Get in touch with Bhupendra Negi — send a message or reach out by
         </li>
         <li>
           <div class="contact-method contact-method--static">
-            <span class="contact-method-icon"><i data-lucide="clock-3" class="site-icon" aria-hidden="true"></i></span>
+            <span class="contact-method-icon">{% include icon.html name="clock-3" class="site-icon" %}</span>
             <span class="contact-method-body">
               <span class="contact-method-label">Response time</span>
               <span class="contact-method-value">Usually within a day</span>
@@ -60,27 +60,27 @@ description: Get in touch with Bhupendra Negi — send a message or reach out by
 
     <div class="contact-grid">
       <label class="contact-field" for="contact-name">
-        <span class="contact-label"><i data-lucide="user" class="site-icon" aria-hidden="true"></i>Full Name</span>
+        <span class="contact-label">{% include icon.html name="user" class="site-icon" %}Full Name</span>
         <input id="contact-name" type="text" name="name" class="validate email_input" autocomplete="name">
       </label>
 
       <label class="contact-field" for="contact-phone">
-        <span class="contact-label"><i data-lucide="phone" class="site-icon" aria-hidden="true"></i>Phone Number</span>
-        <input id="contact-phone" name="phone" type="tel" pattern="^(?:\+91[- ]?)?[789]\d{9}$" class="validate email_input" autocomplete="tel">
+        <span class="contact-label">{% include icon.html name="phone" class="site-icon" %}Phone Number</span>
+        <input id="contact-phone" name="phone" type="tel" pattern="^\+?[0-9][0-9 \(\).\-]{6,19}$" title="Digits, spaces, dashes or brackets, with an optional leading + country code" class="validate email_input" autocomplete="tel">
       </label>
 
       <label class="contact-field" for="contact-email">
-        <span class="contact-label"><i data-lucide="at-sign" class="site-icon" aria-hidden="true"></i>Email</span>
+        <span class="contact-label">{% include icon.html name="at-sign" class="site-icon" %}Email</span>
         <input id="contact-email" name="_replyto" type="email" class="validate email_input" autocomplete="email" required>
       </label>
 
       <label class="contact-field" for="contact-subject">
-        <span class="contact-label"><i data-lucide="type" class="site-icon" aria-hidden="true"></i>Subject</span>
+        <span class="contact-label">{% include icon.html name="type" class="site-icon" %}Subject</span>
         <input id="contact-subject" type="text" name="_subject" class="email_input">
       </label>
 
       <label class="contact-field contact-field-full" for="contact-message">
-        <span class="contact-label"><i data-lucide="message-square" class="site-icon" aria-hidden="true"></i>Message</span>
+        <span class="contact-label">{% include icon.html name="message-square" class="site-icon" %}Message</span>
         <textarea id="contact-message" aria-required="true" name="message" class="email_input validate" required></textarea>
       </label>
     </div>

@@ -1,6 +1,7 @@
 ---
 layout: site_layout
 title: Blog
+description: Articles by Bhupendra Negi on Ruby on Rails, React, data pipelines, and DevOps — practical write-ups from real projects.
 ---
 
 <section class="blog-page" aria-labelledby="blog-heading">
@@ -11,13 +12,13 @@ title: Blog
   </header>
 
   <div class="blog-filter" role="group" aria-label="Filter posts by topic" data-reveal>
-    <button class="tag is-active" type="button" data-blog-tag="" aria-pressed="true"><i data-lucide="layers" class="site-icon" aria-hidden="true"></i> All</button>
-    <button class="tag" type="button" data-blog-tag="rails" aria-pressed="false"><i class="about_skill_icon devicon-rails-plain" aria-hidden="true"></i> Rails</button>
-    <button class="tag" type="button" data-blog-tag="ruby" aria-pressed="false"><i class="about_skill_icon devicon-ruby-plain" aria-hidden="true"></i> Ruby</button>
-    <button class="tag" type="button" data-blog-tag="react" aria-pressed="false"><i class="about_skill_icon devicon-react-original" aria-hidden="true"></i> React</button>
-    <button class="tag" type="button" data-blog-tag="data" aria-pressed="false"><i data-lucide="database" class="site-icon" aria-hidden="true"></i> Data</button>
-    <button class="tag" type="button" data-blog-tag="devops" aria-pressed="false"><i data-lucide="server" class="site-icon" aria-hidden="true"></i> DevOps</button>
-    <button class="tag" type="button" data-blog-tag="jekyll" aria-pressed="false"><i class="about_skill_icon devicon-jekyll-plain" aria-hidden="true"></i> Jekyll</button>
+    <button class="tag is-active" type="button" data-blog-tag="" aria-pressed="true">{% include icon.html name="layers" class="site-icon" %} All</button>
+    <button class="tag" type="button" data-blog-tag="rails" aria-pressed="false">{% include tech-icon.html name="rails-plain" class="about_skill_icon" %} Rails</button>
+    <button class="tag" type="button" data-blog-tag="ruby" aria-pressed="false">{% include tech-icon.html name="ruby-plain" class="about_skill_icon" %} Ruby</button>
+    <button class="tag" type="button" data-blog-tag="react" aria-pressed="false">{% include tech-icon.html name="react-original" class="about_skill_icon" %} React</button>
+    <button class="tag" type="button" data-blog-tag="data" aria-pressed="false">{% include icon.html name="database" class="site-icon" %} Data</button>
+    <button class="tag" type="button" data-blog-tag="devops" aria-pressed="false">{% include icon.html name="server" class="site-icon" %} DevOps</button>
+    <button class="tag" type="button" data-blog-tag="jekyll" aria-pressed="false">{% include tech-icon.html name="jekyll-plain" class="about_skill_icon" %} Jekyll</button>
   </div>
 
   <div class="blog-list" data-blog-list>
@@ -50,12 +51,12 @@ title: Blog
             </picture>
           {% elsif post.techs %}
             <span class="post-row-logos">
-              {% for tch in post.techs %}<i class="devicon-{{ tch }} post-row-logo" aria-hidden="true"></i>{% endfor %}
+              {% for tch in post.techs %}{% include tech-icon.html name=tch class="post-row-logo" %}{% endfor %}
             </span>
           {% elsif tech != "" %}
-            <i class="devicon-{{ tech }} post-row-logo" aria-hidden="true"></i>
+            {% include tech-icon.html name=tech class="post-row-logo" %}
           {% else %}
-            <i data-lucide="{{ icon }}" class="post-row-glyph" aria-hidden="true"></i>
+            {% include icon.html name=icon class="post-row-glyph" %}
           {% endif %}
         </a>
         <div class="post-row-body">
@@ -66,7 +67,7 @@ title: Blog
           </span>
           <h2 class="post-row-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
           <p class="post-row-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 32 }}</p>
-          <a class="post-card-read" href="{{ site.baseurl }}{{ post.url }}">Read article <i class="site-icon" data-lucide="arrow-right" aria-hidden="true"></i></a>
+          <a class="post-card-read" href="{{ site.baseurl }}{{ post.url }}">Read article {% include icon.html name="arrow-right" class="site-icon" %}</a>
         </div>
       </article>
     {% endfor %}

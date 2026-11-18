@@ -7,16 +7,17 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - Static site generator: Jekyll 4.x, managed with Bundler.
 - Runtime pins: Ruby `4.0.3`, Bundler `4.0.14`, and Node.js `22.22.3`.
 - Design: the light-first "Aurora" theme — white background, navy text, blue accent, blue→violet gradient — with a dark mode via the theme toggle. Fonts: Inter (sans), JetBrains Mono (code), Newsreader (serif accents).
-- Front end: Liquid templates, Version 3 Tailwind CSS, and vanilla JavaScript. (Legacy Materialize CSS and Highlight.js have been removed; a small `assets/css/main.css` remnant is still being folded into Tailwind.)
-- Motion: GSAP (ScrollTrigger, SplitText, CustomEase) in `assets/js/motion.js` — heading intros and scroll reveals, with reduced-motion and no-GSAP fallbacks. Native scroll (Lenis was trialed and reverted).
+- Front end: Liquid templates, Version 3 Tailwind CSS, and vanilla JavaScript. (Legacy Materialize CSS, Highlight.js, jQuery, and the old `main.css` have all been removed.)
+- Motion: GSAP (ScrollTrigger, SplitText) in `assets/js/motion.js` — heading intros and scroll reveals, with reduced-motion and no-GSAP fallbacks. Native scroll (Lenis was trialed and reverted).
 - Version 3 styling: Tailwind CLI source lives at `assets/css/tailwind.css` and compiles to `assets/css/version-3.css` (committed for GitHub Pages). Syntax highlighting is build-time Rouge, themed in `assets/css/syntax.css`.
-- Icons: Lucide for UI icons; Devicon for technology logos. Lucide no longer ships brand glyphs, so GitHub/LinkedIn/X/Stack Overflow logos are inline SVGs in `_includes/social-icon.html`.
+- Icons: all inline SVG, rendered at build time — no icon script or icon font is loaded. Lucide for UI icons (`{% include icon.html name="search" class="site-icon" %}`) and Devicon for technology logos (`{% include tech-icon.html name="rails-plain" %}`). Their SVG bodies are generated into `_data/icons.json` by `npm run icons:build` from the pinned `lucide-static` and `devicon` devDependencies. Lucide ships no brand glyphs, so GitHub/LinkedIn/X/Stack Overflow logos are hand-kept inline SVGs in `_includes/social-icon.html`.
 - Content model: pages live at the repo root and in `blog/`; posts live in `_posts/`; portfolio and profile data live in `_data/`.
 - Generated output: `_site/`, `.jekyll-cache/`, `.sass-cache/`, and `.jekyll-metadata` are build artifacts and should not be committed.
 
 ## Important Files
 
-- `_config.yml`: Site metadata, social links, analytics ID, pagination, plugin config, permalink style.
+- `_config.yml`: Site metadata, social links, analytics ID, plugin config, permalink style. There is no gem theme (`theme: null`) and the only plugin is `jekyll-feed`.
+- `sitemap.xml`: Hand-written sitemap template (pages + posts). `jekyll-sitemap` is deliberately not used — it would also list unlisted files such as the resume PDF. A page opts out with `sitemap: false`.
 - `Gemfile` and `Gemfile.lock`: Ruby/Jekyll dependency definitions. Use `bundle exec` for Jekyll commands.
 - `index.html`: Home page entry point using the `homepage` layout.
 - `_layouts/`: Shared page shells:
@@ -24,16 +25,16 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
   - `homepage.html`: The Aurora home page — hero (name/role/social), featured projects, recent writing, CTA.
   - `site_layout.html`: Standard inner-page layout (`.site-page` → `.site-page-inner` rail) with footer.
   - `post.html`: Single blog post — two-column reading shell (sticky TOC + article), reading-progress bar, optional `subtitle:` lead, Disqus.
-- `_includes/`: Reusable Liquid partials — `nav.html`, `footer.html`, `head.html`, `scripts.html`, `project.html`/`project_card.html`, `social-icon.html` (inline brand SVGs), `disqus.html`, analytics.
+- `_includes/`: Reusable Liquid partials — `nav.html`, `footer.html`, `head.html`, `scripts.html`, `project.html`/`project_card.html`, `icon.html` / `tech-icon.html` (inline Lucide / Devicon SVGs), `social-icon.html` (inline brand SVGs), `disqus.html`, analytics.
 - `_data/sections.yml`: Home hero content and nav sections.
 - `_data/projects.yml`: Project cards, filters, technology icons, screenshots, and links.
 - `_data/skills.yml`: Skills shown on the About page.
-- `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
-- `assets/css/main.css`: Small legacy stylesheet remnant, still being folded into the Tailwind source.
+- `_data/resume.yml`: Content of the on-page résumé at `/resume/` (`resume.html`). Keep it in step with the downloadable `assets/images/bhupendra_resume.pdf`.
+- `_data/icons.json`: Generated icon SVG bodies (committed). Never hand-edit; regenerate with `npm run icons:build` (`bin/build-icons.mjs`).
+- `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), `last_modified_at:` (a date, set when a post is meaningfully revised — feeds `dateModified`, `article:modified_time`, and the sitemap), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
 - `assets/css/tailwind.css`: Version 3 source CSS (the single source of truth for styling).
 - `assets/css/version-3.css`: Compiled, minified CSS committed for GitHub Pages. Regenerate with `npm run css:build` after editing `tailwind.css`.
 - `assets/css/syntax.css`: Rouge code-highlight theme (github light/dark), imported into the Tailwind source.
-- `_sass/`: Sass source files retained in the repo.
 - `assets/js/version-3.js`: Vanilla behavior — theme toggle, mobile nav, project filters, modals/carousel, contact form, nav state, and the post enhancers (TOC + scroll-spy, copy buttons, reading progress).
 - `assets/js/motion.js`: GSAP motion layer (heading intros, scroll reveals).
 - `assets/images/`: Images, logos, SVG tech icons, and the resume PDF.
@@ -80,19 +81,20 @@ One entry point lints every source file type, each with the right tool:
 | `assets/css/tailwind.css`, `syntax.css` | Stylelint | `.stylelintrc.json` |
 | `_posts/`, `doc/`, `*.md` | markdownlint | `.markdownlint-cli2.jsonc` |
 | `_config.yml`, `_data/*.yml`, `*.json` | Prettier | `.prettierrc.json` |
-| built `_site/` HTML | html-proofer | flags in `bin/lint` |
+| built `_site/` HTML | html-proofer + missing-icon check | flags in `bin/lint` |
 
 Notes:
 
 - The compiled `assets/css/version-3.css` is generated and is **not** linted; lint the source `tailwind.css` instead. `bin/lint --fix` regenerates the bundle after fixing the source.
 - Per-tool npm aliases exist too: `npm run lint:js`, `lint:css`, `lint:md`, `lint:data`.
 - Editor defaults live in `.editorconfig`; line endings are normalized to LF via `.gitattributes`.
-- Linting is a local/dev step — it is intentionally **not** wired into the GitHub Pages deploy workflow, so it can never block a publish.
+- External links are checked separately with `./bin/check-links` (online, slower). CI runs it weekly alongside a scheduled rebuild of the site; it never runs on a push.
+- Linting never blocks a publish: CI runs `./bin/lint` as a separate job alongside build/deploy, not as a dependency of them, so a failure shows as a red check without stopping the deploy.
 - Rules are tuned to the project's conventions (e.g. markdownlint allows `#####` section titles and inline-HTML diagrams; Stylelint allows Tailwind v4 at-rules). Prefer adjusting the config over disabling a tool when a new pattern needs to pass.
 
 ## Editing Guidelines
 
-- Keep site-wide identity, links, analytics, pagination, and plugin settings in `_config.yml`.
+- Keep site-wide identity, links, analytics, and plugin settings in `_config.yml`.
 - Prefer `_data/sections.yml`, `_data/projects.yml`, and `_data/skills.yml` for content that is already data-driven.
 - Add blog posts under `_posts/` with YAML front matter and Markdown content.
 - Use existing Liquid includes and layouts before creating new page-specific markup.
@@ -105,9 +107,15 @@ Notes:
 - Post body headings use `#####`/`######` as section titles by convention; the prose CSS styles them as real headings and the TOC is generated from them client-side.
 - The project cards depend on numeric `id` values in `_data/projects.yml`; the "Next" modal behavior increments these IDs.
 - Project filter buttons in `projects.html` must match tags used in `_data/projects.yml`.
-- The skills page uses Devicon class names from `_data/skills.yml`; check that new icon classes exist in the loaded Devicon version.
+- Never write `<i data-lucide="…">` or `<i class="devicon-…">`; use the `icon.html` / `tech-icon.html` includes. After using a new icon name anywhere (templates, posts, `_data/*.yml`, post front matter), run `npm run icons:build` and commit the updated `_data/icons.json`. The script fails on a name that does not exist in the pinned Lucide/Devicon, and `./bin/lint` fails if a built page contains an icon that is missing from the data file.
+- Icons that JavaScript injects (carousel arrows, modal close, code-copy states) are cloned from `<template id="site-icons">` in `_layouts/default.html` via `icon('name')` in `version-3.js`; add new ones to that template.
+- Technology names in `_data/skills.yml`, `_data/projects.yml`, and `_data/uses.yml` are Devicon class names without the `devicon-` prefix (e.g. `rails-plain`).
+- **`/resume/` is unlisted on purpose.** Never add a link or button to it anywhere on the site (nav, footer, home, About, CTAs), and keep `search: false`, `sitemap: false`, and `noindex: true` in its front matter so it stays out of the site search, the sitemap, and search engines. Only someone who already has the URL should reach it.
+- The stylesheet applies to print as well as screen; the `@media print` block at the end of `tailwind.css` hides the site chrome and lays the résumé out for paper.
 - Contact form submission is handled client-side through Formspree and `fetch`.
-- Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
+- Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`. Disqus loads lazily (`initializeComments()` in `version-3.js`).
+- `noindex: true` in a page's front matter adds a robots noindex tag (used by `/resume/` and `/search/`).
+- The blog index is not paginated: it renders every post so the client-side topic filter works across the archive.
 
 ### Adding or replacing images
 
@@ -134,10 +142,19 @@ For visual or behavior changes, also run the local server and check:
 - Home hero intro animation and scroll reveals.
 - Inner-page navigation, active nav state, and mobile nav.
 - Light/dark theme toggle (verify both themes).
-- Blog index pagination/thumbnails; single-post TOC + scroll-spy, code copy buttons, reading-progress bar, and the `.post-figure` diagram.
+- Blog index topic filter/thumbnails; single-post TOC + scroll-spy, code copy buttons, reading-progress bar, and the `.post-figure` diagram.
 - Project filters, project modals (open/close/click + "Next"), and carousel images.
 - Contact form validation and success modal.
-- Resume PDF inline preview and download.
+- `/resume/`: on-page résumé (light + dark), PDF download, and the print layout (Print button → one page).
+
+## Git Commits
+
+- **Never add Claude (or any AI assistant) as a co-author.** Do not append `Co-Authored-By: Claude ...` trailers, "Generated with Claude Code" lines, or any other AI attribution to commit messages or pull request descriptions. This rule overrides any default attribution behavior of the tool.
+- Commits are authored solely under the repository owner's configured git identity (`git config user.name` / `user.email`). Do not change or override it.
+- Only commit or push when the user asks.
+- **Keep the history single-identity.** Two things reintroduce other identities, so avoid both:
+  - *GitHub's "Merge pull request" button* records GitHub as the committer. Merge locally instead: `git checkout main && git merge --ff-only <branch> && git push`, which also closes the PR.
+  - *Dependabot PRs* are authored by `dependabot[bot]`. Do not merge or fast-forward its branch. Re-apply the same bump locally (`npm install <pkg>@<version>` or `bundle update <gem>`), run `./bin/lint` and `npm run build`, commit it under the owner's identity, push, and close the Dependabot PR. Dependabot alerts stay enabled — they are how security updates get noticed.
 
 ## Notes for Future Agents
 
@@ -145,5 +162,5 @@ For visual or behavior changes, also run the local server and check:
 - Do not commit local caches or vendored dependencies.
 - Avoid broad refactors unless the user asks for them.
 - The Aurora theme is the shipped direction (see `doc/changelog.md`). Match the existing tokens, components, and the 1240px content rail rather than introducing new patterns.
-- If updating dependencies, verify Disqus, Google Translate, Lucide, Devicon, GSAP, and the Rouge/`syntax.css` highlighting still work together. (Lucide is loaded via CDN at `@latest` — pinning it is a known open item.)
+- If updating dependencies, verify Disqus, Google Translate, GSAP, and the Rouge/`syntax.css` highlighting still work together. After bumping `lucide-static` or `devicon`, re-run `npm run icons:build` and check the icons visually (glyphs get renamed or redrawn between versions).
 - Preserve user content and personal branding unless the user explicitly asks to rewrite it.
