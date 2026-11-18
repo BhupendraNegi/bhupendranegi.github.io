@@ -109,6 +109,7 @@ Lint all source files (JS, CSS, Markdown, YAML/JSON, and the built HTML):
 ./bin/lint          # check everything
 ./bin/lint --fix    # auto-fix what each tool can
 ./bin/lint --quick  # skip the build + html-proofer
+./bin/check-links   # check external links (online; also runs weekly in CI)
 ```
 
 ## Common Updates

@@ -176,7 +176,7 @@
     ]
 - id: 4
   title: Tenor Play
-  url: https://www.amazon.com/Bhupendra-Negi-Tenor-Play/dp/B07GKXS3XS/
+  url:
   github_url: https://github.com/BhupendraNegi/Tenor-play
   description: A Basic Music Player Application made for Android Users. User can create playlist, add songs to the favourites and shake the phone to change the music.
   tags: [java, kotlin, android, mobile]

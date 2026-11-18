@@ -1,4 +1,9 @@
-{% assign joining_date = "2019-08-05" %}
+{%- comment -%}
+  Sets `years`: whole years of professional experience, counted from
+  `joining_date` in _config.yml to the day the site was built. The Pages
+  workflow rebuilds weekly so this never goes stale between pushes.
+{%- endcomment -%}
+{% assign joining_date = site.joining_date %}
 {% assign joining_year = joining_date | slice: 0, 4 | plus: 0 %}
 {% assign joining_month = joining_date | slice: 5, 2 | plus: 0 %}
 {% assign joining_day = joining_date | slice: 8, 2 | plus: 0 %}

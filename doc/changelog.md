@@ -6,6 +6,22 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Weekly rebuild + external link check
+
+- **Why:** the "N years of experience" figure and the footer year are computed
+  at build time, and the site only rebuilt on a push, so they could go stale.
+  Dead project links also had to be found by hand.
+- **Weekly rebuild:** `.github/workflows/pages.yml` now also runs on a schedule
+  (Mondays 02:30 UTC) and redeploys.
+- **Link check:** new `bin/check-links` runs html-proofer with external links
+  enabled; a `links` job runs it on the weekly/manual runs only (never on a
+  push, so a third-party outage cannot fail a publish). LinkedIn (bot-blocked),
+  font preconnect hints and rate-limit responses are ignored.
+- **Found on the first run:** the Tenor Play Amazon listing is gone (404), so
+  its "Live" link was removed; Code and the gallery remain.
+- `_includes/joining_date.html` now reads `joining_date` from `_config.yml`
+  instead of repeating the date.
+
 ## 2026-11-18 — Résumé as a web page (still unlisted)
 
 - **Why:** `/resume/` only embedded the PDF with `<object>`, which shows the

@@ -89,6 +89,7 @@ Notes:
 - The compiled `assets/css/version-3.css` is generated and is **not** linted; lint the source `tailwind.css` instead. `bin/lint --fix` regenerates the bundle after fixing the source.
 - Per-tool npm aliases exist too: `npm run lint:js`, `lint:css`, `lint:md`, `lint:data`.
 - Editor defaults live in `.editorconfig`; line endings are normalized to LF via `.gitattributes`.
+- External links are checked separately with `./bin/check-links` (online, slower). CI runs it weekly alongside a scheduled rebuild of the site; it never runs on a push.
 - Linting is a local/dev step — it is intentionally **not** wired into the GitHub Pages deploy workflow, so it can never block a publish.
 - Rules are tuned to the project's conventions (e.g. markdownlint allows `#####` section titles and inline-HTML diagrams; Stylelint allows Tailwind v4 at-rules). Prefer adjusting the config over disabling a tool when a new pattern needs to pass.
 

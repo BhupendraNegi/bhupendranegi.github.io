@@ -8,6 +8,12 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Weekly rebuild (Mondays 02:30 UTC). Build-time values — the "N years of
+  # experience" figure and the footer year — would otherwise only refresh on a
+  # push. The same run checks external links (job "links" below).
+  # Note: GitHub pauses scheduled workflows after 60 days without repo activity.
+  schedule:
+    - cron: "30 2 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -95,3 +101,32 @@ jobs:
 
       - name: Lint
         run: ./bin/lint
+
+  # External link check — weekly and on manual runs only, never on a push, so a
+  # third-party outage can't turn a normal publish red. Like `lint`, it is not a
+  # dependency of `build`/`deploy`. A failure here means a link on the live site
+  # is dead: fix or remove it. See bin/check-links for what is ignored and why.
+  links:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Node packages
+        run: npm ci
+
+      - name: Check external links
+        run: ./bin/check-links
