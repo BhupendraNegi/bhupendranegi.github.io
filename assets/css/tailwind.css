@@ -1208,11 +1208,6 @@
     pointer-events: auto;
   }
 
-  /* Resume CTA hidden for now (kept in markup). */
-  .nav-cta {
-    display: none !important;
-  }
-
   .site-nav-inner {
     display: flex;
     align-items: center;
@@ -1298,31 +1293,6 @@
     flex: 0 0 auto;
   }
 
-  .nav-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: #fff;
-    background: var(--site-gradient);
-    font: 600 0.85rem/1 var(--font-sans);
-    padding: 0.6rem 1.1rem;
-    border-radius: 999px;
-    text-decoration: none;
-    box-shadow: 0 6px 16px color-mix(in srgb, var(--site-accent) 35%, transparent);
-    transition: transform 0.16s ease, box-shadow 0.16s ease;
-  }
-
-  .nav-cta:hover,
-  .nav-cta:focus-visible {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px color-mix(in srgb, var(--site-accent) 45%, transparent);
-  }
-
-  .nav-cta:focus-visible {
-    outline: 2px solid var(--site-accent);
-    outline-offset: 2px;
-  }
-
   @media (min-width: 861px) {
     .mobile-nav-toggle {
       display: none !important;
@@ -1330,8 +1300,7 @@
   }
 
   @media (max-width: 860px) {
-    .site-nav-list,
-    .nav-cta {
+    .site-nav-list {
       display: none;
     }
 
@@ -4432,7 +4401,6 @@
     .post-card,
     .post-card::before,
     .post-card-read .site-icon,
-    .nav-cta,
     [data-reveal] {
       transition: none;
       animation: none;

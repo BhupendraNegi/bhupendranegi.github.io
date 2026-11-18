@@ -17,6 +17,9 @@ git history if needed.)
 - **Still unlisted:** nothing on the site links to `/resume/`, and the page is
   now also excluded from the sitemap (`sitemap: false`) and from the site search
   (`search: false`) — adding a title would otherwise have listed it in search.
+  It also carries `noindex` (new `noindex: true` front-matter switch in
+  `head.html`), and the hidden "Resume" nav button that was still in every
+  page's markup has been removed.
 - **Print everywhere:** the stylesheet was `media="screen"`, so every page
   printed unstyled. It now applies to print too, with the nav, footer, backdrop
   and translate widget hidden.

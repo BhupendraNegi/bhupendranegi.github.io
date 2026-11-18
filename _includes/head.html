@@ -12,6 +12,9 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
   <title>{{ meta_title }}</title>
   <meta name="description" content="{{ meta_description }}" />
   <link rel="canonical" href="{{ meta_url }}" />
+  {% comment %} `noindex: true` in a page's front matter keeps it out of search
+  engines (the page must stay crawlable for the tag to be seen). {% endcomment %}
+  {% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}
   <script>
     (function() {
       // A stored choice wins; otherwise follow the system colour scheme.
