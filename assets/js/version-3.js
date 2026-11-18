@@ -1482,9 +1482,11 @@
   // comments are about to scroll into view (or the URL targets a comment).
   function initializeComments() {
     var thread = document.getElementById('disqus_thread');
-    var shortname = thread ? thread.getAttribute('data-disqus-shortname') : '';
+    // Set by _includes/disqus.html from _config.yml. It becomes part of a
+    // script URL, so accept nothing but a plain Disqus shortname.
+    var shortname = typeof window.disqusShortname === 'string' ? window.disqusShortname : '';
 
-    if (!thread || !shortname || thread.dataset.version3CommentsBound === 'true') {
+    if (!thread || !/^[a-z0-9-]+$/i.test(shortname) || thread.dataset.version3CommentsBound === 'true') {
       return;
     }
 
