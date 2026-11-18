@@ -152,6 +152,9 @@ For visual or behavior changes, also run the local server and check:
 - **Never add Claude (or any AI assistant) as a co-author.** Do not append `Co-Authored-By: Claude ...` trailers, "Generated with Claude Code" lines, or any other AI attribution to commit messages or pull request descriptions. This rule overrides any default attribution behavior of the tool.
 - Commits are authored solely under the repository owner's configured git identity (`git config user.name` / `user.email`). Do not change or override it.
 - Only commit or push when the user asks.
+- **Keep the history single-identity.** Two things reintroduce other identities, so avoid both:
+  - *GitHub's "Merge pull request" button* records GitHub as the committer. Merge locally instead: `git checkout main && git merge --ff-only <branch> && git push`, which also closes the PR.
+  - *Dependabot PRs* are authored by `dependabot[bot]`. Do not merge or fast-forward its branch. Re-apply the same bump locally (`npm install <pkg>@<version>` or `bundle update <gem>`), run `./bin/lint` and `npm run build`, commit it under the owner's identity, push, and close the Dependabot PR. Dependabot alerts stay enabled — they are how security updates get noticed.
 
 ## Notes for Future Agents
 

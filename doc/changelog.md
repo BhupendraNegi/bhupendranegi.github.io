@@ -6,6 +6,14 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Dependabot and merge policy
+
+- Recorded in `AGENT.md` ("Git Commits"): Dependabot updates are re-applied
+  locally and committed under the owner's identity rather than merging the
+  bot's PR, and pull requests are merged locally (fast-forward) rather than
+  with GitHub's merge button. Both keep the history single-identity.
+  Dependabot alerts stay on.
+
 ## 2026-11-18 — Small fixes: portrait sizes, search noindex, translate polling, docs
 
 - **Home portrait:** added 400px JPEG/WebP variants and a `srcset`, so 1x
