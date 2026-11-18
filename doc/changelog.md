@@ -6,6 +6,19 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Build cleanup: unused theme, gems and stray files
+
+- **Theme:** `theme: minima` is now `theme: null` and the `minima` gem is gone.
+  Every layout is local, but the theme was still publishing `assets/main.css`,
+  `main.css.map` and `minima-social-icons.svg` to the live site.
+- **Gems removed:** `jekyll-paginate` (pagination was dropped in June),
+  `jekyll-sass-converter` as a direct dependency/plugin (no `_sass/`; Jekyll
+  still pulls it in itself), and `jekyll-sitemap` (it was silently skipped
+  because `sitemap.xml` exists, and it would list the resume PDF if it ran).
+- **No longer published:** `README.md` and `eslint.config.mjs` are excluded.
+- Verified by diffing the built site before and after: every page, the feed and
+  the sitemap are byte-identical; only those five stray files disappeared.
+
 ## 2026-11-18 — Disqus loads on demand
 
 - The Disqus embed used to load on every post as soon as the page opened. It is

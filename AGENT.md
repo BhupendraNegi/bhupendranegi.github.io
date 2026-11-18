@@ -16,7 +16,8 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 
 ## Important Files
 
-- `_config.yml`: Site metadata, social links, analytics ID, pagination, plugin config, permalink style.
+- `_config.yml`: Site metadata, social links, analytics ID, plugin config, permalink style. There is no gem theme (`theme: null`) and the only plugin is `jekyll-feed`.
+- `sitemap.xml`: Hand-written sitemap template (pages + posts). `jekyll-sitemap` is deliberately not used — it would also list unlisted files such as the resume PDF. A page opts out with `sitemap: false`.
 - `Gemfile` and `Gemfile.lock`: Ruby/Jekyll dependency definitions. Use `bundle exec` for Jekyll commands.
 - `index.html`: Home page entry point using the `homepage` layout.
 - `_layouts/`: Shared page shells:
@@ -35,7 +36,6 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - `assets/css/tailwind.css`: Version 3 source CSS (the single source of truth for styling).
 - `assets/css/version-3.css`: Compiled, minified CSS committed for GitHub Pages. Regenerate with `npm run css:build` after editing `tailwind.css`.
 - `assets/css/syntax.css`: Rouge code-highlight theme (github light/dark), imported into the Tailwind source.
-- `_sass/`: Sass source files retained in the repo.
 - `assets/js/version-3.js`: Vanilla behavior — theme toggle, mobile nav, project filters, modals/carousel, contact form, nav state, and the post enhancers (TOC + scroll-spy, copy buttons, reading progress).
 - `assets/js/motion.js`: GSAP motion layer (heading intros, scroll reveals).
 - `assets/images/`: Images, logos, SVG tech icons, and the resume PDF.

@@ -40,7 +40,6 @@ This repository contains a static portfolio site with:
 ├── _includes/           # Reusable Liquid partials
 ├── _layouts/            # Page and post layout templates
 ├── _posts/              # Blog posts
-├── _sass/               # Sass sources
 ├── assets/
 │   ├── css/             # Tailwind source + compiled version-3.css + syntax.css
 │   ├── images/          # Images, logos, icons, and resume PDF
