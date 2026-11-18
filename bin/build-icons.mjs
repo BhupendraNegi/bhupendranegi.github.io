@@ -144,14 +144,36 @@ for (const project of loadYaml(read('_data/projects.yml')) || []) {
 
 const errors = [];
 
-function innerSvg(svg) {
-  return svg
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/^[\s\S]*?<svg[^>]*>/, '')
-    .replace(/<\/svg>\s*$/, '')
+// Returns the markup between the outer <svg> tags. Icons come from pinned
+// packages, but they are inlined into every page, so anything that is not
+// plain drawing markup is rejected outright rather than stripped (stripping
+// with regexes is easy to get wrong).
+function innerSvg(svg, label) {
+  const open = svg.indexOf('<svg');
+  const start = open === -1 ? -1 : svg.indexOf('>', open);
+  const end = svg.lastIndexOf('</svg>');
+
+  if (start === -1 || end === -1 || end < start) {
+    errors.push(`${label} is not a well-formed SVG file`);
+    return null;
+  }
+
+  const body = svg
+    .slice(start + 1, end)
     .replace(/\s*\n\s*/g, '')
     .replace(/\s+\/>/g, '/>')
     .trim();
+
+  const forbidden = ['<!--', '<script', '<style', '<foreignObject', '<iframe', 'javascript:', ' on'].find((token) =>
+    token === ' on' ? /\son[a-z]+\s*=/i.test(body) : body.toLowerCase().includes(token.toLowerCase())
+  );
+
+  if (forbidden) {
+    errors.push(`${label} contains unsupported markup (${forbidden.trim()})`);
+    return null;
+  }
+
+  return body;
 }
 
 function lucideIcon(name) {
@@ -162,7 +184,7 @@ function lucideIcon(name) {
     return null;
   }
 
-  return innerSvg(readFileSync(file, 'utf8'));
+  return innerSvg(readFileSync(file, 'utf8'), `Lucide icon "${name}"`);
 }
 
 const deviconIndex = JSON.parse(readFileSync(join(deviconDir, 'devicon.json'), 'utf8'));
@@ -198,12 +220,16 @@ function deviconIcon(className) {
 
   // The icon font flattens every glyph to a single colour; do the same so the
   // logo takes the surrounding text colour (fill="currentColor" on the <svg>).
-  const body = innerSvg(svg)
+  const inner = innerSvg(svg, `Devicon "${className}"`);
+
+  if (inner === null) {
+    return null;
+  }
+
+  const body = inner
     .replace(/\s(?:fill|stroke)="(?!none)[^"]*"/g, '')
     .replace(/\sstyle="[^"]*"/g, '')
-    .replace(/\sclass="[^"]*"/g, '')
-    .replace(/<style[\s\S]*?<\/style>/g, '')
-    .replace(/<title>[\s\S]*?<\/title>/g, '');
+    .replace(/\sclass="[^"]*"/g, '');
 
   if (/url\(#|<image|<linearGradient|<radialGradient|<mask|<clipPath/.test(body)) {
     errors.push(`Devicon "${className}" uses gradients/masks and cannot be flattened to one colour`);
