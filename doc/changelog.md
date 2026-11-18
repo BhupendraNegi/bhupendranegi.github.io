@@ -6,6 +6,15 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Larger link previews + modified dates for posts
+
+- `twitter:card` is `summary_large_image` on pages that have a `cover:` or
+  `image:` (every post), so shared links show the full cover instead of a small
+  thumbnail. Pages falling back to the headshot keep the small `summary` card.
+- New optional `last_modified_at:` front matter for revised posts. It feeds the
+  JSON-LD `dateModified`, `article:modified_time`, the sitemap `lastmod`, and an
+  "Updated …" note in the post header. Without it, nothing changes.
+
 ## 2026-11-18 — Weekly rebuild + external link check
 
 - **Why:** the "N years of experience" figure and the footer year are computed

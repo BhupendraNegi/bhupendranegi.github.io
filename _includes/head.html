@@ -6,6 +6,12 @@
 any page may set `image:`); fall back to the headshot. {% endcomment %}
 {% assign meta_image = page.image | default: page.cover | default: '/assets/images/bhupendra.png' | absolute_url %}
 {% if page.layout == 'post' %}{% assign meta_type = 'article' %}{% else %}{% assign meta_type = 'website' %}{% endif %}
+{% comment %} Pages with their own wide art (post covers are 1200px) get the large
+card; the square headshot fallback stays a small summary card. {% endcomment %}
+{% if page.image or page.cover %}{% assign meta_card = 'summary_large_image' %}{% else %}{% assign meta_card = 'summary' %}{% endif %}
+{% comment %} Optional `last_modified_at:` front matter (a date) marks a revised
+post; without it the modified date is the publish date. {% endcomment %}
+{% assign meta_modified = page.last_modified_at | default: page.date %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,10 +50,11 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{{ meta_image }}" />
   {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:modified_time" content="{{ meta_modified | date_to_xmlschema }}" />
   <meta property="article:author" content="{{ site.name }}" />{% endif %}
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="{{ meta_card }}" />
   <meta name="twitter:site" content="@BhupendraNegi21" />
   <meta name="twitter:title" content="{{ meta_title }}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
@@ -66,7 +73,7 @@ any page may set `image:`); fall back to the headshot. {% endcomment %}
     "headline": {{ page.title | jsonify }},
     "description": {{ meta_description | strip | jsonify }},
     "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ meta_modified | date_to_xmlschema }}",
     "url": {{ meta_url | jsonify }},
     "image": {{ meta_image | jsonify }},
     "mainEntityOfPage": { "@type": "WebPage", "@id": {{ meta_url | jsonify }} },

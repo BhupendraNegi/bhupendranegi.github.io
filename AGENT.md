@@ -30,7 +30,7 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - `_data/skills.yml`: Skills shown on the About page.
 - `_data/resume.yml`: Content of the on-page résumé at `/resume/` (`resume.html`). Keep it in step with the downloadable `assets/images/bhupendra_resume.pdf`.
 - `_data/icons.json`: Generated icon SVG bodies (committed). Never hand-edit; regenerate with `npm run icons:build` (`bin/build-icons.mjs`).
-- `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
+- `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), `last_modified_at:` (a date, set when a post is meaningfully revised — feeds `dateModified`, `article:modified_time`, and the sitemap), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
 - `assets/css/main.css`: Small legacy stylesheet remnant, still being folded into the Tailwind source.
 - `assets/css/tailwind.css`: Version 3 source CSS (the single source of truth for styling).
 - `assets/css/version-3.css`: Compiled, minified CSS committed for GitHub Pages. Regenerate with `npm run css:build` after editing `tailwind.css`.

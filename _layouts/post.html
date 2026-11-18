@@ -25,6 +25,10 @@ comments: true
         <div class="post-meta">
           {% include icon.html name="calendar" class="site-icon" %}
           <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          {% if page.last_modified_at %}
+          <span aria-hidden="true">·</span>
+          <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+          {% endif %}
           <span aria-hidden="true">·</span>
           {% include icon.html name="clock" class="site-icon" %}
           <span>{{ minutes }} min read</span>
