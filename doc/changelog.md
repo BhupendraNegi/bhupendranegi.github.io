@@ -6,6 +6,18 @@ remaining work. (The earlier planning docs — `design.md`, `redesign-plan.md`,
 `blog-post-redesign.md` — were folded into this log and removed; they remain in
 git history if needed.)
 
+## 2026-11-18 — Small fixes: portrait sizes, search noindex, translate polling, docs
+
+- **Home portrait:** added 400px JPEG/WebP variants and a `srcset`, so 1x
+  screens download ~21 KB instead of the 800px file; the image is fetched at
+  high priority, and its `width`/`height` now state its real 800×1066 shape.
+- **Search page:** `/search/` is `noindex` and out of the sitemap.
+- **Google Translate reset button:** replaced the 1.2-second polling timer with
+  a `MutationObserver` on the class Google sets on `<html>`, plus the language
+  dropdown's `change` event.
+- **AGENT.md:** removed stale notes (the `main.css` remnant, CustomEase, blog
+  pagination, lint "not in CI").
+
 ## 2026-11-18 — Build cleanup: unused theme, gems and stray files
 
 - **Theme:** `theme: minima` is now `theme: null` and the `minima` gem is gone.

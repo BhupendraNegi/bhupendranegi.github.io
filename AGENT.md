@@ -7,8 +7,8 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - Static site generator: Jekyll 4.x, managed with Bundler.
 - Runtime pins: Ruby `4.0.3`, Bundler `4.0.14`, and Node.js `22.22.3`.
 - Design: the light-first "Aurora" theme — white background, navy text, blue accent, blue→violet gradient — with a dark mode via the theme toggle. Fonts: Inter (sans), JetBrains Mono (code), Newsreader (serif accents).
-- Front end: Liquid templates, Version 3 Tailwind CSS, and vanilla JavaScript. (Legacy Materialize CSS and Highlight.js have been removed; a small `assets/css/main.css` remnant is still being folded into Tailwind.)
-- Motion: GSAP (ScrollTrigger, SplitText, CustomEase) in `assets/js/motion.js` — heading intros and scroll reveals, with reduced-motion and no-GSAP fallbacks. Native scroll (Lenis was trialed and reverted).
+- Front end: Liquid templates, Version 3 Tailwind CSS, and vanilla JavaScript. (Legacy Materialize CSS, Highlight.js, jQuery, and the old `main.css` have all been removed.)
+- Motion: GSAP (ScrollTrigger, SplitText) in `assets/js/motion.js` — heading intros and scroll reveals, with reduced-motion and no-GSAP fallbacks. Native scroll (Lenis was trialed and reverted).
 - Version 3 styling: Tailwind CLI source lives at `assets/css/tailwind.css` and compiles to `assets/css/version-3.css` (committed for GitHub Pages). Syntax highlighting is build-time Rouge, themed in `assets/css/syntax.css`.
 - Icons: all inline SVG, rendered at build time — no icon script or icon font is loaded. Lucide for UI icons (`{% include icon.html name="search" class="site-icon" %}`) and Devicon for technology logos (`{% include tech-icon.html name="rails-plain" %}`). Their SVG bodies are generated into `_data/icons.json` by `npm run icons:build` from the pinned `lucide-static` and `devicon` devDependencies. Lucide ships no brand glyphs, so GitHub/LinkedIn/X/Stack Overflow logos are hand-kept inline SVGs in `_includes/social-icon.html`.
 - Content model: pages live at the repo root and in `blog/`; posts live in `_posts/`; portfolio and profile data live in `_data/`.
@@ -32,7 +32,6 @@ This repository is a Jekyll-powered personal portfolio and blog for Bhupendra Ne
 - `_data/resume.yml`: Content of the on-page résumé at `/resume/` (`resume.html`). Keep it in step with the downloadable `assets/images/bhupendra_resume.pdf`.
 - `_data/icons.json`: Generated icon SVG bodies (committed). Never hand-edit; regenerate with `npm run icons:build` (`bin/build-icons.mjs`).
 - `_posts/`: Markdown blog posts (`YYYY-M-D-title.md` or `YYYY-MM-DD-title.md`). Optional front matter: `subtitle:` (lead under the title), `last_modified_at:` (a date, set when a post is meaningfully revised — feeds `dateModified`, `article:modified_time`, and the sitemap), and for the blog-index thumbnail `cover:` (image), `tech:` (one devicon class), `techs:` (list of devicon classes), or `icon:` (one Lucide name).
-- `assets/css/main.css`: Small legacy stylesheet remnant, still being folded into the Tailwind source.
 - `assets/css/tailwind.css`: Version 3 source CSS (the single source of truth for styling).
 - `assets/css/version-3.css`: Compiled, minified CSS committed for GitHub Pages. Regenerate with `npm run css:build` after editing `tailwind.css`.
 - `assets/css/syntax.css`: Rouge code-highlight theme (github light/dark), imported into the Tailwind source.
@@ -90,12 +89,12 @@ Notes:
 - Per-tool npm aliases exist too: `npm run lint:js`, `lint:css`, `lint:md`, `lint:data`.
 - Editor defaults live in `.editorconfig`; line endings are normalized to LF via `.gitattributes`.
 - External links are checked separately with `./bin/check-links` (online, slower). CI runs it weekly alongside a scheduled rebuild of the site; it never runs on a push.
-- Linting is a local/dev step — it is intentionally **not** wired into the GitHub Pages deploy workflow, so it can never block a publish.
+- Linting never blocks a publish: CI runs `./bin/lint` as a separate job alongside build/deploy, not as a dependency of them, so a failure shows as a red check without stopping the deploy.
 - Rules are tuned to the project's conventions (e.g. markdownlint allows `#####` section titles and inline-HTML diagrams; Stylelint allows Tailwind v4 at-rules). Prefer adjusting the config over disabling a tool when a new pattern needs to pass.
 
 ## Editing Guidelines
 
-- Keep site-wide identity, links, analytics, pagination, and plugin settings in `_config.yml`.
+- Keep site-wide identity, links, analytics, and plugin settings in `_config.yml`.
 - Prefer `_data/sections.yml`, `_data/projects.yml`, and `_data/skills.yml` for content that is already data-driven.
 - Add blog posts under `_posts/` with YAML front matter and Markdown content.
 - Use existing Liquid includes and layouts before creating new page-specific markup.
@@ -114,7 +113,9 @@ Notes:
 - **`/resume/` is unlisted on purpose.** Never add a link or button to it anywhere on the site (nav, footer, home, About, CTAs), and keep `search: false`, `sitemap: false`, and `noindex: true` in its front matter so it stays out of the site search, the sitemap, and search engines. Only someone who already has the URL should reach it.
 - The stylesheet applies to print as well as screen; the `@media print` block at the end of `tailwind.css` hides the site chrome and lays the résumé out for paper.
 - Contact form submission is handled client-side through Formspree and `fetch`.
-- Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`.
+- Disqus and Google Analytics are configured through `_config.yml` and included from `_includes/`. Disqus loads lazily (`initializeComments()` in `version-3.js`).
+- `noindex: true` in a page's front matter adds a robots noindex tag (used by `/resume/` and `/search/`).
+- The blog index is not paginated: it renders every post so the client-side topic filter works across the archive.
 
 ### Adding or replacing images
 
@@ -141,7 +142,7 @@ For visual or behavior changes, also run the local server and check:
 - Home hero intro animation and scroll reveals.
 - Inner-page navigation, active nav state, and mobile nav.
 - Light/dark theme toggle (verify both themes).
-- Blog index pagination/thumbnails; single-post TOC + scroll-spy, code copy buttons, reading-progress bar, and the `.post-figure` diagram.
+- Blog index topic filter/thumbnails; single-post TOC + scroll-spy, code copy buttons, reading-progress bar, and the `.post-figure` diagram.
 - Project filters, project modals (open/close/click + "Next"), and carousel images.
 - Contact form validation and success modal.
 - `/resume/`: on-page résumé (light + dark), PDF download, and the print layout (Print button → one page).

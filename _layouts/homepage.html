@@ -43,8 +43,11 @@ layout: default
         <div class="hero-portrait">
           <div class="hero-portrait-inner">
             <picture>
-              <source type="image/webp" srcset="/assets/images/bhupendra_1.webp">
-              <img src="/assets/images/bhupendra_1.jpg" alt="Bhupendra Negi" width="320" height="320" decoding="async" />
+              {% comment %} Shown at up to 300px (210px on phones): the 400w file
+              covers 1x screens, the 800w original covers high-density ones.
+              This is the page's largest image, so it is fetched at high priority. {% endcomment %}
+              <source type="image/webp" srcset="/assets/images/bhupendra_1-400.webp 400w, /assets/images/bhupendra_1.webp 800w" sizes="(max-width: 600px) 210px, 300px">
+              <img src="/assets/images/bhupendra_1.jpg" srcset="/assets/images/bhupendra_1-400.jpg 400w, /assets/images/bhupendra_1.jpg 800w" sizes="(max-width: 600px) 210px, 300px" alt="Bhupendra Negi" width="800" height="1066" fetchpriority="high" decoding="async" />
             </picture>
           </div>
         </div>

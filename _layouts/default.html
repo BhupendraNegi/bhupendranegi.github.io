@@ -58,6 +58,9 @@
         return m ? decodeURIComponent(m[1]) : '';
       }
       function isTranslated() {
+        // Google marks a translated page with a translated-ltr / translated-rtl
+        // class on <html>; the cookie covers a page that loads already translated.
+        if (/\btranslated-(?:ltr|rtl)\b/.test(document.documentElement.className)) { return true; }
         var parts = googtrans().split('/');
         return parts.length >= 3 && parts[2] && parts[2] !== 'en';
       }
@@ -82,9 +85,18 @@
       } else {
         syncReset();
       }
-      // The combo translates in place (no reload) and sets the cookie a beat
-      // later, so poll to reveal the reset button once a translation is active.
-      window.setInterval(syncReset, 1200);
+      // The combo translates in place (no reload). Instead of polling, react
+      // to the two signals that a translation started or ended: Google toggling
+      // its class on <html>, and the visitor changing the language dropdown
+      // (the cookie lands a moment after the change event).
+      if ('MutationObserver' in window) {
+        new MutationObserver(syncReset).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+      document.addEventListener('change', function (event) {
+        if (event.target && event.target.classList && event.target.classList.contains('goog-te-combo')) {
+          window.setTimeout(syncReset, 1500);
+        }
+      });
     })();
   </script>
 </body>
